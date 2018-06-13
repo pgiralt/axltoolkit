@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <xsd:schema 
-	targetNamespace="http://www.cisco.com/AXL/11.5" 
+	targetNamespace="http://www.cisco.com/AXL/12.0" 
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	xmlns:axl="http://www.cisco.com/AXL/11.5" 
+	xmlns:axl="http://www.cisco.com/AXL/12.0" 
 	elementFormDefault="unqualified" 
 	attributeFormDefault="unqualified">
 	
@@ -193,6 +193,7 @@
 			<xsd:enumeration value="ITLRecovery"/>
 			<xsd:enumeration value="CallManager-ECDSA"/>
 			<xsd:enumeration value="tomcat-ECDSA"/>
+			<xsd:enumeration value="Phone-CTL-ASA-trust"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XCertificateStatus">
@@ -385,6 +386,7 @@
 			<xsd:enumeration value="Lithuania"/>
 			<xsd:enumeration value="Latvia"/>
 			<xsd:enumeration value="Estonia"/>
+			<xsd:enumeration value="Ukraine"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XCredential">
@@ -934,6 +936,13 @@
 			<xsd:enumeration value="SM-X-8FXS/12FXO-SCCP"/>
 		</xsd:restriction>
 	</xsd:simpleType>
+	<xsd:simpleType name="XMRAPolicy">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="No Service"/>
+			<xsd:enumeration value="IM &amp; Presence only"/>
+			<xsd:enumeration value="IM &amp; Presence, Voice and Video calls"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 	<xsd:simpleType name="XMWLPolicy">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="Use System Policy"/>
@@ -1170,8 +1179,23 @@
 			<xsd:enumeration value="Cisco Spark Remote Device"/>
 			<xsd:enumeration value="Cisco TelePresence DX80"/>
 			<xsd:enumeration value="Cisco TelePresence DX70"/>
+			<xsd:enumeration value="Cisco 7832"/>
 			<xsd:enumeration value="Cisco 8865NR"/>
 			<xsd:enumeration value="Cisco Meeting Server"/>
+			<xsd:enumeration value="Cisco Spark Room Kit"/>
+			<xsd:enumeration value="Cisco Spark Room 55"/>
+			<xsd:enumeration value="Cisco Spark Room Kit Plus"/>
+			<xsd:enumeration value="CP-8800-Video 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="CP-8800-Audio 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="Cisco 8832"/>
+			<xsd:enumeration value="Cisco Spark Room 70 Single"/>
+			<xsd:enumeration value="Cisco 8832NR"/>
+			<xsd:enumeration value="Cisco ATA 191"/>
+			<xsd:enumeration value="Cisco Spark Room 70 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Pro"/>
+			<xsd:enumeration value="Cisco Webex Room 55 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single G2"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual G2"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XMonthOfYear">
@@ -1715,8 +1739,23 @@
 			<xsd:enumeration value="Cisco Spark Remote Device"/>
 			<xsd:enumeration value="Cisco TelePresence DX80"/>
 			<xsd:enumeration value="Cisco TelePresence DX70"/>
+			<xsd:enumeration value="Cisco 7832"/>
 			<xsd:enumeration value="Cisco 8865NR"/>
 			<xsd:enumeration value="Cisco Meeting Server"/>
+			<xsd:enumeration value="Cisco Spark Room Kit"/>
+			<xsd:enumeration value="Cisco Spark Room 55"/>
+			<xsd:enumeration value="Cisco Spark Room Kit Plus"/>
+			<xsd:enumeration value="CP-8800-Audio 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="CP-8800-Video 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="Cisco 8832"/>
+			<xsd:enumeration value="Cisco Spark Room 70 Single"/>
+			<xsd:enumeration value="Cisco 8832NR"/>
+			<xsd:enumeration value="Cisco ATA 191"/>
+			<xsd:enumeration value="Cisco Spark Room 70 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Pro"/>
+			<xsd:enumeration value="Cisco Webex Room 55 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single G2"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual G2"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XProtocolSide">
@@ -1963,6 +2002,10 @@
 			<xsd:enumeration value="Cisco XCP File Transfer Manager"/>
 			<xsd:enumeration value="Cisco Certificate Change Notification Service"/>
 			<xsd:enumeration value="Cisco Wireless Controller Synchronization Service"/>
+			<xsd:enumeration value="Cisco Smart License Manager"/>
+			<xsd:enumeration value="Cisco Upgrade Agent Service"/>
+			<xsd:enumeration value="Cisco Management Agent Service"/>
+			<xsd:enumeration value="Cisco Push Notification Service"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XServiceGrouping">
@@ -1981,6 +2024,7 @@
 			<xsd:enumeration value="Platform Services"/>
 			<xsd:enumeration value="IM and Presence Services"/>
 			<xsd:enumeration value="Location based Tracking Services"/>
+			<xsd:enumeration value="Cloud based Management Services"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XSilenceSuppressionThreshold">
@@ -2760,6 +2804,13 @@
 			<xsd:enumeration value="Extension Mobility Cross Cluster"/>
 			<xsd:enumeration value="Cisco Intercompany Media Engine"/>
 			<xsd:enumeration value="IP Multimedia Subsystem Service Control (ISC)"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="XTrustReceivedIdentity">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Trust All (Default)"/>
+			<xsd:enumeration value="Trust PAI Only"/>
+			<xsd:enumeration value="Trust None"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XTrustRole">

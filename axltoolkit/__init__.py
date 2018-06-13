@@ -44,10 +44,8 @@ def enable_logging():
 
 
 class AxlToolkit:
-    dir = os.path.dirname(__file__)
 
-    wsdl = os.path.join(dir, 'schema/AXLAPI.wsdl')
-
+    wsdl = ""
     last_exception = None
     history = HistoryPlugin()
 
@@ -57,12 +55,26 @@ class AxlToolkit:
 
     '''
 
-    def __init__(self, username, password, server_ip, tls_verify=True, timeout=10):
+    def __init__(self, username, password, server_ip, version='12.0', tls_verify=True, timeout=10, logging_enabled=False):
         self.session = Session()
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
+        filedir = os.path.dirname(__file__)
 
         self.cache = SqliteCache(path='/tmp/sqlite_{0}.db'.format(server_ip), timeout=60)
+
+        if version == '12.0':
+            self.wsdl = os.path.join(filedir, 'schema/12.0/AXLAPI.wsdl')
+        elif version == '11.5':
+            self.wsdl = os.path.join(filedir, 'schema/11.5/AXLAPI.wsdl')
+        elif version == '11.50':
+            self.wsdl = os.path.join(filedir, 'schema/11.0/AXLAPI.wsdl')
+        elif version == '10.5':
+            self.wsdl = os.path.join(filedir, 'schema/10.5/AXLAPI.wsdl')
+        elif version == '10.0':
+            self.wsdl = os.path.join(filedir, 'schema/10.0/AXLAPI.wsdl')
+        else:
+            self.wsdl = os.path.join(filedir, 'schema/12.0/AXLAPI.wsdl')
 
         self.client = Client(wsdl=self.wsdl, plugins=[self.history], transport=Transport(timeout=timeout,
                                                                                          operation_timeout=timeout,
@@ -72,8 +84,8 @@ class AxlToolkit:
         self.service = self.client.create_service("{http://www.cisco.com/AXLAPIService/}AXLAPIBinding",
                                                   "https://{0}:8443/axl/".format(server_ip))
 
-        # enable_logging()
-
+        if logging_enabled:
+            enable_logging()
 
     def get_service(self):
         return self.service
@@ -466,8 +478,6 @@ class AxlToolkit:
         return result
 
 
-
-
     ''' 
     
     LDAP Authentication
@@ -491,7 +501,6 @@ class AxlToolkit:
             server_data.append({'hostName': server,
                                 'ldapPortNumber': port,
                                 'sslEnabled': ssl})
-
 
         try:
             result = self.service.updateLdapAuthentication(authenticateEndUsers=enabled,
@@ -1369,8 +1378,6 @@ class AxlToolkit:
                 result = False
 
             return result
-
-
 
 
     '''
