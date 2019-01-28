@@ -55,7 +55,7 @@ class AxlToolkit:
 
     '''
 
-    def __init__(self, username, password, server_ip, version='12.0', tls_verify=True, timeout=10, logging_enabled=False):
+    def __init__(self, username, password, server_ip, version='12.5', tls_verify=True, timeout=10, logging_enabled=False):
         self.session = Session()
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
@@ -63,18 +63,20 @@ class AxlToolkit:
 
         self.cache = SqliteCache(path='/tmp/sqlite_{0}.db'.format(server_ip), timeout=60)
 
-        if version == '12.0':
+        if version == '12.5':
+            self.wsdl = os.path.join(filedir, 'schema/12.5/AXLAPI.wsdl')
+        elif version == '12.0':
             self.wsdl = os.path.join(filedir, 'schema/12.0/AXLAPI.wsdl')
         elif version == '11.5':
             self.wsdl = os.path.join(filedir, 'schema/11.5/AXLAPI.wsdl')
-        elif version == '11.50':
+        elif version == '11.0':
             self.wsdl = os.path.join(filedir, 'schema/11.0/AXLAPI.wsdl')
         elif version == '10.5':
             self.wsdl = os.path.join(filedir, 'schema/10.5/AXLAPI.wsdl')
         elif version == '10.0':
             self.wsdl = os.path.join(filedir, 'schema/10.0/AXLAPI.wsdl')
         else:
-            self.wsdl = os.path.join(filedir, 'schema/12.0/AXLAPI.wsdl')
+            self.wsdl = os.path.join(filedir, 'schema/12.5/AXLAPI.wsdl')
 
         self.client = Client(wsdl=self.wsdl, plugins=[self.history], transport=Transport(timeout=timeout,
                                                                                          operation_timeout=timeout,
@@ -1624,7 +1626,7 @@ class PawsToolkit:
 
         self.service = self.client.create_service(binding, endpoint)
 
-        enable_logging()
+        # enable_logging()
 
     def get_service(self):
         return self.service

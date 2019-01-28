@@ -12,7 +12,8 @@ counters = [
     "\\\\vnt-cm1b.cisco.com\\Cisco Locations LBM(BranchRemote->Hub_None)\\BandwidthMaximum",
     "\\\\vnt-cm1b.cisco.com\\Cisco Locations LBM(BranchRemote->Hub_None)\\CallsInProgress",
     "\\\\vnt-cm1b.cisco.com\\Cisco Locations LBM(Hub_None)\\CallsInProgress",
-    "\\\\vnt-cm1b.cisco.com\\Cisco SIP(ecats-rtp-dmz-cube2)\\CallsAttempted"
+    "\\\\vnt-cm1b.cisco.com\\Cisco SIP(ecats-rtp-dmz-cube2)\\CallsAttempted",
+    "\\\\vnt-cm1b.cisco.com\\Cisco CallManager\\CallsCompleted"
 ]
 
 result = axl.perfmonAddCounter(session_handle=session_handle, counters=counters)
