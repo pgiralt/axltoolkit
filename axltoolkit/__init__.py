@@ -4,14 +4,13 @@ from zeep.transports import Transport
 from zeep.plugins import HistoryPlugin
 from requests import Session
 from requests.auth import HTTPBasicAuth
-from requests.packages import urllib3
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
+import urllib3
 import logging.config
 import logging
 import os
+from lxml.etree import tostring
 
-urllib3.disable_warnings(InsecureRequestWarning)
-
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def enable_logging():
     logging.config.dictConfig({
@@ -93,10 +92,25 @@ class AxlToolkit:
         return self.service
 
     def last_request_debug(self):
+        request_env = tostring(self.history.last_sent['envelope'])
+        request_headers = self.history.last_sent['http_headers']
+        response_env = tostring(self.history.last_received['envelope'])
+        response_headers = self.history.last_received['http_headers']
+
         return {
-            'request': self.history.last_sent,
-            'response': self.history.last_received
-        }
+            'request': {
+                'raw': self.history.last_sent,
+                'headers': request_headers,
+                'envelope': request_env
+            },
+            'response': {
+                'raw': self.history.last_received,
+                'headers': response_headers,
+                'envelope': response_env
+
+            }
+         }
+
 
 
     '''
@@ -1534,6 +1548,10 @@ class UcmPerfMonToolkit:
 
         return self.service.perfmonCollectSessionData(SessionHandle=session_handle)
 
+    def perfmonCloseSession(self, session_handle):
+        session_handle = self.service.perfmonCloseSession(SessionHandle=session_handle)
+        return session_handle
+
 
 class UcmLogCollectionToolkit:
 
@@ -1607,20 +1625,36 @@ class PawsToolkit:
 
         dir = os.path.dirname(__file__)
 
-        if (service == 'HardwareInformation'):
+        if (service == 'HardwareInformationService'):
             wsdl = os.path.join(dir, 'paws/hardware_information_service.wsdl')
             binding = "{http://services.api.platform.vos.cisco.com}HardwareInformationServiceSoap11Binding"
             endpoint = "https://{0}:8443/platform-services/services/HardwareInformationService.HardwareInformationServiceHttpsSoap11Endpoint/".format(server_ip)
-        elif (service == 'ClusterNodesService'):
+        elif service == 'VersionService':
+            wsdl = 'https://{0}:8443/platform-services/services/VersionService?wsdl'.format(server_ip)
+            binding = "{http://services.api.platform.vos.cisco.com}VersionServiceSoap12Binding"
+            endpoint = "https://{0}:8443/platform-services/services/VersionService.VersionServiceHttpsSoap12Endpoint/".format(server_ip)  # nopep8
+        elif service == 'OptionsService':
+            wsdl = 'https://{0}:8443/platform-services/services/OptionsService?wsdl'.format(server_ip)
+            binding = "{http://services.api.platform.vos.cisco.com}OptionsServiceSoap12Binding"
+            endpoint = "https://{0}:8443/platform-services/services/OptionsService.OptionsServiceHttpsSoap12Endpoint/".format(server_ip)  # nopep8
+        elif service == 'ProductService':
+            wsdl = 'https://{0}:8443/platform-services/services/ProductService?wsdl'.format(server_ip)
+            binding = "{http://services.api.platform.vos.cisco.com}ProductServiceSoap12Binding"
+            endpoint = "https://{0}:8443/platform-services/services/ProductService.ProductServiceHttpsSoap12Endpoint/".format(server_ip)  # nopep8
+        elif service == 'VersionService':
+            wsdl = 'https://{0}:8443/platform-services/services/VersionService?wsdl'.format(server_ip)
+            binding = "{http://services.api.platform.vos.cisco.com}VersionServiceSoap12Binding"
+            endpoint = "https://{0}:8443/platform-services/services/VersionService.VersionServiceHttpsSoap12Endpoint/".format(server_ip)  # nopep8
+        elif service == 'ClusterNodesService':
             wsdl = 'https://{0}:8443/platform-services/services/ClusterNodesService?wsdl'.format(server_ip)
-            binding = "{http://services.api.platform.vos.cisco.com}ClusterNodesServiceHttpBinding"
-            endpoint = "https://{0}:8443/platform-services/services/ClusterNodesService.ClusterNodesServiceHttpsEndpoint/".format(server_ip)
+            binding = "{http://services.api.platform.vos.cisco.com}ClusterNodesServiceSoap12Binding"
+            endpoint = "https://{0}:8443/platform-services/services/ClusterNodesService.ClusterNodesServiceHttpsSoap12Endpoint/".format(server_ip)  # nopep8
 
         self.session = Session()
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
 
-        self.cache = SqliteCache(path='/tmp/sqlite_logcollection.db', timeout=60)
+        self.cache = SqliteCache(path='/tmp/sqlite_paws.db', timeout=60)
 
         self.client = Client(wsdl=wsdl, transport=Transport(cache=self.cache, session=self.session))
 
@@ -1635,5 +1669,10 @@ class PawsToolkit:
         hw_info = self.service.getHardwareInformation()
 
         return hw_info
+
+    def get_active_version(self):
+        active_version = self.service.getActiveVersion()
+
+        return active_version
 
 

@@ -24,3 +24,5 @@ else:
     result = "Error adding perfmon counter"
 
 print(result)
+
+result = axl.perfmonCloseSession(session_handle=session_handle)
