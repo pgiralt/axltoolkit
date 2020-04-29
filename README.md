@@ -14,7 +14,7 @@ sample3_perfmon: Example of Perfmon SXML API to retrieve some Perfmon Counters
 
 sample4_paws: Example of the Hardware Information PAWS API
 
-sample5_cerst: Example us using Thin AXL to pull certificates and decode them. 
+sample5_certs: Example us using Thin AXL to pull certificates and decode them. 
 
 
 ## License
