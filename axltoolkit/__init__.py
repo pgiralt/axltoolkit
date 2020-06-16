@@ -9,6 +9,8 @@ import logging.config
 import logging
 import os
 from lxml.etree import tostring
+from pathlib import Path
+import tempfile
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -60,7 +62,7 @@ class AxlToolkit:
         self.session.verify = tls_verify
         filedir = os.path.dirname(__file__)
 
-        self.cache = SqliteCache(path='/tmp/sqlite_{0}.db'.format(server_ip), timeout=60)
+        self.cache = SqliteCache(path=Path(tempfile.gettempdir()+'/sqlite_{0}.db'.format(server_ip)), timeout=60)
 
         if version == '12.5':
             self.wsdl = os.path.join(filedir, 'schema/12.5/AXLAPI.wsdl')
