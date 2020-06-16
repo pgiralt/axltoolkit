@@ -29,3 +29,8 @@ query = "select * from enduser where userid = 'pgiralt'"
 result = axl.run_sql_query(query)
 
 print(result)
+
+
+result = axl.list_phone(name='CSF%')
+print(result)
+

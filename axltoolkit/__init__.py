@@ -248,7 +248,7 @@ class AxlToolkit:
         users = {}
 
         if kwargs is not None:
-            for key, value in kwargs.iteritems():
+            for key, value in kwargs.items():
                 if key in allowed_tags:
                     search_criteria[key] = value
 
@@ -581,6 +581,46 @@ class AxlToolkit:
             self.last_exception = fault
 
         return result
+
+    def list_phone(self, **kwargs):
+
+        allowed_tags = ['name', 'description', 'protocol', 'callingSearchSpaceName', 'devicePoolName', 'securityProfileName']
+        search_criteria = {}
+        phones = {}
+
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                if key in allowed_tags:
+                    search_criteria[key] = value
+
+        if len(search_criteria) == 0:
+            search_criteria['name'] = '%'
+
+        returned_tags = {'name': '', 'description': '', 'devicePoolName': ''}
+
+        try:
+            print(search_criteria)
+            print(returned_tags)
+
+            result = self.service.listPhone(searchCriteria=search_criteria, returnedTags=returned_tags)
+
+            if result['return'] is not None:
+
+                for phone in result['return']['phone']:
+
+                    phones[phone['name']] = {}
+
+                    phones[phone['name']]['uuid'] = phone['uuid']
+                    phones[phone['name']]['name'] = phone['name']
+                    phones[phone['name']]['description'] = phone['description']
+                    phones[phone['name']]['devicePoolName'] = phone['devicePoolName']
+
+        except Exception as fault:
+            phones = None
+            self.last_exception = fault
+
+        return phones
+
 
 
     '''
@@ -1434,7 +1474,7 @@ class UcmServiceabilityToolkit:
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
 
-        self.cache = SqliteCache(path='/tmp/sqlite_serviceability.db', timeout=60)
+        self.cache = SqliteCache(path=tempfile.gettempdir()+'/sqlite_serviceability.db', timeout=60)
 
         self.client = Client(wsdl=wsdl, transport=Transport(cache=self.cache, session=self.session))
 
@@ -1462,7 +1502,7 @@ class UcmRisPortToolkit:
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
 
-        self.cache = SqliteCache(path='/tmp/sqlite_risport.db', timeout=60)
+        self.cache = SqliteCache(path=tempfile.gettempdir()+'/sqlite_risport.db', timeout=60)
 
         self.client = Client(wsdl=wsdl, transport=Transport(cache=self.cache, session=self.session))
 
@@ -1491,7 +1531,7 @@ class UcmPerfMonToolkit:
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
 
-        self.cache = SqliteCache(path='/tmp/sqlite_risport.db', timeout=60)
+        self.cache = SqliteCache(path=tempfile.gettempdir()+'/sqlite_risport.db', timeout=60)
 
         self.client = Client(wsdl=wsdl, transport=Transport(cache=self.cache, session=self.session))
 
@@ -1572,7 +1612,7 @@ class UcmLogCollectionToolkit:
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
 
-        self.cache = SqliteCache(path='/tmp/sqlite_logcollection.db', timeout=60)
+        self.cache = SqliteCache(path=tempfile.gettempdir()+'/sqlite_logcollection.db', timeout=60)
 
         self.client = Client(wsdl=wsdl, transport=Transport(cache=self.cache, session=self.session))
 
@@ -1601,7 +1641,7 @@ class UcmDimeGetFileToolkit:
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
 
-        self.cache = SqliteCache(path='/tmp/sqlite_logcollection.db', timeout=60)
+        self.cache = SqliteCache(path=tempfile.gettempdir()+'/sqlite_logcollection.db', timeout=60)
 
         self.client = Client(wsdl=wsdl, transport=Transport(cache=self.cache, session=self.session))
 
@@ -1656,7 +1696,7 @@ class PawsToolkit:
         self.session.auth = HTTPBasicAuth(username, password)
         self.session.verify = tls_verify
 
-        self.cache = SqliteCache(path='/tmp/sqlite_paws.db', timeout=60)
+        self.cache = SqliteCache(path=tempfile.gettempdir()+'/sqlite_paws.db', timeout=60)
 
         self.client = Client(wsdl=wsdl, transport=Transport(cache=self.cache, session=self.session))
 
