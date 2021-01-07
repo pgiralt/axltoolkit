@@ -7,7 +7,7 @@ chardet==3.0.4
 defusedxml==0.6.0
 idna==2.8
 isodate==0.6.0
-lxml==4.4.2
+lxml==4.6.2
 pprint==0.1
 pytz==2019.3
 requests==2.22.0
