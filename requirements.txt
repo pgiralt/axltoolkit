@@ -8,7 +8,6 @@ defusedxml==0.6.0
 idna==2.8
 isodate==0.6.0
 lxml==4.9.1
-pprint==0.1
 pytz==2019.3
 requests==2.22.0
 requests-toolbelt==0.9.1
