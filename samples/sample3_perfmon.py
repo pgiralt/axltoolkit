@@ -1,5 +1,5 @@
 from axltoolkit import UcmPerfMonToolkit
-from credentials import user, password, platform_user, platform_password
+from credentials import user, password
 
 ucm_ip = '172.18.106.58'
 
@@ -26,3 +26,19 @@ else:
 print(result)
 
 result = axl.perfmonCloseSession(session_handle=session_handle)
+
+# Change this to the hostnames in your cluster
+hosts = ['vnt-cm1a.cisco.com', 'vnt-cm1b.cisco.com', 'vnt-cm1c.cisco.com']
+
+
+counters = []
+counter = 'Active'
+for host in hosts:
+    lines = axl.perfmonListInstance(host=host, object_name='Cisco Lines')
+
+    for line in lines:
+        counter_string = f'\\\\{host}\\({line})\\{counter}'
+
+        counters.append(counter_string)
+
+print(counters)
