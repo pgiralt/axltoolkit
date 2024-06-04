@@ -13,4 +13,3 @@ requests==2.31.0
 requests-toolbelt==0.9.1
 six==1.14.0
 urllib3==1.26.18
-zeep==3.4.0
