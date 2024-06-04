@@ -5,11 +5,11 @@ cached-property==1.5.1
 certifi==2023.7.22
 chardet==3.0.4
 defusedxml==0.6.0
-idna==2.8
+idna==3.7
 isodate==0.6.0
 lxml==4.9.1
 pytz==2019.3
-requests==2.31.0
+requests==2.32.2
 requests-toolbelt==0.9.1
 six==1.14.0
 urllib3==1.26.18
