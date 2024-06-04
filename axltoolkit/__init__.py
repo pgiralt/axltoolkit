@@ -65,7 +65,11 @@ class AxlToolkit:
 
         self.cache = SqliteCache(path=Path(tempfile.gettempdir()+'/sqlite_{0}.db'.format(server_ip)), timeout=60)
 
-        if version == '12.5':
+        if version == '15.0':
+            self.wsdl = os.path.join(filedir, 'schema/15.0/AXLAPI.wsdl')
+        elif version == '14.0':
+            self.wsdl = os.path.join(filedir, 'schema/14.0/AXLAPI.wsdl')
+        elif version == '12.5':
             self.wsdl = os.path.join(filedir, 'schema/12.5/AXLAPI.wsdl')
         elif version == '12.0':
             self.wsdl = os.path.join(filedir, 'schema/12.0/AXLAPI.wsdl')
@@ -277,6 +281,70 @@ class AxlToolkit:
             self.last_exception = fault
 
         return users
+
+    def get_registration_dynamic(self, device):
+        try:
+            result = self.service.getRegistrationDynamic(device=device)
+        except Exception as fault:
+            result = None
+            self.last_exception = fault
+
+        return result
+
+
+    def list_registration_dynamic(self, **kwargs):
+
+        allowed_tags = ['device', 'lastKnownIpAddress', 'lastKnownUcm', 'lastKnownConfigVersion', 'locationDetails',
+                        'endpointConnection', 'portOrSsid', 'lastSeen']
+
+        search_criteria = {}
+        registrations = {}
+
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                if key in allowed_tags:
+                    search_criteria[key] = value
+
+        if len(search_criteria) == 0:
+            search_criteria['device'] = '%'
+
+        returned_tags = {'device': '',
+                         'lastKnownIpAddress': '',
+                         'lastKnownUcm': '',
+                         'lastKnownConfigVersion': '',
+                         'locationDetails': '',
+                         'endpointConnection': '',
+                         'portOrSsid': '',
+                         'lastSeen': ''}
+
+        try:
+            result = self.service.listRegistrationDynamic(searchCriteria=search_criteria, returnedTags=returned_tags)
+
+            if result['return'] is not None:
+                for registration in result['return']['registrationDynamic']:
+
+                    device = registration['device']['_value_1']
+                    device_uuid = registration['device']['uuid']
+
+                    registrations[device] = {}
+
+                    registrations[device]['device'] = device
+                    registrations[device]['device_uuid'] = device_uuid
+                    registrations[device]['lastKnownIpAddress'] = registration['lastKnownIpAddress']
+                    registrations[device]['lastKnownUcm'] = registration['lastKnownUcm']
+                    registrations[device]['lastKnownConfigVersion'] = registration['lastKnownConfigVersion']
+                    registrations[device]['locationDetails'] = registration['locationDetails']
+                    registrations[device]['endpointConnection'] = registration['endpointConnection']
+                    registrations[device]['portOrSsid'] = registration['portOrSsid']
+                    registrations[device]['lastSeen'] = registration['lastSeen']
+                    registrations[device]['uuid'] = registration['uuid']
+
+        except Exception as fault:
+            registrations = None
+            self.last_exception = fault
+
+        return registrations
+
 
     def update_user(self, user_data):
         try:
