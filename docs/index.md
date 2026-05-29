@@ -85,7 +85,7 @@ mkdocs serve
 
 ## Requirements
 
-- **Python 3.9+**
+- **Python 3.10+**
 - Access to a Cisco UCM server with AXL and/or SXML APIs enabled
 - An **AXL-enabled application user** (for AXL operations)
 - A **platform admin user** (for PAWS, Serviceability, Log Collection)

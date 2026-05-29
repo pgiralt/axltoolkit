@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- **Python 3.9** or later
+- **Python 3.10** or later
 - Network access to a Cisco UCM server (port 8443)
 - An **AXL-enabled application user** for AXL, RISPort, and PerfMon operations
 - A **platform/OS admin user** for PAWS, Serviceability, and Log Collection

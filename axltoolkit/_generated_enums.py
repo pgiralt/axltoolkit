@@ -15,7 +15,7 @@ class _AxlStrEnum(str, Enum):
     Overrides ``__str__`` to return the value rather than the
     ``<ClassName>.<MEMBER>`` qualified name that Python 3.11+
     introduced for ``(str, Enum)`` mix-ins. This keeps SOAP
-    serialization stable across Python 3.9 → 3.13 (and beyond).
+    serialization stable across Python 3.10 → 3.13 (and beyond).
     """
 
     def __str__(self) -> str:  # noqa: D401 - simple delegation
@@ -24,7 +24,8 @@ class _AxlStrEnum(str, Enum):
 
 
 class ASN1RoseOidEncoding(_AxlStrEnum):
-    """AXL enum — ``XASN1RoseOidEncoding``."""
+    """AXL enum — ``XASN1RoseOidEncoding``.
+    """
 
     NO_CHANGES = 'No Changes'
     USE_LOCAL_VALUE = 'Use Local Value'
@@ -33,7 +34,8 @@ class ASN1RoseOidEncoding(_AxlStrEnum):
 
 
 class AlarmSeverity(_AxlStrEnum):
-    """AXL enum — ``XAlarmSeverity``."""
+    """AXL enum — ``XAlarmSeverity``.
+    """
 
     EMERGENCY = 'Emergency'
     ALERT = 'Alert'
@@ -46,7 +48,8 @@ class AlarmSeverity(_AxlStrEnum):
 
 
 class AnnouncementFile(_AxlStrEnum):
-    """AXL enum — ``XAnnouncementFile``."""
+    """AXL enum — ``XAnnouncementFile``.
+    """
 
     BUSY_TONE = 'Busy Tone'
     ALERTINGTONE = 'AlertingTone'
@@ -160,7 +163,8 @@ class AnnouncementFile(_AxlStrEnum):
 
 
 class AppServer(_AxlStrEnum):
-    """AXL enum — ``XAppServer``."""
+    """AXL enum — ``XAppServer``.
+    """
 
     CISCO_UNITY_VOICE_MAIL_4_X_OR_LATER = 'Cisco Unity Voice Mail 4.x or later'
     CISCO_UNITY_CONNECTION = 'Cisco Unity Connection'
@@ -173,7 +177,8 @@ class AppServer(_AxlStrEnum):
 
 
 class AppServerContent(_AxlStrEnum):
-    """AXL enum — ``XAppServerContent``."""
+    """AXL enum — ``XAppServerContent``.
+    """
 
     UNITY_KUBRIK = 'UNITY KUBRIK'
     UNITY_PRE_KUBRIK = 'UNITY PRE KUBRIK'
@@ -181,7 +186,8 @@ class AppServerContent(_AxlStrEnum):
 
 
 class AuthenticationMode(_AxlStrEnum):
-    """AXL enum — ``XAuthenticationMode``."""
+    """AXL enum — ``XAuthenticationMode``.
+    """
 
     BY_AUTHENTICATION_STRING = 'By Authentication String'
     BY_NULL_STRING = 'By Null String'
@@ -190,7 +196,8 @@ class AuthenticationMode(_AxlStrEnum):
 
 
 class AutoAnswer(_AxlStrEnum):
-    """AXL enum — ``XAutoAnswer``."""
+    """AXL enum — ``XAutoAnswer``.
+    """
 
     AUTO_ANSWER_OFF = 'Auto Answer Off'
     AUTO_ANSWER_WITH_HEADSET = 'Auto Answer with Headset'
@@ -198,13 +205,15 @@ class AutoAnswer(_AxlStrEnum):
 
 
 class BLFSDOption(_AxlStrEnum):
-    """AXL enum — ``XBLFSDOption``."""
+    """AXL enum — ``XBLFSDOption``.
+    """
 
     PICKUP = 'Pickup'
 
 
 class Barge(_AxlStrEnum):
-    """AXL enum — ``XBarge``."""
+    """AXL enum — ``XBarge``.
+    """
 
     OFF = 'Off'
     BARGE = 'Barge'
@@ -213,14 +222,16 @@ class Barge(_AxlStrEnum):
 
 
 class Billingserverprotocol(_AxlStrEnum):
-    """AXL enum — ``XBillingserverprotocol``."""
+    """AXL enum — ``XBillingserverprotocol``.
+    """
 
     SFTP = 'SFTP'
     FTP = 'FTP'
 
 
 class BriProtocol(_AxlStrEnum):
-    """AXL enum — ``XBriProtocol``."""
+    """AXL enum — ``XBriProtocol``.
+    """
 
     BRI_NET3 = 'BRI NET3'
     NI = 'NI'
@@ -228,7 +239,8 @@ class BriProtocol(_AxlStrEnum):
 
 
 class CALHeaders(_AxlStrEnum):
-    """AXL enum — ``XCALHeaders``."""
+    """AXL enum — ``XCALHeaders``.
+    """
 
     DISABLED = 'Disabled'
     PREFERRED = 'Preferred'
@@ -236,14 +248,16 @@ class CALHeaders(_AxlStrEnum):
 
 
 class CALMode(_AxlStrEnum):
-    """AXL enum — ``XCALMode``."""
+    """AXL enum — ``XCALMode``.
+    """
 
     FIXED = 'Fixed'
     VARIABLE = 'Variable'
 
 
 class CFACSSActivationPolicy(_AxlStrEnum):
-    """AXL enum — ``XCFACSSActivationPolicy``."""
+    """AXL enum — ``XCFACSSActivationPolicy``.
+    """
 
     USE_SYSTEM_DEFAULT = 'Use System Default'
     WITH_CONFIGURED_CSS = 'With Configured CSS'
@@ -251,7 +265,8 @@ class CFACSSActivationPolicy(_AxlStrEnum):
 
 
 class CSUParam(_AxlStrEnum):
-    """AXL enum — ``XCSUParam``."""
+    """AXL enum — ``XCSUParam``.
+    """
 
     V_0DB = '0dB'
     V_7_5DB = '-7.5dB'
@@ -260,7 +275,8 @@ class CSUParam(_AxlStrEnum):
 
 
 class CUCMVersionInSipHeader(_AxlStrEnum):
-    """AXL enum — ``XCUCMVersionInSipHeader``."""
+    """AXL enum — ``XCUCMVersionInSipHeader``.
+    """
 
     MAJOR_AND_MINOR = 'Major And Minor'
     MAJOR = 'Major'
@@ -270,14 +286,16 @@ class CUCMVersionInSipHeader(_AxlStrEnum):
 
 
 class CallTreatmentOnFailure(_AxlStrEnum):
-    """AXL enum — ``XCallTreatmentOnFailure``."""
+    """AXL enum — ``XCallTreatmentOnFailure``.
+    """
 
     ALLOW_CALLS = 'Allow Calls'
     BLOCK_CALLS = 'Block Calls'
 
 
 class CallerFilterMask(_AxlStrEnum):
-    """AXL enum — ``XCallerFilterMask``."""
+    """AXL enum — ``XCallerFilterMask``.
+    """
 
     DIRECTORY_NUMBER = 'Directory Number'
     NOT_AVAILABLE = 'Not Available'
@@ -285,14 +303,16 @@ class CallerFilterMask(_AxlStrEnum):
 
 
 class CallerID(_AxlStrEnum):
-    """AXL enum — ``XCallerID``."""
+    """AXL enum — ``XCallerID``.
+    """
 
     ANI = 'ANI'
     DNIS = 'DNIS'
 
 
 class CallingLineIdentification(_AxlStrEnum):
-    """AXL enum — ``XCallingLineIdentification``."""
+    """AXL enum — ``XCallingLineIdentification``.
+    """
 
     DEFAULT = 'Default'
     STRICT_FROM_URI_PRESENTATION_ONLY = 'Strict From URI presentation Only'
@@ -300,7 +320,8 @@ class CallingLineIdentification(_AxlStrEnum):
 
 
 class CallingPartySelection(_AxlStrEnum):
-    """AXL enum — ``XCallingPartySelection``."""
+    """AXL enum — ``XCallingPartySelection``.
+    """
 
     ORIGINATOR = 'Originator'
     FIRST_REDIRECT_NUMBER = 'First Redirect Number'
@@ -310,7 +331,8 @@ class CallingPartySelection(_AxlStrEnum):
 
 
 class CertificateOperation(_AxlStrEnum):
-    """AXL enum — ``XCertificateOperation``."""
+    """AXL enum — ``XCertificateOperation``.
+    """
 
     NO_PENDING_OPERATION = 'No Pending Operation'
     INSTALL_UPGRADE = 'Install/Upgrade'
@@ -319,7 +341,8 @@ class CertificateOperation(_AxlStrEnum):
 
 
 class CertificateService(_AxlStrEnum):
-    """AXL enum — ``XCertificateService``."""
+    """AXL enum — ``XCertificateService``.
+    """
 
     PHONE_TRUST = 'Phone-trust'
     PHONE_VPN_TRUST = 'Phone-VPN-trust'
@@ -345,7 +368,8 @@ class CertificateService(_AxlStrEnum):
 
 
 class CertificateStatus(_AxlStrEnum):
-    """AXL enum — ``XCertificateStatus``."""
+    """AXL enum — ``XCertificateStatus``.
+    """
 
     NONE_ = 'None'
     OPERATION_PENDING = 'Operation Pending'
@@ -384,7 +408,8 @@ class CertificateStatus(_AxlStrEnum):
 
 
 class CertificateVerificationLevel(_AxlStrEnum):
-    """AXL enum — ``XCertificateVerificationLevel``."""
+    """AXL enum — ``XCertificateVerificationLevel``.
+    """
 
     ANY_CERTIFICATE = 'Any Certificate'
     SELF_SIGNED_OR_KEYSTORE = 'Self-signed or Keystore'
@@ -392,7 +417,8 @@ class CertificateVerificationLevel(_AxlStrEnum):
 
 
 class ChangeAction(_AxlStrEnum):
-    """AXL enum — ``XChangeAction``."""
+    """AXL enum — ``XChangeAction``.
+    """
 
     A = 'a'
     R = 'r'
@@ -400,7 +426,8 @@ class ChangeAction(_AxlStrEnum):
 
 
 class ChangeType(_AxlStrEnum):
-    """AXL enum — ``XChangeType``."""
+    """AXL enum — ``XChangeType``.
+    """
 
     AARGROUP = 'AarGroup'
     AARGROUPMATRIX = 'AarGroupMatrix'
@@ -605,7 +632,8 @@ class ChangeType(_AxlStrEnum):
 
 
 class Class(_AxlStrEnum):
-    """AXL enum — ``XClass``."""
+    """AXL enum — ``XClass``.
+    """
 
     PHONE = 'Phone'
     GATEWAY = 'Gateway'
@@ -635,7 +663,8 @@ class Class(_AxlStrEnum):
 
 
 class ClockReference(_AxlStrEnum):
-    """AXL enum — ``XClockReference``."""
+    """AXL enum — ``XClockReference``.
+    """
 
     NETWORK = 'Network'
     INTERNAL = 'Internal'
@@ -650,7 +679,8 @@ class ClockReference(_AxlStrEnum):
 
 
 class ConnectProtocol(_AxlStrEnum):
-    """AXL enum — ``XConnectProtocol``."""
+    """AXL enum — ``XConnectProtocol``.
+    """
 
     HTTP = 'HTTP'
     HTTPS = 'HTTPS'
@@ -667,7 +697,8 @@ class ConnectProtocol(_AxlStrEnum):
 
 
 class Country(_AxlStrEnum):
-    """AXL enum — ``XCountry``."""
+    """AXL enum — ``XCountry``.
+    """
 
     ARGENTINA = 'Argentina'
     AUSTRALIA = 'Australia'
@@ -757,21 +788,24 @@ class Country(_AxlStrEnum):
 
 
 class Credential(_AxlStrEnum):
-    """AXL enum — ``XCredential``."""
+    """AXL enum — ``XCredential``.
+    """
 
     PASSWORD = 'Password'
     PIN = 'PIN'
 
 
 class CredentialUser(_AxlStrEnum):
-    """AXL enum — ``XCredentialUser``."""
+    """AXL enum — ``XCredentialUser``.
+    """
 
     END_USER = 'End User'
     APPLICATION_USER = 'Application User'
 
 
 class DNDOption(_AxlStrEnum):
-    """AXL enum — ``XDNDOption``."""
+    """AXL enum — ``XDNDOption``.
+    """
 
     RINGER_OFF = 'Ringer Off'
     CALL_REJECT = 'Call Reject'
@@ -779,7 +813,8 @@ class DNDOption(_AxlStrEnum):
 
 
 class DTMFSignaling(_AxlStrEnum):
-    """AXL enum — ``XDTMFSignaling``."""
+    """AXL enum — ``XDTMFSignaling``.
+    """
 
     NO_PREFERENCE = 'No Preference'
     OUT_OF_BAND = 'Out of Band'
@@ -788,7 +823,8 @@ class DTMFSignaling(_AxlStrEnum):
 
 
 class DayOfWeek(_AxlStrEnum):
-    """AXL enum — ``XDayOfWeek``."""
+    """AXL enum — ``XDayOfWeek``.
+    """
 
     SUN = 'Sun'
     MON = 'Mon'
@@ -801,7 +837,8 @@ class DayOfWeek(_AxlStrEnum):
 
 
 class DeviceProtocol(_AxlStrEnum):
-    """AXL enum — ``XDeviceProtocol``."""
+    """AXL enum — ``XDeviceProtocol``.
+    """
 
     SCCP = 'SCCP'
     DIGITAL_ACCESS_PRI = 'Digital Access PRI'
@@ -826,7 +863,8 @@ class DeviceProtocol(_AxlStrEnum):
 
 
 class DeviceSecurityMode(_AxlStrEnum):
-    """AXL enum — ``XDeviceSecurityMode``."""
+    """AXL enum — ``XDeviceSecurityMode``.
+    """
 
     NON_SECURE = 'Non Secure'
     AUTHENTICATED = 'Authenticated'
@@ -834,14 +872,16 @@ class DeviceSecurityMode(_AxlStrEnum):
 
 
 class DeviceTrustMode(_AxlStrEnum):
-    """AXL enum — ``XDeviceTrustMode``."""
+    """AXL enum — ``XDeviceTrustMode``.
+    """
 
     NOT_TRUSTED = 'Not Trusted'
     TRUSTED = 'Trusted'
 
 
 class DialParameter(_AxlStrEnum):
-    """AXL enum — ``XDialParameter``."""
+    """AXL enum — ``XDialParameter``.
+    """
 
     PATTERN = 'Pattern'
     BUTTON = 'Button'
@@ -850,21 +890,24 @@ class DialParameter(_AxlStrEnum):
 
 
 class DialPattern(_AxlStrEnum):
-    """AXL enum — ``XDialPattern``."""
+    """AXL enum — ``XDialPattern``.
+    """
 
     V_7905_7912 = '7905_7912'
     V_7940_7960_OTHER = '7940_7960_OTHER'
 
 
 class DialViaOffice(_AxlStrEnum):
-    """AXL enum — ``XDialViaOffice``."""
+    """AXL enum — ``XDialViaOffice``.
+    """
 
     DIAL_VIA_OFFICE_REVERSE = 'Dial via Office Reverse'
     DIAL_VIA_OFFICE_FORWARD = 'Dial via Office Forward'
 
 
 class DigitSending(_AxlStrEnum):
-    """AXL enum — ``XDigitSending``."""
+    """AXL enum — ``XDigitSending``.
+    """
 
     DTMF = 'DTMF'
     MF = 'MF'
@@ -872,7 +915,8 @@ class DigitSending(_AxlStrEnum):
 
 
 class DistributeAlgorithm(_AxlStrEnum):
-    """AXL enum — ``XDistributeAlgorithm``."""
+    """AXL enum — ``XDistributeAlgorithm``.
+    """
 
     TOP_DOWN = 'Top Down'
     CIRCULAR = 'Circular'
@@ -881,7 +925,8 @@ class DistributeAlgorithm(_AxlStrEnum):
 
 
 class ECKeySize(_AxlStrEnum):
-    """AXL enum — ``XECKeySize``."""
+    """AXL enum — ``XECKeySize``.
+    """
 
     V_256 = '256'
     V_384 = '384'
@@ -889,7 +934,8 @@ class ECKeySize(_AxlStrEnum):
 
 
 class EOSuppVoiceCall(_AxlStrEnum):
-    """AXL enum — ``XEOSuppVoiceCall``."""
+    """AXL enum — ``XEOSuppVoiceCall``.
+    """
 
     DISABLED_DEFAULT_VALUE = 'Disabled (Default value)'
     BEST_EFFORT_NO_MTP_INSERTED = 'Best Effort (no MTP inserted)'
@@ -897,14 +943,16 @@ class EOSuppVoiceCall(_AxlStrEnum):
 
 
 class Encode(_AxlStrEnum):
-    """AXL enum — ``XEncode``."""
+    """AXL enum — ``XEncode``.
+    """
 
     A_LAW = 'A-law'
     U_LAW = 'u-law'
 
 
 class EndpointConnection(_AxlStrEnum):
-    """AXL enum — ``XEndpointConnection``."""
+    """AXL enum — ``XEndpointConnection``.
+    """
 
     CDP = 'CDP'
     LLDP = 'LLDP'
@@ -913,7 +961,8 @@ class EndpointConnection(_AxlStrEnum):
 
 
 class FDLChannel(_AxlStrEnum):
-    """AXL enum — ``XFDLChannel``."""
+    """AXL enum — ``XFDLChannel``.
+    """
 
     ATANDT_54016 = 'AT&T 54016'
     ANSI_T1_403_NI = 'ANSI T1.403 NI'
@@ -922,14 +971,16 @@ class FDLChannel(_AxlStrEnum):
 
 
 class FallBackCSSSelection(_AxlStrEnum):
-    """AXL enum — ``XFallBackCSSSelection``."""
+    """AXL enum — ``XFallBackCSSSelection``.
+    """
 
     CALLING_DEVICE_AAR_CALLING_SEARCH_SPACE = 'Calling device AAR Calling Search Space'
     TRUNK_REROUTE_CALLING_SEARCH_SPACE = 'Trunk ReRoute Calling Search Space'
 
 
 class Feature(_AxlStrEnum):
-    """AXL enum — ``XFeature``."""
+    """AXL enum — ``XFeature``.
+    """
 
     REDIAL = 'Redial'
     SPEED_DIAL = 'Speed Dial'
@@ -985,7 +1036,8 @@ class Feature(_AxlStrEnum):
 
 
 class GClear(_AxlStrEnum):
-    """AXL enum — ``XGClear``."""
+    """AXL enum — ``XGClear``.
+    """
 
     DISABLED = 'Disabled'
     CLEARMODE = 'CLEARMODE'
@@ -995,21 +1047,24 @@ class GClear(_AxlStrEnum):
 
 
 class GeoLocationDevice(_AxlStrEnum):
-    """AXL enum — ``XGeoLocationDevice``."""
+    """AXL enum — ``XGeoLocationDevice``.
+    """
 
     BORDER = 'Border'
     INTERIOR = 'Interior'
 
 
 class GlobalNumber(_AxlStrEnum):
-    """AXL enum — ``XGlobalNumber``."""
+    """AXL enum — ``XGlobalNumber``.
+    """
 
     ENTERPRISE_NUMBER = 'Enterprise Number'
     PLUSE_164_NUMBER = '+E.164 Number'
 
 
 class HTTPProxy(_AxlStrEnum):
-    """AXL enum — ``XHTTPProxy``."""
+    """AXL enum — ``XHTTPProxy``.
+    """
 
     NONE_ = 'None'
     MANUAL = 'Manual'
@@ -1017,7 +1072,8 @@ class HTTPProxy(_AxlStrEnum):
 
 
 class HostedRoutePatternPSTNRule(_AxlStrEnum):
-    """AXL enum — ``XHostedRoutePatternPSTNRule``."""
+    """AXL enum — ``XHostedRoutePatternPSTNRule``.
+    """
 
     USE_PATTERN = 'Use pattern'
     SPECIFY = 'Specify'
@@ -1025,7 +1081,8 @@ class HostedRoutePatternPSTNRule(_AxlStrEnum):
 
 
 class HotspotAuthenticationMethod(_AxlStrEnum):
-    """AXL enum — ``XHotspotAuthenticationMethod``."""
+    """AXL enum — ``XHotspotAuthenticationMethod``.
+    """
 
     NONE_ = 'None'
     WEP = 'WEP'
@@ -1037,7 +1094,8 @@ class HotspotAuthenticationMethod(_AxlStrEnum):
 
 
 class HuntAlgorithm(_AxlStrEnum):
-    """AXL enum — ``XHuntAlgorithm``."""
+    """AXL enum — ``XHuntAlgorithm``.
+    """
 
     TRY_NEXT_MEMBER_THEN_TRY_NEXT_GROUP_IN_HUNT_LIST = 'Try next member; then, try next group in Hunt List'
     TRY_NEXT_MEMBER_BUT_DO_NOT_GO_TO_NEXT_GROUP = 'Try next member, but do not go to next group'
@@ -1046,7 +1104,8 @@ class HuntAlgorithm(_AxlStrEnum):
 
 
 class IPAddressingMode(_AxlStrEnum):
-    """AXL enum — ``XIPAddressingMode``."""
+    """AXL enum — ``XIPAddressingMode``.
+    """
 
     IPV4_ONLY = 'IPv4 Only'
     IPV6_ONLY = 'IPv6 Only'
@@ -1054,7 +1113,8 @@ class IPAddressingMode(_AxlStrEnum):
 
 
 class IPAddressingModePrefControl(_AxlStrEnum):
-    """AXL enum — ``XIPAddressingModePrefControl``."""
+    """AXL enum — ``XIPAddressingModePrefControl``.
+    """
 
     IPV4 = 'IPv4'
     IPV6 = 'IPv6'
@@ -1062,7 +1122,8 @@ class IPAddressingModePrefControl(_AxlStrEnum):
 
 
 class InterClusterService(_AxlStrEnum):
-    """AXL enum — ``XInterClusterService``."""
+    """AXL enum — ``XInterClusterService``.
+    """
 
     EMCC = 'EMCC'
     PSTN_ACCESS = 'PSTN Access'
@@ -1073,7 +1134,8 @@ class InterClusterService(_AxlStrEnum):
 
 
 class KeepAliveTimeInterval(_AxlStrEnum):
-    """AXL enum — ``XKeepAliveTimeInterval``."""
+    """AXL enum — ``XKeepAliveTimeInterval``.
+    """
 
     V_0 = '0'
     V_5 = '5'
@@ -1085,7 +1147,8 @@ class KeepAliveTimeInterval(_AxlStrEnum):
 
 
 class KeyOrder(_AxlStrEnum):
-    """AXL enum — ``XKeyOrder``."""
+    """AXL enum — ``XKeyOrder``.
+    """
 
     RSA_ONLY = 'RSA Only'
     EC_ONLY = 'EC Only'
@@ -1093,7 +1156,8 @@ class KeyOrder(_AxlStrEnum):
 
 
 class KeySize(_AxlStrEnum):
-    """AXL enum — ``XKeySize``."""
+    """AXL enum — ``XKeySize``.
+    """
 
     V_512 = '512'
     V_1024 = '1024'
@@ -1103,7 +1167,8 @@ class KeySize(_AxlStrEnum):
 
 
 class LDAPDirectoryFunction(_AxlStrEnum):
-    """AXL enum — ``XLDAPDirectoryFunction``."""
+    """AXL enum — ``XLDAPDirectoryFunction``.
+    """
 
     DIRSYNC = 'DirSync'
     DN_ALIAS_SYNC_AND_LOOKUP = 'DN Alias Sync and Lookup'
@@ -1112,7 +1177,8 @@ class LDAPDirectoryFunction(_AxlStrEnum):
 
 
 class LdapServer(_AxlStrEnum):
-    """AXL enum — ``XLdapServer``."""
+    """AXL enum — ``XLdapServer``.
+    """
 
     MICROSOFT_ACTIVE_DIRECTORY = 'Microsoft Active Directory'
     SUN_OR_ORACLE_DIRECTORY_SERVER = 'Sun or Oracle Directory Server'
@@ -1122,7 +1188,8 @@ class LdapServer(_AxlStrEnum):
 
 
 class LogicalPartitionPolicy(_AxlStrEnum):
-    """AXL enum — ``XLogicalPartitionPolicy``."""
+    """AXL enum — ``XLogicalPartitionPolicy``.
+    """
 
     USE_DEFAULT_POLICY = 'Use Default Policy'
     ALLOW = 'Allow'
@@ -1130,7 +1197,8 @@ class LogicalPartitionPolicy(_AxlStrEnum):
 
 
 class LossyNetwork(_AxlStrEnum):
-    """AXL enum — ``XLossyNetwork``."""
+    """AXL enum — ``XLossyNetwork``.
+    """
 
     KEEP_CURRENT_SETTING = 'Keep Current Setting'
     USE_SYSTEM_DEFAULT = 'Use System Default'
@@ -1139,7 +1207,8 @@ class LossyNetwork(_AxlStrEnum):
 
 
 class MGCPSlotModule(_AxlStrEnum):
-    """AXL enum — ``XMGCPSlotModule``."""
+    """AXL enum — ``XMGCPSlotModule``.
+    """
 
     NM_1V = 'NM-1V'
     NM_2V = 'NM-2V'
@@ -1182,7 +1251,8 @@ class MGCPSlotModule(_AxlStrEnum):
 
 
 class MGCPVic(_AxlStrEnum):
-    """AXL enum — ``XMGCPVic``."""
+    """AXL enum — ``XMGCPVic``.
+    """
 
     VIC_2FXS = 'VIC-2FXS'
     VIC_2FXO = 'VIC-2FXO'
@@ -1384,7 +1454,8 @@ class MGCPVic(_AxlStrEnum):
 
 
 class MRAPolicy(_AxlStrEnum):
-    """AXL enum — ``XMRAPolicy``."""
+    """AXL enum — ``XMRAPolicy``.
+    """
 
     NO_SERVICE = 'No Service'
     IM_AND_PRESENCE_ONLY = 'IM & Presence only'
@@ -1392,7 +1463,8 @@ class MRAPolicy(_AxlStrEnum):
 
 
 class MWLPolicy(_AxlStrEnum):
-    """AXL enum — ``XMWLPolicy``."""
+    """AXL enum — ``XMWLPolicy``.
+    """
 
     USE_SYSTEM_POLICY = 'Use System Policy'
     LIGHT_AND_PROMPT = 'Light and Prompt'
@@ -1402,7 +1474,8 @@ class MWLPolicy(_AxlStrEnum):
 
 
 class MatrixValue(_AxlStrEnum):
-    """AXL enum — ``XMatrixValue``."""
+    """AXL enum — ``XMatrixValue``.
+    """
 
     USE_SYSTEM_DEFAULT = 'Use System Default'
     NO_RESERVATION = 'No Reservation'
@@ -1414,7 +1487,8 @@ class MatrixValue(_AxlStrEnum):
 
 
 class MediaPayload(_AxlStrEnum):
-    """AXL enum — ``XMediaPayload``."""
+    """AXL enum — ``XMediaPayload``.
+    """
 
     G711_A_LAW_64K = 'G711 a-law 64K'
     G711_U_LAW_64K = 'G711 u-law 64K'
@@ -1426,14 +1500,16 @@ class MediaPayload(_AxlStrEnum):
 
 
 class MobileSmartClient(_AxlStrEnum):
-    """AXL enum — ``XMobileSmartClient``."""
+    """AXL enum — ``XMobileSmartClient``.
+    """
 
     CUMC = 'CUMC'
     STANDARD = 'Standard'
 
 
 class Model(_AxlStrEnum):
-    """AXL enum — ``XModel``."""
+    """AXL enum — ``XModel``.
+    """
 
     CISCO_30_SPPLUS = 'Cisco 30 SP+'
     CISCO_12_SPPLUS = 'Cisco 12 SP+'
@@ -1680,7 +1756,8 @@ class Model(_AxlStrEnum):
 
 
 class MonthOfYear(_AxlStrEnum):
-    """AXL enum — ``XMonthOfYear``."""
+    """AXL enum — ``XMonthOfYear``.
+    """
 
     NONE_ = 'None'
     JAN = 'Jan'
@@ -1698,7 +1775,8 @@ class MonthOfYear(_AxlStrEnum):
 
 
 class NSFService(_AxlStrEnum):
-    """AXL enum — ``XNSFService``."""
+    """AXL enum — ``XNSFService``.
+    """
 
     ACCUNET_SWITCHED_DIGITAL_SERVICE = 'ACCUNET Switched Digital Service'
     BILLING_NUMBER_ONLY = 'Billing Number Only'
@@ -1727,7 +1805,8 @@ class NSFService(_AxlStrEnum):
 
 
 class NetworkLocation(_AxlStrEnum):
-    """AXL enum — ``XNetworkLocation``."""
+    """AXL enum — ``XNetworkLocation``.
+    """
 
     ONNET = 'OnNet'
     OFFNET = 'OffNet'
@@ -1735,14 +1814,16 @@ class NetworkLocation(_AxlStrEnum):
 
 
 class NodeUsage(_AxlStrEnum):
-    """AXL enum — ``XNodeUsage``."""
+    """AXL enum — ``XNodeUsage``.
+    """
 
     PUBLISHER = 'Publisher'
     SUBSCRIBER = 'Subscriber'
 
 
 class NumberingPlan(_AxlStrEnum):
-    """AXL enum — ``XNumberingPlan``."""
+    """AXL enum — ``XNumberingPlan``.
+    """
 
     CISCO_CALLMANAGER = 'Cisco CallManager'
     ISDN = 'ISDN'
@@ -1752,7 +1833,8 @@ class NumberingPlan(_AxlStrEnum):
 
 
 class OnboardingRegistrationStatus(_AxlStrEnum):
-    """AXL enum — ``XOnboardingRegistrationStatus``."""
+    """AXL enum — ``XOnboardingRegistrationStatus``.
+    """
 
     ONBOARDING_COMPLETED = 'Onboarding completed'
     ONBOARDING_PENDING = 'Onboarding pending'
@@ -1760,7 +1842,8 @@ class OnboardingRegistrationStatus(_AxlStrEnum):
 
 
 class Operator(_AxlStrEnum):
-    """AXL enum — ``XOperator``."""
+    """AXL enum — ``XOperator``.
+    """
 
     NOT_SELECTED = 'NOT-SELECTED'
     EXISTS = 'EXISTS'
@@ -1769,7 +1852,8 @@ class Operator(_AxlStrEnum):
 
 
 class OutboundCallRollover(_AxlStrEnum):
-    """AXL enum — ``XOutboundCallRollover``."""
+    """AXL enum — ``XOutboundCallRollover``.
+    """
 
     NO_ROLLOVER = 'No Rollover'
     ROLLOVER_WITHIN_SAME_DN = 'Rollover Within Same DN'
@@ -1777,7 +1861,8 @@ class OutboundCallRollover(_AxlStrEnum):
 
 
 class PRIChanIE(_AxlStrEnum):
-    """AXL enum — ``XPRIChanIE``."""
+    """AXL enum — ``XPRIChanIE``.
+    """
 
     TIMESLOT_NUMBER = 'Timeslot Number'
     SLOTMAP = 'Slotmap'
@@ -1786,14 +1871,16 @@ class PRIChanIE(_AxlStrEnum):
 
 
 class PacketCaptureMode(_AxlStrEnum):
-    """AXL enum — ``XPacketCaptureMode``."""
+    """AXL enum — ``XPacketCaptureMode``.
+    """
 
     NONE_ = 'None'
     BATCH_PROCESSING_MODE = 'Batch Processing Mode'
 
 
 class Param(_AxlStrEnum):
-    """AXL enum — ``XParam``."""
+    """AXL enum — ``XParam``.
+    """
 
     BOOLEAN = 'boolean'
     DOUBLE = 'double'
@@ -1808,7 +1895,8 @@ class Param(_AxlStrEnum):
 
 
 class PartitionUsage(_AxlStrEnum):
-    """AXL enum — ``XPartitionUsage``."""
+    """AXL enum — ``XPartitionUsage``.
+    """
 
     INTERCOM = 'Intercom'
     CALL_CONTROL_DISCOVERY_LEARNED_PATTERN = 'Call Control Discovery Learned Pattern'
@@ -1817,7 +1905,8 @@ class PartitionUsage(_AxlStrEnum):
 
 
 class PatternPrecedence(_AxlStrEnum):
-    """AXL enum — ``XPatternPrecedence``."""
+    """AXL enum — ``XPatternPrecedence``.
+    """
 
     FLASH_OVERRIDE = 'Flash Override'
     FLASH = 'Flash'
@@ -1829,7 +1918,8 @@ class PatternPrecedence(_AxlStrEnum):
 
 
 class PatternRouteClass(_AxlStrEnum):
-    """AXL enum — ``XPatternRouteClass``."""
+    """AXL enum — ``XPatternRouteClass``.
+    """
 
     DEFAULT = 'Default'
     VOICE = 'Voice'
@@ -1840,7 +1930,8 @@ class PatternRouteClass(_AxlStrEnum):
 
 
 class PatternUsage(_AxlStrEnum):
-    """AXL enum — ``XPatternUsage``."""
+    """AXL enum — ``XPatternUsage``.
+    """
 
     CALLPARK = 'CallPark'
     CONFERENCE = 'Conference'
@@ -1878,7 +1969,8 @@ class PatternUsage(_AxlStrEnum):
 
 
 class PhonePersonalization(_AxlStrEnum):
-    """AXL enum — ``XPhonePersonalization``."""
+    """AXL enum — ``XPhonePersonalization``.
+    """
 
     DISABLED = 'Disabled'
     ENABLED = 'Enabled'
@@ -1887,7 +1979,8 @@ class PhonePersonalization(_AxlStrEnum):
 
 
 class PhoneService(_AxlStrEnum):
-    """AXL enum — ``XPhoneService``."""
+    """AXL enum — ``XPhoneService``.
+    """
 
     STANDARD_IP_PHONE_SERVICE = 'Standard IP Phone Service'
     DIRECTORIES = 'Directories'
@@ -1895,7 +1988,8 @@ class PhoneService(_AxlStrEnum):
 
 
 class PhoneServiceCategory(_AxlStrEnum):
-    """AXL enum — ``XPhoneServiceCategory``."""
+    """AXL enum — ``XPhoneServiceCategory``.
+    """
 
     XML_SERVICE = 'XML Service'
     JAVA_MIDLET = 'Java MIDlet'
@@ -1905,7 +1999,8 @@ class PhoneServiceCategory(_AxlStrEnum):
 
 
 class PhoneServiceDisplay(_AxlStrEnum):
-    """AXL enum — ``XPhoneServiceDisplay``."""
+    """AXL enum — ``XPhoneServiceDisplay``.
+    """
 
     INTERNAL = 'Internal'
     EXTERNAL_URL = 'External URL'
@@ -1914,7 +2009,8 @@ class PhoneServiceDisplay(_AxlStrEnum):
 
 
 class PickupNotification(_AxlStrEnum):
-    """AXL enum — ``XPickupNotification``."""
+    """AXL enum — ``XPickupNotification``.
+    """
 
     NO_ALERT = 'No Alert'
     AUDIO_ALERT = 'Audio Alert'
@@ -1923,7 +2019,8 @@ class PickupNotification(_AxlStrEnum):
 
 
 class Preemption(_AxlStrEnum):
-    """AXL enum — ``XPreemption``."""
+    """AXL enum — ``XPreemption``.
+    """
 
     DISABLED = 'Disabled'
     FORCEFUL = 'Forceful'
@@ -1931,14 +2028,16 @@ class Preemption(_AxlStrEnum):
 
 
 class PreferredMediaSource(_AxlStrEnum):
-    """AXL enum — ``XPreferredMediaSource``."""
+    """AXL enum — ``XPreferredMediaSource``.
+    """
 
     GATEWAY_PREFERRED = 'Gateway Preferred'
     PHONE_PREFERRED = 'Phone Preferred'
 
 
 class PresentationBit(_AxlStrEnum):
-    """AXL enum — ``XPresentationBit``."""
+    """AXL enum — ``XPresentationBit``.
+    """
 
     DEFAULT = 'Default'
     ALLOWED = 'Allowed'
@@ -1946,7 +2045,8 @@ class PresentationBit(_AxlStrEnum):
 
 
 class PriOfNumber(_AxlStrEnum):
-    """AXL enum — ``XPriOfNumber``."""
+    """AXL enum — ``XPriOfNumber``.
+    """
 
     CISCO_CALLMANAGER = 'Cisco CallManager'
     UNKNOWN = 'Unknown'
@@ -1956,7 +2056,8 @@ class PriOfNumber(_AxlStrEnum):
 
 
 class PriProtocol(_AxlStrEnum):
-    """AXL enum — ``XPriProtocol``."""
+    """AXL enum — ``XPriProtocol``.
+    """
 
     PRI_4ESS = 'PRI 4ESS'
     PRI_5E8 = 'PRI 5E8'
@@ -1976,14 +2077,16 @@ class PriProtocol(_AxlStrEnum):
 
 
 class ProcessNodeRole(_AxlStrEnum):
-    """AXL enum — ``XProcessNodeRole``."""
+    """AXL enum — ``XProcessNodeRole``.
+    """
 
     CUCM_VOICE_VIDEO = 'CUCM Voice/Video'
     CUCM_IM_AND_PRESENCE = 'CUCM IM and Presence'
 
 
 class Product(_AxlStrEnum):
-    """AXL enum — ``XProduct``."""
+    """AXL enum — ``XProduct``.
+    """
 
     PILOT = 'Pilot'
     CISCO_CATALYST_6000_T1_VOIP_GATEWAY = 'Cisco Catalyst 6000 T1 VoIP Gateway'
@@ -2312,14 +2415,16 @@ class Product(_AxlStrEnum):
 
 
 class ProtocolSide(_AxlStrEnum):
-    """AXL enum — ``XProtocolSide``."""
+    """AXL enum — ``XProtocolSide``.
+    """
 
     NETWORK = 'Network'
     USER = 'User'
 
 
 class QSIGVariant(_AxlStrEnum):
-    """AXL enum — ``XQSIGVariant``."""
+    """AXL enum — ``XQSIGVariant``.
+    """
 
     NO_CHANGES = 'No Changes'
     ECMA = 'ECMA'
@@ -2327,14 +2432,16 @@ class QSIGVariant(_AxlStrEnum):
 
 
 class RSVPOverSIP(_AxlStrEnum):
-    """AXL enum — ``XRSVPOverSIP``."""
+    """AXL enum — ``XRSVPOverSIP``.
+    """
 
     LOCAL_RSVP = 'Local RSVP'
     E2E = 'E2E'
 
 
 class RecordingFlag(_AxlStrEnum):
-    """AXL enum — ``XRecordingFlag``."""
+    """AXL enum — ``XRecordingFlag``.
+    """
 
     CALL_RECORDING_DISABLED = 'Call Recording Disabled'
     AUTOMATIC_CALL_RECORDING_ENABLED = 'Automatic Call Recording Enabled'
@@ -2342,7 +2449,8 @@ class RecordingFlag(_AxlStrEnum):
 
 
 class ReleaseCauseValue(_AxlStrEnum):
-    """AXL enum — ``XReleaseCauseValue``."""
+    """AXL enum — ``XReleaseCauseValue``.
+    """
 
     NO_ERROR = 'No Error'
     UNALLOCATED_NUMBER = 'Unallocated Number'
@@ -2353,7 +2461,8 @@ class ReleaseCauseValue(_AxlStrEnum):
 
 
 class Reset(_AxlStrEnum):
-    """AXL enum — ``XReset``."""
+    """AXL enum — ``XReset``.
+    """
 
     RESET = 'Reset'
     RESTART = 'Restart'
@@ -2363,14 +2472,16 @@ class Reset(_AxlStrEnum):
 
 
 class RevertPriority(_AxlStrEnum):
-    """AXL enum — ``XRevertPriority``."""
+    """AXL enum — ``XRevertPriority``.
+    """
 
     DEFAULT = 'Default'
     HIGHEST = 'Highest'
 
 
 class RingSetting(_AxlStrEnum):
-    """AXL enum — ``XRingSetting``."""
+    """AXL enum — ``XRingSetting``.
+    """
 
     USE_SYSTEM_DEFAULT = 'Use System Default'
     DISABLE = 'Disable'
@@ -2381,7 +2492,8 @@ class RingSetting(_AxlStrEnum):
 
 
 class RisStatus(_AxlStrEnum):
-    """AXL enum — ``XRisStatus``."""
+    """AXL enum — ``XRisStatus``.
+    """
 
     UNKNOWN = 'Unknown'
     REGISTERED = 'Registered'
@@ -2391,7 +2503,8 @@ class RisStatus(_AxlStrEnum):
 
 
 class SIPBandwidthModifier(_AxlStrEnum):
-    """AXL enum — ``XSIPBandwidthModifier``."""
+    """AXL enum — ``XSIPBandwidthModifier``.
+    """
 
     TIAS_AND_AS = 'TIAS and AS'
     TIAS_ONLY = 'TIAS only'
@@ -2400,7 +2513,8 @@ class SIPBandwidthModifier(_AxlStrEnum):
 
 
 class SIPCodec(_AxlStrEnum):
-    """AXL enum — ``XSIPCodec``."""
+    """AXL enum — ``XSIPCodec``.
+    """
 
     V_711ULAW = '711ulaw'
     V_711ALAW = '711alaw'
@@ -2409,7 +2523,8 @@ class SIPCodec(_AxlStrEnum):
 
 
 class SIPIdentityBlend(_AxlStrEnum):
-    """AXL enum — ``XSIPIdentityBlend``."""
+    """AXL enum — ``XSIPIdentityBlend``.
+    """
 
     DELIVER_DN_ONLY_IN_CONNECTED_PARTY = 'Deliver DN only in connected party'
     DELIVER_URI_ONLY_IN_CONNECTED_PARTY_IF_AVAILABLE = 'Deliver URI only in connected party, if available'
@@ -2417,7 +2532,8 @@ class SIPIdentityBlend(_AxlStrEnum):
 
 
 class SIPRel1XXOptions(_AxlStrEnum):
-    """AXL enum — ``XSIPRel1XXOptions``."""
+    """AXL enum — ``XSIPRel1XXOptions``.
+    """
 
     DISABLED = 'Disabled'
     SEND_PRACK_IF_1XX_CONTAINS_SDP = 'Send PRACK if 1xx Contains SDP'
@@ -2425,7 +2541,8 @@ class SIPRel1XXOptions(_AxlStrEnum):
 
 
 class SIPReroute(_AxlStrEnum):
-    """AXL enum — ``XSIPReroute``."""
+    """AXL enum — ``XSIPReroute``.
+    """
 
     NEVER = 'Never'
     CONTACT_HEADER = 'Contact Header'
@@ -2433,7 +2550,8 @@ class SIPReroute(_AxlStrEnum):
 
 
 class SIPScriptErrorHandling(_AxlStrEnum):
-    """AXL enum — ``XSIPScriptErrorHandling``."""
+    """AXL enum — ``XSIPScriptErrorHandling``.
+    """
 
     MESSAGE_ROLLBACK_ONLY = 'Message Rollback Only'
     DISABLE_SCRIPT = 'Disable Script'
@@ -2442,7 +2560,8 @@ class SIPScriptErrorHandling(_AxlStrEnum):
 
 
 class SIPTrunkCallLegSecurity(_AxlStrEnum):
-    """AXL enum — ``XSIPTrunkCallLegSecurity``."""
+    """AXL enum — ``XSIPTrunkCallLegSecurity``.
+    """
 
     WHEN_USING_BOTH_SRTP_AND_TLS = 'When using both sRTP and TLS'
     WHEN_USING_SRTP_ONLY = 'When using sRTP Only'
@@ -2471,7 +2590,8 @@ class SNMPPrivacyProtocol(_AxlStrEnum):
 
 
 class SNMPVersion(_AxlStrEnum):
-    """AXL enum — ``XSNMPVersion``."""
+    """AXL enum — ``XSNMPVersion``.
+    """
 
     V_1 = '1'
     V_2C = '2C'
@@ -2479,7 +2599,8 @@ class SNMPVersion(_AxlStrEnum):
 
 
 class ScheduleUnit(_AxlStrEnum):
-    """AXL enum — ``XScheduleUnit``."""
+    """AXL enum — ``XScheduleUnit``.
+    """
 
     HOUR = 'HOUR'
     DAY = 'DAY'
@@ -2488,14 +2609,16 @@ class ScheduleUnit(_AxlStrEnum):
 
 
 class ServerSecurityMode(_AxlStrEnum):
-    """AXL enum — ``XServerSecurityMode``."""
+    """AXL enum — ``XServerSecurityMode``.
+    """
 
     AUTHENTICATED = 'Authenticated'
     ENCRYPTED_AND_AUTHENTICATED = 'Encrypted and Authenticated'
 
 
 class Service(_AxlStrEnum):
-    """AXL enum — ``XService``."""
+    """AXL enum — ``XService``.
+    """
 
     CISCO_CALLMANAGER = 'Cisco CallManager'
     CISCO_TFTP = 'Cisco Tftp'
@@ -2608,7 +2731,8 @@ class Service(_AxlStrEnum):
 
 
 class ServiceGrouping(_AxlStrEnum):
-    """AXL enum — ``XServiceGrouping``."""
+    """AXL enum — ``XServiceGrouping``.
+    """
 
     CM_SERVICES = 'CM Services'
     CTI_SERVICES = 'CTI Services'
@@ -2628,7 +2752,8 @@ class ServiceGrouping(_AxlStrEnum):
 
 
 class SilenceSuppressionThreshold(_AxlStrEnum):
-    """AXL enum — ``XSilenceSuppressionThreshold``."""
+    """AXL enum — ``XSilenceSuppressionThreshold``.
+    """
 
     DISABLE = 'Disable'
     V_48DBM0 = '-48dbm0'
@@ -2641,7 +2766,8 @@ class SilenceSuppressionThreshold(_AxlStrEnum):
 
 
 class SipAssertedType(_AxlStrEnum):
-    """AXL enum — ``XSipAssertedType``."""
+    """AXL enum — ``XSipAssertedType``.
+    """
 
     DEFAULT = 'Default'
     PAI = 'PAI'
@@ -2649,7 +2775,8 @@ class SipAssertedType(_AxlStrEnum):
 
 
 class SipPrivacy(_AxlStrEnum):
-    """AXL enum — ``XSipPrivacy``."""
+    """AXL enum — ``XSipPrivacy``.
+    """
 
     DEFAULT = 'Default'
     NONE_ = 'None'
@@ -2658,14 +2785,16 @@ class SipPrivacy(_AxlStrEnum):
 
 
 class SipSessionRefreshMethod(_AxlStrEnum):
-    """AXL enum — ``XSipSessionRefreshMethod``."""
+    """AXL enum — ``XSipSessionRefreshMethod``.
+    """
 
     INVITE = 'Invite'
     UPDATE = 'Update'
 
 
 class StartDialProtocol(_AxlStrEnum):
-    """AXL enum — ``XStartDialProtocol``."""
+    """AXL enum — ``XStartDialProtocol``.
+    """
 
     NOT_SET = 'Not Set'
     IMMEDIATE = 'Immediate'
@@ -2675,7 +2804,8 @@ class StartDialProtocol(_AxlStrEnum):
 
 
 class Status(_AxlStrEnum):
-    """AXL enum — ``XStatus``."""
+    """AXL enum — ``XStatus``.
+    """
 
     OFF = 'Off'
     ON = 'On'
@@ -2683,7 +2813,8 @@ class Status(_AxlStrEnum):
 
 
 class SyncStatus(_AxlStrEnum):
-    """AXL enum — ``XSyncStatus``."""
+    """AXL enum — ``XSyncStatus``.
+    """
 
     NEVER_SYNCED = 'Never Synced'
     PENDING = 'Pending'
@@ -2694,7 +2825,8 @@ class SyncStatus(_AxlStrEnum):
 
 
 class TelnetLevel(_AxlStrEnum):
-    """AXL enum — ``XTelnetLevel``."""
+    """AXL enum — ``XTelnetLevel``.
+    """
 
     DISABLED = 'Disabled'
     LIMITED = 'Limited'
@@ -2702,7 +2834,8 @@ class TelnetLevel(_AxlStrEnum):
 
 
 class Terminal(_AxlStrEnum):
-    """AXL enum — ``XTerminal``."""
+    """AXL enum — ``XTerminal``.
+    """
 
     NOT_SELECTED = '-- Not Selected --'
     TERMINAL = 'Terminal'
@@ -2710,7 +2843,8 @@ class Terminal(_AxlStrEnum):
 
 
 class TimeOfDay(_AxlStrEnum):
-    """AXL enum — ``XTimeOfDay``."""
+    """AXL enum — ``XTimeOfDay``.
+    """
 
     NO_OFFICE_HOURS = 'No Office Hours'
     V_00_00 = '00:00'
@@ -2813,14 +2947,16 @@ class TimeOfDay(_AxlStrEnum):
 
 
 class TimeScheduleCategory(_AxlStrEnum):
-    """AXL enum — ``XTimeScheduleCategory``."""
+    """AXL enum — ``XTimeScheduleCategory``.
+    """
 
     REGULAR = 'Regular'
     HOLIDAY_OR_VACATION = 'Holiday or Vacation'
 
 
 class TimeZone(_AxlStrEnum):
-    """AXL enum — ``XTimeZone``."""
+    """AXL enum — ``XTimeZone``.
+    """
 
     AFRICA_ABIDJAN = 'Africa/Abidjan'
     AFRICA_ACCRA = 'Africa/Accra'
@@ -3295,7 +3431,8 @@ class TimeZone(_AxlStrEnum):
 
 
 class Transport(_AxlStrEnum):
-    """AXL enum — ``XTransport``."""
+    """AXL enum — ``XTransport``.
+    """
 
     TCP = 'TCP'
     UDP = 'UDP'
@@ -3304,7 +3441,8 @@ class Transport(_AxlStrEnum):
 
 
 class Trunk(_AxlStrEnum):
-    """AXL enum — ``XTrunk``."""
+    """AXL enum — ``XTrunk``.
+    """
 
     GROUND_START = 'Ground Start'
     LOOP_START = 'Loop Start'
@@ -3314,7 +3452,8 @@ class Trunk(_AxlStrEnum):
 
 
 class TrunkDirection(_AxlStrEnum):
-    """AXL enum — ``XTrunkDirection``."""
+    """AXL enum — ``XTrunkDirection``.
+    """
 
     INBOUND = 'Inbound'
     OUTBOUND = 'Outbound'
@@ -3322,7 +3461,8 @@ class TrunkDirection(_AxlStrEnum):
 
 
 class TrunkLevel(_AxlStrEnum):
-    """AXL enum — ``XTrunkLevel``."""
+    """AXL enum — ``XTrunkLevel``.
+    """
 
     AAL_A = 'AAL(A)'
     AAL_D = 'AAL(D)'
@@ -3339,7 +3479,8 @@ class TrunkLevel(_AxlStrEnum):
 
 
 class TrunkPad(_AxlStrEnum):
-    """AXL enum — ``XTrunkPad``."""
+    """AXL enum — ``XTrunkPad``.
+    """
 
     MINUS32DB = 'Minus32db'
     MINUS31DB = 'Minus31db'
@@ -3409,14 +3550,16 @@ class TrunkPad(_AxlStrEnum):
 
 
 class TrunkSelectionOrder(_AxlStrEnum):
-    """AXL enum — ``XTrunkSelectionOrder``."""
+    """AXL enum — ``XTrunkSelectionOrder``.
+    """
 
     BOTTOM_UP = 'Bottom Up'
     TOP_DOWN = 'Top Down'
 
 
 class TrunkService(_AxlStrEnum):
-    """AXL enum — ``XTrunkService``."""
+    """AXL enum — ``XTrunkService``.
+    """
 
     NONE_DEFAULT = 'None(Default)'
     CALL_CONTROL_DISCOVERY = 'Call Control Discovery'
@@ -3426,7 +3569,8 @@ class TrunkService(_AxlStrEnum):
 
 
 class TrustReceivedIdentity(_AxlStrEnum):
-    """AXL enum — ``XTrustReceivedIdentity``."""
+    """AXL enum — ``XTrustReceivedIdentity``.
+    """
 
     TRUST_ALL_DEFAULT = 'Trust All (Default)'
     TRUST_PAI_ONLY = 'Trust PAI Only'
@@ -3434,7 +3578,8 @@ class TrustReceivedIdentity(_AxlStrEnum):
 
 
 class TrustRole(_AxlStrEnum):
-    """AXL enum — ``XTrustRole``."""
+    """AXL enum — ``XTrustRole``.
+    """
 
     SAST = 'SAST'
     CALLMANAGER = 'CallManager'
@@ -3457,14 +3602,16 @@ class TrustRole(_AxlStrEnum):
 
 
 class TunneledProtocol(_AxlStrEnum):
-    """AXL enum — ``XTunneledProtocol``."""
+    """AXL enum — ``XTunneledProtocol``.
+    """
 
     NONE_ = 'None'
     QSIG = 'QSIG'
 
 
 class UCProduct(_AxlStrEnum):
-    """AXL enum — ``XUCProduct``."""
+    """AXL enum — ``XUCProduct``.
+    """
 
     UNITY = 'Unity'
     UNITY_CONNECTION = 'Unity Connection'
@@ -3482,7 +3629,8 @@ class UCProduct(_AxlStrEnum):
 
 
 class UCService(_AxlStrEnum):
-    """AXL enum — ``XUCService``."""
+    """AXL enum — ``XUCService``.
+    """
 
     VOICEMAIL = 'Voicemail'
     MAILSTORE = 'MailStore'
@@ -3495,7 +3643,8 @@ class UCService(_AxlStrEnum):
 
 
 class URIDisambiguationPolicy(_AxlStrEnum):
-    """AXL enum — ``XURIDisambiguationPolicy``."""
+    """AXL enum — ``XURIDisambiguationPolicy``.
+    """
 
     ALWAYS_TREAT_ALL_DIAL_STRINGS_AS_URI_ADDRESSES = 'Always treat all dial strings as URI addresses'
     PHONE_NUMBER_CONSISTS_OF_CHARACTERS_0_9_A_D_STAR_NUM_AND_PLUS_OTHERS_TREATED_AS_URI_ADDRESSES = 'Phone number consists of characters 0-9, A-D, *, #, and + (others treated as URI addresses)'
@@ -3503,7 +3652,8 @@ class URIDisambiguationPolicy(_AxlStrEnum):
 
 
 class UserAgentServerHeaderInfo(_AxlStrEnum):
-    """AXL enum — ``XUserAgentServerHeaderInfo``."""
+    """AXL enum — ``XUserAgentServerHeaderInfo``.
+    """
 
     SEND_UNIFIED_CM_VERSION_INFORMATION_AS_USER_AGENT_HEADER = 'Send Unified CM Version Information as User-Agent Header'
     PASS_THROUGH_RECEIVED_INFORMATION_AS_CONTACT_HEADER_PARAMETERS = 'Pass Through Received Information as Contact Header Parameters'
@@ -3511,13 +3661,15 @@ class UserAgentServerHeaderInfo(_AxlStrEnum):
 
 
 class UserLocale(_AxlStrEnum):
-    """AXL enum — ``XUserLocale``."""
+    """AXL enum — ``XUserLocale``.
+    """
 
     ENGLISH_UNITED_STATES = 'English United States'
 
 
 class V150SDPFilter(_AxlStrEnum):
-    """AXL enum — ``XV150SDPFilter``."""
+    """AXL enum — ``XV150SDPFilter``.
+    """
 
     NO_FILTERING = 'No Filtering'
     REMOVE_MER_V_150 = 'Remove MER V.150'
@@ -3526,7 +3678,8 @@ class V150SDPFilter(_AxlStrEnum):
 
 
 class VMAvoidancePolicy(_AxlStrEnum):
-    """AXL enum — ``XVMAvoidancePolicy``."""
+    """AXL enum — ``XVMAvoidancePolicy``.
+    """
 
     USE_SYSTEM_DEFAULT = 'Use System Default'
     TIMER_CONTROL = 'Timer Control'
@@ -3534,7 +3687,8 @@ class VMAvoidancePolicy(_AxlStrEnum):
 
 
 class VPNClientAuthentication(_AxlStrEnum):
-    """AXL enum — ``XVPNClientAuthentication``."""
+    """AXL enum — ``XVPNClientAuthentication``.
+    """
 
     USER_AND_PASSWORD = 'User and Password'
     PASSWORD_ONLY = 'Password Only'
@@ -3542,7 +3696,8 @@ class VPNClientAuthentication(_AxlStrEnum):
 
 
 class VideoCallTrafficClass(_AxlStrEnum):
-    """AXL enum — ``XVideoCallTrafficClass``."""
+    """AXL enum — ``XVideoCallTrafficClass``.
+    """
 
     IMMERSIVE = 'Immersive'
     DESKTOP = 'Desktop'
@@ -3550,14 +3705,16 @@ class VideoCallTrafficClass(_AxlStrEnum):
 
 
 class ViprFilterElement(_AxlStrEnum):
-    """AXL enum — ``XViprFilterElement``."""
+    """AXL enum — ``XViprFilterElement``.
+    """
 
     PREFIX = 'Prefix'
     DOMAIN = 'Domain'
 
 
 class WLANProfileChanges(_AxlStrEnum):
-    """AXL enum — ``XWLANProfileChanges``."""
+    """AXL enum — ``XWLANProfileChanges``.
+    """
 
     ALLOWED = 'Allowed'
     DISALLOWED = 'Disallowed'
@@ -3565,7 +3722,8 @@ class WLANProfileChanges(_AxlStrEnum):
 
 
 class WebPageDisplay(_AxlStrEnum):
-    """AXL enum — ``XWebPageDisplay``."""
+    """AXL enum — ``XWebPageDisplay``.
+    """
 
     EXPANDED = 'Expanded'
     COLLAPSED = 'Collapsed'
@@ -3573,7 +3731,8 @@ class WebPageDisplay(_AxlStrEnum):
 
 
 class WebPageSection(_AxlStrEnum):
-    """AXL enum — ``XWebPageSection``."""
+    """AXL enum — ``XWebPageSection``.
+    """
 
     REQUIRED_AND_FREQUENTLY_ENTERED_SETTINGS = 'Required and Frequently Entered Settings'
     PHONE_BUTTONS_CONFIGURATION = 'Phone Buttons Configuration'
@@ -3604,7 +3763,8 @@ class WebPageSection(_AxlStrEnum):
 
 
 class WiFiAuthenticationMethod(_AxlStrEnum):
-    """AXL enum — ``XWiFiAuthenticationMethod``."""
+    """AXL enum — ``XWiFiAuthenticationMethod``.
+    """
 
     NONE_ = 'None'
     WEP = 'WEP'
@@ -3616,7 +3776,8 @@ class WiFiAuthenticationMethod(_AxlStrEnum):
 
 
 class WiFiFrequency(_AxlStrEnum):
-    """AXL enum — ``XWiFiFrequency``."""
+    """AXL enum — ``XWiFiFrequency``.
+    """
 
     AUTO = 'Auto'
     V_2_4_GHZ = '2.4 GHz'
@@ -3624,14 +3785,16 @@ class WiFiFrequency(_AxlStrEnum):
 
 
 class YellowAlarm(_AxlStrEnum):
-    """AXL enum — ``XYellowAlarm``."""
+    """AXL enum — ``XYellowAlarm``.
+    """
 
     BIT2 = 'Bit2'
     F_BIT = 'F-Bit'
 
 
 class ZeroSuppression(_AxlStrEnum):
-    """AXL enum — ``XZeroSuppression``."""
+    """AXL enum — ``XZeroSuppression``.
+    """
 
     B8ZS = 'B8ZS'
     AMI = 'AMI'
@@ -3639,14 +3802,16 @@ class ZeroSuppression(_AxlStrEnum):
 
 
 class Zzdndcontrol(_AxlStrEnum):
-    """AXL enum — ``XZzdndcontrol``."""
+    """AXL enum — ``XZzdndcontrol``.
+    """
 
     USER = 'User'
     ADMIN = 'Admin'
 
 
 class ZzdtmfDbLevel(_AxlStrEnum):
-    """AXL enum — ``XZzdtmfDbLevel``."""
+    """AXL enum — ``XZzdtmfDbLevel``.
+    """
 
     V_6_DB_BELOW_NOMINAL = '6 dB below nominal'
     V_3_DB_BELOW_NOMINAL = '3 dB below nominal'
@@ -3656,7 +3821,8 @@ class ZzdtmfDbLevel(_AxlStrEnum):
 
 
 class Zzntpmode(_AxlStrEnum):
-    """AXL enum — ``XZzntpmode``."""
+    """AXL enum — ``XZzntpmode``.
+    """
 
     UNICAST = 'Unicast'
     MULTICAST = 'Multicast'
@@ -3665,14 +3831,16 @@ class Zzntpmode(_AxlStrEnum):
 
 
 class Zzpreff(_AxlStrEnum):
-    """AXL enum — ``XZzpreff``."""
+    """AXL enum — ``XZzpreff``.
+    """
 
     OFF = 'Off'
     ON = 'On'
 
 
 class ZzuserInfo(_AxlStrEnum):
-    """AXL enum — ``XZzuserInfo``."""
+    """AXL enum — ``XZzuserInfo``.
+    """
 
     NONE_ = 'None'
     PHONE = 'Phone'

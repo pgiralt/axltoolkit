@@ -340,7 +340,7 @@ def generate_enums_module(enums: Dict[str, List[str]]) -> str:
     lines.append("    Overrides ``__str__`` to return the value rather than the")
     lines.append("    ``<ClassName>.<MEMBER>`` qualified name that Python 3.11+")
     lines.append("    introduced for ``(str, Enum)`` mix-ins. This keeps SOAP")
-    lines.append("    serialization stable across Python 3.9 → 3.13 (and beyond).")
+    lines.append("    serialization stable across Python 3.10 → 3.13 (and beyond).")
     lines.append('    """')
     lines.append("")
     lines.append("    def __str__(self) -> str:  # noqa: D401 - simple delegation")

@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+### Breaking Changes
+
+- **Dropped Python 3.9 support.** Minimum supported version is now
+  Python 3.10. The CVE-patched releases of `requests` (>=2.33.0) and
+  `urllib3` (>=2.7.0) both dropped 3.9 themselves, so keeping 3.9
+  support would have meant either staying on vulnerable dependency
+  versions or maintaining a conditional dependency tree. Python 3.9
+  itself went end-of-life in October 2025; users on 3.9 should
+  upgrade their interpreter. The Ruff `target-version` was also bumped
+  to `py310` so the linter can use 3.10-only syntax.
+
 ### Dependency CVE Bumps
 
 The `dependency-audit` CI job (`pip-audit --skip-editable`) caught
@@ -234,4 +245,4 @@ The `dependency-audit` workflow itself was also corrected:
 - `urllib3>=2.0.0,<3`
 - `typing_extensions>=4.1` (Python &lt; 3.12 only — provides `Unpack`,
   `Required`, `NotRequired`)
-- Python 3.9+ required
+- Python 3.10+ required

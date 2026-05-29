@@ -277,7 +277,7 @@ the constraint in `pyproject.toml` and re-run.
 
 | Job | What it does |
 |-----|--------------|
-| `test` | Runs `pytest tests/` on Python 3.9–3.13 with coverage |
+| `test` | Runs `pytest tests/` on Python 3.10–3.13 with coverage |
 | `lint` | `ruff check` + `ruff format --check` on Python 3.12 |
 | `coverage-check` | Runs `scripts/check_coverage.py --all-versions --include-sxml` |
 | `dependency-audit` | Runs `pip-audit --desc --skip-editable` against installed deps |
