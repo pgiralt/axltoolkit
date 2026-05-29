@@ -4,9 +4,12 @@ A Python toolkit for Cisco Unified Communications Manager (UCM) AXL and SXML API
 
 ## Documentation
 
-The full user guide and API reference live in the [`docs/`](docs/)
-folder. To browse them with full search and navigation, build the
-MkDocs Material site locally:
+Read online:
+
+- **[pgiralt.github.io/axltoolkit](https://pgiralt.github.io/axltoolkit/)** — GitHub Pages
+- **[axltoolkit.readthedocs.io](https://axltoolkit.readthedocs.io/)** — Read the Docs
+
+Or build the MkDocs Material site locally:
 
 ```bash
 pip install -e ".[docs]"
