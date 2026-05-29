@@ -7,11 +7,12 @@
 - An **AXL-enabled application user** for AXL, RISPort, and PerfMon operations
 - A **platform/OS admin user** for PAWS, Serviceability, and Log Collection
 
-!!! tip "Enabling the AXL API"
-    In UCM Administration, go to **User Management > Application User** and
-    ensure your user has the **Standard AXL API Access** role.  The AXL SOAP
-    service must be activated under **Cisco Unified Serviceability > Tools >
-    Service Activation**.
+> [!TIP]
+> **Enabling the AXL API** — in UCM Administration, go to
+> **User Management > Application User** and ensure your user has the
+> **Standard AXL API Access** role.  The AXL SOAP service must be
+> activated under
+> **Cisco Unified Serviceability > Tools > Service Activation**.
 
 ## Installation
 
@@ -79,11 +80,11 @@ client = AXLClient(
 )
 ```
 
-!!! note "AXL Schema Versions"
-    The `version` parameter must match an AXL schema bundled with the library.
-    Supported versions: `10.0`, `10.5`, `11.0`, `11.5`, `12.0`, `12.5`,
-    `14.0`, `15.0`.  Use the version that matches (or is closest to) your UCM
-    release.
+> [!NOTE]
+> **AXL Schema Versions** — the `version` parameter must match an AXL
+> schema bundled with the library. Supported versions: `10.0`, `10.5`,
+> `11.0`, `11.5`, `12.0`, `12.5`, `14.0`, `15.0`. Use the version that
+> matches (or is closest to) your UCM release.
 
 ### SXML Clients
 
@@ -124,10 +125,10 @@ client = AXLClient(..., tls_verify=False)
 client = AXLClient(..., tls_verify=True)
 ```
 
-!!! warning
-    Setting `tls_verify=False` disables certificate validation entirely.
-    **Never** use this in production — it makes connections vulnerable to
-    man-in-the-middle attacks.
+> [!WARNING]
+> Setting `tls_verify=False` disables certificate validation entirely.
+> **Never** use this in production — it makes connections vulnerable to
+> man-in-the-middle attacks.
 
 See the [TLS & Security guide](guide/security.md) for more details.
 

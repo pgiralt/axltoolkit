@@ -131,6 +131,6 @@ client = AxlToolkit("admin", "pass", "ucm-pub.example.com")
 client.run_sql_query("SELECT 1")  # still works
 ```
 
-!!! warning
-    The backward-compatibility shims will be removed in a future major
-    release.  Migrate to the new class names at your earliest convenience.
+> [!WARNING]
+> The backward-compatibility shims will be removed in a future major
+> release.  Migrate to the new class names at your earliest convenience.

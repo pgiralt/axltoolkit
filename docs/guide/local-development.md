@@ -75,13 +75,13 @@ UCM_TIMEOUT=30
 UCM_LOG_TIMEOUT=120
 ```
 
-!!! warning "TLS verify defaults"
-    `.env.example` defaults `UCM_TLS_VERIFY=true` (recommended for any
-    real environment). The integration-test `conftest.py` defaults to
-    `false` if the variable is **unset**, because most labs use the
-    self-signed Tomcat certificate that ships with UCM. Set it
-    explicitly to `true` (or a CA bundle path) in your `.env` whenever
-    you have a trusted chain available.
+> [!WARNING]
+> **TLS verify defaults** — `.env.example` defaults `UCM_TLS_VERIFY=true`
+> (recommended for any real environment). The integration-test
+> `conftest.py` defaults to `false` if the variable is **unset**, because
+> most labs use the self-signed Tomcat certificate that ships with UCM.
+> Set it explicitly to `true` (or a CA bundle path) in your `.env`
+> whenever you have a trusted chain available.
 
 ### Step 3 — Sample scripts read it automatically
 
@@ -147,11 +147,11 @@ If `UCM_ADDRESS`, `UCM_USERNAME`, or `UCM_PASSWORD` is missing, the
 fixture raises `pytest.skip` and the suite turns into a no-op — handy
 in CI environments where there's no live UCM.
 
-!!! note "Session recovery"
-    The integration suite is long-running. The `RISPortClient` automatically
-    re-establishes its session if UCM returns `Error Code = 7` (session
-    stale) mid-run, so RISPort tests no longer fail intermittently
-    after several minutes of AXL traffic.
+> [!NOTE]
+> **Session recovery** — the integration suite is long-running. The
+> `RISPortClient` automatically re-establishes its session if UCM
+> returns `Error Code = 7` (session stale) mid-run, so RISPort tests no
+> longer fail intermittently after several minutes of AXL traffic.
 
 ## Coverage Scripts
 

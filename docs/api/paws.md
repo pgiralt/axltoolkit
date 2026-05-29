@@ -9,8 +9,8 @@ multiple independent SOAP services.  The client **lazily initializes** each
 service on first use, so only the services you call will have their WSDLs
 fetched.
 
-!!! note
-    PAWS requires **platform/OS admin credentials**.
+> [!NOTE]
+> PAWS requires **platform/OS admin credentials**.
 
 ## Quick Example
 

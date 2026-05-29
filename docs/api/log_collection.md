@@ -7,8 +7,8 @@ Two clients for retrieving log files and traces from UCM servers.
 - **`DimeGetFileClient`** — Download individual files via the
   DimeGetFile SXML API
 
-!!! note
-    Both clients require **platform/OS admin credentials**.
+> [!NOTE]
+> Both clients require **platform/OS admin credentials**.
 
 ## LogCollectionClient
 

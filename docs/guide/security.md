@@ -39,10 +39,11 @@ client = AXLClient(
 )
 ```
 
-!!! tip "Exporting the UCM CA Certificate"
-    In **Cisco Unified OS Administration**, navigate to **Security >
-    Certificate Management** and download the `tomcat-trust` certificate
-    chain. Save it as a PEM file.
+> [!TIP]
+> **Exporting the UCM CA Certificate** — in
+> **Cisco Unified OS Administration**, navigate to
+> **Security > Certificate Management** and download the
+> `tomcat-trust` certificate chain. Save it as a PEM file.
 
 ### Disabling Verification (Development Only)
 
@@ -50,11 +51,11 @@ client = AXLClient(
 client = AXLClient(..., tls_verify=False)
 ```
 
-!!! danger
-    Disabling TLS verification makes the connection vulnerable to
-    man-in-the-middle attacks. Credentials are sent as HTTP Basic Auth,
-    so an attacker could intercept usernames and passwords. **Never**
-    use `tls_verify=False` in production.
+> [!CAUTION]
+> Disabling TLS verification makes the connection vulnerable to
+> man-in-the-middle attacks. Credentials are sent as HTTP Basic Auth,
+> so an attacker could intercept usernames and passwords. **Never**
+> use `tls_verify=False` in production.
 
 ### Using FQDNs Instead of IP Addresses
 
@@ -115,12 +116,12 @@ print(debug["request"]["envelope"].decode())
 # ... <ns0:password>[REDACTED]</ns0:password> ...
 ```
 
-!!! warning
-    Redaction is **best-effort** based on a known list of element local
-    names (see `axltoolkit._base._REDACT_LOCAL_NAMES`). If you add new
-    AXL operations whose payloads carry secrets under unfamiliar
-    element names, extend the set or treat any logged envelope as
-    sensitive.
+> [!WARNING]
+> Redaction is **best-effort** based on a known list of element local
+> names (see `axltoolkit._base._REDACT_LOCAL_NAMES`). If you add new
+> AXL operations whose payloads carry secrets under unfamiliar
+> element names, extend the set or treat any logged envelope as
+> sensitive.
 
 ## SQL Injection Protection
 
@@ -159,16 +160,16 @@ client.sql_associate_device_to_user("jsmith", "SEP001122334455")
 client.sql_associate_user_to_group("jsmith", "Standard CCM End Users")
 ```
 
-!!! warning "Defense-in-depth, not a silver bullet"
-    `_sanitize_sql_value()` is a **denylist** of common injection
-    patterns plus quote-doubling — it is not a parameterized prepared
-    statement (the AXL `executeSQLQuery` operation doesn't support
-    those). When you build raw SQL for `sql_query()` or `sql_update()`,
-    you are still responsible for:
-
-    1. Passing every dynamic value through `_sanitize_sql_value()`.
-    2. Authorizing the caller at the application layer (a user with
-       AXL access can already read or modify any column).
+> [!WARNING]
+> **Defense-in-depth, not a silver bullet** — `_sanitize_sql_value()` is
+> a **denylist** of common injection patterns plus quote-doubling — it
+> is not a parameterized prepared statement (the AXL `executeSQLQuery`
+> operation doesn't support those). When you build raw SQL for
+> `sql_query()` or `sql_update()`, you are still responsible for:
+>
+> 1. Passing every dynamic value through `_sanitize_sql_value()`.
+> 2. Authorizing the caller at the application layer (a user with
+>    AXL access can already read or modify any column).
 
 ## XML Hardening
 

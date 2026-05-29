@@ -35,11 +35,11 @@ result = client.sql_update(
 print(f"Updated {result['rows_updated']} rows")
 ```
 
-!!! warning "SQL Injection Risk"
-    `sql_query()` and `sql_update()` send the SQL string **as-is** to the
-    UCM database.  Never interpolate user-supplied values directly into the
-    query string.  Use the sanitization function or the helper methods shown
-    below.
+> [!WARNING]
+> **SQL Injection Risk** — `sql_query()` and `sql_update()` send the SQL
+> string **as-is** to the UCM database.  Never interpolate user-supplied
+> values directly into the query string.  Use the sanitization function
+> or the helper methods shown below.
 
 ## Sanitizing User Input
 
@@ -130,7 +130,7 @@ Here are some frequently queried tables:
 | `processnode` | Cluster nodes |
 | `typemodel` | Device model lookup table |
 
-!!! tip
-    Use `sql_query("SELECT * FROM device WHERE name='...' ")` to explore
-    the column names available for a given table.  The UCM Data Dictionary
-    in the Cisco Developer documentation has the full schema reference.
+> [!TIP]
+> Use `sql_query("SELECT * FROM device WHERE name='...' ")` to explore
+> the column names available for a given table.  The UCM Data Dictionary
+> in the Cisco Developer documentation has the full schema reference.

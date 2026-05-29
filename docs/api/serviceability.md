@@ -3,9 +3,9 @@
 The `ServiceabilityClient` manages UCM services (start, stop, restart,
 status, deploy/undeploy) via the **ControlCenter** SXML API.
 
-!!! note
-    This client requires **platform/OS admin credentials**, not AXL
-    application user credentials.
+> [!NOTE]
+> This client requires **platform/OS admin credentials**, not AXL
+> application user credentials.
 
 ## Quick Example
 

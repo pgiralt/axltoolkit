@@ -40,10 +40,10 @@ from axltoolkit._generated_enums import ProtocolSide, ClockReference
 autocompletion** and document expected fields for the most commonly used
 AXL object types.
 
-!!! info
-    These types are for annotation and documentation only — they are not
-    enforced at runtime.  AXL responses may include additional fields not
-    listed here.
+> [!IMPORTANT]
+> These types are for annotation and documentation only — they are not
+> enforced at runtime.  AXL responses may include additional fields not
+> listed here.
 
 ::: axltoolkit.models
     options:
