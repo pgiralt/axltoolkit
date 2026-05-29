@@ -4,36 +4,14 @@ A Python toolkit for Cisco Unified Communications Manager (UCM) AXL and SXML API
 
 ## Documentation
 
-Full user guide and API reference live in the [`docs/`](docs/) folder
-and are designed to be served via MkDocs Material.
-
-### Read the docs locally
-
-The fastest path — clone, install the `docs` extra, and serve:
+The full user guide and API reference live in the [`docs/`](docs/)
+folder. To browse them with full search and navigation, build the
+MkDocs Material site locally:
 
 ```bash
 pip install -e ".[docs]"
 mkdocs serve              # live-reload at http://127.0.0.1:8000
-# or, to build a static site:
-mkdocs build              # outputs to ./site/
 ```
-
-### Hosted versions
-
-Two hosting targets are configured but require a one-time setup before
-the URLs go live:
-
-- **GitHub Pages — https://pgiralt.github.io/axltoolkit/**
-  Built and deployed by [`.github/workflows/docs.yml`](.github/workflows/docs.yml)
-  on every push to `master`. Requires a one-time repo settings change:
-  *Settings → Pages → Source = "GitHub Actions"*. Each PR also runs a
-  build-only sanity check so doc breakage is caught at review time.
-- **Read the Docs — https://axltoolkit.readthedocs.io/**
-  Configured by [`.readthedocs.yaml`](.readthedocs.yaml). Requires a
-  one-time import at [readthedocs.org/dashboard/import](https://readthedocs.org/dashboard/import/)
-  — pick this repo from the list and RTD will build on every push.
-
-What's in the docs:
 
 | Section | What you'll find |
 |---|---|
@@ -42,7 +20,7 @@ What's in the docs:
 | **[SQL Queries](docs/guide/sql.md)** | Thin-AXL deep dive, sanitization, built-in helpers, common UCM tables |
 | **[Fluent Builders](docs/guide/builders.md)** | `PhoneBuilder`, `SipTrunkBuilder`, `CssBuilder` recipes |
 | **[Configuration Recipes](docs/guide/recipes.md)** | End-to-end provisioning workflows (new user + phone, bulk updates, monitoring) |
-| **[Local Development](docs/guide/local-development.md)** | `.env` setup, running integration tests against a real UCM, coverage scripts, **publishing to PyPI** |
+| **[Local Development](docs/guide/local-development.md)** | `.env` setup, running integration tests against a real UCM, coverage scripts |
 | **[API Reference](docs/api/axl.md)** | Auto-generated reference for every client class, exception, builder, and TypedDict model |
 | **[Migration Guide](docs/migration.md)** | v1 → v2 class/method renames, exception hierarchy, type hints |
 | **[Changelog](docs/changelog.md)** | Per-release notes |
