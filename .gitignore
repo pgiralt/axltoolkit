@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Personal AI-assistant rules / agent config — these live in the user's
+# global IDE config and shouldn't ship with the project.
+.cursor/
+.windsurf/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Credentials — never commit real secrets.
+# Samples and integration tests read credentials from a ``.env`` file at
+# the repository root. ``.env.example`` is the tracked template; the
+# actual ``.env`` (with real values) must stay local.
+.env
+!.env.example
+# Legacy credentials file from v1 — superseded by .env
+samples/credentials.py
+
+# WSDL cache
+*.db
+
+# MkDocs build output
+site/

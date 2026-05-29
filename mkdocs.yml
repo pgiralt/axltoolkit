@@ -1,0 +1,98 @@
+site_name: axltoolkit
+site_description: >-
+  Python toolkit for Cisco Unified Communications Manager —
+  AXL, RISPort, PerfMon, Serviceability, PAWS, Log Collection & Webdialer APIs.
+site_url: https://pgiralt.github.io/axltoolkit/
+repo_url: https://github.com/pgiralt/axltoolkit
+repo_name: pgiralt/axltoolkit
+copyright: Copyright &copy; 2024 Paul Giralt — Cisco Sample Code License
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - search.highlight
+    - search.suggest
+    - toc.follow
+
+extra_css:
+  - css/custom.css
+
+hooks:
+  - hooks/autorefs_models.py
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            members_order: source
+            docstring_style: google
+            merge_init_into_class: true
+            show_signature_annotations: true
+            separate_signature: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - User Guide:
+      - TLS & Security: guide/security.md
+      - SQL Queries: guide/sql.md
+      - Fluent Builders: guide/builders.md
+      - Configuration Recipes: guide/recipes.md
+      - Local Development: guide/local-development.md
+  - API Reference:
+      - AXL Client: api/axl.md
+      - RISPort Client: api/risport.md
+      - PerfMon Client: api/perfmon.md
+      - Serviceability Client: api/serviceability.md
+      - Log Collection: api/log_collection.md
+      - PAWS Client: api/paws.md
+      - Webdialer Client: api/webdialer.md
+      - Builders: api/builders.md
+      - Models: api/models.md
+      - Models Reference: api/models-reference.md
+      - Exceptions: api/exceptions.md
+  - Migration Guide: migration.md
+  - Changelog: changelog.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets
+  - toc:
+      permalink: true

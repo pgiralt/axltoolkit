@@ -1,0 +1,75 @@
+name: Publish to Test PyPI (manual)
+
+# Manual dry-run publishing workflow. Run this BEFORE publishing a real
+# release to https://pypi.org to validate the package end-to-end:
+#
+#   1. Bump the version in pyproject.toml (Test PyPI also enforces
+#      immutability per version, so you must use a fresh version string
+#      each time, e.g., 2.0.0.dev1, 2.0.0.dev2, 2.0.0rc1, ...).
+#   2. Go to the Actions tab on GitHub.
+#   3. Select "Publish to Test PyPI (manual)" -> "Run workflow".
+#   4. After it completes, install from Test PyPI in a clean venv:
+#        pip install -i https://test.pypi.org/simple/ \
+#          --extra-index-url https://pypi.org/simple/ \
+#          axltoolkit==<version>
+#      (the --extra-index-url is needed because runtime dependencies
+#      like zeep are only published on the real PyPI.)
+#   5. Verify the README renders correctly at
+#      https://test.pypi.org/project/axltoolkit/
+#
+# Prerequisites (one-time setup):
+#   - Create an account on https://test.pypi.org (separate from PyPI).
+#   - Generate an API token at
+#     https://test.pypi.org/manage/account/token/.
+#   - Add the token to the repo as a secret named TEST_PYPI_API_TOKEN
+#     (Settings -> Secrets and variables -> Actions -> New repository
+#     secret). The token value must include the leading "pypi-" prefix.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish-test-pypi:
+    name: Build and publish to test.pypi.org
+    runs-on: ubuntu-latest
+    environment:
+      name: test-pypi
+      url: https://test.pypi.org/project/axltoolkit/
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build sdist and wheel
+        run: |
+          rm -rf dist/ build/
+          python -m build
+
+      - name: Validate distributions with twine
+        run: twine check --strict dist/*
+
+      - name: Show built artifacts
+        run: ls -lh dist/
+
+      - name: Upload to Test PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          TWINE_REPOSITORY_URL: https://test.pypi.org/legacy/
+        run: |
+          if [ -z "${TWINE_PASSWORD}" ]; then
+            echo "::error::TEST_PYPI_API_TOKEN secret is not set. See workflow header for setup instructions."
+            exit 1
+          fi
+          twine upload --non-interactive dist/*

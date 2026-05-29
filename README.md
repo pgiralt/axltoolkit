@@ -1,20 +1,227 @@
-# axltoolkit by Paul Giralt
+# axltoolkit
 
-This is a Python-based Toolkit for Unified CM AXL and SXML Frameworks. It is very much incomplete, but should get anyone interested in leveraging these API's enough to get started and build upon. 
+A Python toolkit for Cisco Unified Communications Manager (UCM) AXL and SXML APIs.
 
-Modify the credentials.py file with your UCM AXL and Platform Credentials to be able to try out the scripts. For production usage, I would recommend using some more secure way of storing credentials. 
+## Documentation
 
-The samples folder contains four sample scripts that will show you how to use the toolkit:
+Full user guide and API reference live in the [`docs/`](docs/) folder
+and are designed to be served via MkDocs Material.
 
-sample1_axl: Example of Thick and Thin AXL
+### Read the docs locally
 
-sample2_ris: Example of the RisPort SXML API to retrieve a list of IP addresses of registered phones
+The fastest path — clone, install the `docs` extra, and serve:
 
-sample3_perfmon: Example of Perfmon SXML API to retrieve some Perfmon Counters
+```bash
+pip install -e ".[docs]"
+mkdocs serve              # live-reload at http://127.0.0.1:8000
+# or, to build a static site:
+mkdocs build              # outputs to ./site/
+```
 
-sample4_paws: Example of the Hardware Information PAWS API
+### Hosted versions
 
-sample5_certs: Example us using Thin AXL to pull certificates and decode them. 
+Two hosting targets are configured but require a one-time setup before
+the URLs go live:
+
+- **GitHub Pages — https://pgiralt.github.io/axltoolkit/**
+  Built and deployed by [`.github/workflows/docs.yml`](.github/workflows/docs.yml)
+  on every push to `master`. Requires a one-time repo settings change:
+  *Settings → Pages → Source = "GitHub Actions"*. Each PR also runs a
+  build-only sanity check so doc breakage is caught at review time.
+- **Read the Docs — https://axltoolkit.readthedocs.io/**
+  Configured by [`.readthedocs.yaml`](.readthedocs.yaml). Requires a
+  one-time import at [readthedocs.org/dashboard/import](https://readthedocs.org/dashboard/import/)
+  — pick this repo from the list and RTD will build on every push.
+
+What's in the docs:
+
+| Section | What you'll find |
+|---|---|
+| **[Getting Started](docs/getting-started.md)** | Install, first connection, AXL/SXML basics, error handling, type hints |
+| **[TLS & Security](docs/guide/security.md)** | TLS verification, CA bundles, envelope redaction, SQL-injection defenses, production checklist |
+| **[SQL Queries](docs/guide/sql.md)** | Thin-AXL deep dive, sanitization, built-in helpers, common UCM tables |
+| **[Fluent Builders](docs/guide/builders.md)** | `PhoneBuilder`, `SipTrunkBuilder`, `CssBuilder` recipes |
+| **[Configuration Recipes](docs/guide/recipes.md)** | End-to-end provisioning workflows (new user + phone, bulk updates, monitoring) |
+| **[Local Development](docs/guide/local-development.md)** | `.env` setup, running integration tests against a real UCM, coverage scripts, **publishing to PyPI** |
+| **[API Reference](docs/api/axl.md)** | Auto-generated reference for every client class, exception, builder, and TypedDict model |
+| **[Migration Guide](docs/migration.md)** | v1 → v2 class/method renames, exception hierarchy, type hints |
+| **[Changelog](docs/changelog.md)** | Per-release notes |
+
+## Installation
+
+```bash
+pip install .
+```
+
+Or for development:
+
+```bash
+pip install -e ".[dev]"
+```
+
+## Quick Start
+
+```python
+from axltoolkit import AXLClient
+
+# Connect to UCM
+client = AXLClient(
+    username="axladmin",
+    password="secret",
+    server_ip="ucm-pub.example.com",
+    version="15.0",
+    tls_verify=True,
+)
+
+# Thick AXL — get a user
+user = client.get_user(userid="jsmith")
+print(user['return']['user']['firstName'])
+
+# Thin AXL — SQL query
+result = client.sql_query("SELECT name FROM device WHERE name LIKE 'SEP%'")
+for row in result.get('rows', []):
+    print(row['name'])
+
+# List phones
+phones = client.list_phones(name="SEP%")
+for name, info in phones.items():
+    print(name, info['description'])
+```
+
+## Available Clients
+
+| Client | API | Description |
+|--------|-----|-------------|
+| `AXLClient` | AXL (Thick + Thin) | Configuration CRUD for phones, users, partitions, CSS, route patterns, SIP trunks, LDAP, and more |
+| `RISPortClient` | RISPort70 | Real-time device registration status and CTI information |
+| `PerfMonClient` | PerfMon | Performance counter collection (session-based and one-shot) |
+| `ServiceabilityClient` | ControlCenter | UCM service management (start, stop, restart, status) |
+| `LogCollectionClient` | LogCollection | Log file listing and retrieval |
+| `DimeGetFileClient` | DimeGetFile | Direct file retrieval from UCM servers |
+| `PAWSClient` | PAWS | Platform info (hardware, version, cluster nodes, options) |
+| `WebdialerClient` | Webdialer | Click-to-call functionality |
+
+## AXL Client — Full API Coverage
+
+The `AXLClient` wraps **all 1,068 AXL WSDL operations** with 1,000+ documented, snake_case methods. Every `get`, `add`, `update`, `remove`, `list`, `apply`, `reset`, and `restart` operation in the 15.0 schema is covered.
+
+### Highlights
+
+- **Core Telephony** — Phones, Lines, Users, CSS, Route Partitions
+- **Routing** — Route Patterns, Translation Patterns, SIP Route Patterns, Route Groups, Route Lists, Route Filters, Transformation Patterns, Route Plan
+- **Hunt** — Line Groups, Hunt Lists, Hunt Pilots
+- **Trunks & Gateways** — SIP Trunks, H.323 Gateways/Trunks, Gateways, Gatekeepers, VG224, Cisco Catalyst gateways
+- **Infrastructure** — Device Pools, Regions, Locations, Date/Time Groups, SRST, Call Manager Groups, Common Device/Phone Config
+- **Media** — Conference Bridges, MRGs, MRGLs, Transcoders, MTPs, MOH Audio Sources, Annunciators, Announcements
+- **Profiles & Templates** — SIP Profiles, Phone/Trunk Security Profiles, Device Profiles, Phone Button Templates, Soft Key Templates, Service Profiles, UC Services, Feature Group Templates, Universal Device/Line Templates
+- **Users & Security** — End Users, Application Users, User Groups, Credential Policies, LDAP (filters, directories, sync, authentication), CAPF Profiles, Presence Groups
+- **Voicemail** — Voicemail Pilots, Profiles, Ports
+- **Call Features** — Call Park, Directed Call Park, Call Pickup Groups, Meet Me, CTI Route Points, IVR
+- **Mobility** — Remote Destinations, Remote Destination Profiles, Device Mobility, Mobility Profiles
+- **VPN / Wireless** — VPN Gateways, Groups, Profiles, WLAN Profiles, WiFi Hotspots
+- **System** — Enterprise Parameters, Service Parameters, Process Nodes, SNMP, Smart License, OS Version, Syslog Configuration
+- **Device Operations** — `reset_phone()`, `restart_phone()`, `apply_phone()`, `wipe_phone()`, `lock_phone()`, `do_device_login()`, `do_device_logout()`
+- **SQL Helpers** — `sql_query()`, `sql_update()`, `sql_get_device_pkid()`, `sql_associate_user_to_group()`, etc.
+
+### Method Naming Convention
+
+All methods follow the pattern `{operation}_{snake_case_object}`:
+
+```python
+client.get_phone("SEP001122334455")
+client.add_route_partition({"name": "PT_Internal"})
+client.update_sip_trunk(name="MySipTrunk", description="Updated")
+client.remove_css(name="CSS_Default")
+client.list_device_pool(search_criteria={"name": "%"})
+client.apply_phone(name="SEP001122334455")
+client.reset_sip_trunk(name="MySipTrunk")
+client.restart_conference_bridge(name="CFB_1")
+```
+
+## Error Handling
+
+All operations raise typed exceptions instead of returning `None`:
+
+```python
+from axltoolkit import AXLClient, AXLNotFoundError, AXLError
+
+client = AXLClient(...)
+
+try:
+    phone = client.get_phone("SEP001122334455")
+except AXLNotFoundError:
+    print("Phone not found")
+except AXLError as e:
+    print(f"AXL error: {e}")
+```
+
+## SXML Examples
+
+### RISPort — Registered Phones
+
+```python
+from axltoolkit import RISPortClient
+
+ris = RISPortClient(username="admin", password="pw", server_ip="ucm-pub.example.com", tls_verify=True)
+
+# Convenience method
+phones = ris.get_registered_phones("SEP*")
+for phone in phones:
+    print(f"{phone['name']}: {phone['ip_address']}")
+```
+
+### PerfMon — Counter Collection
+
+```python
+from axltoolkit import PerfMonClient
+
+pm = PerfMonClient(username="admin", password="pw", server_ip="ucm-pub.example.com", tls_verify=True)
+
+session = pm.open_session()
+pm.add_counters(session, [r"\\cm-pub\Cisco CallManager\CallsCompleted"])
+data = pm.collect_session_data(session)
+pm.close_session(session)
+print(data)
+```
+
+### PAWS — Platform Information
+
+```python
+from axltoolkit import PAWSClient
+
+paws = PAWSClient(username="admin", password="pw", server_ip="ucm-pub.example.com", tls_verify=True)
+version = paws.get_active_version()
+nodes = paws.get_cluster_nodes()
+```
+
+## Backward Compatibility
+
+The legacy class names (`AxlToolkit`, `UcmRisPortToolkit`, etc.) are still importable and work with the old constructor signatures. They emit `DeprecationWarning` on instantiation.
+
+```python
+# Still works, but deprecated
+from axltoolkit import AxlToolkit
+axl = AxlToolkit(username="admin", password="pw", server_ip="ucm-pub.example.com",
+                 version="12.5", tls_verify=True)
+```
+
+## Samples
+
+The `samples/` folder contains example scripts:
+
+- **sample1_axl** — Thick and Thin AXL usage
+- **sample2_ris** — RISPort device registration query
+- **sample3_perfmon** — PerfMon counter collection
+- **sample4_paws** — PAWS version information
+- **sample5_certs** — Certificate retrieval and decoding via Thin AXL
+  *(requires `pip install asn1crypto`)*
+- **sample6_ris_cti** — RISPort CTI item query
+- **sample7_axl_registration_dynamic** — Registration dynamic data
+- **sample8_webdialer** — Webdialer click-to-call
+
+All samples read UCM credentials from a `.env` file at the repo root
+(see [`.env.example`](.env.example) and the
+[Local Development guide](docs/guide/local-development.md)).
 
 
 ## License

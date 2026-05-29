@@ -1,26 +1,18 @@
-from axltoolkit import UcmRisPortToolkit
-from credentials import user, password, platform_user, platform_password
+from _env import UCM_ADDRESS, UCM_PASSWORD, UCM_TLS_VERIFY, UCM_USERNAME
 
-ucm_ip = '172.18.106.58'
+from axltoolkit import RISPortClient
 
-axl = UcmRisPortToolkit(username=user, password=password, server_ip=ucm_ip, tls_verify=False)
+ris = RISPortClient(
+    username=UCM_USERNAME,
+    password=UCM_PASSWORD,
+    server_ip=UCM_ADDRESS,
+    tls_verify=UCM_TLS_VERIFY,
+)
 
-selection_criteria = {
-    'DeviceClass': 'Any',
-    'SelectBy': 'Name',
-    'MaxReturnedDevices': '1000',
-    'Model': 255,
-    'Status': "Any",
-    'SelectItems': [
-        {
-            'item': [
-                'SEP*',          # Replace these with the devices you want to retrieve
-            ]
-        }
-    ]
-}
-
-result = axl.get_service().selectCmDevice(StateInfo='', CmSelectionCriteria=selection_criteria)
+# Using the new high-level API — replaces manual selectCmDevice call
+result = ris.select_cm_device(
+    select_items=['SEP*'],  # Replace with the devices you want to retrieve
+)
 
 for node in result['SelectCmDeviceResult']['CmNodes']['item']:
     server = node['Name']
@@ -31,5 +23,3 @@ for node in result['SelectCmDeviceResult']['CmNodes']['item']:
             if device['IPAddress'] is not None and 'item' in device['IPAddress']:
                 if len(device['IPAddress']['item']) > 0:
                     print(device['IPAddress']['item'][0]['IP'] + ',' + device['Name'])
-
-

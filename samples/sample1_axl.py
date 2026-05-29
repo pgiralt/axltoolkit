@@ -1,17 +1,23 @@
-from axltoolkit import AxlToolkit
-from credentials import user, password, platform_user, platform_password
+from _env import UCM_ADDRESS, UCM_AXL_VERSION, UCM_PASSWORD, UCM_TLS_VERIFY, UCM_USERNAME
 
-# Be sure to update the credentials.py file with your AXL User and Platform User credentials
+from axltoolkit import AXLClient
 
-# Put the IP address of your UCM Publisher
-ucm_ip = '172.18.106.58'
+# Credentials and UCM address come from the ``.env`` file at the repo
+# root (see ``.env.example``). Override UCM_AXL_VERSION there if your
+# cluster is not on 15.0.
 
-axl = AxlToolkit(username=user, password=password, server_ip=ucm_ip, tls_verify=False, version='12.5')
+axl = AXLClient(
+    username=UCM_USERNAME,
+    password=UCM_PASSWORD,
+    server_ip=UCM_ADDRESS,
+    tls_verify=UCM_TLS_VERIFY,
+    version=UCM_AXL_VERSION,
+)
 
 
 # Example of using Thick AXL to retrieve User Info
 # Replace this with a valid User ID from your UCM cluster:
-userid = 'pgiralt'
+userid = 'jsmith'
 
 result = axl.get_user(userid)
 
@@ -21,16 +27,17 @@ userdata = result['return']['user']
 
 print("Your name is " + userdata['firstName'])
 
+# Example of using thin AXL to retrieve User Info.
+# NOTE: ``sql_query`` sends the query string verbatim. When building
+# queries from variables, use ``_sanitize_sql_value`` or the higher-level
+# ``sql_get_*`` helpers — never concatenate untrusted input.
 
+from axltoolkit.axl import _sanitize_sql_value
 
-# Example of using thin AXL to retrieve User Info:
-
-query = "select * from enduser where userid = 'pgiralt'"
-result = axl.run_sql_query(query)
-
+safe_userid = _sanitize_sql_value(userid)
+query = f"select * from enduser where userid = '{safe_userid}'"
+result = axl.sql_query(query)
 print(result)
 
-
-result = axl.list_phone(name='CSF%')
+result = axl.list_phones(name='CSF%')
 print(result)
-

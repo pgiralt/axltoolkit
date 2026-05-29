@@ -1,0 +1,96 @@
+[build-system]
+# setuptools >=77 is required for PEP 639 license expression support
+# (license = "LicenseRef-...") and license-files declaration.
+requires = ["setuptools>=77.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "axltoolkit"
+version = "2.0.0"
+description = "Python toolkit for Cisco Unified Communications Manager AXL and SXML APIs"
+readme = "README.md"
+# Cisco Sample Code License is not an SPDX-recognized identifier, so we
+# use a LicenseRef-* custom identifier per PEP 639. The full text lives
+# in the LICENSE file at the repo root.
+license = "LicenseRef-Cisco-Sample-Code-License-1.1"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+authors = [
+    {name = "Paul Giralt"},
+]
+keywords = [
+    "cisco",
+    "ucm",
+    "callmanager",
+    "axl",
+    "sxml",
+    "risport",
+    "perfmon",
+    "paws",
+    "webdialer",
+    "soap",
+    "telephony",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Communications :: Telephony",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Systems Administration",
+]
+dependencies = [
+    "zeep>=4.2.1,<5",
+    "requests>=2.32.0,<3",
+    "lxml>=4.9.0,<7",
+    "urllib3>=2.0.0,<3",
+    "typing_extensions>=4.1; python_version < '3.12'",
+]
+
+[project.urls]
+Homepage = "https://github.com/pgiralt/axltoolkit"
+Documentation = "https://pgiralt.github.io/axltoolkit/"
+Repository = "https://github.com/pgiralt/axltoolkit.git"
+Issues = "https://github.com/pgiralt/axltoolkit/issues"
+Changelog = "https://pgiralt.github.io/axltoolkit/changelog/"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov",
+    "pytest-mock",
+    "responses",
+    "ruff>=0.4.0",
+    "python-dotenv>=1.0,<2",
+]
+docs = [
+    "mkdocs-material>=9.0",
+    "mkdocstrings[python]>=0.24",
+]
+
+[tool.setuptools.packages.find]
+include = ["axltoolkit*"]
+
+[tool.setuptools.package-data]
+axltoolkit = ["schema/**/*.wsdl", "schema/**/*.xsd"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+markers = [
+    "integration: Integration tests against a live UCM cluster (require UCM_ADDRESS, UCM_USERNAME, UCM_PASSWORD env vars)",
+]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]

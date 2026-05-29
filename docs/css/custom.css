@@ -1,0 +1,33 @@
+/* Give more horizontal space to the content area */
+:root {
+  --md-sidebar-width: 10rem;
+}
+.md-header__inner.md-grid,
+.md-main__inner.md-grid,
+.md-footer-meta__inner.md-grid {
+  max-width: none !important;
+  width: 100% !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.md-content {
+  max-width: none !important;
+}
+.md-sidebar--secondary .md-nav__link {
+  font-size: 0.65rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Remove grey code backgrounds from mkdocstrings parameter tables and type annotations */
+.doc-contents code,
+.doc-param-name code,
+.doc-param-details code,
+.doc-signature code,
+.doc .md-typeset code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
