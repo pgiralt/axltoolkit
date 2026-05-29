@@ -2,6 +2,57 @@
 
 ## Unreleased
 
+### Dependency CVE Bumps
+
+The `dependency-audit` CI job (`pip-audit --skip-editable`) caught
+seven CVEs in the previous v2.0.0 dependency tree. Minimum version
+constraints in `pyproject.toml` were raised to pull in the patched
+releases:
+
+- **`requests>=2.33.0`** — fixes `GHSA-gc5v-m9x4-r6x2` (predictable
+  filenames in `extract_zipped_paths()` allowing local file
+  substitution).
+- **`urllib3>=2.7.0`** — fixes a chain of four CVEs in 2.6.x and
+  earlier: `PYSEC-2026-141` (ProxyManager cross-origin header leak),
+  `GHSA-gm62-xv2j-4w53` (unbounded content-encoding chain DoS),
+  `GHSA-2xpw-w6gg-jr37` (streaming decompression bomb), and
+  `GHSA-38jv-5279-wg99` (redirect-response decoding bomb).
+- **`lxml>=6.1.0`** — fixes `PYSEC-2026-87` (default parser allows
+  local file read via external entities; `zeep`'s `forbid_dtd=True`
+  setting already mitigates, but the patched parser is the safer
+  default).
+- **`idna>=3.15`** — fixes `CVE-2026-45409` (DoS via long crafted
+  inputs to `idna.encode`; transitive of `requests`).
+- **`pytest>=9.0.3`** (dev) — fixes `GHSA-6w46-j5rx-g56g`
+  (predictable `/tmp/pytest-of-*` paths).
+- **`mkdocs-material>=9.6.20`** and **`pymdown-extensions>=10.21.3`**
+  (docs) — fixes `GHSA-62q4-447f-wv8h` (path-traversal regression in
+  the snippets preprocessor).
+
+The `dependency-audit` workflow itself was also corrected:
+- `--skip-editable` added so `axltoolkit` itself (installed via
+  `pip install -e .`) isn't audited against PyPI (where it isn't
+  published).
+- `--strict` removed; it was promoting the harmless
+  "skipped editable" notice into a job failure, masking real findings.
+  `pip-audit` already exits non-zero on real CVEs without it.
+
+### Lint / Code Quality
+
+- **Ruff config** — `pyproject.toml` now excludes the auto-generated
+  `axltoolkit/_generated_models.py` and `_generated_enums.py` modules
+  from lint and format checks. They contain hundreds of legitimate
+  string forward-references to cross-module enum types
+  (`NotRequired["NetworkLocation"]`) that trip F821 but are valid at
+  runtime; their style is dictated by the generator script, not the
+  developer.
+- **Test F841 ignored** — `tests/**/*.py` is excluded from F841
+  (unused-variable) because smoke tests legitimately bind return
+  values for debuggability without asserting on them.
+- **One-shot reflow** — the entire non-generated codebase was passed
+  through `ruff format`, which produced a large diff on the v2.0.0
+  landing commit but no semantic changes (309 unit tests still pass).
+
 ### Security Hardening
 
 - **SOAP envelope redaction** — `last_request_debug()` now redacts

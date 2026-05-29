@@ -255,13 +255,18 @@ mypy axltoolkit/
 
 ## Dependency Vulnerability Scan
 
-The CI workflow runs `pip-audit --strict --desc` on every push. To run
-the same scan locally before pushing:
+The CI workflow runs `pip-audit --desc --skip-editable` on every push.
+To run the same scan locally before pushing:
 
 ```bash
 pip install pip-audit
-pip-audit --strict --desc
+pip-audit --desc --skip-editable
 ```
+
+`--skip-editable` excludes `axltoolkit` itself (installed via
+`pip install -e .`) so the audit only inspects the third-party
+dependency tree. `pip-audit` exits non-zero whenever it finds a known
+CVE, which is what fails the CI job.
 
 A non-zero exit means at least one dependency has a known CVE — bump
 the constraint in `pyproject.toml` and re-run.
@@ -275,6 +280,6 @@ the constraint in `pyproject.toml` and re-run.
 | `test` | Runs `pytest tests/` on Python 3.9–3.13 with coverage |
 | `lint` | `ruff check` + `ruff format --check` on Python 3.12 |
 | `coverage-check` | Runs `scripts/check_coverage.py --all-versions --include-sxml` |
-| `dependency-audit` | Runs `pip-audit --strict --desc` against installed deps |
+| `dependency-audit` | Runs `pip-audit --desc --skip-editable` against installed deps |
 
 All four must pass before a PR is merged.

@@ -97,8 +97,15 @@ jobs:
           pip install pip-audit
 
       - name: Scan dependencies for known vulnerabilities
-        # Fails the job if any HIGH/CRITICAL CVE is found in the installed
-        # dependency tree. ``--strict`` upgrades vulnerability findings to
-        # non-zero exit codes; ``--desc`` includes CVE descriptions in the
-        # output so reviewers can triage from the job log alone.
-        run: pip-audit --strict --desc
+        # Fails the job if any CVE is found in the installed dependency
+        # tree (pip-audit exits non-zero on findings by default).
+        # ``--desc`` includes CVE descriptions in the output so
+        # reviewers can triage from the job log alone.
+        # ``--skip-editable`` skips axltoolkit itself (installed via
+        # ``pip install -e .``); we want to audit *dependencies*, not
+        # the package under development, which isn't on PyPI yet
+        # anyway.
+        # ``--strict`` is intentionally NOT used here: it promotes any
+        # warning (including the harmless "skipped editable" notice)
+        # into a job failure, which would mask real findings.
+        run: pip-audit --desc --skip-editable

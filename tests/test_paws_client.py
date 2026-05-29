@@ -1,11 +1,12 @@
 """Tests for PAWSClient with mocked PAWS services."""
 
-import pytest
 from unittest.mock import MagicMock, patch
+
+import pytest
 from zeep.exceptions import Fault
 
-from axltoolkit.paws_client import PAWSClient
 from axltoolkit.exceptions import PAWSError
+from axltoolkit.paws_client import PAWSClient
 
 
 @pytest.fixture
@@ -46,15 +47,16 @@ def paws():
 class TestGetHardwareInformation:
     def test_success(self, paws):
         paws._services["HardwareInformationService"].getHardwareInformation.return_value = {
-            "Processors": "8", "Memory": "16384 MB"
+            "Processors": "8",
+            "Memory": "16384 MB",
         }
         result = paws.get_hardware_information()
         paws._services["HardwareInformationService"].getHardwareInformation.assert_called_once()
         assert result["Processors"] == "8"
 
     def test_fault_raises_error(self, paws):
-        paws._services["HardwareInformationService"].getHardwareInformation.side_effect = (
-            Fault("HW service error")
+        paws._services["HardwareInformationService"].getHardwareInformation.side_effect = Fault(
+            "HW service error"
         )
         with pytest.raises(PAWSError, match="Failed to get hardware information"):
             paws.get_hardware_information()
@@ -140,9 +142,7 @@ class TestGetClusterNodes:
 
 class TestGetInactiveOptions:
     def test_success(self, paws):
-        paws._services["OptionsService"].getInactiveOptions.return_value = {
-            "options": ["Security"]
-        }
+        paws._services["OptionsService"].getInactiveOptions.return_value = {"options": ["Security"]}
         result = paws.get_inactive_options()
         paws._services["OptionsService"].getInactiveOptions.assert_called_once()
         assert "options" in result
@@ -170,7 +170,8 @@ class TestGetProductName:
 class TestGetMyClusterNode:
     def test_success(self, paws):
         paws._services["ClusterNodesService"].getMyClusterNode.return_value = {
-            "name": "cm-pub", "ip": "10.0.0.1"
+            "name": "cm-pub",
+            "ip": "10.0.0.1",
         }
         result = paws.get_my_cluster_node()
         assert result["name"] == "cm-pub"
@@ -183,9 +184,7 @@ class TestGetMyClusterNode:
 
 class TestGetAPIVersion:
     def test_success(self, paws):
-        paws._services["APIVersionService"].getAPIVersion.return_value = {
-            "apiVersion": "1.0"
-        }
+        paws._services["APIVersionService"].getAPIVersion.return_value = {"apiVersion": "1.0"}
         result = paws.get_api_version()
         assert result["apiVersion"] == "1.0"
 
@@ -198,7 +197,8 @@ class TestGetAPIVersion:
 class TestDeploymentMode:
     def test_get_success(self, paws):
         paws._services["DeploymentModeService"].getDeploymentMode.return_value = {
-            "result": "internal.request.complete", "deploymentMode": "Enterprise"
+            "result": "internal.request.complete",
+            "deploymentMode": "Enterprise",
         }
         result = paws.get_deployment_mode()
         assert result["deploymentMode"] == "Enterprise"
@@ -213,7 +213,9 @@ class TestDeploymentMode:
             "result": "internal.request.complete"
         }
         result = paws.set_deployment_mode("Enterprise")
-        paws._services["DeploymentModeService"].setDeploymentMode.assert_called_once_with("Enterprise")
+        paws._services["DeploymentModeService"].setDeploymentMode.assert_called_once_with(
+            "Enterprise"
+        )
         assert result["result"] == "internal.request.complete"
 
     def test_set_fault_raises_error(self, paws):
@@ -225,7 +227,8 @@ class TestDeploymentMode:
 class TestGetHardwareModel:
     def test_success(self, paws):
         paws._services["HardwareModelService"].getHardwareModel.return_value = {
-            "hardwareModel": "VMware Virtual Platform", "isVirtualMachine": True
+            "hardwareModel": "VMware Virtual Platform",
+            "isVirtualMachine": True,
         }
         result = paws.get_hardware_model()
         assert result["isVirtualMachine"] is True
@@ -264,7 +267,9 @@ class TestPrepareRemoteUpgrade:
         assert result["result"] == "internal.request.complete"
 
     def test_fault_raises_error(self, paws):
-        paws._services["PrepareRemoteUpgradeService"].prepareRemoteUpgrade.side_effect = Fault("error")
+        paws._services["PrepareRemoteUpgradeService"].prepareRemoteUpgrade.side_effect = Fault(
+            "error"
+        )
         with pytest.raises(PAWSError, match="Failed to prepare remote upgrade"):
             paws.prepare_remote_upgrade({}, "sess1")
 
@@ -275,7 +280,9 @@ class TestStartUpgrade:
             "result": "internal.request.complete"
         }
         result = paws.start_upgrade("sess1", override_session=True, auto_switch=True)
-        paws._services["StartUpgradeService"].startUpgrade.assert_called_once_with("sess1", True, True)
+        paws._services["StartUpgradeService"].startUpgrade.assert_called_once_with(
+            "sess1", True, True
+        )
         assert result["result"] == "internal.request.complete"
 
     def test_fault_raises_error(self, paws):
@@ -300,23 +307,25 @@ class TestGetUpgradeStage:
 
 class TestGetCurrentUpgradeProgressStage:
     def test_success(self, paws):
-        paws._services["UpgradeProgressStageService"].getCurrentUpgradeProgressStage.return_value = {
+        paws._services[
+            "UpgradeProgressStageService"
+        ].getCurrentUpgradeProgressStage.return_value = {
             "upgradeStage": "upgrade.progress.application.installation"
         }
         result = paws.get_current_upgrade_progress_stage()
         assert result["upgradeStage"] == "upgrade.progress.application.installation"
 
     def test_fault_raises_error(self, paws):
-        paws._services["UpgradeProgressStageService"].getCurrentUpgradeProgressStage.side_effect = Fault("error")
+        paws._services[
+            "UpgradeProgressStageService"
+        ].getCurrentUpgradeProgressStage.side_effect = Fault("error")
         with pytest.raises(PAWSError, match="Failed to get upgrade progress stage"):
             paws.get_current_upgrade_progress_stage()
 
 
 class TestGetUpgradeType:
     def test_success(self, paws):
-        paws._services["UpgradeTypeService"].getUpgradeType.return_value = {
-            "upgradeType": "L2"
-        }
+        paws._services["UpgradeTypeService"].getUpgradeType.return_value = {"upgradeType": "L2"}
         result = paws.get_upgrade_type()
         assert result["upgradeType"] == "L2"
 
@@ -328,9 +337,7 @@ class TestGetUpgradeType:
 
 class TestIsUpgradeValid:
     def test_success(self, paws):
-        paws._services["UpgradeValidService"].isUpgradeValid.return_value = {
-            "upgradeValid": True
-        }
+        paws._services["UpgradeValidService"].isUpgradeValid.return_value = {"upgradeValid": True}
         result = paws.is_upgrade_valid("test.iso")
         paws._services["UpgradeValidService"].isUpgradeValid.assert_called_once_with("test.iso")
         assert result["upgradeValid"] is True
@@ -381,7 +388,9 @@ class TestGetRestartSystemStatus:
         assert result["restartSystemStatus"] == "internal.request.complete"
 
     def test_fault_raises_error(self, paws):
-        paws._services["RestartSystemStatusService"].getRestartSystemStatus.side_effect = Fault("error")
+        paws._services["RestartSystemStatusService"].getRestartSystemStatus.side_effect = Fault(
+            "error"
+        )
         with pytest.raises(PAWSError, match="Failed to get restart system status"):
             paws.get_restart_system_status()
 
@@ -409,7 +418,9 @@ class TestGetSwitchVersionStatus:
         assert result["switchVersionStatus"] == "internal.request.complete"
 
     def test_fault_raises_error(self, paws):
-        paws._services["SwitchVersionStatusService"].getSwitchVersionStatus.side_effect = Fault("error")
+        paws._services["SwitchVersionStatusService"].getSwitchVersionStatus.side_effect = Fault(
+            "error"
+        )
         with pytest.raises(PAWSError, match="Failed to get switch version status"):
             paws.get_switch_version_status()
 

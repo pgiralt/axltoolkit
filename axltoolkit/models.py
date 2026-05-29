@@ -23,12 +23,12 @@ Usage::
 from __future__ import annotations
 
 import sys
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any, Dict, List, Optional
 
 if sys.version_info >= (3, 11):
-    from typing import NotRequired, TypedDict
+    from typing import TypedDict
 else:
-    from typing_extensions import NotRequired, TypedDict
+    from typing_extensions import TypedDict
 
 
 # ═══════════════════════════════════════════════════════════════════════

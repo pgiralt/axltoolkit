@@ -18,7 +18,6 @@ import os
 from typing import Any, Dict, Optional
 
 import pytest
-
 from zeep.helpers import serialize_object
 
 from axltoolkit import (
@@ -32,9 +31,9 @@ from axltoolkit import (
 )
 from axltoolkit._generated_enums import (
     BriProtocol,
-    CSUParam,
     CallerID,
     ClockReference,
+    CSUParam,
     DigitSending,
     Encode,
     FDLChannel,
@@ -52,13 +51,7 @@ from axltoolkit._generated_enums import (
     YellowAlarm,
 )
 from axltoolkit._generated_models import (
-    CiscoCatalyst600024PortFXSGateway,
-    CiscoCatalyst6000E1VoIPGateway,
-    CiscoCatalyst6000T1VoIPGatewayPri,
-    CiscoCatalyst6000T1VoIPGatewayT1,
-    H323Trunk,
     Phone,
-    SipTrunk,
 )
 
 from .conftest import PREFIX, _safe_debug
@@ -81,10 +74,7 @@ def test_0001_get_ccm_version(axl: AXLClient):
     try:
         result = axl.get_ccm_version(name="")
     except Exception as exc:
-        pytest.fail(
-            f"get_ccm_version raised {type(exc).__name__}: {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"get_ccm_version raised {type(exc).__name__}: {exc}\n{_safe_debug(axl)}")
     assert result is not None, f"get_ccm_version returned None\n{_safe_debug(axl)}"
     assert "return" in result, f"get_ccm_version response missing 'return' key: {result!r}"
 
@@ -130,9 +120,7 @@ def test_0100_route_partition_crud(axl: AXLClient):
 
         # List
         result = axl.list_route_partition(search_criteria={"name": f"{PREFIX}%"})
-        assert result is not None, (
-            f"list_route_partition returned None\n{_safe_debug(axl)}"
-        )
+        assert result is not None, f"list_route_partition returned None\n{_safe_debug(axl)}"
     finally:
         axl.remove_route_partition(name)
 
@@ -195,7 +183,9 @@ def test_0103_date_time_group_crud(axl: AXLClient):
 
         axl.update_date_time_group(name=name, separator="/")
         result = axl.get_date_time_group(name)
-        assert result is not None, f"get_date_time_group returned None after update\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_date_time_group returned None after update\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_date_time_group(name)
 
@@ -226,16 +216,18 @@ def test_0105_sip_trunk_security_profile_crud(axl: AXLClient):
     axl.add_sip_trunk_security_profile(name, description="Test")
     try:
         result = axl.get_sip_trunk_security_profile(name)
-        assert result is not None, f"get_sip_trunk_security_profile('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_sip_trunk_security_profile('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_sip_trunk_security_profile(name=name, description="Updated")
         result = axl.get_sip_trunk_security_profile(name)
         assert result is not None, f"get after update returned None\n{_safe_debug(axl)}"
 
-        result = axl.list_sip_trunk_security_profile(
-            search_criteria={"name": f"{PREFIX}%"}
+        result = axl.list_sip_trunk_security_profile(search_criteria={"name": f"{PREFIX}%"})
+        assert result is not None, (
+            f"list_sip_trunk_security_profile returned None\n{_safe_debug(axl)}"
         )
-        assert result is not None, f"list_sip_trunk_security_profile returned None\n{_safe_debug(axl)}"
     finally:
         axl.remove_sip_trunk_security_profile(name)
 
@@ -251,12 +243,12 @@ def test_0106_phone_security_profile_crud(axl: AXLClient):
     )
     try:
         result = axl.get_phone_security_profile(name)
-        assert result is not None, f"get_phone_security_profile('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_phone_security_profile('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_phone_security_profile(name=name, description="Updated")
-        result = axl.list_phone_security_profile(
-            search_criteria={"name": f"{PREFIX}%"}
-        )
+        result = axl.list_phone_security_profile(search_criteria={"name": f"{PREFIX}%"})
         assert result is not None, f"list_phone_security_profile returned None\n{_safe_debug(axl)}"
     finally:
         axl.remove_phone_security_profile(name)
@@ -325,7 +317,9 @@ def test_0110_credential_policy_crud(axl: AXLClient):
     axl.add_credential_policy({"name": name, "failedLogon": 5})
     try:
         result = axl.get_credential_policy(name)
-        assert result is not None, f"get_credential_policy('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_credential_policy('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_credential_policy(name=name, failedLogon=10)
         result = axl.list_credential_policy(search_criteria={"name": f"{PREFIX}%"})
@@ -338,16 +332,16 @@ def test_0111_media_resource_group_crud(axl: AXLClient):
     """Media Resource Group — CRUD + list."""
     name = f"{PREFIX}MRG"
     # MRG requires at least one device member; find one via SQL
-    dev_result = axl.sql_query(
-        "SELECT name FROM device WHERE tkclass IN (2,3,4,5,9) LIMIT 1"
-    )
+    dev_result = axl.sql_query("SELECT name FROM device WHERE tkclass IN (2,3,4,5,9) LIMIT 1")
     if not dev_result.get("rows"):
         pytest.skip("No media resource devices found on server")
     mr_device = dev_result["rows"][0]["name"]
     axl.add_media_resource_group(name, description="Test", devices=[mr_device])
     try:
         result = axl.get_media_resource_group(name)
-        assert result is not None, f"get_media_resource_group('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_media_resource_group('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_media_resource_group(name=name, description="Updated")
         result = axl.list_media_resource_group(search_criteria={"name": f"{PREFIX}%"})
@@ -359,14 +353,16 @@ def test_0111_media_resource_group_crud(axl: AXLClient):
 def test_0112_uc_service_crud(axl: AXLClient):
     """UC Service — CRUD + list."""
     name = f"{PREFIX}UCSvc"
-    axl.add_uc_service({
-        "name": name,
-        "serviceType": "Voicemail",
-        "productType": "Unity Connection",
-        "hostnameorip": "198.51.100.50",
-        "port": 443,
-        "protocol": "HTTPS",
-    })
+    axl.add_uc_service(
+        {
+            "name": name,
+            "serviceType": "Voicemail",
+            "productType": "Unity Connection",
+            "hostnameorip": "198.51.100.50",
+            "port": 443,
+            "protocol": "HTTPS",
+        }
+    )
     try:
         result = axl.get_uc_service(name)
         assert result is not None, f"get_uc_service('{name}') returned None\n{_safe_debug(axl)}"
@@ -384,7 +380,9 @@ def test_0113_service_profile_crud(axl: AXLClient):
     axl.add_service_profile({"name": name, "isDefault": False})
     try:
         result = axl.get_service_profile(name)
-        assert result is not None, f"get_service_profile('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_service_profile('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_service_profile(name=name)
         result = axl.list_service_profile(search_criteria={"name": f"{PREFIX}%"})
@@ -414,7 +412,9 @@ def test_0115_common_phone_config_crud(axl: AXLClient):
     axl.add_common_phone_config({"name": name})
     try:
         result = axl.get_common_phone_config(name)
-        assert result is not None, f"get_common_phone_config('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_common_phone_config('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_common_phone_config(name=name)
     finally:
@@ -427,7 +427,9 @@ def test_0116_common_device_config_crud(axl: AXLClient):
     axl.add_common_device_config({"name": name})
     try:
         result = axl.get_common_device_config(name)
-        assert result is not None, f"get_common_device_config('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_common_device_config('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_common_device_config(name=name)
     finally:
@@ -452,16 +454,20 @@ def test_0117_sip_profile_crud(axl: AXLClient):
 def test_0118_ip_phone_services_crud(axl: AXLClient):
     """IP Phone Services — CRUD + list."""
     name = f"{PREFIX}IPSvc"
-    axl.add_ip_phone_services({
-        "serviceName": name,
-        "asciiServiceName": name,
-        "serviceUrl": "http://198.51.100.1/service",
-        "serviceCategory": "XML Service",
-        "serviceType": "Standard IP Phone Service",
-    })
+    axl.add_ip_phone_services(
+        {
+            "serviceName": name,
+            "asciiServiceName": name,
+            "serviceUrl": "http://198.51.100.1/service",
+            "serviceCategory": "XML Service",
+            "serviceType": "Standard IP Phone Service",
+        }
+    )
     try:
         result = axl.get_ip_phone_services(name)
-        assert result is not None, f"get_ip_phone_services('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_ip_phone_services('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_ip_phone_services(serviceName=name, serviceDescription="Updated")
         result = axl.list_ip_phone_services(search_criteria={"serviceName": f"{PREFIX}%"})
@@ -473,13 +479,15 @@ def test_0118_ip_phone_services_crud(axl: AXLClient):
 def test_0119_time_period_crud(axl: AXLClient):
     """Time Period — CRUD + list."""
     name = f"{PREFIX}TimePeriod"
-    axl.add_time_period({
-        "name": name,
-        "startTime": "08:00",
-        "endTime": "17:00",
-        "startDay": "Mon",
-        "endDay": "Fri",
-    })
+    axl.add_time_period(
+        {
+            "name": name,
+            "startTime": "08:00",
+            "endTime": "17:00",
+            "startDay": "Mon",
+            "endDay": "Fri",
+        }
+    )
     try:
         result = axl.get_time_period(name)
         assert result is not None, f"get_time_period('{name}') returned None\n{_safe_debug(axl)}"
@@ -512,7 +520,9 @@ def test_0121_recording_profile_crud(axl: AXLClient):
     axl.add_recording_profile({"name": name, "recorderDestination": "1000", "recordingCssName": ""})
     try:
         result = axl.get_recording_profile(name)
-        assert result is not None, f"get_recording_profile('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_recording_profile('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_recording_profile(name=name)
         result = axl.list_recording_profile(search_criteria={"name": f"{PREFIX}%"})
@@ -560,7 +570,9 @@ def test_0201_css_builder_crud(axl: AXLClient, dep_partition, dep_partition_2):
     axl.add_css(css_data["name"], css_data["description"], [dep_partition, dep_partition_2])
     try:
         result = axl.get_css(css_data["name"])
-        assert result is not None, f"get_css('{css_data['name']}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_css('{css_data['name']}') returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_css(css_data["name"])
 
@@ -575,13 +587,15 @@ def test_0202_device_pool_crud(axl: AXLClient):
         pytest.skip("Server missing CMG or Region")
     cmg_name = cmg["rows"][0]["name"]
     region_name = region["rows"][0]["name"]
-    axl.add_device_pool({
-        "name": name,
-        "dateTimeSettingName": "CMLocal",
-        "callManagerGroupName": cmg_name,
-        "regionName": region_name,
-        "srstName": "Disable",
-    })
+    axl.add_device_pool(
+        {
+            "name": name,
+            "dateTimeSettingName": "CMLocal",
+            "callManagerGroupName": cmg_name,
+            "regionName": region_name,
+            "srstName": "Disable",
+        }
+    )
     try:
         result = axl.get_device_pool(name)
         dp = result["return"]["devicePool"]
@@ -600,14 +614,16 @@ def test_0202_device_pool_crud(axl: AXLClient):
 def test_0203_line_crud(axl: AXLClient, dep_partition):
     """Directory Number (Line) — CRUD + list."""
     pattern = "18001"
-    axl.add_line({
-        "pattern": pattern,
-        "routePartitionName": dep_partition,
-        "description": "Test line",
-        "alertingName": "Test",
-        "asciiAlertingName": "Test",
-        "usage": "Device",
-    })
+    axl.add_line(
+        {
+            "pattern": pattern,
+            "routePartitionName": dep_partition,
+            "description": "Test line",
+            "alertingName": "Test",
+            "asciiAlertingName": "Test",
+            "usage": "Device",
+        }
+    )
     try:
         result = axl.get_line(pattern, dep_partition)
         ln = result["return"]["line"]
@@ -637,9 +653,7 @@ def test_0204_media_resource_list_crud(axl: AXLClient):
     mrg_name = f"{PREFIX}MRL_MRG"
     mrl_name = f"{PREFIX}MRL"
     # MRG requires at least one device member; find one via SQL
-    dev_result = axl.sql_query(
-        "SELECT name FROM device WHERE tkclass IN (2,3,4,5,9) LIMIT 1"
-    )
+    dev_result = axl.sql_query("SELECT name FROM device WHERE tkclass IN (2,3,4,5,9) LIMIT 1")
     if not dev_result.get("rows"):
         pytest.skip("No media resource devices found on server")
     mr_device = dev_result["rows"][0]["name"]
@@ -648,12 +662,12 @@ def test_0204_media_resource_list_crud(axl: AXLClient):
         axl.add_media_resource_list(mrl_name, members=[mrg_name])
         try:
             result = axl.get_media_resource_list(mrl_name)
-            assert result is not None, f"get_media_resource_list('{mrl_name}') returned None\n{_safe_debug(axl)}"
+            assert result is not None, (
+                f"get_media_resource_list('{mrl_name}') returned None\n{_safe_debug(axl)}"
+            )
 
             axl.update_media_resource_list(name=mrl_name)
-            result = axl.list_media_resource_list(
-                search_criteria={"name": f"{PREFIX}%"}
-            )
+            result = axl.list_media_resource_list(search_criteria={"name": f"{PREFIX}%"})
             assert result is not None, f"list_media_resource_list returned None\n{_safe_debug(axl)}"
         finally:
             axl.remove_media_resource_list(mrl_name)
@@ -667,7 +681,9 @@ def test_0205_voicemail_pilot_crud(axl: AXLClient):
     axl.add_voicemail_pilot(dir_n, description="Test VM pilot")
     try:
         result = axl.get_voicemail_pilot(dir_n)
-        assert result is not None, f"get_voicemail_pilot('{dir_n}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_voicemail_pilot('{dir_n}') returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_voicemail_pilot(dir_n)
 
@@ -681,7 +697,9 @@ def test_0206_voicemail_profile_crud(axl: AXLClient):
         axl.add_voicemail_profile(vm_name, voicemail_pilot_name=dir_n)
         try:
             result = axl.get_voicemail_profile(vm_name)
-            assert result is not None, f"get_voicemail_profile('{vm_name}') returned None\n{_safe_debug(axl)}"
+            assert result is not None, (
+                f"get_voicemail_profile('{vm_name}') returned None\n{_safe_debug(axl)}"
+            )
         finally:
             axl.remove_voicemail_profile(vm_name)
     finally:
@@ -694,7 +712,9 @@ def test_0207_translation_pattern_crud(axl: AXLClient, dep_partition):
     axl.add_translation_pattern(pattern, dep_partition)
     try:
         result = axl.get_translation_pattern(pattern, dep_partition)
-        assert result is not None, f"get_translation_pattern('{pattern}', '{dep_partition}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_translation_pattern('{pattern}', '{dep_partition}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_translation_pattern(
             pattern=pattern,
@@ -702,7 +722,9 @@ def test_0207_translation_pattern_crud(axl: AXLClient, dep_partition):
             description="Updated",
         )
         result = axl.get_translation_pattern(pattern, dep_partition)
-        assert result is not None, f"get_translation_pattern after update returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_translation_pattern after update returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_translation_pattern(pattern, dep_partition)
 
@@ -716,15 +738,19 @@ def test_0208_call_park_crud(axl: AXLClient, dep_partition):
         pytest.skip("No CallManager found on server")
     cm_name = cm_result["rows"][0]["name"]
     # SDK add_call_park doesn't expose callManagerName, use service directly
-    axl._service.addCallPark(callPark={
-        "pattern": pattern,
-        "routePartitionName": dep_partition,
-        "description": "Test",
-        "callManagerName": cm_name,
-    })
+    axl._service.addCallPark(
+        callPark={
+            "pattern": pattern,
+            "routePartitionName": dep_partition,
+            "description": "Test",
+            "callManagerName": cm_name,
+        }
+    )
     try:
         result = axl.get_call_park(pattern, dep_partition)
-        assert result is not None, f"get_call_park('{pattern}', '{dep_partition}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_call_park('{pattern}', '{dep_partition}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_call_park(
             pattern=pattern,
@@ -741,10 +767,12 @@ def test_0209_call_pickup_group_crud(axl: AXLClient, dep_partition):
     axl.add_call_pickup_group(name, pattern="18004", route_partition_name=dep_partition)
     try:
         result = axl.get_call_pickup_group(name)
-        assert result is not None, f"get_call_pickup_group('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_call_pickup_group('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_call_pickup_group(name=name, description="Updated")
-        result = axl.list_call_pickup_group(search_criteria={"pattern": f"%"})
+        result = axl.list_call_pickup_group(search_criteria={"pattern": "%"})
         assert result is not None, f"list_call_pickup_group returned None\n{_safe_debug(axl)}"
     finally:
         axl.remove_call_pickup_group(name)
@@ -753,14 +781,18 @@ def test_0209_call_pickup_group_crud(axl: AXLClient, dep_partition):
 def test_0210_directed_call_park_crud(axl: AXLClient, dep_partition):
     """Directed Call Park — CRUD."""
     name = f"{PREFIX}DCP"
-    axl.add_directed_call_park({
-        "pattern": "18005",
-        "routePartitionName": dep_partition,
-        "description": "Test DCP",
-    })
+    axl.add_directed_call_park(
+        {
+            "pattern": "18005",
+            "routePartitionName": dep_partition,
+            "description": "Test DCP",
+        }
+    )
     try:
         result = axl.get_directed_call_park("18005", dep_partition)
-        assert result is not None, f"get_directed_call_park('18005') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_directed_call_park('18005') returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_directed_call_park("18005", dep_partition)
 
@@ -769,21 +801,27 @@ def test_0211_time_schedule_crud(axl: AXLClient):
     """Time Schedule — CRUD + list (creates its own time period)."""
     tp_name = f"{PREFIX}TP_Sched"
     ts_name = f"{PREFIX}TimeSched"
-    axl.add_time_period({
-        "name": tp_name,
-        "startTime": "08:00",
-        "endTime": "17:00",
-        "startDay": "Mon",
-        "endDay": "Fri",
-    })
+    axl.add_time_period(
+        {
+            "name": tp_name,
+            "startTime": "08:00",
+            "endTime": "17:00",
+            "startDay": "Mon",
+            "endDay": "Fri",
+        }
+    )
     try:
-        axl.add_time_schedule({
-            "name": ts_name,
-            "members": {"member": [{"timePeriodName": tp_name}]},
-        })
+        axl.add_time_schedule(
+            {
+                "name": ts_name,
+                "members": {"member": [{"timePeriodName": tp_name}]},
+            }
+        )
         try:
             result = axl.get_time_schedule(ts_name)
-            assert result is not None, f"get_time_schedule('{ts_name}') returned None\n{_safe_debug(axl)}"
+            assert result is not None, (
+                f"get_time_schedule('{ts_name}') returned None\n{_safe_debug(axl)}"
+            )
 
             axl.update_time_schedule(name=ts_name)
             result = axl.list_time_schedule(search_criteria={"name": f"{PREFIX}%"})
@@ -813,8 +851,7 @@ def test_0300_phone_crud(axl: AXLClient, dep_device_pool):
         "locationName": "Hub_None",
         "phoneTemplateName": "Standard Client Services Framework",
         "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
+            "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
         ),
         "sipProfileName": "Standard SIP Profile",
         "description": "Integration test phone",
@@ -823,9 +860,7 @@ def test_0300_phone_crud(axl: AXLClient, dep_device_pool):
     try:
         result = axl.get_phone(name)
         ph = result["return"]["phone"]
-        assert ph["name"] == name, (
-            f"get_phone: expected name={name!r}, got {ph['name']!r}"
-        )
+        assert ph["name"] == name, f"get_phone: expected name={name!r}, got {ph['name']!r}"
 
         axl.update_phone(name=name, description="Updated")
         result = axl.get_phone(name)
@@ -853,8 +888,7 @@ def test_0301_phone_builder_crud(axl: AXLClient, dep_device_pool):
         .device_pool(dep_device_pool)
         .sip_profile("Standard SIP Profile")
         .security_profile(
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
+            "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
         )
         .phone_template("Standard Client Services Framework")
         .description("Built by PhoneBuilder")
@@ -876,12 +910,14 @@ def test_0302_phone_with_line(axl: AXLClient, dep_device_pool, dep_partition):
     line_pattern = "18010"
 
     # Create the line first
-    axl.add_line({
-        "pattern": line_pattern,
-        "routePartitionName": dep_partition,
-        "description": "Phone line test",
-        "usage": "Device",
-    })
+    axl.add_line(
+        {
+            "pattern": line_pattern,
+            "routePartitionName": dep_partition,
+            "description": "Phone line test",
+            "usage": "Device",
+        }
+    )
     try:
         axl.add_phone(
             {
@@ -895,22 +931,25 @@ def test_0302_phone_with_line(axl: AXLClient, dep_device_pool, dep_partition):
                 "locationName": "Hub_None",
                 "phoneTemplateName": "Standard Client Services Framework",
                 "securityProfileName": (
-                    "Cisco Unified Client Services Framework "
-                    "- Standard SIP Non-Secure Profile"
+                    "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
                 ),
                 "sipProfileName": "Standard SIP Profile",
             },
-            line_data=[{
-                "index": 1,
-                "dirn": {
-                    "pattern": line_pattern,
-                    "routePartitionName": dep_partition,
-                },
-            }],
+            line_data=[
+                {
+                    "index": 1,
+                    "dirn": {
+                        "pattern": line_pattern,
+                        "routePartitionName": dep_partition,
+                    },
+                }
+            ],
         )
         try:
             result = axl.get_phone(phone_name)
-            assert result is not None, f"get_phone('{phone_name}') returned None\n{_safe_debug(axl)}"
+            assert result is not None, (
+                f"get_phone('{phone_name}') returned None\n{_safe_debug(axl)}"
+            )
         finally:
             axl.remove_phone(phone_name)
     finally:
@@ -920,19 +959,23 @@ def test_0302_phone_with_line(axl: AXLClient, dep_device_pool, dep_partition):
 def test_0303_user_crud(axl: AXLClient):
     """End User — CRUD."""
     userid = f"{PREFIX}user1"
-    axl.add_user({
-        "userid": userid,
-        "firstName": "Test",
-        "lastName": "User",
-        "password": "T3stP@ss!",
-        "pin": "12345",
-        "presenceGroupName": "Standard Presence group",
-    })
+    axl.add_user(
+        {
+            "userid": userid,
+            "firstName": "Test",
+            "lastName": "User",
+            "password": "T3stP@ss!",
+            "pin": "12345",
+            "presenceGroupName": "Standard Presence group",
+        }
+    )
     try:
         result = axl.get_user(userid)
         u = result["return"]["user"]
         assert u["userid"] == userid, f"get_user: expected userid={userid!r}, got {u['userid']!r}"
-        assert u["firstName"] == "Test", f"get_user: expected firstName='Test', got {u['firstName']!r}"
+        assert u["firstName"] == "Test", (
+            f"get_user: expected firstName='Test', got {u['firstName']!r}"
+        )
 
         axl.update_user(userid=userid, firstName="Updated")
         result = axl.get_user(userid)
@@ -957,24 +1000,24 @@ def test_0304_app_user_crud(axl: AXLClient):
         axl.remove_app_user(userid)
 
 
-def test_0305_sip_trunk_crud(
-    axl: AXLClient, dep_device_pool, dep_sip_trunk_sec_profile
-):
+def test_0305_sip_trunk_crud(axl: AXLClient, dep_device_pool, dep_sip_trunk_sec_profile):
     """SIP Trunk — CRUD + list."""
     name = f"{PREFIX}Trunk"
-    axl.add_sip_trunk({
-        "name": name,
-        "product": "SIP Trunk",
-        "class": "Trunk",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.NETWORK,
-        "devicePoolName": dep_device_pool,
-        "securityProfileName": dep_sip_trunk_sec_profile,
-        "sipProfileName": "Standard SIP Profile",
-        "locationName": "Hub_None",
-        "presenceGroupName": "Standard Presence group",
-        "description": "Test trunk",
-    })
+    axl.add_sip_trunk(
+        {
+            "name": name,
+            "product": "SIP Trunk",
+            "class": "Trunk",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.NETWORK,
+            "devicePoolName": dep_device_pool,
+            "securityProfileName": dep_sip_trunk_sec_profile,
+            "sipProfileName": "Standard SIP Profile",
+            "locationName": "Hub_None",
+            "presenceGroupName": "Standard Presence group",
+            "description": "Test trunk",
+        }
+    )
     try:
         result = axl.get_sip_trunk(name)
         assert result["return"]["sipTrunk"]["name"] == name, (
@@ -994,9 +1037,7 @@ def test_0305_sip_trunk_crud(
         axl.remove_sip_trunk(name)
 
 
-def test_0306_sip_trunk_builder_crud(
-    axl: AXLClient, dep_device_pool, dep_sip_trunk_sec_profile
-):
+def test_0306_sip_trunk_builder_crud(axl: AXLClient, dep_device_pool, dep_sip_trunk_sec_profile):
     """SIP Trunk — CRUD via SipTrunkBuilder."""
     name = f"{PREFIX}TrunkBuilt"
     trunk_data = (
@@ -1011,7 +1052,9 @@ def test_0306_sip_trunk_builder_crud(
     axl.add_sip_trunk(trunk_data)
     try:
         result = axl.get_sip_trunk(name)
-        assert result is not None, f"SipTrunkBuilder: get_sip_trunk('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"SipTrunkBuilder: get_sip_trunk('{name}') returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_sip_trunk(name)
 
@@ -1019,14 +1062,16 @@ def test_0306_sip_trunk_builder_crud(
 def test_0307_device_profile_crud(axl: AXLClient, dep_device_pool):
     """Device Profile (Extension Mobility) — CRUD + list."""
     name = f"{PREFIX}DevProf"
-    axl.add_device_profile({
-        "name": name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Device Profile",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "phoneTemplateName": "Standard Client Services Framework",
-    })
+    axl.add_device_profile(
+        {
+            "name": name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Device Profile",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "phoneTemplateName": "Standard Client Services Framework",
+        }
+    )
     try:
         result = axl.get_device_profile(name)
         assert result is not None, f"get_device_profile('{name}') returned None\n{_safe_debug(axl)}"
@@ -1041,23 +1086,27 @@ def test_0307_device_profile_crud(axl: AXLClient, dep_device_pool):
 def test_0308_remote_destination_profile_crud(axl: AXLClient, dep_device_pool):
     """Remote Destination Profile — CRUD + list."""
     name = f"{PREFIX}RDP"
-    axl.add_remote_destination_profile({
-        "name": name,
-        "product": "Remote Destination Profile",
-        "class": "Remote Destination Profile",
-        "protocol": "Remote Destination",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-    })
+    axl.add_remote_destination_profile(
+        {
+            "name": name,
+            "product": "Remote Destination Profile",
+            "class": "Remote Destination Profile",
+            "protocol": "Remote Destination",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+        }
+    )
     try:
         result = axl.get_remote_destination_profile(name)
-        assert result is not None, f"get_remote_destination_profile('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_remote_destination_profile('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_remote_destination_profile(name=name, description="Updated")
-        result = axl.list_remote_destination_profile(
-            search_criteria={"name": f"{PREFIX}%"}
+        result = axl.list_remote_destination_profile(search_criteria={"name": f"{PREFIX}%"})
+        assert result is not None, (
+            f"list_remote_destination_profile returned None\n{_safe_debug(axl)}"
         )
-        assert result is not None, f"list_remote_destination_profile returned None\n{_safe_debug(axl)}"
     finally:
         axl.remove_remote_destination_profile(name)
 
@@ -1077,45 +1126,53 @@ def test_0309_remote_destination_crud(axl: AXLClient, dep_device_pool):
         axl.remove_user(userid)
 
     # Create user with mobility enabled (as per Cisco sample)
-    axl.add_user({
-        "userid": userid,
-        "firstName": "RD",
-        "lastName": "Test",
-        "password": "T3stP@ss!",
-        "pin": "12345",
-        "presenceGroupName": "Standard Presence group",
-        "enableMobility": "true",
-    })
+    axl.add_user(
+        {
+            "userid": userid,
+            "firstName": "RD",
+            "lastName": "Test",
+            "password": "T3stP@ss!",
+            "pin": "12345",
+            "presenceGroupName": "Standard Presence group",
+            "enableMobility": "true",
+        }
+    )
     try:
         # Create RDP and associate it with the user
-        axl.add_remote_destination_profile({
-            "name": rdp_name,
-            "product": "Remote Destination Profile",
-            "class": "Remote Destination Profile",
-            "protocol": "Remote Destination",
-            "protocolSide": ProtocolSide.USER,
-            "devicePoolName": dep_device_pool,
-            "userId": userid,
-        })
+        axl.add_remote_destination_profile(
+            {
+                "name": rdp_name,
+                "product": "Remote Destination Profile",
+                "class": "Remote Destination Profile",
+                "protocol": "Remote Destination",
+                "protocolSide": ProtocolSide.USER,
+                "devicePoolName": dep_device_pool,
+                "userId": userid,
+            }
+        )
         try:
-            axl.add_remote_destination({
-                "name": f"{PREFIX}RD",
-                "destination": dest,
-                "ownerUserId": userid,
-                "remoteDestinationProfileName": rdp_name,
-                "enableUnifiedMobility": "true",
-                "isMobilePhone": "true",
-                "enableMobileConnect": "true",
-            })
+            axl.add_remote_destination(
+                {
+                    "name": f"{PREFIX}RD",
+                    "destination": dest,
+                    "ownerUserId": userid,
+                    "remoteDestinationProfileName": rdp_name,
+                    "enableUnifiedMobility": "true",
+                    "isMobilePhone": "true",
+                    "enableMobileConnect": "true",
+                }
+            )
             try:
                 result = axl.get_remote_destination(dest)
-                assert result is not None, f"get_remote_destination('{dest}') returned None\n{_safe_debug(axl)}"
+                assert result is not None, (
+                    f"get_remote_destination('{dest}') returned None\n{_safe_debug(axl)}"
+                )
 
                 axl.update_remote_destination(destination=dest, answerTooSoonTimer=1500)
-                result = axl.list_remote_destination(
-                    search_criteria={"name": f"{PREFIX}%"}
+                result = axl.list_remote_destination(search_criteria={"name": f"{PREFIX}%"})
+                assert result is not None, (
+                    f"list_remote_destination returned None\n{_safe_debug(axl)}"
                 )
-                assert result is not None, f"list_remote_destination returned None\n{_safe_debug(axl)}"
             finally:
                 axl.remove_remote_destination(dest)
         finally:
@@ -1134,13 +1191,15 @@ def test_0400_line_group_crud(axl: AXLClient, dep_line, dep_partition):
     name = f"{PREFIX}LG"
     axl.add_line_group(
         name,
-        members=[{
-            "lineSelectionOrder": 1,
-            "directoryNumber": {
-                "pattern": dep_line,
-                "routePartitionName": dep_partition,
-            },
-        }],
+        members=[
+            {
+                "lineSelectionOrder": 1,
+                "directoryNumber": {
+                    "pattern": dep_line,
+                    "routePartitionName": dep_partition,
+                },
+            }
+        ],
     )
     try:
         result = axl.get_line_group(name)
@@ -1183,7 +1242,9 @@ def test_0402_hunt_pilot_crud(axl: AXLClient, dep_partition, dep_hunt_list):
     axl.add_hunt_pilot(pattern, dep_partition, dep_hunt_list, description="Test")
     try:
         result = axl.get_hunt_pilot(pattern, dep_partition)
-        assert result is not None, f"get_hunt_pilot('{pattern}', '{dep_partition}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_hunt_pilot('{pattern}', '{dep_partition}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_hunt_pilot(
             pattern=pattern,
@@ -1244,7 +1305,9 @@ def test_0502_route_pattern_crud(axl: AXLClient, dep_partition, dep_route_list):
     axl.add_route_pattern(pattern, dep_partition, dep_route_list)
     try:
         result = axl.get_route_pattern(pattern, dep_partition)
-        assert result is not None, f"get_route_pattern('{pattern}', '{dep_partition}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_route_pattern('{pattern}', '{dep_partition}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_route_pattern(
             pattern=pattern,
@@ -1275,17 +1338,18 @@ def test_0601_sql_update(axl: AXLClient, dep_partition):
     axl.add_route_partition(name, description="SQL test")
     try:
         result = axl.sql_update(
-            f"UPDATE routepartition SET description='SQLUpdated' "
-            f"WHERE name='{name}'"
+            f"UPDATE routepartition SET description='SQLUpdated' WHERE name='{name}'"
         )
         assert "rows_updated" in result, f"sql_update response missing 'rows_updated': {result!r}"
-        assert result["rows_updated"] >= 1, f"sql_update rows_updated={result['rows_updated']}, expected >= 1"
-
-        verify = axl.sql_query(
-            f"SELECT description FROM routepartition WHERE name='{name}'"
+        assert result["rows_updated"] >= 1, (
+            f"sql_update rows_updated={result['rows_updated']}, expected >= 1"
         )
+
+        verify = axl.sql_query(f"SELECT description FROM routepartition WHERE name='{name}'")
         got = verify["rows"][0]["description"] if verify.get("rows") else None
-        assert got == "SQLUpdated", f"sql_update verify: expected 'SQLUpdated', got {got!r}. Full result: {verify!r}"
+        assert got == "SQLUpdated", (
+            f"sql_update verify: expected 'SQLUpdated', got {got!r}. Full result: {verify!r}"
+        )
     finally:
         axl.remove_route_partition(name)
 
@@ -1293,26 +1357,29 @@ def test_0601_sql_update(axl: AXLClient, dep_partition):
 def test_0602_sql_get_device_pkid(axl: AXLClient, dep_device_pool):
     """sql_get_device_pkid helper."""
     phone_name = "CSFaxtkpkid1"
-    axl.add_phone({
-        "name": phone_name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_phone(
+        {
+            "name": phone_name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         pkid = axl.sql_get_device_pkid(phone_name)
-        assert pkid is not None, f"sql_get_device_pkid('{phone_name}') returned None\n{_safe_debug(axl)}"
-        assert len(pkid) > 0, f"sql_get_device_pkid returned empty string"
+        assert pkid is not None, (
+            f"sql_get_device_pkid('{phone_name}') returned None\n{_safe_debug(axl)}"
+        )
+        assert len(pkid) > 0, "sql_get_device_pkid returned empty string"
     finally:
         axl.remove_phone(phone_name)
 
@@ -1320,17 +1387,21 @@ def test_0602_sql_get_device_pkid(axl: AXLClient, dep_device_pool):
 def test_0603_sql_get_enduser_pkid(axl: AXLClient):
     """sql_get_enduser_pkid helper."""
     userid = f"{PREFIX}pkiduser"
-    axl.add_user({
-        "userid": userid,
-        "firstName": "PKID",
-        "lastName": "Test",
-        "password": "T3stP@ss!",
-        "pin": "12345",
-        "presenceGroupName": "Standard Presence group",
-    })
+    axl.add_user(
+        {
+            "userid": userid,
+            "firstName": "PKID",
+            "lastName": "Test",
+            "password": "T3stP@ss!",
+            "pin": "12345",
+            "presenceGroupName": "Standard Presence group",
+        }
+    )
     try:
         pkid = axl.sql_get_enduser_pkid(userid)
-        assert pkid is not None, f"sql_get_enduser_pkid('{userid}') returned None\n{_safe_debug(axl)}"
+        assert pkid is not None, (
+            f"sql_get_enduser_pkid('{userid}') returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_user(userid)
 
@@ -1339,19 +1410,23 @@ def test_0604_sql_user_group_operations(axl: AXLClient):
     """sql_get_user_group_pkid, sql_associate/remove_user_to/from_group."""
     userid = f"{PREFIX}grpuser"
     group_name = f"{PREFIX}SQLGrp"
-    axl.add_user({
-        "userid": userid,
-        "firstName": "Group",
-        "lastName": "Test",
-        "password": "T3stP@ss!",
-        "pin": "12345",
-        "presenceGroupName": "Standard Presence group",
-    })
+    axl.add_user(
+        {
+            "userid": userid,
+            "firstName": "Group",
+            "lastName": "Test",
+            "password": "T3stP@ss!",
+            "pin": "12345",
+            "presenceGroupName": "Standard Presence group",
+        }
+    )
     axl.add_user_group(group_name)
     try:
         # Get group PKID
         pkid = axl.sql_get_user_group_pkid(group_name)
-        assert pkid is not None, f"sql_get_user_group_pkid('{group_name}') returned None\n{_safe_debug(axl)}"
+        assert pkid is not None, (
+            f"sql_get_user_group_pkid('{group_name}') returned None\n{_safe_debug(axl)}"
+        )
 
         # Associate user to group
         axl.sql_associate_user_to_group(userid, group_name)
@@ -1372,35 +1447,40 @@ def test_0605_sql_associate_device_to_user(axl: AXLClient, dep_device_pool):
     # Clean up leftovers from a previous run
     with contextlib.suppress(Exception):
         axl.remove_user(userid)
-    axl.add_user({
-        "userid": userid,
-        "firstName": "Device",
-        "lastName": "Assoc",
-        "password": "T3stP@ss!",
-        "pin": "12345",
-        "presenceGroupName": "Standard Presence group",
-    })
-    axl.add_phone({
-        "name": phone_name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_user(
+        {
+            "userid": userid,
+            "firstName": "Device",
+            "lastName": "Assoc",
+            "password": "T3stP@ss!",
+            "pin": "12345",
+            "presenceGroupName": "Standard Presence group",
+        }
+    )
+    axl.add_phone(
+        {
+            "name": phone_name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         axl.sql_associate_device_to_user(phone_name, userid)
         # Verify via get_user
         result = axl.get_user(userid)
-        assert result is not None, f"get_user('{userid}') returned None after device association\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_user('{userid}') returned None after device association\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_phone(phone_name)
@@ -1422,22 +1502,23 @@ def test_0606_sql_service_parameter(axl: AXLClient):
 def test_0700_apply_phone(axl: AXLClient, dep_device_pool):
     """apply_phone — apply config to a phone."""
     name = "CSFaxtkapp1"
-    axl.add_phone({
-        "name": name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_phone(
+        {
+            "name": name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         result = axl.apply_phone(name=name)
         assert result is not None, f"apply_phone('{name}') returned None\n{_safe_debug(axl)}"
@@ -1448,22 +1529,23 @@ def test_0700_apply_phone(axl: AXLClient, dep_device_pool):
 def test_0701_reset_phone(axl: AXLClient, dep_device_pool):
     """reset_phone — reset a phone."""
     name = "CSFaxtkrst1"
-    axl.add_phone({
-        "name": name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_phone(
+        {
+            "name": name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         result = axl.reset_phone(name=name)
         assert result is not None, f"reset_phone('{name}') returned None\n{_safe_debug(axl)}"
@@ -1474,22 +1556,23 @@ def test_0701_reset_phone(axl: AXLClient, dep_device_pool):
 def test_0702_restart_phone(axl: AXLClient, dep_device_pool):
     """restart_phone — restart a phone."""
     name = "CSFaxtkrstr1"
-    axl.add_phone({
-        "name": name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_phone(
+        {
+            "name": name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         result = axl.restart_phone(name=name)
         assert result is not None, f"restart_phone('{name}') returned None\n{_safe_debug(axl)}"
@@ -1537,11 +1620,15 @@ _GENERIC_CRUD = [
     # — Original entries —
     ("aar_group", {"name": f"{PREFIX}AAR"}, True),
     ("cmc_info", {"code": "9999108001", "description": "Test"}, False),
-    ("fac_info", {
-        "name": f"{PREFIX}FAC",
-        "code": "8888108001",
-        "authorizationLevel": 1,
-    }, True),
+    (
+        "fac_info",
+        {
+            "name": f"{PREFIX}FAC",
+            "code": "8888108001",
+            "authorizationLevel": 1,
+        },
+        True,
+    ),
     ("physical_location", {"name": f"{PREFIX}PhysLoc"}, True),
     ("mlpp_domain", {"domainName": f"{PREFIX}MLPP", "domainId": "AABB01"}, True),
     ("device_mobility_group", {"name": f"{PREFIX}DMG"}, True),
@@ -1646,26 +1733,74 @@ _EXTENDED_CRUD = [
     # suite uses. Falls back to ``localhost`` to keep the test discoverable
     # by collection even when UCM_ADDRESS isn't set (the test itself
     # already skip-on-errors via the ``_EXTENDED_CRUD`` harness below).
-    ("presence_redundancy_group", {"name": f"{PREFIX}PRG", "server1": os.environ.get("UCM_ADDRESS", "localhost")}, True),
+    (
+        "presence_redundancy_group",
+        {"name": f"{PREFIX}PRG", "server1": os.environ.get("UCM_ADDRESS", "localhost")},
+        True,
+    ),
     ("lbm_group", {"name": f"{PREFIX}LBMG"}, True),
     ("lbm_hub_group", {"name": f"{PREFIX}LBMHG", "member1": "localhost"}, True),
     ("ccd_hosted_dn_group", {"name": f"{PREFIX}CDDNG"}, True),
     ("ime_enrolled_pattern_group", {"name": f"{PREFIX}IEPG"}, True),
     ("ime_exclusion_number_group", {"name": f"{PREFIX}IENG"}, True),
     ("ime_route_filter_group", {"name": f"{PREFIX}IRFG"}, True),
-    ("saf_security_profile", {"name": f"{PREFIX}SAFSP", "userid": "testuser", "password": "testpass"}, True),
+    (
+        "saf_security_profile",
+        {"name": f"{PREFIX}SAFSP", "userid": "testuser", "password": "testpass"},
+        True,
+    ),
     ("mra_service_domain", {"name": f"{PREFIX}MRASD", "serviceDomains": "example.com"}, True),
-    ("remote_cluster", {"clusterId": "axtk-test-rc", "fullyQualifiedName": "axtk-test-rc.example.com"}, True),
+    (
+        "remote_cluster",
+        {"clusterId": "axtk-test-rc", "fullyQualifiedName": "axtk-test-rc.example.com"},
+        True,
+    ),
     # — Provisioning / Templates —
     ("user_profile_provision", {"name": f"{PREFIX}UPP"}, True),
-    ("universal_line_template", {"name": f"{PREFIX}ULT", "blfPresenceGroup": "Standard Presence group", "partyEntranceTone": "Default", "autoAnswer": "Auto Answer Off"}, True),
-    ("cuma_server_security_profile", {"name": f"{PREFIX}CUMA", "securityMode": "Non Secure", "transportType": "TCP", "serverIpHostName": "198.51.100.99"}, True),
+    (
+        "universal_line_template",
+        {
+            "name": f"{PREFIX}ULT",
+            "blfPresenceGroup": "Standard Presence group",
+            "partyEntranceTone": "Default",
+            "autoAnswer": "Auto Answer Off",
+        },
+        True,
+    ),
+    (
+        "cuma_server_security_profile",
+        {
+            "name": f"{PREFIX}CUMA",
+            "securityMode": "Non Secure",
+            "transportType": "TCP",
+            "serverIpHostName": "198.51.100.99",
+        },
+        True,
+    ),
     # — Moved from _GENERIC_CRUD (require specific server features) —
     ("route_filter", {"name": f"{PREFIX}RF", "dialPlanName": "NANP", "members": {}}, True),
     ("custom_user_field", {"field": "AXTKTestField"}, True),
-    ("sdp_transparency_profile", {"name": f"{PREFIX}SDP", "attributeSet": [{"attributeNameString": "a=ptime", "sdpAttributeHandling": "Any Value"}]}, True),
+    (
+        "sdp_transparency_profile",
+        {
+            "name": f"{PREFIX}SDP",
+            "attributeSet": [
+                {"attributeNameString": "a=ptime", "sdpAttributeHandling": "Any Value"}
+            ],
+        },
+        True,
+    ),
     ("network_access_profile", {"name": f"{PREFIX}NAP", "proxyHostname": "198.51.100.1"}, True),
-    ("http_profile", {"name": f"{PREFIX}HTTP", "userName": "admin", "password": "admin", "webServiceRootUri": "http://198.51.100.1"}, False),
+    (
+        "http_profile",
+        {
+            "name": f"{PREFIX}HTTP",
+            "userName": "admin",
+            "password": "admin",
+            "webServiceRootUri": "http://198.51.100.1",
+        },
+        False,
+    ),
 ]
 
 
@@ -1729,13 +1864,17 @@ def test_0810_extended_crud(axl: AXLClient, obj_key: str, add_data: Dict[str, An
 def test_0820_phone_button_template_crud(axl: AXLClient):
     """Phone Button Template — CRUD + list."""
     name = f"{PREFIX}PBT"
-    axl.add_phone_button_template({
-        "name": name,
-        "basePhoneTemplateName": "Standard Client Services Framework",
-    })
+    axl.add_phone_button_template(
+        {
+            "name": name,
+            "basePhoneTemplateName": "Standard Client Services Framework",
+        }
+    )
     try:
         result = axl.get_phone_button_template(name)
-        assert result is not None, f"get_phone_button_template('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_phone_button_template('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_phone_button_template(name=name)
         result = axl.list_phone_button_template(search_criteria={"name": f"{PREFIX}%"})
@@ -1747,14 +1886,18 @@ def test_0820_phone_button_template_crud(axl: AXLClient):
 def test_0821_soft_key_template_crud(axl: AXLClient):
     """Soft Key Template — CRUD + list."""
     name = f"{PREFIX}SKT"
-    axl.add_soft_key_template({
-        "name": name,
-        "description": "Integration test",
-        "baseSoftkeyTemplateName": "Standard User",
-    })
+    axl.add_soft_key_template(
+        {
+            "name": name,
+            "description": "Integration test",
+            "baseSoftkeyTemplateName": "Standard User",
+        }
+    )
     try:
         result = axl.get_soft_key_template(name)
-        assert result is not None, f"get_soft_key_template('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_soft_key_template('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_soft_key_template(name=name)
         result = axl.list_soft_key_template(search_criteria={"name": f"{PREFIX}%"})
@@ -1766,19 +1909,25 @@ def test_0821_soft_key_template_crud(axl: AXLClient):
 def test_0822_sip_normalization_script_crud(axl: AXLClient):
     """SIP Normalization Script — CRUD + list."""
     name = f"{PREFIX}SipNorm"
-    axl.add_sip_normalization_script({
-        "name": name,
-        "content": "-- test script\n",
-        "description": "Integration test",
-        "isStandard": "false",
-    })
+    axl.add_sip_normalization_script(
+        {
+            "name": name,
+            "content": "-- test script\n",
+            "description": "Integration test",
+            "isStandard": "false",
+        }
+    )
     try:
         result = axl.get_sip_normalization_script(name)
-        assert result is not None, f"get_sip_normalization_script('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_sip_normalization_script('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_sip_normalization_script(name=name, description="Updated")
         result = axl.list_sip_normalization_script(search_criteria={"name": f"{PREFIX}%"})
-        assert result is not None, f"list_sip_normalization_script returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_sip_normalization_script returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_sip_normalization_script(name)
 
@@ -1787,10 +1936,12 @@ def test_0823_sip_dial_rules_crud(axl: AXLClient):
     """SIP Dial Rules — CRUD + list."""
     name = f"{PREFIX}SDR"
     try:
-        axl.add_sip_dial_rules({
-            "name": name,
-            "dialPattern": "7940_7960_OTHER",
-        })
+        axl.add_sip_dial_rules(
+            {
+                "name": name,
+                "dialPattern": "7940_7960_OTHER",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_sip_dial_rules not supported: {exc}")
     try:
@@ -1807,17 +1958,21 @@ def test_0823_sip_dial_rules_crud(axl: AXLClient):
 def test_0824_application_dial_rules_crud(axl: AXLClient):
     """Application Dial Rules — CRUD + list."""
     name = f"{PREFIX}ADR"
-    axl.add_application_dial_rules({
-        "name": name,
-        "numberBeginWith": "9",
-        "numberOfDigits": 10,
-        "digitsToBeRemoved": 0,
-        "prefixPattern": "9",
-        "priority": 1,
-    })
+    axl.add_application_dial_rules(
+        {
+            "name": name,
+            "numberBeginWith": "9",
+            "numberOfDigits": 10,
+            "digitsToBeRemoved": 0,
+            "prefixPattern": "9",
+            "priority": 1,
+        }
+    )
     try:
         result = axl.get_application_dial_rules(name)
-        assert result is not None, f"get_application_dial_rules('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_application_dial_rules('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_application_dial_rules(name=name)
         result = axl.list_application_dial_rules(search_criteria={"name": f"{PREFIX}%"})
@@ -1829,21 +1984,27 @@ def test_0824_application_dial_rules_crud(axl: AXLClient):
 def test_0825_directory_lookup_dial_rules_crud(axl: AXLClient):
     """Directory Lookup Dial Rules — CRUD + list."""
     name = f"{PREFIX}DLR"
-    axl.add_directory_lookup_dial_rules({
-        "name": name,
-        "numberBeginWith": "1",
-        "numberOfDigits": 10,
-        "digitsToBeRemoved": 1,
-        "prefixPattern": "",
-        "priority": 1,
-    })
+    axl.add_directory_lookup_dial_rules(
+        {
+            "name": name,
+            "numberBeginWith": "1",
+            "numberOfDigits": 10,
+            "digitsToBeRemoved": 1,
+            "prefixPattern": "",
+            "priority": 1,
+        }
+    )
     try:
         result = axl.get_directory_lookup_dial_rules(name)
-        assert result is not None, f"get_directory_lookup_dial_rules('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_directory_lookup_dial_rules('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_directory_lookup_dial_rules(name=name)
         result = axl.list_directory_lookup_dial_rules(search_criteria={"name": f"{PREFIX}%"})
-        assert result is not None, f"list_directory_lookup_dial_rules returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_directory_lookup_dial_rules returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_directory_lookup_dial_rules(name)
 
@@ -1851,17 +2012,23 @@ def test_0825_directory_lookup_dial_rules_crud(axl: AXLClient):
 def test_0826_external_call_control_profile_crud(axl: AXLClient):
     """External Call Control Profile — CRUD + list."""
     name = f"{PREFIX}ECCP"
-    axl.add_external_call_control_profile({
-        "name": name,
-        "primaryUri": "http://198.51.100.70:8080/ecc",
-    })
+    axl.add_external_call_control_profile(
+        {
+            "name": name,
+            "primaryUri": "http://198.51.100.70:8080/ecc",
+        }
+    )
     try:
         result = axl.get_external_call_control_profile(name)
-        assert result is not None, f"get_external_call_control_profile('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_external_call_control_profile('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_external_call_control_profile(name=name)
         result = axl.list_external_call_control_profile(search_criteria={"name": f"{PREFIX}%"})
-        assert result is not None, f"list_external_call_control_profile returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_external_call_control_profile returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_external_call_control_profile(name)
 
@@ -1872,11 +2039,13 @@ def test_0827_gatekeeper_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_gatekeeper(name)
     try:
-        axl.add_gatekeeper({
-            "name": name,
-            "description": "Integration test",
-            "rrqTimeToLive": 60,
-        })
+        axl.add_gatekeeper(
+            {
+                "name": name,
+                "description": "Integration test",
+                "rrqTimeToLive": 60,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_gatekeeper not supported: {exc}")
     try:
@@ -1896,16 +2065,20 @@ def test_0828_advertised_patterns_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_advertised_patterns(pattern)
     try:
-        axl.add_advertised_patterns({
-            "description": "Integration test",
-            "pattern": pattern,
-            "patternType": "Enterprise Number",
-        })
+        axl.add_advertised_patterns(
+            {
+                "description": "Integration test",
+                "pattern": pattern,
+                "patternType": "Enterprise Number",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_advertised_patterns not supported: {exc}")
     try:
         result = axl.get_advertised_patterns(pattern)
-        assert result is not None, f"get_advertised_patterns('{pattern}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_advertised_patterns('{pattern}') returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_advertised_patterns(search_criteria={"pattern": "800555%"})
         assert result is not None, f"list_advertised_patterns returned None\n{_safe_debug(axl)}"
@@ -1920,18 +2093,24 @@ def test_0829_blocked_learned_patterns_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_blocked_learned_patterns(pattern)
     try:
-        axl.add_blocked_learned_patterns({
-            "description": "Integration test",
-            "pattern": pattern,
-        })
+        axl.add_blocked_learned_patterns(
+            {
+                "description": "Integration test",
+                "pattern": pattern,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_blocked_learned_patterns not supported: {exc}")
     try:
         result = axl.get_blocked_learned_patterns(pattern)
-        assert result is not None, f"get_blocked_learned_patterns('{pattern}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_blocked_learned_patterns('{pattern}') returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_blocked_learned_patterns(search_criteria={"pattern": "800555%"})
-        assert result is not None, f"list_blocked_learned_patterns returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_blocked_learned_patterns returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_blocked_learned_patterns(pattern)
@@ -1944,10 +2123,12 @@ def test_0830_conference_now_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_conference_now("18090")
     try:
-        axl.add_conference_now({
-            "conferenceNowNumber": "18090",
-            "maxWaitTimeForHost": 15,
-        })
+        axl.add_conference_now(
+            {
+                "conferenceNowNumber": "18090",
+                "maxWaitTimeForHost": 15,
+            }
+        )
         added = True
     except Exception:
         pass  # singleton already exists
@@ -1966,12 +2147,14 @@ def test_0830_conference_now_crud(axl: AXLClient):
 
 
 def test_0840_called_party_transformation_pattern_crud(
-    axl: AXLClient, dep_partition,
+    axl: AXLClient,
+    dep_partition,
 ):
     """Called Party Transformation Pattern — CRUD + list."""
     pattern = "18030"
     axl.add_called_party_transformation_pattern(
-        pattern, dep_partition,
+        pattern,
+        dep_partition,
         called_party_transformation_mask="1800XXXXXXX",
     )
     try:
@@ -1982,23 +2165,29 @@ def test_0840_called_party_transformation_pattern_crud(
         )
 
         axl.update_called_party_transformation_pattern(
-            pattern=pattern, routePartitionName=dep_partition, description="Updated",
+            pattern=pattern,
+            routePartitionName=dep_partition,
+            description="Updated",
         )
         result = axl.list_called_party_transformation_pattern(
             search_criteria={"pattern": "1803%"},
         )
-        assert result is not None, f"list_called_party_transformation_pattern returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_called_party_transformation_pattern returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_called_party_transformation_pattern(pattern, dep_partition)
 
 
 def test_0841_calling_party_transformation_pattern_crud(
-    axl: AXLClient, dep_partition,
+    axl: AXLClient,
+    dep_partition,
 ):
     """Calling Party Transformation Pattern — CRUD + list."""
     pattern = "18031"
     axl.add_calling_party_transformation_pattern(
-        pattern, dep_partition,
+        pattern,
+        dep_partition,
         calling_party_transformation_mask="1408XXXXXXX",
     )
     try:
@@ -2009,18 +2198,25 @@ def test_0841_calling_party_transformation_pattern_crud(
         )
 
         axl.update_calling_party_transformation_pattern(
-            pattern=pattern, routePartitionName=dep_partition, description="Updated",
+            pattern=pattern,
+            routePartitionName=dep_partition,
+            description="Updated",
         )
         result = axl.list_calling_party_transformation_pattern(
             search_criteria={"pattern": "1803%"},
         )
-        assert result is not None, f"list_calling_party_transformation_pattern returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_calling_party_transformation_pattern returned None\n{_safe_debug(axl)}"
+        )
     finally:
         axl.remove_calling_party_transformation_pattern(pattern, dep_partition)
 
 
 def test_0842_sip_route_pattern_crud(
-    axl: AXLClient, dep_partition, dep_device_pool, dep_sip_trunk_sec_profile,
+    axl: AXLClient,
+    dep_partition,
+    dep_device_pool,
+    dep_sip_trunk_sec_profile,
 ):
     """SIP Route Pattern — CRUD + list. Creates dedicated SIP trunk."""
     pattern = "axtk-test.example.com"
@@ -2030,23 +2226,27 @@ def test_0842_sip_route_pattern_crud(
     with contextlib.suppress(Exception):
         axl.remove_sip_trunk(trunk_name)
     try:
-        axl.add_sip_trunk({
-            "name": trunk_name,
-            "product": "SIP Trunk",
-            "class": "Trunk",
-            "protocol": "SIP",
-            "protocolSide": ProtocolSide.NETWORK,
-            "devicePoolName": dep_device_pool,
-            "securityProfileName": dep_sip_trunk_sec_profile,
-            "sipProfileName": "Standard SIP Profile",
-            "locationName": "Hub_None",
-            "presenceGroupName": "Standard Presence group",
-        })
+        axl.add_sip_trunk(
+            {
+                "name": trunk_name,
+                "product": "SIP Trunk",
+                "class": "Trunk",
+                "protocol": "SIP",
+                "protocolSide": ProtocolSide.NETWORK,
+                "devicePoolName": dep_device_pool,
+                "securityProfileName": dep_sip_trunk_sec_profile,
+                "sipProfileName": "Standard SIP Profile",
+                "locationName": "Hub_None",
+                "presenceGroupName": "Standard Presence group",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"Cannot create SIP trunk dep: {exc}")
     try:
         axl.add_sip_route_pattern(
-            pattern, dep_partition, trunk_name,
+            pattern,
+            dep_partition,
+            trunk_name,
             usage="Domain Routing",
         )
     except Exception as exc:
@@ -2061,7 +2261,9 @@ def test_0842_sip_route_pattern_crud(
         )
 
         axl.update_sip_route_pattern(
-            pattern=pattern, routePartitionName=dep_partition, description="Updated",
+            pattern=pattern,
+            routePartitionName=dep_partition,
+            description="Updated",
         )
         result = axl.list_sip_route_pattern(search_criteria={"pattern": "axtk%"})
         assert result is not None, f"list_sip_route_pattern returned None\n{_safe_debug(axl)}"
@@ -2080,17 +2282,21 @@ def test_0843_message_waiting_crud(axl: AXLClient, dep_partition):
     with contextlib.suppress(Exception):
         axl.remove_message_waiting(pattern)
     try:
-        axl.add_message_waiting({
-            "pattern": pattern,
-            "routePartitionName": dep_partition,
-            "messageWaitingIndicator": "true",
-            "callingSearchSpaceName": "",
-        })
+        axl.add_message_waiting(
+            {
+                "pattern": pattern,
+                "routePartitionName": dep_partition,
+                "messageWaitingIndicator": "true",
+                "callingSearchSpaceName": "",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_message_waiting not supported: {exc}")
     try:
         result = axl.get_message_waiting(pattern, routePartitionName=dep_partition)
-        assert result is not None, f"get_message_waiting('{pattern}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_message_waiting('{pattern}') returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_message_waiting(search_criteria={"pattern": "1803%"})
         assert result is not None, f"list_message_waiting returned None\n{_safe_debug(axl)}"
@@ -2108,18 +2314,22 @@ def test_0844_tod_access_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_user(userid)
     try:
-        axl.add_user({
-            "userid": userid,
-            "lastName": "TodTest",
-            "presenceGroupName": "Standard Presence group",
-        })
+        axl.add_user(
+            {
+                "userid": userid,
+                "lastName": "TodTest",
+                "presenceGroupName": "Standard Presence group",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"Cannot create enduser dep: {exc}")
     try:
-        axl.add_tod_access({
-            "name": tod_name,
-            "ownerIdName": userid,
-        })
+        axl.add_tod_access(
+            {
+                "name": tod_name,
+                "ownerIdName": userid,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_user(userid)
@@ -2138,25 +2348,32 @@ def test_0844_tod_access_crud(axl: AXLClient):
 
 
 def test_0845_enterprise_feature_access_configuration_crud(
-    axl: AXLClient, dep_partition,
+    axl: AXLClient,
+    dep_partition,
 ):
     """Enterprise Feature Access Configuration — CRUD + list."""
     pattern = "18033"
     with contextlib.suppress(Exception):
-        axl.remove_enterprise_feature_access_configuration(pattern, routePartitionName=dep_partition)
+        axl.remove_enterprise_feature_access_configuration(
+            pattern, routePartitionName=dep_partition
+        )
     with contextlib.suppress(Exception):
         axl.remove_enterprise_feature_access_configuration(pattern)
     try:
-        axl.add_enterprise_feature_access_configuration({
-            "pattern": pattern,
-            "routePartitionName": dep_partition,
-            "description": "Integration test",
-            "isDefaultEafNumber": "false",
-        })
+        axl.add_enterprise_feature_access_configuration(
+            {
+                "pattern": pattern,
+                "routePartitionName": dep_partition,
+                "description": "Integration test",
+                "isDefaultEafNumber": "false",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_enterprise_feature_access_configuration not supported: {exc}")
     try:
-        result = axl.get_enterprise_feature_access_configuration(pattern, routePartitionName=dep_partition)
+        result = axl.get_enterprise_feature_access_configuration(
+            pattern, routePartitionName=dep_partition
+        )
         assert result is not None, (
             f"get_enterprise_feature_access_configuration returned None\n{_safe_debug(axl)}"
         )
@@ -2164,10 +2381,14 @@ def test_0845_enterprise_feature_access_configuration_crud(
         result = axl.list_enterprise_feature_access_configuration(
             search_criteria={"pattern": "1803%"},
         )
-        assert result is not None, f"list_enterprise_feature_access_configuration returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_enterprise_feature_access_configuration returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
-            axl.remove_enterprise_feature_access_configuration(pattern, routePartitionName=dep_partition)
+            axl.remove_enterprise_feature_access_configuration(
+                pattern, routePartitionName=dep_partition
+            )
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -2178,18 +2399,22 @@ def test_0845_enterprise_feature_access_configuration_crud(
 def test_0850_cti_route_point_crud(axl: AXLClient, dep_device_pool):
     """CTI Route Point — CRUD + list."""
     name = f"{PREFIX}CTIRP"
-    axl.add_cti_route_point({
-        "name": name,
-        "product": "CTI Route Point",
-        "class": "CTI Route Point",
-        "protocol": "SCCP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "locationName": "Hub_None",
-    })
+    axl.add_cti_route_point(
+        {
+            "name": name,
+            "product": "CTI Route Point",
+            "class": "CTI Route Point",
+            "protocol": "SCCP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "locationName": "Hub_None",
+        }
+    )
     try:
         result = axl.get_cti_route_point(name)
-        assert result is not None, f"get_cti_route_point('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_cti_route_point('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_cti_route_point(name=name, description="Updated")
         result = axl.list_cti_route_point(search_criteria={"name": f"{PREFIX}%"})
@@ -2201,18 +2426,22 @@ def test_0850_cti_route_point_crud(axl: AXLClient, dep_device_pool):
 def test_0851_default_device_profile_crud(axl: AXLClient):
     """Default Device Profile — CRUD + list."""
     name = f"{PREFIX}DDP"
-    axl.add_default_device_profile({
-        "name": name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Device Profile",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "phoneButtonTemplate": "Standard Client Services Framework",
-        "preemption": "Disabled",
-    })
+    axl.add_default_device_profile(
+        {
+            "name": name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Device Profile",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "phoneButtonTemplate": "Standard Client Services Framework",
+            "preemption": "Disabled",
+        }
+    )
     try:
         result = axl.get_default_device_profile(name)
-        assert result is not None, f"get_default_device_profile('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_default_device_profile('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_default_device_profile(name=name, description="Updated")
         result = axl.list_default_device_profile(search_criteria={"name": f"{PREFIX}%"})
@@ -2225,17 +2454,21 @@ def test_0852_conference_bridge_crud(axl: AXLClient, dep_device_pool):
     """Conference Bridge (software) — CRUD + list."""
     name = f"{PREFIX}CFB"
     try:
-        axl.add_conference_bridge({
-            "name": name,
-            "product": "Cisco IOS Enhanced Conference Bridge",
-            "devicePoolName": dep_device_pool,
-            "locationName": "Hub_None",
-        })
+        axl.add_conference_bridge(
+            {
+                "name": name,
+                "product": "Cisco IOS Enhanced Conference Bridge",
+                "devicePoolName": dep_device_pool,
+                "locationName": "Hub_None",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_conference_bridge not supported: {exc}")
     try:
         result = axl.get_conference_bridge(name)
-        assert result is not None, f"get_conference_bridge('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_conference_bridge('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_conference_bridge(name=name, description="Updated")
         result = axl.list_conference_bridge(search_criteria={"name": f"{PREFIX}%"})
@@ -2249,11 +2482,13 @@ def test_0853_mtp_crud(axl: AXLClient, dep_device_pool):
     """Media Termination Point — CRUD + list."""
     name = f"{PREFIX}MTP"
     try:
-        axl.add_mtp({
-            "name": name,
-            "mtpType": "Cisco IOS Enhanced Software Media Termination Point",
-            "devicePoolName": dep_device_pool,
-        })
+        axl.add_mtp(
+            {
+                "name": name,
+                "mtpType": "Cisco IOS Enhanced Software Media Termination Point",
+                "devicePoolName": dep_device_pool,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_mtp not supported: {exc}")
     try:
@@ -2272,11 +2507,13 @@ def test_0854_transcoder_crud(axl: AXLClient, dep_device_pool):
     """Transcoder — CRUD + list."""
     name = f"{PREFIX}XC"
     try:
-        axl.add_transcoder({
-            "name": name,
-            "product": "Cisco IOS Enhanced Media Termination Point",
-            "devicePoolName": dep_device_pool,
-        })
+        axl.add_transcoder(
+            {
+                "name": name,
+                "product": "Cisco IOS Enhanced Media Termination Point",
+                "devicePoolName": dep_device_pool,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_transcoder not supported: {exc}")
     try:
@@ -2295,27 +2532,33 @@ def test_0855_universal_device_template_crud(axl: AXLClient, dep_device_pool):
     """Universal Device Template — CRUD + list."""
     name = f"{PREFIX}UDT"
     try:
-        axl.add_universal_device_template({
-            "name": name,
-            "devicePool": dep_device_pool,
-            "deviceSecurityProfile": (
-                "Universal Device Template - Model-independent Security Profile"
-            ),
-            "sipProfile": "Standard SIP Profile",
-            "phoneButtonTemplate": "Universal Device Template Button Layout",
-            "commonPhoneProfile": "Standard Common Phone Profile",
-            "blfPresenceGroup": "Standard Presence group",
-            "location": "Hub_None",
-        })
+        axl.add_universal_device_template(
+            {
+                "name": name,
+                "devicePool": dep_device_pool,
+                "deviceSecurityProfile": (
+                    "Universal Device Template - Model-independent Security Profile"
+                ),
+                "sipProfile": "Standard SIP Profile",
+                "phoneButtonTemplate": "Universal Device Template Button Layout",
+                "commonPhoneProfile": "Standard Common Phone Profile",
+                "blfPresenceGroup": "Standard Presence group",
+                "location": "Hub_None",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_universal_device_template not supported: {exc}")
     try:
         result = axl.get_universal_device_template(name)
-        assert result is not None, f"get_universal_device_template('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_universal_device_template('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_universal_device_template(name=name, deviceDescription="Updated")
         result = axl.list_universal_device_template(search_criteria={"name": f"{PREFIX}%"})
-        assert result is not None, f"list_universal_device_template returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_universal_device_template returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_universal_device_template(name)
@@ -2336,7 +2579,9 @@ def test_0860_call_manager_group_crud(axl: AXLClient):
     axl.add_call_manager_group(name, members=[cm_name])
     try:
         result = axl.get_call_manager_group(name)
-        assert result is not None, f"get_call_manager_group('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_call_manager_group('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_call_manager_group(search_criteria={"name": f"{PREFIX}%"})
         assert result is not None, f"list_call_manager_group returned None\n{_safe_debug(axl)}"
@@ -2347,12 +2592,16 @@ def test_0860_call_manager_group_crud(axl: AXLClient):
 def test_0861_local_route_group_crud(axl: AXLClient, dep_route_group):
     """Local Route Group — CRUD + list."""
     name = f"{PREFIX}LRG"
-    axl.add_local_route_group({
-        "name": name,
-    })
+    axl.add_local_route_group(
+        {
+            "name": name,
+        }
+    )
     try:
         result = axl.get_local_route_group(name)
-        assert result is not None, f"get_local_route_group('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_local_route_group('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         lrg_uuid = result["return"]["localRouteGroup"]["uuid"]
         axl.update_local_route_group(uuid=lrg_uuid, name=name, description="Updated")
@@ -2367,24 +2616,26 @@ def test_0862_application_server_crud(axl: AXLClient):
     name = f"{PREFIX}AppSrv"
     # Cleanup via SQL since remove only takes uuid
     with contextlib.suppress(Exception):
-        sql_r = axl.sql_query(
-            f"SELECT pkid FROM applicationserver WHERE name = '{name}'"
-        )
+        sql_r = axl.sql_query(f"SELECT pkid FROM applicationserver WHERE name = '{name}'")
         for row in sql_r.get("rows", []):
             with contextlib.suppress(Exception):
                 axl.remove_application_server(row["pkid"])
     try:
-        add_result = axl.add_application_server({
-            "name": name,
-            "appServerType": "Cisco Web Dialer",
-            "ipAddress": "198.51.100.80",
-        })
+        add_result = axl.add_application_server(
+            {
+                "name": name,
+                "appServerType": "Cisco Web Dialer",
+                "ipAddress": "198.51.100.80",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_application_server not supported: {exc}")
     app_uuid = str(add_result["return"]).strip("{}")
     try:
         result = axl.get_application_server(app_uuid)
-        assert result is not None, f"get_application_server('{app_uuid}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_application_server('{app_uuid}') returned None\n{_safe_debug(axl)}"
+        )
 
         axl.update_application_server(uuid=app_uuid)
         result = axl.list_application_server(search_criteria={"name": f"{PREFIX}%"})
@@ -2398,14 +2649,16 @@ def test_0863_billing_server_crud(axl: AXLClient):
     """Billing Server — CRUD + list."""
     name = f"{PREFIX}BillSrv"
     try:
-        axl.add_billing_server({
-            "hostName": name,
-            "userId": "cdr_user",
-            "password": "cdr_pass",
-            "resendOnFailure": "false",
-            "directory": "/tmp",
-            "billingServerProtocol": "SFTP",
-        })
+        axl.add_billing_server(
+            {
+                "hostName": name,
+                "userId": "cdr_user",
+                "password": "cdr_pass",
+                "resendOnFailure": "false",
+                "directory": "/tmp",
+                "billingServerProtocol": "SFTP",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_billing_server not supported: {exc}")
     try:
@@ -2423,19 +2676,25 @@ def test_0864_audio_codec_preference_list_crud(axl: AXLClient):
     """Audio Codec Preference List — CRUD + list."""
     name = f"{PREFIX}AudCodec"
     try:
-        axl.add_audio_codec_preference_list({
-            "name": name,
-            "description": "Integration test",
-            "codecsInList": {"codecNames": ["G.711 U-Law 64k"]},
-        })
+        axl.add_audio_codec_preference_list(
+            {
+                "name": name,
+                "description": "Integration test",
+                "codecsInList": {"codecNames": ["G.711 U-Law 64k"]},
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_audio_codec_preference_list not supported: {exc}")
     try:
         result = axl.get_audio_codec_preference_list(name)
-        assert result is not None, f"get_audio_codec_preference_list('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_audio_codec_preference_list('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_audio_codec_preference_list(search_criteria={"name": f"{PREFIX}%"})
-        assert result is not None, f"list_audio_codec_preference_list returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_audio_codec_preference_list returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_audio_codec_preference_list(name)
@@ -2458,10 +2717,12 @@ def test_0865_elin_group_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_elin_group(name)
     try:
-        axl.add_elin_group({
-            "name": name,
-            "elinNumbers": {"elinNumber": [{"pattern": "9195551234", "partition": ""}]},
-        })
+        axl.add_elin_group(
+            {
+                "name": name,
+                "elinNumbers": {"elinNumber": [{"pattern": "9195551234", "partition": ""}]},
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_elin_group not supported: {exc}")
     try:
@@ -2482,11 +2743,13 @@ def test_0866_voh_server_crud(axl: AXLClient, dep_sip_trunk):
     """VoH Server — CRUD + list."""
     name = f"{PREFIX}VOH"
     try:
-        axl.add_voh_server({
-            "name": name,
-            "sipTrunkName": dep_sip_trunk,
-            "defaultVideoStreamId": "1",
-        })
+        axl.add_voh_server(
+            {
+                "name": name,
+                "sipTrunkName": dep_sip_trunk,
+                "defaultVideoStreamId": "1",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_voh_server not supported: {exc}")
     try:
@@ -2506,15 +2769,19 @@ def test_0867_feature_group_template_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_feature_group_template(name)
     try:
-        axl.add_feature_group_template({
-            "name": name,
-            "BLFPresenceGp": "Standard Presence group",
-        })
+        axl.add_feature_group_template(
+            {
+                "name": name,
+                "BLFPresenceGp": "Standard Presence group",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_feature_group_template not supported: {exc}")
     try:
         result = axl.get_feature_group_template(name)
-        assert result is not None, f"get_feature_group_template('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_feature_group_template('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_feature_group_template(search_criteria={"name": f"{PREFIX}%"})
         assert result is not None, f"list_feature_group_template returned None\n{_safe_debug(axl)}"
@@ -2527,21 +2794,25 @@ def test_0868_device_mobility_crud(axl: AXLClient, dep_device_pool):
     """Device Mobility — CRUD + list."""
     name = f"{PREFIX}DevMob"
     try:
-        axl.add_device_mobility({
-            "name": name,
-            "subNetDetails": {
-                "ipv4SubNetDetails": {
-                    "ipv4Subnet": "198.51.100.0",
-                    "ipv4SubNetMaskSz": "24",
+        axl.add_device_mobility(
+            {
+                "name": name,
+                "subNetDetails": {
+                    "ipv4SubNetDetails": {
+                        "ipv4Subnet": "198.51.100.0",
+                        "ipv4SubNetMaskSz": "24",
+                    },
                 },
-            },
-            "members": {"member": [{"devicePoolName": dep_device_pool}]},
-        })
+                "members": {"member": [{"devicePoolName": dep_device_pool}]},
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_device_mobility not supported: {exc}")
     try:
         result = axl.get_device_mobility(name)
-        assert result is not None, f"get_device_mobility('{name}') returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_device_mobility('{name}') returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_device_mobility(search_criteria={"name": f"{PREFIX}%"})
         assert result is not None, f"list_device_mobility returned None\n{_safe_debug(axl)}"
@@ -2558,11 +2829,13 @@ def test_0869_meet_me_crud(axl: AXLClient, dep_partition):
     with contextlib.suppress(Exception):
         axl.remove_meet_me(pattern)
     try:
-        axl.add_meet_me({
-            "pattern": pattern,
-            "routePartitionName": dep_partition,
-            "minimumSecurityLevel": "Non Secure",
-        })
+        axl.add_meet_me(
+            {
+                "pattern": pattern,
+                "routePartitionName": dep_partition,
+                "minimumSecurityLevel": "Non Secure",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_meet_me not supported: {exc}")
     try:
@@ -2585,18 +2858,20 @@ def test_0870_voicemail_port_crud(axl: AXLClient, dep_device_pool):
     """Voicemail Port — CRUD (requires voicemail server)."""
     name = f"{PREFIX}VMP-VI1"
     try:
-        axl.add_voicemail_port({
-            "name": name,
-            "product": "Cisco Voice Mail Port",
-            "class": "Voice Mail",
-            "protocol": "SCCP",
-            "protocolSide": ProtocolSide.USER,
-            "devicePoolName": dep_device_pool,
-            "locationName": "Hub_None",
-            "useTrustedRelayPoint": Status.DEFAULT,
-            "securityProfileName": "Non Secure Voice Mail Port",
-            "dnPattern": "18099",
-        })
+        axl.add_voicemail_port(
+            {
+                "name": name,
+                "product": "Cisco Voice Mail Port",
+                "class": "Voice Mail",
+                "protocol": "SCCP",
+                "protocolSide": ProtocolSide.USER,
+                "devicePoolName": dep_device_pool,
+                "locationName": "Hub_None",
+                "useTrustedRelayPoint": Status.DEFAULT,
+                "securityProfileName": "Non Secure Voice Mail Port",
+                "dnPattern": "18099",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_voicemail_port not supported: {exc}")
     try:
@@ -2631,11 +2906,13 @@ def test_0872_sip_realm_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_sip_realm(name)
     try:
-        axl.add_sip_realm({
-            "realm": name,
-            "userid": "testuser",
-            "digestCredentials": "T3stP@ss!",
-        })
+        axl.add_sip_realm(
+            {
+                "realm": name,
+                "userid": "testuser",
+                "digestCredentials": "T3stP@ss!",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_sip_realm not supported: {exc}")
     try:
@@ -2675,26 +2952,34 @@ def test_0882_get_app_server_info(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_application_server(app_name)
     try:
-        axl.add_application_server({
-            "name": app_name,
-            "appServerType": "Cisco Unity Connection",
-            "ipAddress": "198.51.100.50",
-            "url": "https://198.51.100.50/intradirectorysvc/AXLAPIService",
-        })
+        axl.add_application_server(
+            {
+                "name": app_name,
+                "appServerType": "Cisco Unity Connection",
+                "ipAddress": "198.51.100.50",
+                "url": "https://198.51.100.50/intradirectorysvc/AXLAPIService",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"Cannot create Unity Connection app server dep: {exc}")
     try:
-        add_resp = axl.add_app_server_info({
-            "appServerName": app_name,
-            "appServerContent": "UNITY_CONNECTION",
-        })
+        add_resp = axl.add_app_server_info(
+            {
+                "appServerName": app_name,
+                "appServerContent": "UNITY_CONNECTION",
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_application_server(app_name)
         pytest.skip(f"add_app_server_info not supported: {exc}")
     # Extract uuid from add response
-    ret = add_resp.get("return") if isinstance(add_resp, dict) else getattr(add_resp, "return", None)
-    asi_uuid = getattr(ret, "uuid", None) if ret and not isinstance(ret, dict) else (ret or {}).get("uuid")
+    ret = (
+        add_resp.get("return") if isinstance(add_resp, dict) else getattr(add_resp, "return", None)
+    )
+    asi_uuid = (
+        getattr(ret, "uuid", None) if ret and not isinstance(ret, dict) else (ret or {}).get("uuid")
+    )
     if not asi_uuid and isinstance(ret, str):
         asi_uuid = ret
     try:
@@ -2715,11 +3000,13 @@ def test_0883_list_cca_profiles(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_cca_profiles(cca_id)
     try:
-        axl.add_cca_profiles({
-            "ccaId": cca_id,
-            "primarySoftSwitchId": "SS1",
-            "objectClass": "Subscriber",
-        })
+        axl.add_cca_profiles(
+            {
+                "ccaId": cca_id,
+                "primarySoftSwitchId": "SS1",
+                "objectClass": "Subscriber",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_cca_profiles not supported: {exc}")
     try:
@@ -2746,35 +3033,40 @@ def test_0890_user_phone_association(axl: AXLClient, dep_device_pool):
         axl.remove_phone(phone_name)
     with contextlib.suppress(Exception):
         axl.remove_user(userid)
-    axl.add_user({
-        "userid": userid,
-        "firstName": "Assoc",
-        "lastName": "Test",
-        "password": "T3stP@ss!",
-        "pin": "12345",
-        "presenceGroupName": "Standard Presence group",
-    })
-    axl.add_phone({
-        "name": phone_name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_user(
+        {
+            "userid": userid,
+            "firstName": "Assoc",
+            "lastName": "Test",
+            "password": "T3stP@ss!",
+            "pin": "12345",
+            "presenceGroupName": "Standard Presence group",
+        }
+    )
+    axl.add_phone(
+        {
+            "name": phone_name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         axl.associate_user_devices(userid, [phone_name])
         # Verify association persists
         result = axl.get_user(userid)
-        assert result is not None, f"get_user('{userid}') returned None after association\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_user('{userid}') returned None after association\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_phone(phone_name)
@@ -2802,22 +3094,23 @@ def test_0891_sql_update_service_parameter(axl: AXLClient):
 def test_0892_wipe_phone(axl: AXLClient, dep_device_pool):
     """wipe_phone — wipe a phone (exercises API call, phone not registered)."""
     name = "CSFaxtkwipe1"
-    axl.add_phone({
-        "name": name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_phone(
+        {
+            "name": name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         # wipe_phone may fail with an AXL error if phone is not registered;
         # that's expected — we just verify the API call itself works.
@@ -2832,22 +3125,23 @@ def test_0892_wipe_phone(axl: AXLClient, dep_device_pool):
 def test_0893_reset_and_restart_device(axl: AXLClient, dep_device_pool):
     """reset_device / restart_device — generic device reset/restart."""
     name = "CSFaxtkrdev1"
-    axl.add_phone({
-        "name": name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_phone(
+        {
+            "name": name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         try:
             result = axl.reset_device(name)
@@ -2869,9 +3163,11 @@ def test_0894_called_party_tracing(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_called_party_tracing("18050")
     try:
-        axl.add_called_party_tracing({
-            "directorynumber": "18050",
-        })
+        axl.add_called_party_tracing(
+            {
+                "directorynumber": "18050",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_called_party_tracing not supported: {exc}")
     try:
@@ -2889,10 +3185,12 @@ def test_0895_mobile_voice_access(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_mobile_voice_access("18060")
     try:
-        axl.add_mobile_voice_access({
-            "pattern": "18060",
-            "routePartitionName": "",
-        })
+        axl.add_mobile_voice_access(
+            {
+                "pattern": "18060",
+                "routePartitionName": "",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_mobile_voice_access not supported: {exc}")
     try:
@@ -2906,20 +3204,24 @@ def test_0895_mobile_voice_access(axl: AXLClient):
 def test_0896_end_user_capf_profile_crud(axl: AXLClient):
     """End User CAPF Profile — CRUD + list."""
     userid = f"{PREFIX}capfusr"
-    axl.add_user({
-        "userid": userid,
-        "firstName": "CAPF",
-        "lastName": "Test",
-        "password": "T3stP@ss!",
-        "pin": "12345",
-        "presenceGroupName": "Standard Presence group",
-    })
+    axl.add_user(
+        {
+            "userid": userid,
+            "firstName": "CAPF",
+            "lastName": "Test",
+            "password": "T3stP@ss!",
+            "pin": "12345",
+            "presenceGroupName": "Standard Presence group",
+        }
+    )
     try:
-        axl.add_end_user_capf_profile({
-            "endUserId": userid,
-            "instanceId": "1",
-            "certificationOperation": "No Pending Operation",
-        })
+        axl.add_end_user_capf_profile(
+            {
+                "endUserId": userid,
+                "instanceId": "1",
+                "certificationOperation": "No Pending Operation",
+            }
+        )
     except Exception as exc:
         axl.remove_user(userid)
         pytest.skip(f"add_end_user_capf_profile not supported: {exc}")
@@ -2940,11 +3242,13 @@ def test_0897_application_user_capf_profile_crud(axl: AXLClient):
     userid = f"{PREFIX}appcapf"
     axl.add_app_user(userid, password="T3stP@ss!")
     try:
-        axl.add_application_user_capf_profile({
-            "applicationUser": userid,
-            "instanceId": "1",
-            "certificateOperation": "No Pending Operation",
-        })
+        axl.add_application_user_capf_profile(
+            {
+                "applicationUser": userid,
+                "instanceId": "1",
+                "certificateOperation": "No Pending Operation",
+            }
+        )
     except Exception as exc:
         axl.remove_app_user(userid)
         pytest.skip(f"add_application_user_capf_profile not supported: {exc}")
@@ -2952,7 +3256,9 @@ def test_0897_application_user_capf_profile_crud(axl: AXLClient):
         result = axl.list_application_user_capf_profile(
             search_criteria={"applicationUser": f"{PREFIX}%"},
         )
-        assert result is not None, f"list_application_user_capf_profile returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_application_user_capf_profile returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_application_user_capf_profile(userid)
@@ -2995,9 +3301,7 @@ def test_0900_system_config_reads(axl: AXLClient, method_name: str):
 def test_0901_get_ils_config(axl: AXLClient):
     """get_ils_config — needs clusterId + returnedTags (REQ per XSD)."""
     try:
-        rows = axl.sql_query(
-            "SELECT paramvalue FROM processconfig WHERE paramname = 'ClusterID'"
-        )
+        rows = axl.sql_query("SELECT paramvalue FROM processconfig WHERE paramname = 'ClusterID'")
     except Exception:
         rows = None
     cluster_id = ""
@@ -3005,7 +3309,8 @@ def test_0901_get_ils_config(axl: AXLClient):
         cluster_id = rows["rows"][0]["paramvalue"]
     try:
         result = axl.get_ils_config(
-            clusterId=cluster_id, returnedTags={"clusterId": ""},
+            clusterId=cluster_id,
+            returnedTags={"clusterId": ""},
         )
     except Exception as exc:
         pytest.skip(f"get_ils_config not available: {exc}")
@@ -3076,7 +3381,8 @@ def test_0904_get_phone_type_display_instance(axl: AXLClient):
     """get_phone_type_display_instance — needs productName + protocol (REQ per XSD)."""
     try:
         result = axl.get_phone_type_display_instance(
-            productName="Cisco 8841", protocol="SIP",
+            productName="Cisco 8841",
+            protocol="SIP",
         )
     except Exception as exc:
         pytest.skip(f"get_phone_type_display_instance not available: {exc}")
@@ -3094,7 +3400,9 @@ _SYSTEM_GETS_WITH_ARGS = [
     _SYSTEM_GETS_WITH_ARGS,
     ids=[t[0] for t in _SYSTEM_GETS_WITH_ARGS],
 )
-def test_0905_system_gets_with_optional_args(axl: AXLClient, method_name: str, kwargs: Dict[str, Any]):
+def test_0905_system_gets_with_optional_args(
+    axl: AXLClient, method_name: str, kwargs: Dict[str, Any]
+):
     """System gets that may need optional arguments or may not exist."""
     method = getattr(axl, method_name)
     try:
@@ -3204,7 +3512,9 @@ _SYSTEM_LISTS_WILDCARD = [
     ids=[t[0] for t in _SYSTEM_LISTS_WILDCARD],
 )
 def test_0910_system_list_methods(
-    axl: AXLClient, method_name: str, search_criteria: Dict[str, Any],
+    axl: AXLClient,
+    method_name: str,
+    search_criteria: Dict[str, Any],
 ):
     """System list methods — wildcard search on system objects."""
     method = getattr(axl, method_name)
@@ -3302,22 +3612,23 @@ _APPLY_METHODS = [
 def test_0920_apply_methods_on_phone(axl: AXLClient, dep_device_pool):
     """Exercise apply_* methods using a test phone."""
     name = "CSFaxtkapply1"
-    axl.add_phone({
-        "name": name,
-        "product": "Cisco Unified Client Services Framework",
-        "class": "Phone",
-        "protocol": "SIP",
-        "protocolSide": ProtocolSide.USER,
-        "devicePoolName": dep_device_pool,
-        "commonPhoneConfigName": "Standard Common Phone Profile",
-        "locationName": "Hub_None",
-        "phoneTemplateName": "Standard Client Services Framework",
-        "securityProfileName": (
-            "Cisco Unified Client Services Framework "
-            "- Standard SIP Non-Secure Profile"
-        ),
-        "sipProfileName": "Standard SIP Profile",
-    })
+    axl.add_phone(
+        {
+            "name": name,
+            "product": "Cisco Unified Client Services Framework",
+            "class": "Phone",
+            "protocol": "SIP",
+            "protocolSide": ProtocolSide.USER,
+            "devicePoolName": dep_device_pool,
+            "commonPhoneConfigName": "Standard Common Phone Profile",
+            "locationName": "Hub_None",
+            "phoneTemplateName": "Standard Client Services Framework",
+            "securityProfileName": (
+                "Cisco Unified Client Services Framework - Standard SIP Non-Secure Profile"
+            ),
+            "sipProfileName": "Standard SIP Profile",
+        }
+    )
     try:
         result = axl.apply_phone(name=name)
         assert result is not None, f"apply_phone('{name}') returned None\n{_safe_debug(axl)}"
@@ -3338,7 +3649,8 @@ def test_0921b_apply_common_device_config(axl: AXLClient):
     """apply_common_device_config — discover or create, then apply."""
     try:
         lst = axl.list_common_device_config(
-            search_criteria={"name": "%"}, returned_tags={"name": ""},
+            search_criteria={"name": "%"},
+            returned_tags={"name": ""},
         )
     except Exception:
         pytest.skip("Cannot list common device configs")
@@ -3396,12 +3708,14 @@ def test_0921c_apply_uc_service(axl: AXLClient):
         with contextlib.suppress(Exception):
             axl.remove_uc_service(svc_name)
         try:
-            axl.add_uc_service({
-                "name": svc_name,
-                "serviceType": "Directory",
-                "productType": "Enhanced Directory",
-                "hostnameorip": "198.51.100.60",
-            })
+            axl.add_uc_service(
+                {
+                    "name": svc_name,
+                    "serviceType": "Directory",
+                    "productType": "Enhanced Directory",
+                    "hostnameorip": "198.51.100.60",
+                }
+            )
             created = True
         except Exception as exc:
             pytest.skip(f"Cannot create UC service dep: {exc}")
@@ -3426,7 +3740,9 @@ def test_0921_apply_config_enterprise_parameters(axl: AXLClient):
         result = axl.apply_config_enterprise_parameters()
     except Exception as exc:
         pytest.skip(f"apply_config_enterprise_parameters not available: {exc}")
-    assert result is not None, f"apply_config_enterprise_parameters returned None\n{_safe_debug(axl)}"
+    assert result is not None, (
+        f"apply_config_enterprise_parameters returned None\n{_safe_debug(axl)}"
+    )
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -3438,9 +3754,7 @@ def test_0930_vpn_gateway_crud(axl: AXLClient):
     """VPN Gateway — CRUD + list. Discovers real cert for certificates FK."""
     name = f"{PREFIX}VPNGW"
     try:
-        rows = axl.sql_query(
-            "SELECT issuername, serialnumber FROM certificate LIMIT 1"
-        )
+        rows = axl.sql_query("SELECT issuername, serialnumber FROM certificate LIMIT 1")
     except Exception:
         pytest.skip("Cannot query certificate table")
     if not rows.get("rows"):
@@ -3450,12 +3764,14 @@ def test_0930_vpn_gateway_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_vpn_gateway(name)
     try:
-        axl.add_vpn_gateway({
-            "name": name,
-            "description": "Integration test",
-            "url": "https://198.51.100.90/",
-            "certificates": {"certificate": [{"issuerName": issuer, "serialNumber": serial}]},
-        })
+        axl.add_vpn_gateway(
+            {
+                "name": name,
+                "description": "Integration test",
+                "url": "https://198.51.100.90/",
+                "certificates": {"certificate": [{"issuerName": issuer, "serialNumber": serial}]},
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_vpn_gateway not supported: {exc}")
     try:
@@ -3473,9 +3789,11 @@ def test_0931_vpn_group_crud(axl: AXLClient):
     """VPN Group — CRUD + list."""
     name = f"{PREFIX}VPNG"
     try:
-        axl.add_vpn_group({
-            "name": name,
-        })
+        axl.add_vpn_group(
+            {
+                "name": name,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_vpn_group not supported: {exc}")
     try:
@@ -3495,20 +3813,26 @@ def test_0932_resource_priority_namespace_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_resource_priority_namespace(name)
     try:
-        axl.add_resource_priority_namespace({
-            "namespace": name,
-            "description": "Integration test",
-        })
+        axl.add_resource_priority_namespace(
+            {
+                "namespace": name,
+                "description": "Integration test",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_resource_priority_namespace not supported: {exc}")
     try:
         result = axl.get_resource_priority_namespace(name)
-        assert result is not None, f"get_resource_priority_namespace returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_resource_priority_namespace returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_resource_priority_namespace(
             search_criteria={"namespace": "AXTK%"},
         )
-        assert result is not None, f"list_resource_priority_namespace returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_resource_priority_namespace returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_resource_priority_namespace(name)
@@ -3518,20 +3842,26 @@ def test_0933_resource_priority_namespace_list_crud(axl: AXLClient):
     """Resource Priority Namespace List — CRUD + list."""
     name = f"{PREFIX}RPNL"
     try:
-        axl.add_resource_priority_namespace_list({
-            "name": name,
-            "description": "Integration test",
-        })
+        axl.add_resource_priority_namespace_list(
+            {
+                "name": name,
+                "description": "Integration test",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_resource_priority_namespace_list not supported: {exc}")
     try:
         result = axl.get_resource_priority_namespace_list(name)
-        assert result is not None, f"get_resource_priority_namespace_list returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_resource_priority_namespace_list returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_resource_priority_namespace_list(
             search_criteria={"name": f"{PREFIX}%"},
         )
-        assert result is not None, f"list_resource_priority_namespace_list returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_resource_priority_namespace_list returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_resource_priority_namespace_list(name)
@@ -3543,11 +3873,13 @@ def test_0934_snmp_community_string_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_snmp_community_string(name)
     try:
-        axl.add_snmp_community_string({
-            "communityName": name,
-            "accessPrivilege": "ReadOnly",
-            "ArrayOfHosts": "",
-        })
+        axl.add_snmp_community_string(
+            {
+                "communityName": name,
+                "accessPrivilege": "ReadOnly",
+                "ArrayOfHosts": "",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_snmp_community_string not supported: {exc}")
     try:
@@ -3564,17 +3896,19 @@ def test_0935_snmp_user_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_snmp_user(name)
     try:
-        axl.add_snmp_user({
-            "userName": name,
-            "authRequired": "false",
-            "authPassword": "",
-            "authProtocol": "",
-            "privacyRequired": "false",
-            "privacyPassword": "",
-            "privacyProtocol": "",
-            "accessPrivilege": "ReadOnly",
-            "ArrayOfHosts": "",
-        })
+        axl.add_snmp_user(
+            {
+                "userName": name,
+                "authRequired": "false",
+                "authPassword": "",
+                "authProtocol": "",
+                "privacyRequired": "false",
+                "privacyPassword": "",
+                "privacyProtocol": "",
+                "accessPrivilege": "ReadOnly",
+                "ArrayOfHosts": "",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_snmp_user not supported: {exc}")
     try:
@@ -3589,14 +3923,16 @@ def test_0936_wlan_profile_crud(axl: AXLClient):
     """WLAN Profile — CRUD + list."""
     name = f"{PREFIX}WLAN"
     try:
-        axl.add_wlan_profile({
-            "name": name,
-            "ssid": "axltoolkit-test",
-            "frequencyBand": "Auto",
-            "userModifiable": "Allowed",
-            "authMethod": "EAP-FAST",
-            "userName": "axl_test",
-        })
+        axl.add_wlan_profile(
+            {
+                "name": name,
+                "ssid": "axltoolkit-test",
+                "frequencyBand": "Auto",
+                "userModifiable": "Allowed",
+                "authMethod": "EAP-FAST",
+                "userName": "axl_test",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_wlan_profile not supported: {exc}")
     try:
@@ -3619,32 +3955,40 @@ def test_0937_wireless_access_point_controllers_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_snmp_community_string(snmp_cs)
     try:
-        axl.add_snmp_community_string({
-            "communityName": snmp_cs,
-            "accessPrivilege": "ReadOnly",
-            "ArrayOfHosts": "",
-        })
+        axl.add_snmp_community_string(
+            {
+                "communityName": snmp_cs,
+                "accessPrivilege": "ReadOnly",
+                "ArrayOfHosts": "",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_snmp_community_string not supported (dep): {exc}")
     try:
-        axl.add_wireless_access_point_controllers({
-            "name": name,
-            "description": "Integration test",
-            "snmpVersion": "2C",
-            "snmpUserIdOrCommunityString": snmp_cs,
-        })
+        axl.add_wireless_access_point_controllers(
+            {
+                "name": name,
+                "description": "Integration test",
+                "snmpVersion": "2C",
+                "snmpUserIdOrCommunityString": snmp_cs,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_snmp_community_string(snmp_cs)
         pytest.skip(f"add_wireless_access_point_controllers not supported: {exc}")
     try:
         result = axl.get_wireless_access_point_controllers(name)
-        assert result is not None, f"get_wireless_access_point_controllers returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_wireless_access_point_controllers returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_wireless_access_point_controllers(
             search_criteria={"name": f"{PREFIX}%"},
         )
-        assert result is not None, f"list_wireless_access_point_controllers returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_wireless_access_point_controllers returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_wireless_access_point_controllers(name)
@@ -3669,10 +4013,12 @@ def test_0938_handoff_configuration_crud(axl: AXLClient):
         with contextlib.suppress(Exception):
             axl.remove_handoff_configuration(pattern=pattern, routePartitionName="")
         try:
-            axl.add_handoff_configuration({
-                "pattern": pattern,
-                "routePartitionName": "",
-            })
+            axl.add_handoff_configuration(
+                {
+                    "pattern": pattern,
+                    "routePartitionName": "",
+                }
+            )
         except Exception as exc:
             pytest.skip(f"add_handoff_configuration not supported: {exc}")
     result = axl.get_handoff_configuration(pattern=pattern)
@@ -3683,23 +4029,33 @@ def test_0939_dir_number_alias_lookupand_sync_crud(axl: AXLClient):
     """DirNumberAliasLookupAndSync — CRUD + list."""
     name = f"{PREFIX}DNALS"
     try:
-        axl.add_dir_number_alias_lookupand_sync({
-            "ldapConfigName": name,
-            "ldapManagerDisgName": "cn=admin,dc=example,dc=com",
-            "ldapPassword": "testpass",
-            "ldapUserSearch": "ou=users,dc=example,dc=com",
-            "servers": {"server": [{"hostName": "198.51.100.80", "ldapPort": "389", "sslEnabled": "false"}]},
-        })
+        axl.add_dir_number_alias_lookupand_sync(
+            {
+                "ldapConfigName": name,
+                "ldapManagerDisgName": "cn=admin,dc=example,dc=com",
+                "ldapPassword": "testpass",
+                "ldapUserSearch": "ou=users,dc=example,dc=com",
+                "servers": {
+                    "server": [
+                        {"hostName": "198.51.100.80", "ldapPort": "389", "sslEnabled": "false"}
+                    ]
+                },
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_dir_number_alias_lookupand_sync not supported: {exc}")
     try:
         result = axl.get_dir_number_alias_lookupand_sync(name)
-        assert result is not None, f"get_dir_number_alias_lookupand_sync returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_dir_number_alias_lookupand_sync returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_dir_number_alias_lookupand_sync(
             search_criteria={"ldapConfigName": f"{PREFIX}%"},
         )
-        assert result is not None, f"list_dir_number_alias_lookupand_sync returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_dir_number_alias_lookupand_sync returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_dir_number_alias_lookupand_sync(name)
@@ -3711,21 +4067,27 @@ def test_0940_expressway_c_configuration_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_expressway_c_configuration("198.51.100.81")
     try:
-        axl.add_expressway_c_configuration({
-            "HostNameOrIP": "198.51.100.81",
-            "description": "Integration test",
-            "X509SubjectNameorSubjectAlternateName": name,
-        })
+        axl.add_expressway_c_configuration(
+            {
+                "HostNameOrIP": "198.51.100.81",
+                "description": "Integration test",
+                "X509SubjectNameorSubjectAlternateName": name,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_expressway_c_configuration not supported: {exc}")
     try:
         result = axl.get_expressway_c_configuration("198.51.100.81")
-        assert result is not None, f"get_expressway_c_configuration returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_expressway_c_configuration returned None\n{_safe_debug(axl)}"
+        )
 
         result = axl.list_expressway_c_configuration(
             search_criteria={"HostNameOrIP": "198.51.%"},
         )
-        assert result is not None, f"list_expressway_c_configuration returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_expressway_c_configuration returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_expressway_c_configuration("198.51.100.81")
@@ -3737,10 +4099,12 @@ def test_0941_ivr_user_locale_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_ivr_user_locale(locale_name)
     try:
-        axl.add_ivr_user_locale({
-            "userLocale": locale_name,
-            "orderIndex": "1",
-        })
+        axl.add_ivr_user_locale(
+            {
+                "userLocale": locale_name,
+                "orderIndex": "1",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ivr_user_locale not supported: {exc}")
     try:
@@ -3773,10 +4137,12 @@ def test_0942_mobility_crud(axl: AXLClient):
     if not handoff_num:
         # No existing config — try adding one
         try:
-            axl.add_mobility({
-                "handoffNumber": "18080",
-                "DTMFNumber": "18080",
-            })
+            axl.add_mobility(
+                {
+                    "handoffNumber": "18080",
+                    "DTMFNumber": "18080",
+                }
+            )
             handoff_num = "18080"
         except Exception as exc:
             pytest.skip(f"add_mobility not supported / no existing config: {exc}")
@@ -3792,18 +4158,20 @@ def test_0943_phone_activation_code_crud(axl: AXLClient, dep_device_pool):
     with contextlib.suppress(Exception):
         axl.remove_phone(phone_name)
     try:
-        axl.add_phone({
-            "name": phone_name,
-            "product": "Cisco Unified Client Services Framework",
-            "class": "Phone",
-            "protocol": "SIP",
-            "protocolSide": ProtocolSide.USER,
-            "devicePoolName": dep_device_pool,
-            "commonPhoneConfigName": "Standard Common Phone Profile",
-            "locationName": "Hub_None",
-            "phoneTemplateName": "Standard Client Services Framework",
-            "useTrustedRelayPoint": Status.DEFAULT,
-        })
+        axl.add_phone(
+            {
+                "name": phone_name,
+                "product": "Cisco Unified Client Services Framework",
+                "class": "Phone",
+                "protocol": "SIP",
+                "protocolSide": ProtocolSide.USER,
+                "devicePoolName": dep_device_pool,
+                "commonPhoneConfigName": "Standard Common Phone Profile",
+                "locationName": "Hub_None",
+                "phoneTemplateName": "Standard Client Services Framework",
+                "useTrustedRelayPoint": Status.DEFAULT,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"Cannot create phone dep: {exc}")
     try:
@@ -3839,13 +4207,15 @@ def test_0944_saf_forwarder_crud(axl: AXLClient):
     except Exception as exc:
         pytest.skip(f"add_saf_security_profile not supported (dep): {exc}")
     try:
-        axl.add_saf_forwarder({
-            "name": name,
-            "description": "Integration test",
-            "clientLabel": name,
-            "safSecurityProfile": saf_sp,
-            "ipAddress": "198.51.100.80",
-        })
+        axl.add_saf_forwarder(
+            {
+                "name": name,
+                "description": "Integration test",
+                "clientLabel": name,
+                "safSecurityProfile": saf_sp,
+                "ipAddress": "198.51.100.80",
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_saf_security_profile(saf_sp)
@@ -3868,15 +4238,19 @@ def test_0945_saf_ccd_purge_crud(axl: AXLClient):
     name = f"{PREFIX}SAFBLR"
     with contextlib.suppress(Exception):
         axl.remove_saf_ccd_purge_block_learned_routes(
-            learnedPattern="8005559XXX", callControlIdentity=name, ipAddress="198.51.100.95",
+            learnedPattern="8005559XXX",
+            callControlIdentity=name,
+            ipAddress="198.51.100.95",
         )
     try:
-        axl.add_saf_ccd_purge_block_learned_routes({
-            "learnedPattern": "8005559XXX",
-            "learnedPatternPrefix": "",
-            "callControlIdentity": name,
-            "ipAddress": "198.51.100.95",
-        })
+        axl.add_saf_ccd_purge_block_learned_routes(
+            {
+                "learnedPattern": "8005559XXX",
+                "learnedPatternPrefix": "",
+                "callControlIdentity": name,
+                "ipAddress": "198.51.100.95",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_saf_ccd_purge_block_learned_routes not supported: {exc}")
     try:
@@ -3887,7 +4261,9 @@ def test_0945_saf_ccd_purge_crud(axl: AXLClient):
     finally:
         with contextlib.suppress(Exception):
             axl.remove_saf_ccd_purge_block_learned_routes(
-                learnedPattern="8005559XXX", callControlIdentity=name, ipAddress="198.51.100.95",
+                learnedPattern="8005559XXX",
+                callControlIdentity=name,
+                ipAddress="198.51.100.95",
             )
 
 
@@ -3906,11 +4282,13 @@ def test_0946_ccd_advertising_service_crud(axl: AXLClient, dep_sip_trunk):
     # Create deps: group → hosted DN (group must have at least one DN)
     try:
         axl.add_ccd_hosted_dn_group({"name": grp, "description": "dep"})
-        axl.add_ccd_hosted_dn({
-            "hostedPattern": dn_pattern,
-            "description": "dep",
-            "CcdHostedDnGroup": grp,
-        })
+        axl.add_ccd_hosted_dn(
+            {
+                "hostedPattern": dn_pattern,
+                "description": "dep",
+                "CcdHostedDnGroup": grp,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ccd_hosted_dn(dn_pattern)
@@ -3918,11 +4296,13 @@ def test_0946_ccd_advertising_service_crud(axl: AXLClient, dep_sip_trunk):
             axl.remove_ccd_hosted_dn_group(grp)
         pytest.skip(f"Cannot create hosted DN group dep: {exc}")
     try:
-        axl.add_ccd_advertising_service({
-            "name": name,
-            "hostDnGroup": grp,
-            "safSipTrunk": dep_sip_trunk,
-        })
+        axl.add_ccd_advertising_service(
+            {
+                "name": name,
+                "hostDnGroup": grp,
+                "safSipTrunk": dep_sip_trunk,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ccd_hosted_dn(dn_pattern)
@@ -3956,11 +4336,13 @@ def test_0947_ccd_hosted_dn_crud(axl: AXLClient):
     except Exception as exc:
         pytest.skip(f"add_ccd_hosted_dn_group not supported: {exc}")
     try:
-        axl.add_ccd_hosted_dn({
-            "hostedPattern": "8005558XXX",
-            "description": "Integration test",
-            "CcdHostedDnGroup": grp_name,
-        })
+        axl.add_ccd_hosted_dn(
+            {
+                "hostedPattern": "8005558XXX",
+                "description": "Integration test",
+                "CcdHostedDnGroup": grp_name,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ccd_hosted_dn_group(grp_name)
@@ -3979,9 +4361,11 @@ def test_0948_ccd_requesting_service_crud(axl: AXLClient):
     """CCD Requesting Service — CRUD + list."""
     name = f"{PREFIX}CCDRS"
     try:
-        axl.add_ccd_requesting_service({
-            "name": name,
-        })
+        axl.add_ccd_requesting_service(
+            {
+                "name": name,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ccd_requesting_service not supported: {exc}")
     try:
@@ -3992,7 +4376,9 @@ def test_0948_ccd_requesting_service_crud(axl: AXLClient):
             result = axl.list_ccd_requesting_service(
                 search_criteria={"name": f"{PREFIX}%"},
             )
-            assert result is not None, f"list_ccd_requesting_service returned None\n{_safe_debug(axl)}"
+            assert result is not None, (
+                f"list_ccd_requesting_service returned None\n{_safe_debug(axl)}"
+            )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_ccd_requesting_service(name)
@@ -4002,12 +4388,14 @@ def test_0949_ime_server_crud(axl: AXLClient):
     """IME Server — CRUD + list."""
     name = f"{PREFIX}IMES"
     try:
-        axl.add_ime_server({
-            "name": name,
-            "description": "Integration test",
-            "ipAddress": "198.51.100.91",
-            "applicationUser": "axl_test",
-        })
+        axl.add_ime_server(
+            {
+                "name": name,
+                "description": "Integration test",
+                "ipAddress": "198.51.100.91",
+                "applicationUser": "axl_test",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ime_server not supported: {exc}")
     try:
@@ -4037,26 +4425,30 @@ def test_0950_ime_client_crud(axl: AXLClient, dep_device_pool, dep_sip_trunk_sec
         axl.remove_sip_trunk(trunk_name)
     # Create SIP trunk dep
     try:
-        axl.add_sip_trunk({
-            "name": trunk_name,
-            "product": "SIP Trunk",
-            "class": "Trunk",
-            "protocol": "SIP",
-            "protocolSide": ProtocolSide.NETWORK,
-            "devicePoolName": dep_device_pool,
-            "securityProfileName": dep_sip_trunk_sec_profile,
-            "sipProfileName": "Standard SIP Profile",
-            "locationName": "Hub_None",
-            "presenceGroupName": "Standard Presence group",
-        })
+        axl.add_sip_trunk(
+            {
+                "name": trunk_name,
+                "product": "SIP Trunk",
+                "class": "Trunk",
+                "protocol": "SIP",
+                "protocolSide": ProtocolSide.NETWORK,
+                "devicePoolName": dep_device_pool,
+                "securityProfileName": dep_sip_trunk_sec_profile,
+                "sipProfileName": "Standard SIP Profile",
+                "locationName": "Hub_None",
+                "presenceGroupName": "Standard Presence group",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"Cannot create SIP trunk dep: {exc}")
     try:
-        axl.add_ime_server({
-            "name": ime_srv,
-            "ipAddress": "198.51.100.95",
-            "applicationUser": "axl_test",
-        })
+        axl.add_ime_server(
+            {
+                "name": ime_srv,
+                "ipAddress": "198.51.100.95",
+                "applicationUser": "axl_test",
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_sip_trunk(trunk_name)
@@ -4071,14 +4463,16 @@ def test_0950_ime_client_crud(axl: AXLClient, dep_device_pool, dep_sip_trunk_sec
             axl.remove_sip_trunk(trunk_name)
         pytest.skip(f"add_ime_enrolled_pattern_group not supported (dep): {exc}")
     try:
-        axl.add_ime_client({
-            "name": name,
-            "description": "Integration test",
-            "domain": "example.com",
-            "sipTrunkName": trunk_name,
-            "primaryImeServerName": ime_srv,
-            "members": {"member": [{"enrolledPatternGroupName": epg_name}]},
-        })
+        axl.add_ime_client(
+            {
+                "name": name,
+                "description": "Integration test",
+                "domain": "example.com",
+                "sipTrunkName": trunk_name,
+                "primaryImeServerName": ime_srv,
+                "members": {"member": [{"enrolledPatternGroupName": epg_name}]},
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ime_enrolled_pattern_group(epg_name)
@@ -4116,11 +4510,13 @@ def test_0951_ime_enrolled_pattern_crud(axl: AXLClient):
     except Exception as exc:
         pytest.skip(f"add_ime_enrolled_pattern_group not supported: {exc}")
     try:
-        axl.add_ime_enrolled_pattern({
-            "pattern": "+18005557XXX",
-            "description": "Integration test",
-            "imeEnrolledPatternGroupName": grp,
-        })
+        axl.add_ime_enrolled_pattern(
+            {
+                "pattern": "+18005557XXX",
+                "description": "Integration test",
+                "imeEnrolledPatternGroupName": grp,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ime_enrolled_pattern_group(grp)
@@ -4149,11 +4545,13 @@ def test_0952_ime_exclusion_number_crud(axl: AXLClient):
     except Exception as exc:
         pytest.skip(f"add_ime_exclusion_number_group not supported: {exc}")
     try:
-        axl.add_ime_exclusion_number({
-            "pattern": "+18005556000",
-            "description": "Integration test",
-            "imeExclusionNumberGroupName": grp,
-        })
+        axl.add_ime_exclusion_number(
+            {
+                "pattern": "+18005556000",
+                "description": "Integration test",
+                "imeExclusionNumberGroupName": grp,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ime_exclusion_number_group(grp)
@@ -4174,11 +4572,13 @@ def test_0953_ime_firewall_crud(axl: AXLClient):
     """IME Firewall — CRUD + list."""
     name = f"{PREFIX}IMEFW"
     try:
-        axl.add_ime_firewall({
-            "name": name,
-            "description": "Integration test",
-            "ipAddress": "198.51.100.92",
-        })
+        axl.add_ime_firewall(
+            {
+                "name": name,
+                "description": "Integration test",
+                "ipAddress": "198.51.100.92",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ime_firewall not supported: {exc}")
     try:
@@ -4203,12 +4603,14 @@ def test_0954_ime_route_filter_element_crud(axl: AXLClient):
         pytest.skip(f"add_ime_route_filter_group not supported: {exc}")
     name = f"{PREFIX}IMERFE"
     try:
-        axl.add_ime_route_filter_element({
-            "name": name,
-            "description": "Integration test",
-            "elementType": "Domain",
-            "imeRouteFilterGroupName": grp_name,
-        })
+        axl.add_ime_route_filter_element(
+            {
+                "name": name,
+                "description": "Integration test",
+                "elementType": "Domain",
+                "imeRouteFilterGroupName": grp_name,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ime_route_filter_group(grp_name)
@@ -4217,7 +4619,9 @@ def test_0954_ime_route_filter_element_crud(axl: AXLClient):
         result = axl.list_ime_route_filter_element(
             search_criteria={"name": f"{PREFIX}%"},
         )
-        assert result is not None, f"list_ime_route_filter_element returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"list_ime_route_filter_element returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_ime_route_filter_element(name)
@@ -4256,34 +4660,68 @@ def test_0955_update_system_config(axl: AXLClient, method_name: str):
 _UPDATE_SYSTEM_WITH_ARGS = [
     # (method_name, kwargs)
     ("update_enterprise_phone_config", {"vendorConfig": {}}),
-    ("update_credential_policy_default", {"credentialUser": "End User", "credentialType": "Password", "credPolicyName": "Default Credential Policy"}),
-    ("update_ccd_feature_config", {"ccdParam": [{"ccdParamName": "enableCCD", "ccdParamValue": "true"}]}),
+    (
+        "update_credential_policy_default",
+        {
+            "credentialUser": "End User",
+            "credentialType": "Password",
+            "credPolicyName": "Default Credential Policy",
+        },
+    ),
+    (
+        "update_ccd_feature_config",
+        {"ccdParam": [{"ccdParamName": "enableCCD", "ccdParamValue": "true"}]},
+    ),
     ("update_device_defaults", {"Model": "Cisco 7841", "Protocol": "SIP"}),
     ("update_inter_cluster_service_profile", {"interClusterService": "EMCC"}),
     ("update_soft_key_set", {"name": "Standard User"}),
-    ("update_page_layout_preferences", {"pageName": "mainPage", "pageSections": {"pageSection": [{"name": "SearchandList", "state": "Expanded", "order": "1"}]}}),
+    (
+        "update_page_layout_preferences",
+        {
+            "pageName": "mainPage",
+            "pageSections": {
+                "pageSection": [{"name": "SearchandList", "state": "Expanded", "order": "1"}]
+            },
+        },
+    ),
     # update_syslog_configuration removed: needs alarmConfigs complex structure
     # update_secure_config removed: depends on OAuth server existence
     # update_emcc_feature_config removed: depends on EMCC feature state
     # update_ldap_authentication removed: SDK has required positional args (not **kwargs)
     # update_ldap_system removed: SDK has required positional args (not **kwargs)
-    ("update_ils_config", {"role": "HubCluster", "registrationServer": "", "activateIls": "false",
-                           "synchronizeClustersEvery": "1440", "activatedServers": "",
-                           "deactivatedServers": "", "useTls": "true",
-                           "enableUsePassword": "false", "usePassword": ""}),
+    (
+        "update_ils_config",
+        {
+            "role": "HubCluster",
+            "registrationServer": "",
+            "activateIls": "false",
+            "synchronizeClustersEvery": "1440",
+            "activatedServers": "",
+            "deactivatedServers": "",
+            "useTls": "true",
+            "enableUsePassword": "false",
+            "usePassword": "",
+        },
+    ),
     ("update_inter_cluster_directory_uri", {"exchangeDirectoryUri": "false", "routeString": ""}),
     # Regions discovered dynamically below in test_0956 fixture
     # ("update_region_matrix", ...) — moved to dedicated test
     ("update_aar_group_matrix", {"aarGroupFromName": "Default", "aarGroupToName": "Default"}),
-    ("update_route_partitions_for_learned_patterns", {
-        "partitionForEnterpriseANo": "Global Learned Enterprise Numbers",
-        "partitionForE164ANo": "Global Learned E164 Numbers",
-        "partitionForEnterprisePatterns": "Global Learned Enterprise Patterns",
-        "partitionForE164Pattern": "Global Learned E164 Patterns",
-        "markLearnedEntAltNumbers": "false", "markLearnedE164AltNumbers": "false",
-        "markFixedLengthEntPatterns": "false", "markVariableLengthEntPatterns": "false",
-        "markFixedLengthE164Patterns": "false", "markVariableLengthE164Patterns": "false",
-    }),
+    (
+        "update_route_partitions_for_learned_patterns",
+        {
+            "partitionForEnterpriseANo": "Global Learned Enterprise Numbers",
+            "partitionForE164ANo": "Global Learned E164 Numbers",
+            "partitionForEnterprisePatterns": "Global Learned Enterprise Patterns",
+            "partitionForE164Pattern": "Global Learned E164 Patterns",
+            "markLearnedEntAltNumbers": "false",
+            "markLearnedE164AltNumbers": "false",
+            "markFixedLengthEntPatterns": "false",
+            "markVariableLengthEntPatterns": "false",
+            "markFixedLengthE164Patterns": "false",
+            "markVariableLengthE164Patterns": "false",
+        },
+    ),
     ("update_snmpmib2_list", {"sysLocation": "", "sysContact": ""}),
 ]
 
@@ -4294,7 +4732,9 @@ _UPDATE_SYSTEM_WITH_ARGS = [
     ids=[t[0] for t in _UPDATE_SYSTEM_WITH_ARGS],
 )
 def test_0956_update_system_config_with_args(
-    axl: AXLClient, method_name: str, kwargs: Dict[str, Any],
+    axl: AXLClient,
+    method_name: str,
+    kwargs: Dict[str, Any],
 ):
     """System config updates that need required fields per XSD."""
     method = getattr(axl, method_name)
@@ -4330,7 +4770,8 @@ def test_0956a_update_region_matrix(axl: AXLClient):
 
 
 def test_0960_apply_reset_restart_device_pool(
-    axl: AXLClient, dep_device_pool,
+    axl: AXLClient,
+    dep_device_pool,
 ):
     """Apply/reset/restart on the dependency device pool."""
     for method_name in ("apply_device_pool", "reset_device_pool", "restart_device_pool"):
@@ -4343,7 +4784,8 @@ def test_0960_apply_reset_restart_device_pool(
 
 
 def test_0961_apply_reset_restart_partition(
-    axl: AXLClient, dep_partition,
+    axl: AXLClient,
+    dep_partition,
 ):
     """Apply/restart on the dependency partition."""
     for method_name in ("apply_route_partition", "restart_route_partition"):
@@ -4356,7 +4798,8 @@ def test_0961_apply_reset_restart_partition(
 
 
 def test_0962_reset_restart_sip_trunk(
-    axl: AXLClient, dep_sip_trunk,
+    axl: AXLClient,
+    dep_sip_trunk,
 ):
     """Reset/restart on the dependency SIP trunk."""
     for method_name in ("reset_sip_trunk", "restart_sip_trunk"):
@@ -4369,7 +4812,9 @@ def test_0962_reset_restart_sip_trunk(
 
 
 def test_0963_apply_reset_restart_line(
-    axl: AXLClient, dep_line, dep_partition,
+    axl: AXLClient,
+    dep_line,
+    dep_partition,
 ):
     """Apply/reset/restart on the dependency line."""
     for method_name in ("apply_line", "reset_line", "restart_line"):
@@ -4382,7 +4827,8 @@ def test_0963_apply_reset_restart_line(
 
 
 def test_0964_apply_reset_hunt_list(
-    axl: AXLClient, dep_hunt_list,
+    axl: AXLClient,
+    dep_hunt_list,
 ):
     """Apply/reset on the dependency hunt list."""
     for method_name in ("apply_hunt_list", "reset_hunt_list"):
@@ -4395,7 +4841,8 @@ def test_0964_apply_reset_hunt_list(
 
 
 def test_0965_apply_reset_restart_route_list(
-    axl: AXLClient, dep_route_list,
+    axl: AXLClient,
+    dep_route_list,
 ):
     """Apply/reset/restart on the dependency route list."""
     for method_name in ("apply_route_list", "reset_route_list"):
@@ -4408,7 +4855,8 @@ def test_0965_apply_reset_restart_route_list(
 
 
 def test_0966_reset_restart_sip_trunk_security_profile(
-    axl: AXLClient, dep_sip_trunk_sec_profile,
+    axl: AXLClient,
+    dep_sip_trunk_sec_profile,
 ):
     """Apply/reset on the dependency SIP Trunk Security Profile."""
     for method_name in ("apply_sip_trunk_security_profile", "reset_sip_trunk_security_profile"):
@@ -4500,7 +4948,9 @@ def test_0968_additional_reset_restart_methods(axl: AXLClient):
             method = getattr(axl, method_name)
             try:
                 result = method(name=cm_name)
-                assert result is not None, f"{method_name}('{cm_name}') returned None\n{_safe_debug(axl)}"
+                assert result is not None, (
+                    f"{method_name}('{cm_name}') returned None\n{_safe_debug(axl)}"
+                )
             except Exception:
                 pass  # OK if not supported
 
@@ -4541,7 +4991,9 @@ def test_0970_get_call_manager(axl: AXLClient):
 def test_0971_get_process_node(axl: AXLClient):
     """get_process_node — retrieve an existing process node."""
     try:
-        rows = axl.sql_query("SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1")
+        rows = axl.sql_query(
+            "SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1"
+        )
     except Exception:
         pytest.skip("Cannot query processnode")
     if not rows.get("rows"):
@@ -4554,7 +5006,9 @@ def test_0971_get_process_node(axl: AXLClient):
 def test_0972_get_service_parameter(axl: AXLClient):
     """get_service_parameter — retrieve a known service parameter (XSD: processNodeName+service+name)."""
     try:
-        rows = axl.sql_query("SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1")
+        rows = axl.sql_query(
+            "SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1"
+        )
     except Exception:
         pytest.skip("Cannot query processnode")
     if not rows.get("rows"):
@@ -4570,7 +5024,9 @@ def test_0972_get_service_parameter(axl: AXLClient):
     sp_list = (getattr(ret, "serviceParameter", None) if ret else None) or []
     if not sp_list:
         pytest.skip("No service parameters found")
-    sp_name = sp_list[0]["name"] if isinstance(sp_list[0], dict) else getattr(sp_list[0], "name", None)
+    sp_name = (
+        sp_list[0]["name"] if isinstance(sp_list[0], dict) else getattr(sp_list[0], "name", None)
+    )
     if not sp_name:
         pytest.skip("Could not determine service parameter name")
     result = axl.get_service_parameter(node_name, svc, sp_name)
@@ -4583,7 +5039,9 @@ def test_0973_get_soft_key_set(axl: AXLClient):
         result = axl.get_soft_key_set("Standard User")
     except Exception as exc:
         pytest.skip(f"get_soft_key_set not available: {exc}")
-    assert result is not None, f"get_soft_key_set('Standard User') returned None\n{_safe_debug(axl)}"
+    assert result is not None, (
+        f"get_soft_key_set('Standard User') returned None\n{_safe_debug(axl)}"
+    )
 
 
 def test_0974_get_moh_server(axl: AXLClient):
@@ -4687,7 +5145,9 @@ def test_0984_list_imported_directory_uri_catalogs(axl: AXLClient):
         result = axl.list_imported_directory_uri_catalogs(search_criteria={"name": "%"})
     except Exception as exc:
         pytest.skip(f"list_imported_directory_uri_catalogs not available: {exc}")
-    assert result is not None, f"list_imported_directory_uri_catalogs returned None\n{_safe_debug(axl)}"
+    assert result is not None, (
+        f"list_imported_directory_uri_catalogs returned None\n{_safe_debug(axl)}"
+    )
 
 
 def test_0985_list_dhcp_server(axl: AXLClient):
@@ -4745,7 +5205,9 @@ def test_0988_update_annunciator(axl: AXLClient):
 def test_0989_update_service_parameter(axl: AXLClient):
     """update_service_parameter — read current value and write it back (no-op)."""
     try:
-        rows = axl.sql_query("SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1")
+        rows = axl.sql_query(
+            "SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1"
+        )
     except Exception:
         pytest.skip("Cannot query processnode")
     if not rows.get("rows"):
@@ -4768,7 +5230,10 @@ def test_0989_update_service_parameter(axl: AXLClient):
         pytest.skip("Could not determine service parameter name")
     try:
         result = axl.update_service_parameter(
-            node_name, svc, sp_name, sp_value or "",
+            node_name,
+            svc,
+            sp_name,
+            sp_value or "",
         )
     except Exception as exc:
         pytest.skip(f"update_service_parameter not available: {exc}")
@@ -4808,13 +5273,55 @@ _UPDATE_CRUD_TYPES = [
     # vpn_gateway moved to dedicated test (needs real cert discovery)
     ("vpn_group", {"name": f"{PREFIX}UpdVPNG"}, {"description": "Updated"}, "name"),
     # snmp_community_string, snmp_user removed: non-standard update API (uses newValues/user wrappers)
-    ("resource_priority_namespace", {"namespace": "AXTK_URP3", "description": "test"}, {"description": "Updated"}, "namespace"),
-    ("resource_priority_namespace_list", {"name": f"{PREFIX}UpdRPNL", "description": "test"}, {"description": "Updated"}, "name"),
+    (
+        "resource_priority_namespace",
+        {"namespace": "AXTK_URP3", "description": "test"},
+        {"description": "Updated"},
+        "namespace",
+    ),
+    (
+        "resource_priority_namespace_list",
+        {"name": f"{PREFIX}UpdRPNL", "description": "test"},
+        {"description": "Updated"},
+        "name",
+    ),
     ("ccd_requesting_service", {"name": f"{PREFIX}UpdCCDRS"}, {"description": "Updated"}, "name"),
-    ("ime_server", {"name": f"{PREFIX}UpdIMES", "ipAddress": "198.51.100.93", "applicationUser": "axl_test"}, {"description": "Updated"}, "name"),
-    ("ime_firewall", {"name": f"{PREFIX}UpdIMEFW", "ipAddress": "198.51.100.94"}, {"description": "Updated"}, "name"),
-    ("dir_number_alias_lookupand_sync", {"ldapConfigName": f"{PREFIX}UpdDNALS", "ldapManagerDisgName": "cn=admin,dc=example,dc=com", "ldapPassword": "testpass", "ldapUserSearch": "ou=users,dc=example,dc=com", "servers": {"server": [{"hostName": "198.51.100.82", "ldapPort": "389", "sslEnabled": "false"}]}}, {"name": f"{PREFIX}UpdDNALS", "sipAliasSuffix": "updated.com"}, "ldapConfigName"),
-    ("expressway_c_configuration", {"HostNameOrIP": "198.51.100.83", "description": "test", "X509SubjectNameorSubjectAlternateName": f"{PREFIX}UpdExpC"}, {"description": "Updated"}, "HostNameOrIP"),
+    (
+        "ime_server",
+        {"name": f"{PREFIX}UpdIMES", "ipAddress": "198.51.100.93", "applicationUser": "axl_test"},
+        {"description": "Updated"},
+        "name",
+    ),
+    (
+        "ime_firewall",
+        {"name": f"{PREFIX}UpdIMEFW", "ipAddress": "198.51.100.94"},
+        {"description": "Updated"},
+        "name",
+    ),
+    (
+        "dir_number_alias_lookupand_sync",
+        {
+            "ldapConfigName": f"{PREFIX}UpdDNALS",
+            "ldapManagerDisgName": "cn=admin,dc=example,dc=com",
+            "ldapPassword": "testpass",
+            "ldapUserSearch": "ou=users,dc=example,dc=com",
+            "servers": {
+                "server": [{"hostName": "198.51.100.82", "ldapPort": "389", "sslEnabled": "false"}]
+            },
+        },
+        {"name": f"{PREFIX}UpdDNALS", "sipAliasSuffix": "updated.com"},
+        "ldapConfigName",
+    ),
+    (
+        "expressway_c_configuration",
+        {
+            "HostNameOrIP": "198.51.100.83",
+            "description": "test",
+            "X509SubjectNameorSubjectAlternateName": f"{PREFIX}UpdExpC",
+        },
+        {"description": "Updated"},
+        "HostNameOrIP",
+    ),
     # ccd_advertising_service, ime_client, saf_forwarder, handoff_configuration removed:
     # they require FK deps (hosted DN groups, IME servers, SAF security profiles) or are singletons.
 ]
@@ -4826,8 +5333,11 @@ _UPDATE_CRUD_TYPES = [
     ids=[t[0] for t in _UPDATE_CRUD_TYPES],
 )
 def test_0991_update_crud_types(
-    axl: AXLClient, type_key: str, add_data: Dict[str, Any],
-    update_kwargs: Dict[str, Any], key_field: str,
+    axl: AXLClient,
+    type_key: str,
+    add_data: Dict[str, Any],
+    update_kwargs: Dict[str, Any],
+    key_field: str,
 ):
     """Add → update → remove for types that were missing update coverage."""
     add_fn = getattr(axl, f"add_{type_key}")
@@ -4861,9 +5371,7 @@ def test_0991a_update_vpn_gateway(axl: AXLClient):
     """update_vpn_gateway — discovers a real cert for the certificates FK."""
     name = f"{PREFIX}UpdVPNGW"
     try:
-        rows = axl.sql_query(
-            "SELECT issuername, serialnumber FROM certificate LIMIT 1"
-        )
+        rows = axl.sql_query("SELECT issuername, serialnumber FROM certificate LIMIT 1")
     except Exception:
         pytest.skip("Cannot query certificate table")
     if not rows.get("rows"):
@@ -4873,11 +5381,13 @@ def test_0991a_update_vpn_gateway(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_vpn_gateway(name)
     try:
-        axl.add_vpn_gateway({
-            "name": name,
-            "url": "https://198.51.100.91/",
-            "certificates": {"certificate": [{"issuerName": issuer, "serialNumber": serial}]},
-        })
+        axl.add_vpn_gateway(
+            {
+                "name": name,
+                "url": "https://198.51.100.91/",
+                "certificates": {"certificate": [{"issuerName": issuer, "serialNumber": serial}]},
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_vpn_gateway not supported: {exc}")
     try:
@@ -4890,11 +5400,13 @@ def test_0991a_update_vpn_gateway(axl: AXLClient):
 
 def test_0992_update_directed_call_park(axl: AXLClient, dep_partition):
     """update_directed_call_park — exercise update on DCP."""
-    axl.add_directed_call_park({
-        "pattern": "18006",
-        "routePartitionName": dep_partition,
-        "description": "Test DCP update",
-    })
+    axl.add_directed_call_park(
+        {
+            "pattern": "18006",
+            "routePartitionName": dep_partition,
+            "description": "Test DCP update",
+        }
+    )
     try:
         result = axl.update_directed_call_park(
             pattern="18006",
@@ -4946,7 +5458,9 @@ def test_1000_apply_reset_standard_objects(axl: AXLClient):
 
     # Phone Security Profile
     try:
-        axl.reset_phone_security_profile(name="Universal Phone Template - Model-independent Security Profile")
+        axl.reset_phone_security_profile(
+            name="Universal Phone Template - Model-independent Security Profile"
+        )
     except Exception:
         pass
 
@@ -4988,8 +5502,14 @@ def test_1001_apply_reset_call_manager_group(axl: AXLClient):
 
 def test_1002_apply_reset_restart_voicemail(axl: AXLClient):
     """apply/reset/restart voicemail port/profile if any exist."""
-    for m in ("apply_voice_mail_port", "reset_voice_mail_port", "restart_voice_mail_port",
-              "apply_voice_mail_profile", "reset_voice_mail_profile", "restart_voice_mail_profile"):
+    for m in (
+        "apply_voice_mail_port",
+        "reset_voice_mail_port",
+        "restart_voice_mail_port",
+        "apply_voice_mail_profile",
+        "reset_voice_mail_profile",
+        "restart_voice_mail_profile",
+    ):
         try:
             getattr(axl, m)(name="")
         except Exception:
@@ -5083,11 +5603,13 @@ def test_1010_update_imported_directory_uri_catalogs(axl: AXLClient):
         with contextlib.suppress(Exception):
             axl.remove_imported_directory_uri_catalogs(name)
         try:
-            axl.add_imported_directory_uri_catalogs({
-                "name": name,
-                "description": "Integration test",
-                "routeString": "axtk-test-route",
-            })
+            axl.add_imported_directory_uri_catalogs(
+                {
+                    "name": name,
+                    "description": "Integration test",
+                    "routeString": "axtk-test-route",
+                }
+            )
             created = True
         except Exception as exc:
             pytest.skip(f"Cannot create imported_directory_uri_catalogs dep: {exc}")
@@ -5142,7 +5664,9 @@ def test_1011_update_call_manager(axl: AXLClient):
 def test_1012_update_process_node(axl: AXLClient):
     """update_process_node — XSD needs name or uuid."""
     try:
-        rows = axl.sql_query("SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1")
+        rows = axl.sql_query(
+            "SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1"
+        )
     except Exception:
         pytest.skip("Cannot query processnode")
     if not rows.get("rows"):
@@ -5183,13 +5707,15 @@ def test_1014_update_device_mobility(axl: AXLClient, dep_device_pool):
         with contextlib.suppress(Exception):
             axl.remove_device_mobility(name)
         try:
-            axl.add_device_mobility({
-                "name": name,
-                "subNetDetails": {
-                    "ipv4SubNetDetails": {"ipv4Subnet": "10.99.0.0", "ipv4SubNetMaskSz": "24"},
-                },
-                "members": {"member": [{"devicePoolName": dep_device_pool}]},
-            })
+            axl.add_device_mobility(
+                {
+                    "name": name,
+                    "subNetDetails": {
+                        "ipv4SubNetDetails": {"ipv4Subnet": "10.99.0.0", "ipv4SubNetMaskSz": "24"},
+                    },
+                    "members": {"member": [{"devicePoolName": dep_device_pool}]},
+                }
+            )
             created = True
         except Exception as exc:
             pytest.skip(f"Cannot create device_mobility dep: {exc}")
@@ -5315,6 +5841,7 @@ def test_1020_get_ldap_sync_status(axl: AXLClient):
 def test_1021_get_ddi(axl: AXLClient):
     """get_ddi — XSD requires name + dialPlanName (or uuid)."""
     from zeep.helpers import serialize_object
+
     try:
         lst = axl.list_ddi(
             search_criteria={"name": "%"},
@@ -5360,7 +5887,8 @@ def test_1023_get_dial_plan_tag(axl: AXLClient):
     """get_dial_plan_tag — discover via list."""
     try:
         lst = axl.list_dial_plan_tag(
-            search_criteria={"name": "%"}, returned_tags={"name": "", "dialPlanName": ""},
+            search_criteria={"name": "%"},
+            returned_tags={"name": "", "dialPlanName": ""},
         )
     except Exception:
         pytest.skip("Cannot list dial plan tags")
@@ -5370,7 +5898,9 @@ def test_1023_get_dial_plan_tag(axl: AXLClient):
         pytest.skip("No DialPlanTag found")
     row = items[0]
     tag_name = row["name"] if isinstance(row, dict) else getattr(row, "name", None)
-    dp_name_val = row.get("dialPlanName") if isinstance(row, dict) else getattr(row, "dialPlanName", None)
+    dp_name_val = (
+        row.get("dialPlanName") if isinstance(row, dict) else getattr(row, "dialPlanName", None)
+    )
     if isinstance(dp_name_val, dict):
         dp_name_val = dp_name_val.get("_value_1", dp_name_val)
     elif hasattr(dp_name_val, "_value_1"):
@@ -5401,9 +5931,12 @@ def test_1024_get_licensed_user(axl: AXLClient):
 def test_1025_get_mobile_smart_client_profile(axl: AXLClient):
     """get_mobile_smart_client_profile — retrieve if configured."""
     profiles = axl.list_mobile_smart_client_profile(
-        search_criteria={"name": "%"}, returned_tags={"name": ""},
+        search_criteria={"name": "%"},
+        returned_tags={"name": ""},
     )
-    ret = profiles.get("return") if isinstance(profiles, dict) else getattr(profiles, "return", None)
+    ret = (
+        profiles.get("return") if isinstance(profiles, dict) else getattr(profiles, "return", None)
+    )
     items = (getattr(ret, "mobileSmartClientProfile", None) if ret else None) or []
     if not items:
         pytest.skip("No mobile smart client profiles found")
@@ -5423,21 +5956,26 @@ def test_1026_get_device_profile_options(axl: AXLClient):
     dp_name = f"{PREFIX}DPOpt"
     try:
         lst = axl.list_device_profile(
-            search_criteria={"name": "%"}, returned_tags={"name": ""},
+            search_criteria={"name": "%"},
+            returned_tags={"name": ""},
         )
         ret = lst.get("return") if isinstance(lst, dict) else getattr(lst, "return", None)
         items = (getattr(ret, "deviceProfile", None) if ret else None) or []
         if items:
-            name = items[0]["name"] if isinstance(items[0], dict) else getattr(items[0], "name", None)
+            name = (
+                items[0]["name"] if isinstance(items[0], dict) else getattr(items[0], "name", None)
+            )
         else:
-            axl.add_device_profile({
-                "name": dp_name,
-                "product": "Cisco 7841",
-                "class": "Device Profile",
-                "protocol": "SIP",
-                "protocolSide": ProtocolSide.USER,
-                "phoneTemplateName": "Standard 7841 SIP",
-            })
+            axl.add_device_profile(
+                {
+                    "name": dp_name,
+                    "product": "Cisco 7841",
+                    "class": "Device Profile",
+                    "protocol": "SIP",
+                    "protocolSide": ProtocolSide.USER,
+                    "phoneTemplateName": "Standard 7841 SIP",
+                }
+            )
             created = True
             name = dp_name
         dp = axl.get_device_profile(name)
@@ -5482,7 +6020,9 @@ def test_1028_get_registration_dynamic(axl: AXLClient):
 def test_1029_get_process_node_service(axl: AXLClient):
     """get_process_node_service — retrieve via SQL lookup."""
     try:
-        result = axl.sql_query("SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1")
+        result = axl.sql_query(
+            "SELECT name FROM processnode WHERE name != 'EnterpriseWideData' LIMIT 1"
+        )
     except Exception:
         pytest.skip("Cannot query process nodes")
     if not result.get("rows"):
@@ -5531,13 +6071,42 @@ def test_1031_get_fixed_moh_audio_source(axl: AXLClient):
 _UPDATE_PHASE8D_TYPES = [
     # (type_key, add_data, update_kwargs)
     # From Phase 8d — complex dependencies
-    ("advertised_patterns", {"pattern": "8005551XXX", "patternType": "Enterprise Number", "description": "test"}, {"description": "Updated"}),
-    ("blocked_learned_patterns", {"pattern": "8005552XXX", "description": "test"}, {"description": "Updated"}),
-    ("audio_codec_preference_list", {"name": f"{PREFIX}UpdACPL", "description": "test", "codecsInList": {"codecNames": ["G.711 U-Law 64k"]}}, {"description": "Updated"}),
+    (
+        "advertised_patterns",
+        {"pattern": "8005551XXX", "patternType": "Enterprise Number", "description": "test"},
+        {"description": "Updated"},
+    ),
+    (
+        "blocked_learned_patterns",
+        {"pattern": "8005552XXX", "description": "test"},
+        {"description": "Updated"},
+    ),
+    (
+        "audio_codec_preference_list",
+        {
+            "name": f"{PREFIX}UpdACPL",
+            "description": "test",
+            "codecsInList": {"codecNames": ["G.711 U-Law 64k"]},
+        },
+        {"description": "Updated"},
+    ),
     # elin_group removed: needs pre-configured Emergency Location ID Numbers
     # voh_server removed: needs FK to SIP trunk device
-    ("enterprise_feature_access_configuration", {"pattern": "*99", "routePartitionName": "", "description": "test", "isDefaultEafNumber": "false"}, {"description": "Updated"}),
-    ("feature_group_template", {"name": f"{PREFIX}UpdFGT", "BLFPresenceGp": "Standard Presence group"}, {"description": "Updated"}),
+    (
+        "enterprise_feature_access_configuration",
+        {
+            "pattern": "*99",
+            "routePartitionName": "",
+            "description": "test",
+            "isDefaultEafNumber": "false",
+        },
+        {"description": "Updated"},
+    ),
+    (
+        "feature_group_template",
+        {"name": f"{PREFIX}UpdFGT", "BLFPresenceGp": "Standard Presence group"},
+        {"description": "Updated"},
+    ),
 ]
 
 
@@ -5547,8 +6116,10 @@ _UPDATE_PHASE8D_TYPES = [
     ids=[t[0] for t in _UPDATE_PHASE8D_TYPES],
 )
 def test_1040_update_phase8d_types(
-    axl: AXLClient, type_key: str,
-    add_data: Dict[str, Any], update_kwargs: Dict[str, Any],
+    axl: AXLClient,
+    type_key: str,
+    add_data: Dict[str, Any],
+    update_kwargs: Dict[str, Any],
 ):
     """Create → update → remove for Phase 8d types missing update coverage."""
     add_fn = getattr(axl, f"add_{type_key}")
@@ -5582,7 +6153,11 @@ _UPDATE_PHASE8G_TYPES = [
     # From Phase 8g — complex deps (already have add tests; add update)
     # app_server_info removed: get/remove need uuid (not name) — tested in dedicated test
     # billing_server removed: requires reachable SFTP target
-    ("cca_profiles", {"ccaId": "AXTK-T-CCAU", "primarySoftSwitchId": "SS1", "objectClass": "Subscriber"}, {"primarySoftSwitchId": "SS2"}),
+    (
+        "cca_profiles",
+        {"ccaId": "AXTK-T-CCAU", "primarySoftSwitchId": "SS1", "objectClass": "Subscriber"},
+        {"primarySoftSwitchId": "SS2"},
+    ),
     # conference_now removed: singleton — only one allowed
 ]
 
@@ -5593,8 +6168,10 @@ _UPDATE_PHASE8G_TYPES = [
     ids=[t[0] for t in _UPDATE_PHASE8G_TYPES],
 )
 def test_1041_update_phase8g_types(
-    axl: AXLClient, type_key: str,
-    add_data: Dict[str, Any], update_kwargs: Dict[str, Any],
+    axl: AXLClient,
+    type_key: str,
+    add_data: Dict[str, Any],
+    update_kwargs: Dict[str, Any],
 ):
     """Create → update → remove for Phase 8g types missing update coverage."""
     add_fn = getattr(axl, f"add_{type_key}")
@@ -5625,7 +6202,9 @@ _UPDATE_NOOP_METHODS = [
 ]
 
 
-@pytest.mark.parametrize("method_name,kwargs", _UPDATE_NOOP_METHODS, ids=[m[0] for m in _UPDATE_NOOP_METHODS])
+@pytest.mark.parametrize(
+    "method_name,kwargs", _UPDATE_NOOP_METHODS, ids=[m[0] for m in _UPDATE_NOOP_METHODS]
+)
 def test_1042_update_noop(axl: AXLClient, method_name: str, kwargs: Dict[str, Any]):
     """No-op update for system/singleton objects."""
     method = getattr(axl, method_name)
@@ -5642,11 +6221,13 @@ def test_1042b_update_sip_realm(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_sip_realm(realm_name)
     try:
-        axl.add_sip_realm({
-            "realm": realm_name,
-            "userid": "axl_test",
-            "digestCredentials": "testpass",
-        })
+        axl.add_sip_realm(
+            {
+                "realm": realm_name,
+                "userid": "axl_test",
+                "digestCredentials": "testpass",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_sip_realm not supported: {exc}")
     try:
@@ -5663,15 +6244,17 @@ def test_1043_update_wlan_profile(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_wlan_profile(name)
     try:
-        axl.add_wlan_profile({
-            "name": name,
-            "ssid": "axltoolkit-upd",
-            "frequencyBand": "Auto",
-            "userModifiable": "Allowed",
-            "authMethod": "EAP-FAST",
-            "userName": "axl_test",
-            "password": "testpass",
-        })
+        axl.add_wlan_profile(
+            {
+                "name": name,
+                "ssid": "axltoolkit-upd",
+                "frequencyBand": "Auto",
+                "userModifiable": "Allowed",
+                "authMethod": "EAP-FAST",
+                "userName": "axl_test",
+                "password": "testpass",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_wlan_profile not supported: {exc}")
     try:
@@ -5729,16 +6312,20 @@ def test_1052_imported_directory_uri_catalogs_crud(axl: AXLClient):
     """Imported Directory URI Catalogs — add + list + remove."""
     name = f"{PREFIX}IDUC"
     try:
-        axl.add_imported_directory_uri_catalogs({
-            "name": name,
-            "description": "Integration test",
-            "routeString": "198.51.100.98",
-        })
+        axl.add_imported_directory_uri_catalogs(
+            {
+                "name": name,
+                "description": "Integration test",
+                "routeString": "198.51.100.98",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_imported_directory_uri_catalogs not supported: {exc}")
     try:
         result = axl.get_imported_directory_uri_catalogs(name)
-        assert result is not None, f"get_imported_directory_uri_catalogs returned None\n{_safe_debug(axl)}"
+        assert result is not None, (
+            f"get_imported_directory_uri_catalogs returned None\n{_safe_debug(axl)}"
+        )
     finally:
         with contextlib.suppress(Exception):
             axl.remove_imported_directory_uri_catalogs(name)
@@ -5748,16 +6335,18 @@ def test_1053_ldap_directory_crud(axl: AXLClient):
     """LDAP Directory — add + get + list + remove."""
     name = f"{PREFIX}LDAPDir"
     try:
-        axl.add_ldap_directory({
-            "name": name,
-            "ldapDn": "cn=admin,dc=example,dc=com",
-            "ldapPassword": "testpass",
-            "userSearchBase": "ou=users,dc=example,dc=com",
-            "servers": {"server": [{"hostName": "198.51.100.99", "ldapPortNumber": "389"}]},
-            "intervalValue": "1",
-            "scheduleUnit": "DAY",
-            "nextExecTime": "2099-01-01 00:00",
-        })
+        axl.add_ldap_directory(
+            {
+                "name": name,
+                "ldapDn": "cn=admin,dc=example,dc=com",
+                "ldapPassword": "testpass",
+                "userSearchBase": "ou=users,dc=example,dc=com",
+                "servers": {"server": [{"hostName": "198.51.100.99", "ldapPortNumber": "389"}]},
+                "intervalValue": "1",
+                "scheduleUnit": "DAY",
+                "nextExecTime": "2099-01-01 00:00",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ldap_directory not supported: {exc}")
     try:
@@ -5779,18 +6368,22 @@ def test_1054_application_to_softkey_template(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_soft_key_template(skt_name)
     try:
-        axl.add_soft_key_template({
-            "name": skt_name,
-            "description": "dep for appToSkt",
-            "baseSoftkeyTemplateName": "Standard User",
-        })
+        axl.add_soft_key_template(
+            {
+                "name": skt_name,
+                "description": "dep for appToSkt",
+                "baseSoftkeyTemplateName": "Standard User",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_soft_key_template not supported (dep): {exc}")
     try:
-        axl.add_application_to_softkey_template({
-            "softKeyTemplateName": skt_name,
-            "standardSoftKeyTemplateName": "Standard User",
-        })
+        axl.add_application_to_softkey_template(
+            {
+                "softKeyTemplateName": skt_name,
+                "standardSoftKeyTemplateName": "Standard User",
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_soft_key_template(skt_name)
@@ -5807,10 +6400,12 @@ def test_1054_application_to_softkey_template(axl: AXLClient):
 def test_1055_ime_e164_transformation_crud(axl: AXLClient):
     """IME E.164 Transformation — add + list + remove."""
     try:
-        axl.add_ime_e164_transformation({
-            "name": f"{PREFIX}IMEE164A",
-            "description": "Integration test",
-        })
+        axl.add_ime_e164_transformation(
+            {
+                "name": f"{PREFIX}IMEE164A",
+                "description": "Integration test",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ime_e164_transformation not supported: {exc}")
     try:
@@ -5844,7 +6439,9 @@ def test_1060_ime_enrolled_pattern_get_update(axl: AXLClient):
     except Exception as exc:
         pytest.skip(f"add_ime_enrolled_pattern_group not supported: {exc}")
     try:
-        axl.add_ime_enrolled_pattern({"pattern": pattern, "description": "test", "imeEnrolledPatternGroupName": grp})
+        axl.add_ime_enrolled_pattern(
+            {"pattern": pattern, "description": "test", "imeEnrolledPatternGroupName": grp}
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ime_enrolled_pattern_group(grp)
@@ -5873,7 +6470,9 @@ def test_1061_ime_exclusion_number_get_update(axl: AXLClient):
     except Exception as exc:
         pytest.skip(f"add_ime_exclusion_number_group not supported: {exc}")
     try:
-        axl.add_ime_exclusion_number({"pattern": pattern, "description": "test", "imeExclusionNumberGroupName": grp})
+        axl.add_ime_exclusion_number(
+            {"pattern": pattern, "description": "test", "imeExclusionNumberGroupName": grp}
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ime_exclusion_number_group(grp)
@@ -5900,10 +6499,14 @@ def test_1062_ime_route_filter_element_get_update(axl: AXLClient):
         pytest.skip(f"add_ime_route_filter_group not supported: {exc}")
     name = f"{PREFIX}IMERFE2"
     try:
-        axl.add_ime_route_filter_element({
-            "name": name, "description": "test",
-            "elementType": "Domain", "imeRouteFilterGroupName": grp_name,
-        })
+        axl.add_ime_route_filter_element(
+            {
+                "name": name,
+                "description": "test",
+                "elementType": "Domain",
+                "imeRouteFilterGroupName": grp_name,
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ime_route_filter_group(grp_name)
@@ -5946,7 +6549,9 @@ def test_1064_ccd_hosted_dn_get_update(axl: AXLClient):
     except Exception as exc:
         pytest.skip(f"add_ccd_hosted_dn_group not supported: {exc}")
     try:
-        axl.add_ccd_hosted_dn({"hostedPattern": pattern, "description": "test", "CcdHostedDnGroup": grp_name})
+        axl.add_ccd_hosted_dn(
+            {"hostedPattern": pattern, "description": "test", "CcdHostedDnGroup": grp_name}
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_ccd_hosted_dn_group(grp_name)
@@ -5965,21 +6570,29 @@ def test_1064_ccd_hosted_dn_get_update(axl: AXLClient):
 def test_1065_saf_ccd_purge_get_update(axl: AXLClient):
     """SAF CCD Purge — add, get, update, remove."""
     name = f"{PREFIX}SAFBLR2"
-    _purge_kw = dict(learnedPattern="8005560XXX", callControlIdentity=name, ipAddress="198.51.100.99")
+    _purge_kw = dict(
+        learnedPattern="8005560XXX", callControlIdentity=name, ipAddress="198.51.100.99"
+    )
     with contextlib.suppress(Exception):
         axl.remove_saf_ccd_purge_block_learned_routes(**_purge_kw)
     try:
-        axl.add_saf_ccd_purge_block_learned_routes({
-            "learnedPattern": "8005560XXX", "learnedPatternPrefix": "",
-            "callControlIdentity": name, "ipAddress": "198.51.100.99",
-        })
+        axl.add_saf_ccd_purge_block_learned_routes(
+            {
+                "learnedPattern": "8005560XXX",
+                "learnedPatternPrefix": "",
+                "callControlIdentity": name,
+                "ipAddress": "198.51.100.99",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_saf_ccd_purge_block_learned_routes not supported: {exc}")
     try:
         result = axl.get_saf_ccd_purge_block_learned_routes(**_purge_kw)
         assert result is not None
         axl.update_saf_ccd_purge_block_learned_routes(
-            callControlIdentity=name, learnedPattern="8005560XXX", ipAddress="198.51.100.99",
+            callControlIdentity=name,
+            learnedPattern="8005560XXX",
+            ipAddress="198.51.100.99",
         )
     finally:
         with contextlib.suppress(Exception):
@@ -5989,18 +6602,22 @@ def test_1065_saf_ccd_purge_get_update(axl: AXLClient):
 def test_1066_end_user_capf_profile_get_update(axl: AXLClient):
     """End User CAPF Profile — add, get, update, remove."""
     userid = f"{PREFIX}eucapf"
-    axl.add_user({
-        "userid": userid,
-        "lastName": "CAPFTest",
-        "password": "T3stP@ss!",
-        "pin": "12345",
-        "presenceGroupName": "Standard Presence group",
-    })
+    axl.add_user(
+        {
+            "userid": userid,
+            "lastName": "CAPFTest",
+            "password": "T3stP@ss!",
+            "pin": "12345",
+            "presenceGroupName": "Standard Presence group",
+        }
+    )
     try:
-        axl.add_end_user_capf_profile({
-            "endUserId": userid,
-            "instanceId": "1",
-        })
+        axl.add_end_user_capf_profile(
+            {
+                "endUserId": userid,
+                "instanceId": "1",
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_user(userid)
@@ -6021,11 +6638,13 @@ def test_1067_application_user_capf_profile_get_update(axl: AXLClient):
     userid = f"{PREFIX}aucapf"
     axl.add_app_user(userid=userid)
     try:
-        axl.add_application_user_capf_profile({
-            "applicationUser": userid,
-            "instanceId": "1",
-            "certificateOperation": "No Pending Operation",
-        })
+        axl.add_application_user_capf_profile(
+            {
+                "applicationUser": userid,
+                "instanceId": "1",
+                "certificateOperation": "No Pending Operation",
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_app_user(userid)
@@ -6045,11 +6664,13 @@ def test_1068_ldap_sync_custom_field_crud(axl: AXLClient):
     """LDAP Sync Custom Field — add, get, remove."""
     name = f"{PREFIX}LDSCF"
     try:
-        axl.add_ldap_sync_custom_field({
-            "ldapConfigurationName": name,
-            "customUserField": "Custom1",
-            "ldapUserField": "cn",
-        })
+        axl.add_ldap_sync_custom_field(
+            {
+                "ldapConfigurationName": name,
+                "customUserField": "Custom1",
+                "ldapUserField": "cn",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ldap_sync_custom_field not supported: {exc}")
     try:
@@ -6111,26 +6732,28 @@ def test_1100_h323_gateway_crud(axl: AXLClient, dep_device_pool):
     """H.323 Gateway — add/get/update/list/apply/reset/restart/remove."""
     name = "axtk-h323gw"
     try:
-        axl.add_h323_gateway({
-            "name": name,
-            "description": "Integration test",
-            "product": "H.323 Gateway",
-            "class": "Gateway",
-            "protocol": "H.225",
-            "protocolSide": ProtocolSide.NETWORK,
-            "devicePoolName": dep_device_pool,
-            "locationName": "Hub_None",
-            "tunneledProtocol": "None",
-            "useTrustedRelayPoint": Status.DEFAULT,
-            "packetCaptureMode": "None",
-            "callingPartySelection": "Originator",
-            "callingLineIdPresentation": "Default",
-            "signalingPort": "1720",
-            "calledPartyIeNumberType": "Unknown",
-            "callingPartyIeNumberType": "Unknown",
-            "calledNumberingPlan": "ISDN",
-            "callingNumberingPlan": "ISDN",
-        })
+        axl.add_h323_gateway(
+            {
+                "name": name,
+                "description": "Integration test",
+                "product": "H.323 Gateway",
+                "class": "Gateway",
+                "protocol": "H.225",
+                "protocolSide": ProtocolSide.NETWORK,
+                "devicePoolName": dep_device_pool,
+                "locationName": "Hub_None",
+                "tunneledProtocol": "None",
+                "useTrustedRelayPoint": Status.DEFAULT,
+                "packetCaptureMode": "None",
+                "callingPartySelection": "Originator",
+                "callingLineIdPresentation": "Default",
+                "signalingPort": "1720",
+                "calledPartyIeNumberType": "Unknown",
+                "callingPartyIeNumberType": "Unknown",
+                "calledNumberingPlan": "ISDN",
+                "callingNumberingPlan": "ISDN",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_h323_gateway not supported: {exc}")
     try:
@@ -6156,19 +6779,21 @@ def test_1101_h323_phone_crud(axl: AXLClient, dep_device_pool):
     """H.323 Phone — add/get/update/list/apply/reset/restart/remove."""
     name = "axtk-h323ph"
     try:
-        axl.add_h323_phone({
-            "name": name,
-            "description": "Integration test",
-            "product": "H.323 Client",
-            "class": "Phone",
-            "protocol": "H.225",
-            "protocolSide": ProtocolSide.USER,
-            "devicePoolName": dep_device_pool,
-            "commonPhoneConfigName": "Standard Common Phone Profile",
-            "locationName": "Hub_None",
-            "useTrustedRelayPoint": Status.DEFAULT,
-            "signalingPort": "1720",
-        })
+        axl.add_h323_phone(
+            {
+                "name": name,
+                "description": "Integration test",
+                "product": "H.323 Client",
+                "class": "Phone",
+                "protocol": "H.225",
+                "protocolSide": ProtocolSide.USER,
+                "devicePoolName": dep_device_pool,
+                "commonPhoneConfigName": "Standard Common Phone Profile",
+                "locationName": "Hub_None",
+                "useTrustedRelayPoint": Status.DEFAULT,
+                "signalingPort": "1720",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_h323_phone not supported: {exc}")
     try:
@@ -6194,16 +6819,18 @@ def test_1102_h323_trunk_crud(axl: AXLClient, dep_device_pool):
     """H.323 Trunk — add/get/update/list/reset/restart/remove (no apply)."""
     name = "axtk-h323tk"
     try:
-        axl.add_h323_trunk({
-            "name": name,
-            "description": "Integration test",
-            "product": "H.225 Trunk (Gatekeeper Controlled)",
-            "class": "Trunk",
-            "protocol": "H.225",
-            "protocolSide": ProtocolSide.NETWORK,
-            "devicePoolName": dep_device_pool,
-            "locationName": "Hub_None",
-        })
+        axl.add_h323_trunk(
+            {
+                "name": name,
+                "description": "Integration test",
+                "product": "H.225 Trunk (Gatekeeper Controlled)",
+                "class": "Trunk",
+                "protocol": "H.225",
+                "protocolSide": ProtocolSide.NETWORK,
+                "devicePoolName": dep_device_pool,
+                "locationName": "Hub_None",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_h323_trunk not supported: {exc}")
     try:
@@ -6247,14 +6874,17 @@ _CATALYST_TYPES = [
     ids=[t[1] for t in _CATALYST_TYPES],
 )
 def test_1110_catalyst_gateway_crud(
-    axl: AXLClient, dep_device_pool, type_key: str, short_label: str,
+    axl: AXLClient,
+    dep_device_pool,
+    type_key: str,
+    short_label: str,
 ):
     """Cisco Catalyst gateway — add/get/update/list/apply/reset/restart/remove."""
     # Device names must match typeproduct.devicenameformat regex
     # FXS: AALN@SAA[0-9A-F]{12}   E1/T1: S0/DS1-0@SDA[0-9A-F]{12}
     _cat_mac = {
         "CAT6K_FXS": "AALN@SAA0AE4F60A0001",
-        "CAT6K_E1":  "S0/DS1-0@SDA0AE4F60A0001",
+        "CAT6K_E1": "S0/DS1-0@SDA0AE4F60A0001",
         "CAT6K_T1P": "S0/DS1-0@SDA0AE4F60A0002",
         "CAT6K_T1T": "S0/DS1-0@SDA0AE4F60A0003",
     }
@@ -6275,120 +6905,145 @@ def test_1110_catalyst_gateway_crud(
         "locationName": "Hub_None",
     }
     if "fxs" in type_key:
-        add_data.update({
-            "product": "Cisco Catalyst 6000 24 port FXS Gateway",
-            "class": "Gateway",
-            "protocol": "Analog Access",
-            "protocolSide": ProtocolSide.NETWORK,
-            "portSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
-        })
+        add_data.update(
+            {
+                "product": "Cisco Catalyst 6000 24 port FXS Gateway",
+                "class": "Gateway",
+                "protocol": "Analog Access",
+                "protocolSide": ProtocolSide.NETWORK,
+                "portSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
+            }
+        )
     elif "e1" in type_key:
-        add_data.update({
-            "product": "Cisco Catalyst 6000 E1 VoIP Gateway",
-            "class": "Gateway",
-            "protocol": "Digital Access PRI",
-            "protocolSide": ProtocolSide.NETWORK,
-            "redirectInboundNumberIe": "false",
-            "calledPlan": "Cisco CallManager",
-            "calledPri": "Cisco CallManager",
-            "callingPartySelection": "Originator",
-            "callingPlan": "Cisco CallManager",
-            "callingPri": "Cisco CallManager",
-            "chanIe": "Use Number when 1B",
-            "clockReference": ClockReference.NETWORK,
-            "dChannelEnable": False,
-            "channelSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
-            "displayIE": False,
-            "pcmType": Encode.A_LAW,
-            "csuParam": CSUParam.V_0DB,
-            "firstDelay": 32,
-            "interfaceIdPresent": False,
-            "interfaceId": 0,
-            "intraDelay": 4,
-            "mcdnEnable": False,
-            "redirectOutboundNumberIe": False,
-            "numDigitsToStrip": 0,
-            "passingPrecedenceLevelThrough": False,
-            "callingLinePresentationBit": PresentationBit.DEFAULT,
-            "connectedLineIdPresentation": PresentationBit.DEFAULT,
-            "priProtocol": PriProtocol.PRI_EURO,
-            "securityAccessLevel": 2,
-            "sendCallingNameInFacilityIe": False,
-            "sendExLeadingCharInDispIe": False,
-            "sendRestart": False,
-            "setupNonIsdnPi": False,
-            "span": 1,
-            "statusPoll": False,
-            "smdiBasePort": 2001,
-            "sigDigits": {"_value_1": 99, "enable": False},
-        })
+        add_data.update(
+            {
+                "product": "Cisco Catalyst 6000 E1 VoIP Gateway",
+                "class": "Gateway",
+                "protocol": "Digital Access PRI",
+                "protocolSide": ProtocolSide.NETWORK,
+                "redirectInboundNumberIe": "false",
+                "calledPlan": "Cisco CallManager",
+                "calledPri": "Cisco CallManager",
+                "callingPartySelection": "Originator",
+                "callingPlan": "Cisco CallManager",
+                "callingPri": "Cisco CallManager",
+                "chanIe": "Use Number when 1B",
+                "clockReference": ClockReference.NETWORK,
+                "dChannelEnable": False,
+                "channelSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
+                "displayIE": False,
+                "pcmType": Encode.A_LAW,
+                "csuParam": CSUParam.V_0DB,
+                "firstDelay": 32,
+                "interfaceIdPresent": False,
+                "interfaceId": 0,
+                "intraDelay": 4,
+                "mcdnEnable": False,
+                "redirectOutboundNumberIe": False,
+                "numDigitsToStrip": 0,
+                "passingPrecedenceLevelThrough": False,
+                "callingLinePresentationBit": PresentationBit.DEFAULT,
+                "connectedLineIdPresentation": PresentationBit.DEFAULT,
+                "priProtocol": PriProtocol.PRI_EURO,
+                "securityAccessLevel": 2,
+                "sendCallingNameInFacilityIe": False,
+                "sendExLeadingCharInDispIe": False,
+                "sendRestart": False,
+                "setupNonIsdnPi": False,
+                "span": 1,
+                "statusPoll": False,
+                "smdiBasePort": 2001,
+                "sigDigits": {"_value_1": 99, "enable": False},
+            }
+        )
     elif "t1_vo_ip_gateway_pri" in type_key:
-        add_data.update({
-            "product": "Cisco Catalyst 6000 T1 VoIP Gateway",
-            "class": "Gateway",
-            "protocol": "Digital Access PRI",
-            "protocolSide": ProtocolSide.NETWORK,
-            "redirectInboundNumberIe": "false",
-            "calledPlan": "Cisco CallManager",
-            "calledPri": "Cisco CallManager",
-            "callingPartySelection": "Originator",
-            "callingPlan": "Cisco CallManager",
-            "callingPri": "Cisco CallManager",
-            "chanIe": "Use Number when 1B",
-            "clockReference": ClockReference.NETWORK,
-            "dChannelEnable": False,
-            "channelSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
-            "displayIE": False,
-            "pcmType": Encode.U_LAW,
-            "csuParam": CSUParam.V_0DB,
-            "firstDelay": 32,
-            "interfaceIdPresent": False,
-            "interfaceId": 0,
-            "intraDelay": 4,
-            "mcdnEnable": False,
-            "redirectOutboundNumberIe": False,
-            "numDigitsToStrip": 0,
-            "passingPrecedenceLevelThrough": False,
-            "callingLinePresentationBit": PresentationBit.DEFAULT,
-            "connectedLineIdPresentation": PresentationBit.DEFAULT,
-            "priProtocol": PriProtocol.PRI_5E9,
-            "securityAccessLevel": 2,
-            "sendCallingNameInFacilityIe": False,
-            "sendExLeadingCharInDispIe": False,
-            "sendRestart": False,
-            "setupNonIsdnPi": False,
-            "span": 1,
-            "statusPoll": False,
-            "smdiBasePort": 2001,
-            "sigDigits": {"_value_1": 99, "enable": False},
-        })
+        add_data.update(
+            {
+                "product": "Cisco Catalyst 6000 T1 VoIP Gateway",
+                "class": "Gateway",
+                "protocol": "Digital Access PRI",
+                "protocolSide": ProtocolSide.NETWORK,
+                "redirectInboundNumberIe": "false",
+                "calledPlan": "Cisco CallManager",
+                "calledPri": "Cisco CallManager",
+                "callingPartySelection": "Originator",
+                "callingPlan": "Cisco CallManager",
+                "callingPri": "Cisco CallManager",
+                "chanIe": "Use Number when 1B",
+                "clockReference": ClockReference.NETWORK,
+                "dChannelEnable": False,
+                "channelSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
+                "displayIE": False,
+                "pcmType": Encode.U_LAW,
+                "csuParam": CSUParam.V_0DB,
+                "firstDelay": 32,
+                "interfaceIdPresent": False,
+                "interfaceId": 0,
+                "intraDelay": 4,
+                "mcdnEnable": False,
+                "redirectOutboundNumberIe": False,
+                "numDigitsToStrip": 0,
+                "passingPrecedenceLevelThrough": False,
+                "callingLinePresentationBit": PresentationBit.DEFAULT,
+                "connectedLineIdPresentation": PresentationBit.DEFAULT,
+                "priProtocol": PriProtocol.PRI_5E9,
+                "securityAccessLevel": 2,
+                "sendCallingNameInFacilityIe": False,
+                "sendExLeadingCharInDispIe": False,
+                "sendRestart": False,
+                "setupNonIsdnPi": False,
+                "span": 1,
+                "statusPoll": False,
+                "smdiBasePort": 2001,
+                "sigDigits": {"_value_1": 99, "enable": False},
+            }
+        )
     elif "t1_vo_ip_gateway_t1" in type_key:
-        add_data.update({
-            "product": "Cisco Catalyst 6000 T1 VoIP Gateway",
-            "class": "Gateway",
-            "protocol": "Digital Access T1",
-            "protocolSide": ProtocolSide.NETWORK,
-            "sendGeoLocation": "false",
-            "ports": {"port": [{"portNumber": 1, "callerIdEnable": False,
-                "callingPartySelection": "Originator", "digitSending": DigitSending.DTMF,
-                "expectedDigits": 0, "sigDigits": {"_value_1": 0, "enable": False},
-                "presentationBit": PresentationBit.DEFAULT,
-                "silenceSuppressionThreshold": SilenceSuppressionThreshold.DISABLE, "startDialProtocol": StartDialProtocol.IMMEDIATE,
-                "trunk": Trunk.POTS, "trunkDirection": TrunkDirection.BOTHWAYS,
-                "trunkLevel": TrunkLevel.ONS, "trunkPadRx": TrunkPad.NODBPADDING, "trunkPadTx": TrunkPad.NODBPADDING,
-                "callerId": CallerID.ANI,
-                "timer1": 100, "timer2": 100, "timer3": 100,
-                "timer4": 100, "timer5": 100, "timer6": 100}]},
-            "trunkSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
-            "clockReference": ClockReference.NETWORK,
-            "csuParam": CSUParam.V_0DB,
-            "digitSending": DigitSending.DTMF,
-            "pcmType": Encode.A_LAW,
-            "fdlChannel": FDLChannel.ANSI_T1_403_NI,
-            "yellowAlarm": YellowAlarm.F_BIT,
-            "zeroSupression": "B8ZS",
-            "smdiBasePort": 2001,
-        })
+        add_data.update(
+            {
+                "product": "Cisco Catalyst 6000 T1 VoIP Gateway",
+                "class": "Gateway",
+                "protocol": "Digital Access T1",
+                "protocolSide": ProtocolSide.NETWORK,
+                "sendGeoLocation": "false",
+                "ports": {
+                    "port": [
+                        {
+                            "portNumber": 1,
+                            "callerIdEnable": False,
+                            "callingPartySelection": "Originator",
+                            "digitSending": DigitSending.DTMF,
+                            "expectedDigits": 0,
+                            "sigDigits": {"_value_1": 0, "enable": False},
+                            "presentationBit": PresentationBit.DEFAULT,
+                            "silenceSuppressionThreshold": SilenceSuppressionThreshold.DISABLE,
+                            "startDialProtocol": StartDialProtocol.IMMEDIATE,
+                            "trunk": Trunk.POTS,
+                            "trunkDirection": TrunkDirection.BOTHWAYS,
+                            "trunkLevel": TrunkLevel.ONS,
+                            "trunkPadRx": TrunkPad.NODBPADDING,
+                            "trunkPadTx": TrunkPad.NODBPADDING,
+                            "callerId": CallerID.ANI,
+                            "timer1": 100,
+                            "timer2": 100,
+                            "timer3": 100,
+                            "timer4": 100,
+                            "timer5": 100,
+                            "timer6": 100,
+                        }
+                    ]
+                },
+                "trunkSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
+                "clockReference": ClockReference.NETWORK,
+                "csuParam": CSUParam.V_0DB,
+                "digitSending": DigitSending.DTMF,
+                "pcmType": Encode.A_LAW,
+                "fdlChannel": FDLChannel.ANSI_T1_403_NI,
+                "yellowAlarm": YellowAlarm.F_BIT,
+                "zeroSupression": "B8ZS",
+                "smdiBasePort": 2001,
+            }
+        )
     try:
         add_fn(add_data)
     except Exception as exc:
@@ -6423,12 +7078,14 @@ def test_1120_vg224_crud(axl: AXLClient, dep_device_pool):
     with contextlib.suppress(Exception):
         axl.remove_vg224(name)
     try:
-        axl.add_vg224({
-            "domainName": name,
-            "product": "VG224",
-            "protocol": "MGCP",
-            "callManagerGroupName": "Default",
-        })
+        axl.add_vg224(
+            {
+                "domainName": name,
+                "product": "VG224",
+                "protocol": "MGCP",
+                "callManagerGroupName": "Default",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_vg224 not supported: {exc}")
     try:
@@ -6461,12 +7118,14 @@ def test_1130_gateway_crud(axl: AXLClient, dep_device_pool):
     with contextlib.suppress(Exception):
         axl.remove_gateway(name)
     try:
-        axl.add_gateway({
-            "domainName": name,
-            "product": "Cisco 2901",
-            "protocol": "MGCP",
-            "callManagerGroupName": "Default",
-        })
+        axl.add_gateway(
+            {
+                "domainName": name,
+                "product": "Cisco 2901",
+                "protocol": "MGCP",
+                "callManagerGroupName": "Default",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_gateway not supported: {exc}")
     try:
@@ -6501,7 +7160,10 @@ _GATEWAY_ENDPOINT_TYPES = [
     ids=[t[1] for t in _GATEWAY_ENDPOINT_TYPES],
 )
 def test_1131_gateway_endpoint_crud(
-    axl: AXLClient, dep_device_pool, type_key: str, short_label: str,
+    axl: AXLClient,
+    dep_device_pool,
+    type_key: str,
+    short_label: str,
 ):
     """Gateway endpoints — add/get/update/remove."""
     name = f"AXTK{short_label.replace('_', '')}EP"
@@ -6524,17 +7186,30 @@ def test_1131_gateway_endpoint_crud(
     }
     unit_prod, sub_prod = _subunit_product.get(short_label, ("NM-4VWIC-MBRD", "VWIC3-1MFT-T1E1-T1"))
     try:
-        axl.add_gateway({
-            "domainName": gw_name,
-            "product": "Cisco 2901",
-            "protocol": "MGCP",
-            "callManagerGroupName": "Default",
-        })
-        axl.add_units_to_gateway({
-            "domainName": gw_name,
-            "units": {"unit": [{"index": 0, "product": unit_prod,
-                      "subunits": {"subunit": [{"index": 0, "product": sub_prod, "beginPort": 0}]}}]},
-        })
+        axl.add_gateway(
+            {
+                "domainName": gw_name,
+                "product": "Cisco 2901",
+                "protocol": "MGCP",
+                "callManagerGroupName": "Default",
+            }
+        )
+        axl.add_units_to_gateway(
+            {
+                "domainName": gw_name,
+                "units": {
+                    "unit": [
+                        {
+                            "index": 0,
+                            "product": unit_prod,
+                            "subunits": {
+                                "subunit": [{"index": 0, "product": sub_prod, "beginPort": 0}]
+                            },
+                        }
+                    ]
+                },
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_gateway(gw_name)
@@ -6557,132 +7232,173 @@ def test_1131_gateway_endpoint_crud(
         },
     }
     if "analog" in type_key:
-        ep_data["endpoint"].update({
-            "port": {"portNumber": 1, "callerIdEnable": False, "expectedDigits": 0,
-                     "sigDigits": {"_value_1": 0, "enable": False},
-                     "smdiPortNumber": 0, "trunkDirection": TrunkDirection.BOTHWAYS,
-                     "trunkLevel": TrunkLevel.ONS, "trunkPadRx": TrunkPad.NODBPADDING, "trunkPadTx": TrunkPad.NODBPADDING,
-                     "trunk": Trunk.POTS, "callingPartySelection": "Originator",
-                     "presentationBit": PresentationBit.DEFAULT, "digitSending": DigitSending.DTMF,
-                     "silenceSuppressionThreshold": SilenceSuppressionThreshold.DISABLE, "startDialProtocol": StartDialProtocol.IMMEDIATE,
-                     "timer1": 100, "timer2": 100, "timer3": 100,
-                     "timer4": 100, "timer5": 100, "timer6": 100},
-            "trunkSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
-        })
+        ep_data["endpoint"].update(
+            {
+                "port": {
+                    "portNumber": 1,
+                    "callerIdEnable": False,
+                    "expectedDigits": 0,
+                    "sigDigits": {"_value_1": 0, "enable": False},
+                    "smdiPortNumber": 0,
+                    "trunkDirection": TrunkDirection.BOTHWAYS,
+                    "trunkLevel": TrunkLevel.ONS,
+                    "trunkPadRx": TrunkPad.NODBPADDING,
+                    "trunkPadTx": TrunkPad.NODBPADDING,
+                    "trunk": Trunk.POTS,
+                    "callingPartySelection": "Originator",
+                    "presentationBit": PresentationBit.DEFAULT,
+                    "digitSending": DigitSending.DTMF,
+                    "silenceSuppressionThreshold": SilenceSuppressionThreshold.DISABLE,
+                    "startDialProtocol": StartDialProtocol.IMMEDIATE,
+                    "timer1": 100,
+                    "timer2": 100,
+                    "timer3": 100,
+                    "timer4": 100,
+                    "timer5": 100,
+                    "timer6": 100,
+                },
+                "trunkSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
+            }
+        )
     elif "sccp" in type_key:
-        ep_data["endpoint"].update({
-            "name": "VGC0AE4F60A0001",
-            "product": "Cisco VGC Phone",
-            "protocol": "SCCP",
-            "protocolSide": ProtocolSide.USER,
-            "commonPhoneConfigName": "Standard Common Phone Profile",
-            "phoneTemplateName": "Standard VGC Phone",
-            "securityProfileName": "Cisco VGC Phone - Standard SCCP Non-Secure Profile",
-            "deviceMobilityMode": Status.DEFAULT,
-            "alwaysUsePrimeLine": Status.DEFAULT,
-            "alwaysUsePrimeLineForVM": Status.DEFAULT,
-            "subscribeCallingSearchSpaceName": "",
-            "presenceGroupName": "Standard Presence group",
-        })
+        ep_data["endpoint"].update(
+            {
+                "name": "VGC0AE4F60A0001",
+                "product": "Cisco VGC Phone",
+                "protocol": "SCCP",
+                "protocolSide": ProtocolSide.USER,
+                "commonPhoneConfigName": "Standard Common Phone Profile",
+                "phoneTemplateName": "Standard VGC Phone",
+                "securityProfileName": "Cisco VGC Phone - Standard SCCP Non-Secure Profile",
+                "deviceMobilityMode": Status.DEFAULT,
+                "alwaysUsePrimeLine": Status.DEFAULT,
+                "alwaysUsePrimeLineForVM": Status.DEFAULT,
+                "subscribeCallingSearchSpaceName": "",
+                "presenceGroupName": "Standard Presence group",
+            }
+        )
     elif "bri" in type_key:
-        ep_data["endpoint"].update({
-            "product": "Cisco MGCP BRI Port",
-            "protocol": "Digital Access BRI",
-            "protocolSide": ProtocolSide.USER,
-            "redirectInboundNumberIe": False,
-            "briProtocol": BriProtocol.QSIG,
-            "calledPlan": "Cisco CallManager",
-            "calledPri": "Cisco CallManager",
-            "callerIdDn": "",
-            "callingPartySelection": "Originator",
-            "callingPlan": "Cisco CallManager",
-            "callingPri": "Cisco CallManager",
-            "clockReference": ClockReference.NETWORK,
-            "csuParam": CSUParam.V_0DB,
-            "dChannelEnable": False,
-            "channelSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
-            "pcmType": Encode.A_LAW,
-            "firstDelay": 32,
-            "intraDelay": 4,
-            "redirectOutboundNumberIe": False,
-            "numDigitsToStrip": 0,
-            "prefix": "",
-            "sendRestart": False,
-            "setupNonIsdnPi": False,
-            "statusPoll": False,
-            "sigDigits": {"_value_1": 99, "enable": False},
-            "presentationBit": PresentationBit.DEFAULT,
-            "GClearEnable": False,
-        })
+        ep_data["endpoint"].update(
+            {
+                "product": "Cisco MGCP BRI Port",
+                "protocol": "Digital Access BRI",
+                "protocolSide": ProtocolSide.USER,
+                "redirectInboundNumberIe": False,
+                "briProtocol": BriProtocol.QSIG,
+                "calledPlan": "Cisco CallManager",
+                "calledPri": "Cisco CallManager",
+                "callerIdDn": "",
+                "callingPartySelection": "Originator",
+                "callingPlan": "Cisco CallManager",
+                "callingPri": "Cisco CallManager",
+                "clockReference": ClockReference.NETWORK,
+                "csuParam": CSUParam.V_0DB,
+                "dChannelEnable": False,
+                "channelSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
+                "pcmType": Encode.A_LAW,
+                "firstDelay": 32,
+                "intraDelay": 4,
+                "redirectOutboundNumberIe": False,
+                "numDigitsToStrip": 0,
+                "prefix": "",
+                "sendRestart": False,
+                "setupNonIsdnPi": False,
+                "statusPoll": False,
+                "sigDigits": {"_value_1": 99, "enable": False},
+                "presentationBit": PresentationBit.DEFAULT,
+                "GClearEnable": False,
+            }
+        )
     elif "pri" in type_key:
-        ep_data["endpoint"].update({
-            "product": "Cisco MGCP T1 Port",
-            "protocol": "Digital Access PRI",
-            "protocolSide": ProtocolSide.NETWORK,
-            "redirectInboundNumberIe": False,
-            "calledPlan": "Cisco CallManager",
-            "calledPri": "Cisco CallManager",
-            "callerIdDn": "",
-            "callingPartySelection": "Originator",
-            "callingPlan": "Cisco CallManager",
-            "callingPri": "Cisco CallManager",
-            "chanIE": "Use Number when 1B",
-            "clockReference": ClockReference.NETWORK,
-            "dChannelEnable": False,
-            "channelSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
-            "displayIe": False,
-            "pcmType": Encode.U_LAW,
-            "csuParam": CSUParam.V_0DB,
-            "priProtocol": PriProtocol.PRI_5E9,
-            "redirectOutboundNumberIe": False,
-            "callingLinePresentationBit": PresentationBit.DEFAULT,
-            "connectedLineIdPresentation": PresentationBit.DEFAULT,
-            "numDigitsToStrip": 0,
-            "prefix": "",
-            "firstDelay": 32,
-            "intraDelay": 4,
-            "interfaceIdPresent": False,
-            "interfaceId": 0,
-            "mcdnEnable": False,
-            "passingPrecedenceLevelThrough": False,
-            "securityAccessLevel": 2,
-            "sendCallingNameInFacilityIe": False,
-            "sendExLeadingCharInDispIe": False,
-            "sendRestart": False,
-            "setupNonIsdnPi": False,
-            "span": 1,
-            "statusPoll": False,
-            "smdiBasePort": 2001,
-            "sigDigits": {"_value_1": 99, "enable": False},
-            "GClearEnable": False,
-        })
+        ep_data["endpoint"].update(
+            {
+                "product": "Cisco MGCP T1 Port",
+                "protocol": "Digital Access PRI",
+                "protocolSide": ProtocolSide.NETWORK,
+                "redirectInboundNumberIe": False,
+                "calledPlan": "Cisco CallManager",
+                "calledPri": "Cisco CallManager",
+                "callerIdDn": "",
+                "callingPartySelection": "Originator",
+                "callingPlan": "Cisco CallManager",
+                "callingPri": "Cisco CallManager",
+                "chanIE": "Use Number when 1B",
+                "clockReference": ClockReference.NETWORK,
+                "dChannelEnable": False,
+                "channelSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
+                "displayIe": False,
+                "pcmType": Encode.U_LAW,
+                "csuParam": CSUParam.V_0DB,
+                "priProtocol": PriProtocol.PRI_5E9,
+                "redirectOutboundNumberIe": False,
+                "callingLinePresentationBit": PresentationBit.DEFAULT,
+                "connectedLineIdPresentation": PresentationBit.DEFAULT,
+                "numDigitsToStrip": 0,
+                "prefix": "",
+                "firstDelay": 32,
+                "intraDelay": 4,
+                "interfaceIdPresent": False,
+                "interfaceId": 0,
+                "mcdnEnable": False,
+                "passingPrecedenceLevelThrough": False,
+                "securityAccessLevel": 2,
+                "sendCallingNameInFacilityIe": False,
+                "sendExLeadingCharInDispIe": False,
+                "sendRestart": False,
+                "setupNonIsdnPi": False,
+                "span": 1,
+                "statusPoll": False,
+                "smdiBasePort": 2001,
+                "sigDigits": {"_value_1": 99, "enable": False},
+                "GClearEnable": False,
+            }
+        )
     elif "t1" in type_key:
-        ep_data["endpoint"].update({
-            "product": "Cisco MGCP T1 Port",
-            "protocol": "Digital Access T1",
-            "protocolSide": ProtocolSide.NETWORK,
-            "sendGeoLocation": False,
-            "ports": {"port": [{"portNumber": 1, "callerIdEnable": False,
-                     "callingPartySelection": "Originator", "digitSending": DigitSending.DTMF,
-                     "expectedDigits": 0, "sigDigits": {"_value_1": 0, "enable": False},
-                     "presentationBit": PresentationBit.DEFAULT,
-                     "silenceSuppressionThreshold": SilenceSuppressionThreshold.DISABLE, "startDialProtocol": StartDialProtocol.IMMEDIATE,
-                     "trunk": Trunk.POTS, "trunkDirection": TrunkDirection.BOTHWAYS,
-                     "trunkLevel": TrunkLevel.ONS, "trunkPadRx": TrunkPad.NODBPADDING, "trunkPadTx": TrunkPad.NODBPADDING,
-                     "callerId": CallerID.ANI,
-                     "timer1": 100, "timer2": 100, "timer3": 100,
-                     "timer4": 100, "timer5": 100, "timer6": 100}]},
-            "trunkSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
-            "clockReference": ClockReference.NETWORK,
-            "csuParam": CSUParam.V_0DB,
-            "digitSending": DigitSending.DTMF,
-            "pcmType": Encode.A_LAW,
-            "fdlChannel": FDLChannel.ANSI_T1_403_NI,
-            "yellowAlarm": YellowAlarm.F_BIT,
-            "zeroSupression": "B8ZS",
-            "smdiBasePort": 2001,
-            "routeClassSignalling": "Default",
-        })
+        ep_data["endpoint"].update(
+            {
+                "product": "Cisco MGCP T1 Port",
+                "protocol": "Digital Access T1",
+                "protocolSide": ProtocolSide.NETWORK,
+                "sendGeoLocation": False,
+                "ports": {
+                    "port": [
+                        {
+                            "portNumber": 1,
+                            "callerIdEnable": False,
+                            "callingPartySelection": "Originator",
+                            "digitSending": DigitSending.DTMF,
+                            "expectedDigits": 0,
+                            "sigDigits": {"_value_1": 0, "enable": False},
+                            "presentationBit": PresentationBit.DEFAULT,
+                            "silenceSuppressionThreshold": SilenceSuppressionThreshold.DISABLE,
+                            "startDialProtocol": StartDialProtocol.IMMEDIATE,
+                            "trunk": Trunk.POTS,
+                            "trunkDirection": TrunkDirection.BOTHWAYS,
+                            "trunkLevel": TrunkLevel.ONS,
+                            "trunkPadRx": TrunkPad.NODBPADDING,
+                            "trunkPadTx": TrunkPad.NODBPADDING,
+                            "callerId": CallerID.ANI,
+                            "timer1": 100,
+                            "timer2": 100,
+                            "timer3": 100,
+                            "timer4": 100,
+                            "timer5": 100,
+                            "timer6": 100,
+                        }
+                    ]
+                },
+                "trunkSelectionOrder": TrunkSelectionOrder.TOP_DOWN,
+                "clockReference": ClockReference.NETWORK,
+                "csuParam": CSUParam.V_0DB,
+                "digitSending": DigitSending.DTMF,
+                "pcmType": Encode.A_LAW,
+                "fdlChannel": FDLChannel.ANSI_T1_403_NI,
+                "yellowAlarm": YellowAlarm.F_BIT,
+                "zeroSupression": "B8ZS",
+                "smdiBasePort": 2001,
+                "routeClassSignalling": "Default",
+            }
+        )
     try:
         add_fn(ep_data)
     except Exception as exc:
@@ -6700,24 +7416,44 @@ def test_1132_gateway_subunits(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_gateway(gw_name)
     try:
-        axl.add_gateway({
-            "domainName": gw_name,
-            "product": "Cisco 2901",
-            "protocol": "MGCP",
-            "callManagerGroupName": "Default",
-        })
+        axl.add_gateway(
+            {
+                "domainName": gw_name,
+                "product": "Cisco 2901",
+                "protocol": "MGCP",
+                "callManagerGroupName": "Default",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"Cannot create parent gateway: {exc}")
     try:
-        axl.add_units_to_gateway({
-            "domainName": gw_name,
-            "units": {"unit": [{"index": 0, "product": "NM-4VWIC-MBRD", "subunits": {"subunit": [{"index": 0, "product": "VIC3-2FXS/DID", "beginPort": 0}]}}]},
-        })
-        axl.add_gateway_subunits({
-            "domainName": gw_name,
-            "unit": 0,
-            "subunits": {"subunit": [{"index": 1, "product": "VWIC3-1MFT-T1E1-T1", "beginPort": 0}]},
-        })
+        axl.add_units_to_gateway(
+            {
+                "domainName": gw_name,
+                "units": {
+                    "unit": [
+                        {
+                            "index": 0,
+                            "product": "NM-4VWIC-MBRD",
+                            "subunits": {
+                                "subunit": [
+                                    {"index": 0, "product": "VIC3-2FXS/DID", "beginPort": 0}
+                                ]
+                            },
+                        }
+                    ]
+                },
+            }
+        )
+        axl.add_gateway_subunits(
+            {
+                "domainName": gw_name,
+                "unit": 0,
+                "subunits": {
+                    "subunit": [{"index": 1, "product": "VWIC3-1MFT-T1E1-T1", "beginPort": 0}]
+                },
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_gateway_subunits not supported: {exc}")
     finally:
@@ -6731,19 +7467,35 @@ def test_1133_units_to_gateway(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_gateway(gw_name)
     try:
-        axl.add_gateway({
-            "domainName": gw_name,
-            "product": "Cisco 2901",
-            "protocol": "MGCP",
-            "callManagerGroupName": "Default",
-        })
+        axl.add_gateway(
+            {
+                "domainName": gw_name,
+                "product": "Cisco 2901",
+                "protocol": "MGCP",
+                "callManagerGroupName": "Default",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"Cannot create parent gateway: {exc}")
     try:
-        axl.add_units_to_gateway({
-            "domainName": gw_name,
-            "units": {"unit": [{"index": 0, "product": "NM-4VWIC-MBRD", "subunits": {"subunit": [{"index": 0, "product": "VIC3-2FXS/DID", "beginPort": 0}]}}]},
-        })
+        axl.add_units_to_gateway(
+            {
+                "domainName": gw_name,
+                "units": {
+                    "unit": [
+                        {
+                            "index": 0,
+                            "product": "NM-4VWIC-MBRD",
+                            "subunits": {
+                                "subunit": [
+                                    {"index": 0, "product": "VIC3-2FXS/DID", "beginPort": 0}
+                                ]
+                            },
+                        }
+                    ]
+                },
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_units_to_gateway not supported: {exc}")
     finally:
@@ -6775,16 +7527,18 @@ def test_1140_dhcp_server_crud(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_dhcp_server(process_node_name=node_name)
     try:
-        axl.add_dhcp_server({
-            "processNodeName": node_name,
-            "primaryDnsIpAddress": "198.51.100.1",
-            "secondaryDnsIpAddress": "198.51.100.2",
-            "primaryTftpServerIpAddress": "198.51.100.3",
-            "arpCacheTimeout": 60,
-            "ipAddressLeaseTime": 86400,
-            "renewalTime": 43200,
-            "rebindingTime": 75600,
-        })
+        axl.add_dhcp_server(
+            {
+                "processNodeName": node_name,
+                "primaryDnsIpAddress": "198.51.100.1",
+                "secondaryDnsIpAddress": "198.51.100.2",
+                "primaryTftpServerIpAddress": "198.51.100.3",
+                "arpCacheTimeout": 60,
+                "ipAddressLeaseTime": 86400,
+                "renewalTime": 43200,
+                "rebindingTime": 75600,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_dhcp_server not supported: {exc}")
     try:
@@ -6814,22 +7568,26 @@ def test_1141_dhcp_subnet_crud(axl: AXLClient):
         axl.remove_dhcp_server(process_node_name=node_name)
     # Create DHCP server dependency
     try:
-        axl.add_dhcp_server({
-            "processNodeName": node_name,
-            "primaryDnsIpAddress": "198.51.100.1",
-            "primaryTftpServerIpAddress": "198.51.100.1",
-        })
+        axl.add_dhcp_server(
+            {
+                "processNodeName": node_name,
+                "primaryDnsIpAddress": "198.51.100.1",
+                "primaryTftpServerIpAddress": "198.51.100.1",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_dhcp_server not supported (dep): {exc}")
     try:
-        axl.add_dhcp_subnet({
-            "dhcpServerName": node_name,
-            "subnetIpAddress": subnet_addr,
-            "primaryStartIpAddress": "198.51.100.10",
-            "primaryEndIpAddress": "198.51.100.20",
-            "subnetMask": "255.255.255.0",
-            "primaryRouterIpAddress": "198.51.100.1",
-        })
+        axl.add_dhcp_subnet(
+            {
+                "dhcpServerName": node_name,
+                "subnetIpAddress": subnet_addr,
+                "primaryStartIpAddress": "198.51.100.10",
+                "primaryEndIpAddress": "198.51.100.20",
+                "subnetMask": "255.255.255.0",
+                "primaryRouterIpAddress": "198.51.100.1",
+            }
+        )
     except Exception as exc:
         with contextlib.suppress(Exception):
             axl.remove_dhcp_server(process_node_name=node_name)
@@ -6868,11 +7626,13 @@ def test_1142_infrastructure_device(axl: AXLClient):
             with contextlib.suppress(Exception):
                 axl.remove_infrastructure_device(row["pkid"])
     try:
-        add_result = axl.add_infrastructure_device({
-            "name": name,
-            "ipv4Address": "198.51.100.200",
-            "isActive": "true",
-        })
+        add_result = axl.add_infrastructure_device(
+            {
+                "name": name,
+                "ipv4Address": "198.51.100.200",
+                "isActive": "true",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_infrastructure_device not supported: {exc}")
     # XSD only accepts uuid for get/remove
@@ -6895,11 +7655,13 @@ def test_1143_process_node_add_remove(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_process_node(name)
     try:
-        axl.add_process_node({
-            "name": name,
-            "description": "Integration test",
-            "processNodeRole": "CUCM Voice/Video",
-        })
+        axl.add_process_node(
+            {
+                "name": name,
+                "description": "Integration test",
+                "processNodeRole": "CUCM Voice/Video",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_process_node not supported: {exc}")
     try:
@@ -6991,10 +7753,12 @@ def test_1160_update_app_server_info(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_application_server(name)
     try:
-        add_resp = axl.add_app_server_info({
-            "appServerName": name,
-            "appServerContent": "UNITY_CONNECTION",
-        })
+        add_resp = axl.add_app_server_info(
+            {
+                "appServerName": name,
+                "appServerContent": "UNITY_CONNECTION",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_app_server_info not supported: {exc}")
     asi_uuid = _resolve_uuid(add_resp)
@@ -7024,23 +7788,23 @@ def test_1161_update_billing_server(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_billing_server(host_name)
     try:
-        add_resp = axl.add_billing_server({
-            "hostName": host_name,
-            "userId": "billadmin",
-            "password": "Billing!Pa55phrase_TestOnly",
-            "directoryPath": "/tmp/",
-            "resendOnFailure": "false",
-            "billingServerProtocol": "SFTP",
-        })
+        add_resp = axl.add_billing_server(
+            {
+                "hostName": host_name,
+                "userId": "billadmin",
+                "password": "Billing!Pa55phrase_TestOnly",
+                "directoryPath": "/tmp/",
+                "resendOnFailure": "false",
+                "billingServerProtocol": "SFTP",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_billing_server not supported: {exc}")
     bs_uuid = _resolve_uuid(add_resp)
     try:
         if not bs_uuid:
             # Fall back to looking up the uuid by hostName.
-            rows = axl.sql_query(
-                f"SELECT pkid FROM billingserver WHERE hostname='{host_name}'"
-            )
+            rows = axl.sql_query(f"SELECT pkid FROM billingserver WHERE hostname='{host_name}'")
             if rows.get("rows"):
                 bs_uuid = rows["rows"][0]["pkid"]
         if not bs_uuid:
@@ -7075,16 +7839,18 @@ def test_1163_update_ldap_directory(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_ldap_directory(name)
     try:
-        axl.add_ldap_directory({
-            "name": name,
-            "ldapDn": "cn=admin,dc=example,dc=com",
-            "ldapPassword": "Ldap!Pa55phrase_TestOnly",
-            "userSearchBase": "ou=users,dc=example,dc=com",
-            "servers": {"server": [{"hostName": "198.51.100.99", "ldapPortNumber": "389"}]},
-            "intervalValue": "1",
-            "scheduleUnit": "DAY",
-            "nextExecTime": "2099-01-01 00:00",
-        })
+        axl.add_ldap_directory(
+            {
+                "name": name,
+                "ldapDn": "cn=admin,dc=example,dc=com",
+                "ldapPassword": "Ldap!Pa55phrase_TestOnly",
+                "userSearchBase": "ou=users,dc=example,dc=com",
+                "servers": {"server": [{"hostName": "198.51.100.99", "ldapPortNumber": "389"}]},
+                "intervalValue": "1",
+                "scheduleUnit": "DAY",
+                "nextExecTime": "2099-01-01 00:00",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ldap_directory not supported: {exc}")
     try:
@@ -7119,25 +7885,29 @@ def test_1165_update_ldap_sync_custom_field(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_ldap_directory(ldap_name)
     try:
-        axl.add_ldap_directory({
-            "name": ldap_name,
-            "ldapDn": "cn=admin,dc=example,dc=com",
-            "ldapPassword": "Ldap!Pa55phrase_TestOnly",
-            "userSearchBase": "ou=users,dc=example,dc=com",
-            "servers": {"server": [{"hostName": "198.51.100.99", "ldapPortNumber": "389"}]},
-            "intervalValue": "1",
-            "scheduleUnit": "DAY",
-            "nextExecTime": "2099-01-01 00:00",
-        })
+        axl.add_ldap_directory(
+            {
+                "name": ldap_name,
+                "ldapDn": "cn=admin,dc=example,dc=com",
+                "ldapPassword": "Ldap!Pa55phrase_TestOnly",
+                "userSearchBase": "ou=users,dc=example,dc=com",
+                "servers": {"server": [{"hostName": "198.51.100.99", "ldapPortNumber": "389"}]},
+                "intervalValue": "1",
+                "scheduleUnit": "DAY",
+                "nextExecTime": "2099-01-01 00:00",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_ldap_directory dep not supported: {exc}")
     try:
         try:
-            axl.add_ldap_sync_custom_field({
-                "ldapConfigurationName": ldap_name,
-                "customUserField": "Custom1",
-                "ldapUserField": "cn",
-            })
+            axl.add_ldap_sync_custom_field(
+                {
+                    "ldapConfigurationName": ldap_name,
+                    "customUserField": "Custom1",
+                    "ldapUserField": "cn",
+                }
+            )
         except Exception as exc:
             pytest.skip(f"add_ldap_sync_custom_field not supported: {exc}")
         try:
@@ -7163,11 +7933,13 @@ def test_1166_update_meet_me(axl: AXLClient, dep_partition):
     with contextlib.suppress(Exception):
         axl.remove_meet_me(pattern, routePartitionName=dep_partition)
     try:
-        axl.add_meet_me({
-            "pattern": pattern,
-            "routePartitionName": dep_partition,
-            "description": "MeetMe update test",
-        })
+        axl.add_meet_me(
+            {
+                "pattern": pattern,
+                "routePartitionName": dep_partition,
+                "description": "MeetMe update test",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_meet_me not supported: {exc}")
     try:
@@ -7188,12 +7960,14 @@ def test_1167_update_message_waiting(axl: AXLClient, dep_partition):
     with contextlib.suppress(Exception):
         axl.remove_message_waiting(pattern, routePartitionName=dep_partition)
     try:
-        axl.add_message_waiting({
-            "pattern": pattern,
-            "routePartitionName": dep_partition,
-            "messageWaitingIndicator": "true",
-            "callingSearchSpaceName": "",
-        })
+        axl.add_message_waiting(
+            {
+                "pattern": pattern,
+                "routePartitionName": dep_partition,
+                "messageWaitingIndicator": "true",
+                "callingSearchSpaceName": "",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_message_waiting not supported: {exc}")
     try:
@@ -7237,12 +8011,14 @@ def test_1169_update_voh_server(axl: AXLClient, dep_sip_trunk):
     with contextlib.suppress(Exception):
         axl.remove_voh_server(name)
     try:
-        axl.add_voh_server({
-            "name": name,
-            "description": "VoH update test",
-            "defaultVideoStreamId": "SampleVideo",
-            "sipTrunkName": dep_sip_trunk,
-        })
+        axl.add_voh_server(
+            {
+                "name": name,
+                "description": "VoH update test",
+                "defaultVideoStreamId": "SampleVideo",
+                "sipTrunkName": dep_sip_trunk,
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_voh_server not supported: {exc}")
     try:
@@ -7265,26 +8041,31 @@ def test_1170_update_wireless_access_point_controllers(axl: AXLClient):
     with contextlib.suppress(Exception):
         axl.remove_snmp_community_string(snmp_cs)
     try:
-        axl.add_snmp_community_string({
-            "communityString": snmp_cs,
-            "accessPrivilege": "ReadOnly",
-            "ServerName": "EnterpriseWideConfig",
-        })
+        axl.add_snmp_community_string(
+            {
+                "communityString": snmp_cs,
+                "accessPrivilege": "ReadOnly",
+                "ServerName": "EnterpriseWideConfig",
+            }
+        )
     except Exception as exc:
         pytest.skip(f"add_snmp_community_string dep not supported: {exc}")
     try:
         try:
-            axl.add_wireless_access_point_controllers({
-                "name": wap_name,
-                "description": "WAP controller update test",
-                "snmpVersion": "2C",
-                "snmpUserIdOrCommunityString": snmp_cs,
-            })
+            axl.add_wireless_access_point_controllers(
+                {
+                    "name": wap_name,
+                    "description": "WAP controller update test",
+                    "snmpVersion": "2C",
+                    "snmpUserIdOrCommunityString": snmp_cs,
+                }
+            )
         except Exception as exc:
             pytest.skip(f"add_wireless_access_point_controllers not supported: {exc}")
         try:
             result = axl.update_wireless_access_point_controllers(
-                name=wap_name, newName=wap_name,
+                name=wap_name,
+                newName=wap_name,
             )
             assert result is not None, (
                 f"update_wireless_access_point_controllers returned None\n{_safe_debug(axl)}"

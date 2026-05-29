@@ -12,21 +12,48 @@ Legacy class names are still available for backward compatibility::
 
 from __future__ import annotations
 
+# ── Generated enums & models (from AXL XSD) ─────────────────────────
+from . import _generated_enums as axl_enums  # noqa: F401 — submodule access
+from . import _generated_models as axl_models  # noqa: F401 — submodule access
+
+# ── Backward-compatible aliases (deprecated) ──────────────────────────
+from ._compat import (
+    AxlToolkit,
+    PawsToolkit,
+    UcmDimeGetFileToolkit,
+    UcmLogCollectionToolkit,
+    UcmPerfMonToolkit,
+    UcmRisPortToolkit,
+    UcmServiceabilityToolkit,
+    WebdialerToolkit,
+)
+
 # ── New public API ─────────────────────────────────────────────────────
 from .axl import AXLClient
-from .risport import RISPortClient
-from .perfmon import PerfMonClient
-from .serviceability import ServiceabilityClient
-from .log_collection import DimeGetFileClient, LogCollectionClient
-from .paws_client import PAWSClient
-from .webdialer import WebdialerClient
 
 # ── Builders ──────────────────────────────────────────────────────────
 from .builders import CssBuilder, PhoneBuilder, SipTrunkBuilder
 
-# ── Generated enums & models (from AXL XSD) ─────────────────────────
-from . import _generated_enums as axl_enums     # noqa: F401 — submodule access
-from . import _generated_models as axl_models   # noqa: F401 — submodule access
+# ── Exception hierarchy ────────────────────────────────────────────────
+from .exceptions import (
+    AXLAuthenticationError,
+    AXLConnectionError,
+    AXLDuplicateError,
+    AXLError,
+    AXLNotFoundError,
+    AXLSQLError,
+    AXLSQLInjectionError,
+    AxlToolkitError,
+    AXLValidationError,
+    LogCollectionError,
+    PAWSError,
+    PerfMonError,
+    RISPortError,
+    ServiceabilityError,
+    SXMLError,
+    WebdialerError,
+)
+from .log_collection import DimeGetFileClient, LogCollectionClient
 
 # ── Typed models (hand-curated) ──────────────────────────────────────
 from .models import (
@@ -53,38 +80,11 @@ from .models import (
     TranslationPatternData,
     UserData,
 )
-
-# ── Exception hierarchy ────────────────────────────────────────────────
-from .exceptions import (
-    AxlToolkitError,
-    AXLAuthenticationError,
-    AXLConnectionError,
-    AXLDuplicateError,
-    AXLError,
-    AXLNotFoundError,
-    AXLSQLError,
-    AXLSQLInjectionError,
-    AXLValidationError,
-    LogCollectionError,
-    PAWSError,
-    PerfMonError,
-    RISPortError,
-    SXMLError,
-    ServiceabilityError,
-    WebdialerError,
-)
-
-# ── Backward-compatible aliases (deprecated) ──────────────────────────
-from ._compat import (
-    AxlToolkit,
-    PawsToolkit,
-    UcmDimeGetFileToolkit,
-    UcmLogCollectionToolkit,
-    UcmPerfMonToolkit,
-    UcmRisPortToolkit,
-    UcmServiceabilityToolkit,
-    WebdialerToolkit,
-)
+from .paws_client import PAWSClient
+from .perfmon import PerfMonClient
+from .risport import RISPortClient
+from .serviceability import ServiceabilityClient
+from .webdialer import WebdialerClient
 
 __all__ = [
     # New clients

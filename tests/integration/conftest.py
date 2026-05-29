@@ -35,9 +35,8 @@ from __future__ import annotations
 
 import contextlib
 import os
-import traceback
 from pathlib import Path
-from typing import Any, Dict, Generator, List
+from typing import Any, Dict, Generator
 
 import pytest
 
@@ -60,8 +59,6 @@ from axltoolkit import (
     AXLClient,
     AXLDuplicateError,
     AXLError,
-    AXLNotFoundError,
-    AxlToolkitError,
     PAWSClient,
     PerfMonClient,
     RISPortClient,
@@ -109,6 +106,7 @@ def _platform_password() -> str:
 #  Helpers
 # ======================================================================
 
+
 def _safe_debug(client) -> str:
     """Return last_request_debug() as a formatted string, or '' on error."""
     try:
@@ -148,14 +146,13 @@ def _skip_if_missing():
     required = ["UCM_ADDRESS", "UCM_USERNAME", "UCM_PASSWORD"]
     missing = [v for v in required if not os.environ.get(v)]
     if missing:
-        pytest.skip(
-            f"Integration tests skipped — missing env vars: {', '.join(missing)}"
-        )
+        pytest.skip(f"Integration tests skipped — missing env vars: {', '.join(missing)}")
 
 
 # ======================================================================
 #  Client fixtures (session-scoped)
 # ======================================================================
+
 
 @pytest.fixture(scope="session")
 def axl() -> AXLClient:
@@ -264,6 +261,7 @@ def dime_client() -> DimeGetFileClient:
 #  exist solely to satisfy foreign-key requirements.
 # ======================================================================
 
+
 @pytest.fixture(scope="session")
 def dep_partition(axl) -> Generator[str, None, None]:
     """Route Partition used as a dependency by many tests."""
@@ -273,10 +271,7 @@ def dep_partition(axl) -> Generator[str, None, None]:
     except AXLDuplicateError:
         pass
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency partition '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency partition '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_route_partition(name)
@@ -291,10 +286,7 @@ def dep_partition_2(axl) -> Generator[str, None, None]:
     except AXLDuplicateError:
         pass
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency partition '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency partition '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_route_partition(name)
@@ -313,20 +305,19 @@ def dep_device_pool(axl) -> Generator[str, None, None]:
         cmg_name = cmg["rows"][0]["name"]
         region_name = region["rows"][0]["name"]
         try:
-            axl.add_device_pool({
-                "name": name,
-                "dateTimeSettingName": "CMLocal",
-                "callManagerGroupName": cmg_name,
-                "regionName": region_name,
-                "srstName": "Disable",
-            })
+            axl.add_device_pool(
+                {
+                    "name": name,
+                    "dateTimeSettingName": "CMLocal",
+                    "callManagerGroupName": cmg_name,
+                    "regionName": region_name,
+                    "srstName": "Disable",
+                }
+            )
         except AXLDuplicateError:
             pass  # reuse leftover from a previous run
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency device pool '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency device pool '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_device_pool(name)
@@ -341,10 +332,7 @@ def dep_css(axl, dep_partition, dep_partition_2) -> Generator[str, None, None]:
     except AXLDuplicateError:
         pass
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency CSS '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency CSS '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_css(name)
@@ -355,12 +343,14 @@ def dep_line(axl, dep_partition) -> Generator[str, None, None]:
     """Directory number in dep_partition."""
     pattern = "19999"
     try:
-        axl.add_line({
-            "pattern": pattern,
-            "routePartitionName": dep_partition,
-            "description": "Integration dependency line",
-            "usage": "Device",
-        })
+        axl.add_line(
+            {
+                "pattern": pattern,
+                "routePartitionName": dep_partition,
+                "description": "Integration dependency line",
+                "usage": "Device",
+            }
+        )
     except AXLDuplicateError:
         pass
     except AXLError as exc:
@@ -391,8 +381,7 @@ def dep_sip_trunk_sec_profile(axl) -> Generator[str, None, None]:
         pass
     except Exception as exc:
         pytest.fail(
-            f"Failed to create dependency SIP trunk sec profile '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
+            f"Failed to create dependency SIP trunk sec profile '{name}': {exc}\n{_safe_debug(axl)}"
         )
     yield name
     with contextlib.suppress(Exception):
@@ -400,31 +389,28 @@ def dep_sip_trunk_sec_profile(axl) -> Generator[str, None, None]:
 
 
 @pytest.fixture(scope="session")
-def dep_sip_trunk(
-    axl, dep_device_pool, dep_sip_trunk_sec_profile
-) -> Generator[str, None, None]:
+def dep_sip_trunk(axl, dep_device_pool, dep_sip_trunk_sec_profile) -> Generator[str, None, None]:
     """SIP Trunk for route group tests."""
     name = f"{PREFIX}Dep_Trunk"
     try:
-        axl.add_sip_trunk({
-            "name": name,
-            "product": "SIP Trunk",
-            "class": "Trunk",
-            "protocol": "SIP",
-            "protocolSide": ProtocolSide.NETWORK,
-            "devicePoolName": dep_device_pool,
-            "securityProfileName": dep_sip_trunk_sec_profile,
-            "sipProfileName": "Standard SIP Profile",
-            "locationName": "Hub_None",
-            "presenceGroupName": "Standard Presence group",
-        })
+        axl.add_sip_trunk(
+            {
+                "name": name,
+                "product": "SIP Trunk",
+                "class": "Trunk",
+                "protocol": "SIP",
+                "protocolSide": ProtocolSide.NETWORK,
+                "devicePoolName": dep_device_pool,
+                "securityProfileName": dep_sip_trunk_sec_profile,
+                "sipProfileName": "Standard SIP Profile",
+                "locationName": "Hub_None",
+                "presenceGroupName": "Standard Presence group",
+            }
+        )
     except AXLDuplicateError:
         pass
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency SIP trunk '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency SIP trunk '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_sip_trunk(name)
@@ -437,21 +423,20 @@ def dep_line_group(axl, dep_line, dep_partition) -> Generator[str, None, None]:
     try:
         axl.add_line_group(
             name,
-            members=[{
-                "lineSelectionOrder": 1,
-                "directoryNumber": {
-                    "pattern": dep_line,
-                    "routePartitionName": dep_partition,
-                },
-            }],
+            members=[
+                {
+                    "lineSelectionOrder": 1,
+                    "directoryNumber": {
+                        "pattern": dep_line,
+                        "routePartitionName": dep_partition,
+                    },
+                }
+            ],
         )
     except AXLDuplicateError:
         pass
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency line group '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency line group '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_line_group(name)
@@ -475,10 +460,7 @@ def dep_hunt_list(axl, dep_line_group) -> Generator[str, None, None]:
     except AXLDuplicateError:
         pass
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency hunt list '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency hunt list '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_hunt_list(name)
@@ -493,10 +475,7 @@ def dep_route_group(axl, dep_sip_trunk) -> Generator[str, None, None]:
     except AXLDuplicateError:
         pass
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency route group '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency route group '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_route_group(name)
@@ -518,10 +497,7 @@ def dep_route_list(axl, dep_route_group) -> Generator[str, None, None]:
     except AXLDuplicateError:
         pass
     except Exception as exc:
-        pytest.fail(
-            f"Failed to create dependency route list '{name}': {exc}\n"
-            f"{_safe_debug(axl)}"
-        )
+        pytest.fail(f"Failed to create dependency route list '{name}': {exc}\n{_safe_debug(axl)}")
     yield name
     with contextlib.suppress(Exception):
         axl.remove_route_list(name)
@@ -553,23 +529,20 @@ def pytest_runtest_makereport(item, call):
         if client is not None:
             debug_text = _safe_debug(client)
             if debug_text:
-                report.sections.append(
-                    ("AXL Last Request Debug", debug_text)
-                )
+                report.sections.append(("AXL Last Request Debug", debug_text))
 
 
 # ======================================================================
 #  Emergency cleanup — find and remove any orphaned AXTK_T_ objects
 # ======================================================================
 
+
 @pytest.fixture(scope="session", autouse=True)
 def emergency_cleanup(axl):
     """After all tests, attempt to clean up any orphaned test objects."""
     yield
     try:
-        result = axl.sql_query(
-            f"SELECT name FROM device WHERE name LIKE '{PREFIX}%'"
-        )
+        result = axl.sql_query(f"SELECT name FROM device WHERE name LIKE '{PREFIX}%'")
         for row in result.get("rows", []):
             with contextlib.suppress(Exception):
                 axl.remove_phone(row["name"])

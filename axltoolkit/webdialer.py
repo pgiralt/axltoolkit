@@ -29,7 +29,7 @@ Usage::
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Union
 
 from zeep.exceptions import Fault
 
@@ -169,9 +169,7 @@ class WebdialerClient(BaseClient):
         profile = self._build_user_profile(user, device, line, **profile_kwargs)
 
         try:
-            result = self._service.makeCallSoap(
-                in0=credential, in1=destination, in2=profile
-            )
+            result = self._service.makeCallSoap(in0=credential, in1=destination, in2=profile)
         except Fault as fault:
             raise WebdialerError(
                 f"Failed to make call to {destination}: {fault}",
@@ -205,9 +203,7 @@ class WebdialerClient(BaseClient):
         profile = self._build_user_profile(user, device, line, **profile_kwargs)
 
         try:
-            result = self._service.endCallSoap(
-                in0=credential, in1=profile
-            )
+            result = self._service.endCallSoap(in0=credential, in1=profile)
         except Fault as fault:
             raise WebdialerError(
                 f"Failed to end call on {device}: {fault}",
@@ -243,9 +239,7 @@ class WebdialerClient(BaseClient):
         }
 
         try:
-            result = self._service.getDeviceLinesSoap(
-                in0=credential, in1=profile
-            )
+            result = self._service.getDeviceLinesSoap(in0=credential, in1=profile)
         except Fault as fault:
             raise WebdialerError(
                 f"Failed to get device lines for {device}: {fault}",
@@ -315,9 +309,7 @@ class WebdialerClient(BaseClient):
         profile = self._build_user_profile(user, device, line, **profile_kwargs)
 
         try:
-            return self._service.getCallStatusSoap(
-                in0=credential, in1=profile
-            )
+            return self._service.getCallStatusSoap(in0=credential, in1=profile)
         except Fault as fault:
             raise WebdialerError(
                 f"Failed to get call status for {device}: {fault}",

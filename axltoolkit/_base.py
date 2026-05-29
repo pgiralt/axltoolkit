@@ -91,12 +91,9 @@ class BaseClient:
         history_enabled: bool = True,
     ):
         # ── Validate server_ip ──────────────────────────────────────
-        if not re.match(
-            r"^[A-Za-z0-9._-]+(:\d{1,5})?$", server_ip
-        ):
+        if not re.match(r"^[A-Za-z0-9._-]+(:\d{1,5})?$", server_ip):
             raise ValueError(
-                f"Invalid server_ip: {server_ip!r}. "
-                "Must be a valid hostname, FQDN, or IP address."
+                f"Invalid server_ip: {server_ip!r}. Must be a valid hostname, FQDN, or IP address."
             )
 
         self._server_ip = server_ip
@@ -106,9 +103,7 @@ class BaseClient:
             self._cache_key_suffix: str = ""
 
         # ── Logger ─────────────────────────────────────────────────────
-        self._log = logging.getLogger(
-            f"axltoolkit.{self.__class__.__name__}"
-        )
+        self._log = logging.getLogger(f"axltoolkit.{self.__class__.__name__}")
 
         # ── HTTP Session with cookie jar (JSESSIONID caching) ─────────
         self._session = Session()
@@ -117,9 +112,7 @@ class BaseClient:
         # TLS verification: True, False, or path to CA bundle
         if isinstance(tls_verify, str):
             if not os.path.isfile(tls_verify):
-                raise FileNotFoundError(
-                    f"CA bundle not found: {tls_verify}"
-                )
+                raise FileNotFoundError(f"CA bundle not found: {tls_verify}")
         self._session.verify = tls_verify
 
         # ── Retry adapter ─────────────────────────────────────────────

@@ -28,14 +28,14 @@ Migration guide::
 from __future__ import annotations
 
 import warnings
-from typing import Any, Dict, List, Optional, Sequence, Union
+from typing import Any, Dict, Union
 
 from .axl import AXLClient
-from .risport import RISPortClient
-from .perfmon import PerfMonClient
-from .serviceability import ServiceabilityClient
 from .log_collection import DimeGetFileClient, LogCollectionClient
 from .paws_client import PAWSClient
+from .perfmon import PerfMonClient
+from .risport import RISPortClient
+from .serviceability import ServiceabilityClient
 from .webdialer import WebdialerClient
 
 
@@ -75,6 +75,7 @@ class AxlToolkit(AXLClient):
         )
         if logging_enabled:
             import logging
+
             logging.getLogger("axltoolkit").setLevel(logging.DEBUG)
             logging.basicConfig(level=logging.DEBUG)
 
@@ -146,13 +147,30 @@ class AxlToolkit(AXLClient):
     def add_cfb(self, cfb_data):
         return self.add_conference_bridge(cfb_data)
 
-    def add_cfb_cms(self, name, description, cfb_prefix, sip_trunk,
-                    security_icon_control, override_dest, addresses,
-                    username, password, port):
+    def add_cfb_cms(
+        self,
+        name,
+        description,
+        cfb_prefix,
+        sip_trunk,
+        security_icon_control,
+        override_dest,
+        addresses,
+        username,
+        password,
+        port,
+    ):
         return self.add_conference_bridge_cms(
-            name, description, cfb_prefix, sip_trunk,
-            security_icon_control, override_dest, addresses,
-            username, password, port,
+            name,
+            description,
+            cfb_prefix,
+            sip_trunk,
+            security_icon_control,
+            override_dest,
+            addresses,
+            username,
+            password,
+            port,
         )
 
     def get_cfb(self, name):
@@ -205,7 +223,7 @@ class AxlToolkit(AXLClient):
     def sql_get_service_parameter(self, name):
         return super().sql_get_service_parameter(name)
 
-    def sql_associate_device_to_user(self, device, userid, association_type='1'):
+    def sql_associate_device_to_user(self, device, userid, association_type="1"):
         return super().sql_associate_device_to_user(device, userid, association_type)
 
 

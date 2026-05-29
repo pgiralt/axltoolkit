@@ -1,11 +1,12 @@
 """Tests for ServiceabilityClient with mocked zeep service."""
 
-import pytest
 from unittest.mock import MagicMock, patch
+
+import pytest
 from zeep.exceptions import Fault
 
-from axltoolkit.serviceability import ServiceabilityClient
 from axltoolkit.exceptions import ServiceabilityError
+from axltoolkit.serviceability import ServiceabilityClient
 
 
 @pytest.fixture
@@ -117,9 +118,7 @@ class TestStaticServiceList:
             ]
         }
         result = svc.get_static_service_list()
-        svc._service.soapGetStaticServiceList.assert_called_once_with(
-            ServiceInformation=""
-        )
+        svc._service.soapGetStaticServiceList.assert_called_once_with(ServiceInformation="")
         assert "ServiceInformationResponse" in result
 
     def test_get_static_service_list_fault(self, svc):

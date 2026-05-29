@@ -169,10 +169,12 @@ def test_svc_get_service_status(svc: ServiceabilityClient):
 def test_svc_get_multiple_service_status(svc: ServiceabilityClient):
     """Serviceability — get status of multiple services."""
     try:
-        result = svc.get_service_status([
-            "Cisco CallManager",
-            "Cisco Tftp",
-        ])
+        result = svc.get_service_status(
+            [
+                "Cisco CallManager",
+                "Cisco Tftp",
+            ]
+        )
     except Exception as exc:
         pytest.skip(f"get_service_status(multi) not available: {exc}")
     assert result is not None, f"get_service_status(multi) returned None\n{_safe_debug(svc)}"

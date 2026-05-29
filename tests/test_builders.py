@@ -7,11 +7,7 @@ from axltoolkit.builders import CssBuilder, PhoneBuilder, SipTrunkBuilder
 
 class TestPhoneBuilder:
     def test_minimal_build(self):
-        phone = (
-            PhoneBuilder("SEP001122334455", product="Cisco 8845")
-            .device_pool("Default")
-            .build()
-        )
+        phone = PhoneBuilder("SEP001122334455", product="Cisco 8845").device_pool("Default").build()
         assert phone["name"] == "SEP001122334455"
         assert phone["product"] == "Cisco 8845"
         assert phone["class"] == "Phone"
@@ -77,12 +73,7 @@ class TestPhoneBuilder:
         assert phone["enableExtensionMobility"] is True
 
     def test_line_defaults(self):
-        phone = (
-            PhoneBuilder("SEP001122334455")
-            .device_pool("Default")
-            .add_line(1, "1001")
-            .build()
-        )
+        phone = PhoneBuilder("SEP001122334455").device_pool("Default").add_line(1, "1001").build()
         line = phone["lines"]["line"][0]
         assert line["maxNumCalls"] == 4
         assert line["busyTrigger"] == 2
@@ -209,10 +200,7 @@ class TestCssBuilder:
 
     def test_ordering_preserved(self):
         css = (
-            CssBuilder("CSS-Test")
-            .add_partition("Z-Partition")
-            .add_partition("A-Partition")
-            .build()
+            CssBuilder("CSS-Test").add_partition("Z-Partition").add_partition("A-Partition").build()
         )
         members = css["members"]["member"]
         assert members[0]["routePartitionName"] == "Z-Partition"

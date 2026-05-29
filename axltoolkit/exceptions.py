@@ -19,6 +19,7 @@ class AxlToolkitError(Exception):
 
 # ── Authentication / Connectivity ──────────────────────────────────────────
 
+
 class AXLAuthenticationError(AxlToolkitError):
     """Raised when authentication with the UCM server fails (HTTP 401)."""
 
@@ -28,6 +29,7 @@ class AXLConnectionError(AxlToolkitError):
 
 
 # ── AXL API Errors ─────────────────────────────────────────────────────────
+
 
 class AXLError(AxlToolkitError):
     """Raised when an AXL SOAP operation returns a fault.
@@ -70,6 +72,7 @@ class AXLValidationError(AXLError):
 
 # ── SQL Errors ─────────────────────────────────────────────────────────────
 
+
 class AXLSQLError(AXLError):
     """Raised when a Thin AXL SQL query or update fails."""
 
@@ -79,6 +82,7 @@ class AXLSQLInjectionError(AXLSQLError):
 
 
 # ── SXML / Serviceability Errors ───────────────────────────────────────────
+
 
 class SXMLError(AxlToolkitError):
     """Base exception for SXML (Serviceability XML) API errors."""
@@ -111,6 +115,7 @@ class LogCollectionError(SXMLError):
 
 # ── PAWS Errors ────────────────────────────────────────────────────────────
 
+
 class PAWSError(AxlToolkitError):
     """Raised when a Platform Administrative Web Service (PAWS) operation fails."""
 
@@ -125,6 +130,7 @@ class PAWSError(AxlToolkitError):
 
 
 # ── Webdialer Errors ───────────────────────────────────────────────────────
+
 
 class WebdialerError(AxlToolkitError):
     """Raised when a Webdialer API operation fails."""

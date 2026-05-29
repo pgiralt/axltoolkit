@@ -24,9 +24,8 @@ from __future__ import annotations
 import logging
 from typing import Any, Dict, List, Optional, Sequence, Union
 
-from zeep.helpers import serialize_object
-
 from zeep.exceptions import Fault
+from zeep.helpers import serialize_object
 
 from ._base import BaseClient
 from .exceptions import RISPortError
@@ -104,10 +103,7 @@ class RISPortClient(BaseClient):
         current session credentials (cookies) and reconnect.
         """
         msg = str(fault).lower()
-        return (
-            "error code = 7" in msg
-            or "needs soap clients to start a new session" in msg
-        )
+        return "error code = 7" in msg or "needs soap clients to start a new session" in msg
 
     def _reset_session(self) -> None:
         """Clear cached cookies and rebuild the zeep service proxy.
@@ -116,9 +112,7 @@ class RISPortClient(BaseClient):
         cookies) so UCM allocates a fresh RIS session on the next call,
         then rebinds the zeep service against the same endpoint.
         """
-        self._log.debug(
-            "Resetting RISPort session (clearing cookies, rebuilding service)"
-        )
+        self._log.debug("Resetting RISPort session (clearing cookies, rebuilding service)")
         self._session.cookies.clear()
         self._service = self._client.create_service(
             self._BINDING,
@@ -350,17 +344,11 @@ class RISPortClient(BaseClient):
         }
 
         if app_items:
-            selection_criteria["AppItems"] = {
-                "item": [{"AppItem": a} for a in app_items]
-            }
+            selection_criteria["AppItems"] = {"item": [{"AppItem": a} for a in app_items]}
         if device_names:
-            selection_criteria["DevNames"] = {
-                "item": [{"DevName": d} for d in device_names]
-            }
+            selection_criteria["DevNames"] = {"item": [{"DevName": d} for d in device_names]}
         if dir_numbers:
-            selection_criteria["DirNumbers"] = {
-                "item": [{"DirNumber": d} for d in dir_numbers]
-            }
+            selection_criteria["DirNumbers"] = {"item": [{"DirNumber": d} for d in dir_numbers]}
 
         return self._call(
             "selectCtiItem",
@@ -412,12 +400,14 @@ class RISPortClient(BaseClient):
                 if ip_data and ip_data.get("item"):
                     ip = ip_data["item"][0].get("IP")
 
-                phones.append({
-                    "name": device.get("Name"),
-                    "ip_address": ip,
-                    "status": device.get("Status"),
-                    "model": device.get("Model"),
-                    "node": node_name,
-                })
+                phones.append(
+                    {
+                        "name": device.get("Name"),
+                        "ip_address": ip,
+                        "status": device.get("Status"),
+                        "model": device.get("Model"),
+                        "node": node_name,
+                    }
+                )
 
         return phones

@@ -20,7 +20,7 @@ Usage::
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional, Sequence, Union
+from typing import Any, Dict, Optional, Sequence, Union
 
 from zeep.exceptions import Fault
 
@@ -45,10 +45,7 @@ class ServiceabilityClient(BaseClient):
         max_retries: Retry count for transient failures (default 3).
     """
 
-    _WSDL_PATH = (
-        "https://{server}:8443/controlcenterservice2/services/"
-        "ControlCenterServices?wsdl"
-    )
+    _WSDL_PATH = "https://{server}:8443/controlcenterservice2/services/ControlCenterServices?wsdl"
 
     def __init__(
         self,
@@ -73,10 +70,7 @@ class ServiceabilityClient(BaseClient):
         self._client = self._create_zeep_client(wsdl)
         self._service = self._client.service
         # Override the endpoint — the WSDL may advertise localhost
-        endpoint = (
-            f"https://{server_ip}:8443/controlcenterservice2/"
-            "services/ControlCenterServices"
-        )
+        endpoint = f"https://{server_ip}:8443/controlcenterservice2/services/ControlCenterServices"
         self._service._binding_options["address"] = endpoint
 
     @property
@@ -106,9 +100,7 @@ class ServiceabilityClient(BaseClient):
         """
         try:
             if service_names:
-                return self._service.soapGetServiceStatus(
-                    ServiceStatus=service_names
-                )
+                return self._service.soapGetServiceStatus(ServiceStatus=service_names)
             return self._service.soapGetServiceStatus(ServiceStatus="")
         except Fault as fault:
             raise ServiceabilityError(

@@ -54,40 +54,38 @@ if TYPE_CHECKING:
         AarGroup,
         AdvertisedPatterns,
         Announcement,
-        AppServerInfo,
-        AppUser,
         ApplicationDialRules,
         ApplicationServer,
         ApplicationToSoftKeyTemplate,
         ApplicationUserCapfProfile,
+        AppServerInfo,
+        AppUser,
         AudioCodecPreferenceList,
         BillingServer,
         BlockedLearnedPatterns,
-        CCAProfiles,
-        CallPark,
-        CallPickupGroup,
         CalledPartyTracing,
         CallerFilterList,
+        CallPark,
+        CallPickupGroup,
+        CCAProfiles,
         CcdAdvertisingService,
         CcdHostedDN,
         CcdHostedDNGroup,
         CcdRequestingService,
-        CiscoCatalyst600024PortFXSGateway,
         CiscoCatalyst6000E1VoIPGateway,
         CiscoCatalyst6000T1VoIPGatewayPri,
         CiscoCatalyst6000T1VoIPGatewayT1,
+        CiscoCatalyst600024PortFXSGateway,
         CmcInfo,
         CommonDeviceConfig,
         CommonPhoneConfig,
         ConferenceBridge,
         ConferenceNow,
         CredentialPolicy,
-        Css,
         CtiRoutePoint,
         CumaServerSecurityProfile,
-        CustomUserField,
         Customer,
-        DateTimeGroup,
+        CustomUserField,
         DefaultDeviceProfile,
         DeviceMobility,
         DeviceMobilityGroup,
@@ -95,9 +93,9 @@ if TYPE_CHECKING:
         DeviceProfile,
         DhcpServer,
         DhcpSubnet,
-        DirNumberAliasLookupandSync,
         DirectedCallPark,
         DirectoryLookupDialRules,
+        DirNumberAliasLookupandSync,
         ElinGroup,
         EndUserCapfProfile,
         EnterpriseFeatureAccessConfiguration,
@@ -124,7 +122,6 @@ if TYPE_CHECKING:
         HandoffConfiguration,
         HttpProfile,
         HuntList,
-        HuntPilot,
         ImeClient,
         ImeE164Transformation,
         ImeEnrolledPattern,
@@ -142,7 +139,6 @@ if TYPE_CHECKING:
         LbmGroup,
         LbmHubGroup,
         LdapDirectory,
-        LdapFilter,
         LdapSyncCustomField,
         Line,
         LineGroup,
@@ -162,96 +158,67 @@ if TYPE_CHECKING:
         Phone,
         PhoneActivationCode,
         PhoneButtonTemplate,
-        PhoneNtp,
-        PhoneSecurityProfile,
         PhysicalLocation,
-        PresenceGroup,
         PresenceRedundancyGroup,
         ProcessNode,
         RCommunityString,
-        RSNMPUser,
         RecordingProfile,
-        Region,
         RemoteCluster,
         RemoteDestination,
         RemoteDestinationProfile,
         ResourcePriorityNamespace,
         ResourcePriorityNamespaceList,
         RouteFilter,
-        RouteGroup,
-        RouteList,
-        RoutePartition,
-        RoutePattern,
-        SIPNormalizationScript,
+        RSNMPUser,
         SafCcdPurgeBlockLearnedRoutes,
         SafForwarder,
         SafSecurityProfile,
         SdpTransparencyProfile,
         ServiceProfile,
         SipDialRules,
+        SIPNormalizationScript,
         SipProfile,
         SipRealm,
         SipTrunk,
-        SipRoutePattern,
-        SipTrunkSecurityProfile,
         SoftKeyTemplate,
-        Srst,
         TimePeriod,
         TimeSchedule,
         TodAccess,
-        TransPattern,
         Transcoder,
         TransformationProfile,
         UcService,
         UnitsToGateway,
         UniversalDeviceTemplate,
         UniversalLineTemplate,
-        User,
-        UserGroup,
-        UserPhoneAssociation,
-        UserProfileProvision,
-        Vg224,
-        VmPilot,
-        VohServer,
-        VoiceMailPilot,
-        VoiceMailPort,
-        VoiceMailProfile,
-        VpnGateway,
-        VpnGroup,
-        VpnProfile,
-        WLANProfile,
-        WifiHotspot,
-        WirelessAccessPointControllers,
-        WlanProfileGroup,
         UpdateAarGroup,
         UpdateAarGroupMatrix,
         UpdateAdvertisedPatterns,
         UpdateAnnouncement,
         UpdateAnnunciator,
-        UpdateAppServerInfo,
-        UpdateAppUser,
         UpdateApplicationDialRules,
         UpdateApplicationServer,
         UpdateApplicationUserCapfProfile,
+        UpdateAppServerInfo,
+        UpdateAppUser,
         UpdateAudioCodecPreferenceList,
         UpdateBillingServer,
         UpdateBlockedLearnedPatterns,
-        UpdateCCAProfiles,
-        UpdateCallManager,
-        UpdateCallPark,
-        UpdateCallPickupGroup,
         UpdateCalledPartyTransformationPattern,
         UpdateCallerFilterList,
         UpdateCallingPartyTransformationPattern,
+        UpdateCallManager,
+        UpdateCallPark,
+        UpdateCallPickupGroup,
+        UpdateCCAProfiles,
         UpdateCcdAdvertisingService,
         UpdateCcdFeatureConfig,
         UpdateCcdHostedDN,
         UpdateCcdHostedDNGroup,
         UpdateCcdRequestingService,
-        UpdateCiscoCatalyst600024PortFXSGateway,
         UpdateCiscoCatalyst6000E1VoIPGateway,
         UpdateCiscoCatalyst6000T1VoIPGatewayPri,
         UpdateCiscoCatalyst6000T1VoIPGatewayT1,
+        UpdateCiscoCatalyst600024PortFXSGateway,
         UpdateCiscoCloudOnboarding,
         UpdateCmcInfo,
         UpdateCommonDeviceConfig,
@@ -262,8 +229,8 @@ if TYPE_CHECKING:
         UpdateCredentialPolicyDefault,
         UpdateCtiRoutePoint,
         UpdateCumaServerSecurityProfile,
-        UpdateCustomUserField,
         UpdateCustomer,
+        UpdateCustomUserField,
         UpdateDateTimeGroup,
         UpdateDefaultDeviceProfile,
         UpdateDeviceDefaults,
@@ -273,9 +240,9 @@ if TYPE_CHECKING:
         UpdateDeviceProfile,
         UpdateDhcpServer,
         UpdateDhcpSubnet,
-        UpdateDirNumberAliasLookupandSync,
         UpdateDirectedCallPark,
         UpdateDirectoryLookupDialRules,
+        UpdateDirNumberAliasLookupandSync,
         UpdateElinGroup,
         UpdateEmccFeatureConfig,
         UpdateEndUserCapfProfile,
@@ -321,9 +288,9 @@ if TYPE_CHECKING:
         UpdateImeServer,
         UpdateImportedDirectoryUriCatalogs,
         UpdateInfrastructureDevice,
+        UpdateInteractiveVoiceResponse,
         UpdateInterClusterDirectoryUri,
         UpdateInterClusterServiceProfile,
-        UpdateInteractiveVoiceResponse,
         UpdateIpPhoneServices,
         UpdateIvrUserLocale,
         UpdateLbmGroup,
@@ -372,24 +339,23 @@ if TYPE_CHECKING:
         UpdateRoutePartition,
         UpdateRoutePartitionsForLearnedPatterns,
         UpdateRoutePattern,
-        UpdateSIPNormalizationScript,
-        UpdateSNMPCommunityString,
-        UpdateSNMPMIB2List,
-        UpdateSNMPUser,
         UpdateSafCcdPurgeBlockLearnedRoutes,
         UpdateSafForwarder,
         UpdateSafSecurityProfile,
         UpdateSdpTransparencyProfile,
         UpdateSecureConfig,
         UpdateSelfProvisioning,
-        UpdateServiceParameter,
         UpdateServiceProfile,
         UpdateSipDialRules,
+        UpdateSIPNormalizationScript,
         UpdateSipProfile,
         UpdateSipRealm,
         UpdateSipRoutePattern,
         UpdateSipTrunk,
         UpdateSipTrunkSecurityProfile,
+        UpdateSNMPCommunityString,
+        UpdateSNMPMIB2List,
+        UpdateSNMPUser,
         UpdateSoftKeySet,
         UpdateSoftKeyTemplate,
         UpdateSrst,
@@ -397,9 +363,9 @@ if TYPE_CHECKING:
         UpdateTimePeriod,
         UpdateTimeSchedule,
         UpdateTodAccess,
-        UpdateTransPattern,
         UpdateTranscoder,
         UpdateTransformationProfile,
+        UpdateTransPattern,
         UpdateTvsCertificate,
         UpdateUcService,
         UpdateUniversalDeviceTemplate,
@@ -415,10 +381,24 @@ if TYPE_CHECKING:
         UpdateVpnGateway,
         UpdateVpnGroup,
         UpdateVpnProfile,
-        UpdateWLANProfile,
         UpdateWifiHotspot,
         UpdateWirelessAccessPointControllers,
+        UpdateWLANProfile,
         UpdateWlanProfileGroup,
+        User,
+        UserGroup,
+        UserPhoneAssociation,
+        UserProfileProvision,
+        Vg224,
+        VohServer,
+        VoiceMailPort,
+        VpnGateway,
+        VpnGroup,
+        VpnProfile,
+        WifiHotspot,
+        WirelessAccessPointControllers,
+        WLANProfile,
+        WlanProfileGroup,
     )
 
 logger = logging.getLogger("axltoolkit.axl")
@@ -437,6 +417,7 @@ _SQL_INJECTION_PATTERN = re.compile(
 # Supported AXL schema versions
 SUPPORTED_VERSIONS = ("10.0", "10.5", "11.0", "11.5", "12.0", "12.5", "14.0", "15.0")
 
+
 def _sanitize_sql_value(value: str) -> str:
     """Escape single quotes in a SQL value to prevent injection.
 
@@ -450,10 +431,9 @@ def _sanitize_sql_value(value: str) -> str:
         AXLSQLInjectionError: If the value contains suspicious SQL patterns.
     """
     if _SQL_INJECTION_PATTERN.search(value):
-        raise AXLSQLInjectionError(
-            f"Potentially dangerous SQL detected in value: {value!r}"
-        )
+        raise AXLSQLInjectionError(f"Potentially dangerous SQL detected in value: {value!r}")
     return value.replace("'", "''")
+
 
 def _axl_error_from_fault(fault: Fault) -> AXLError:
     """Convert a zeep Fault into the appropriate AXLError subclass."""
@@ -467,6 +447,7 @@ def _axl_error_from_fault(fault: Fault) -> AXLError:
             if hasattr(detail, "tag"):
                 # lxml element tree — serialise for readability
                 from lxml import etree
+
                 detail_text = etree.tostring(detail, pretty_print=True).decode()
             elif isinstance(detail, bytes):
                 # Zeep may pass the detail as pre-serialised bytes
@@ -519,6 +500,7 @@ def _axl_error_from_fault(fault: Fault) -> AXLError:
             axl_error_code=axl_code,
             original_exception=fault,
         )
+
 
 class AXLClient(BaseClient):
     """Client for the Cisco UCM AXL SOAP API.
@@ -751,8 +733,7 @@ class AXLClient(BaseClient):
             client.add_call_manager_group("CMGroup-1", ["cm1pub", "cm1sub1"])
         """
         member_data = [
-            {"priority": idx, "callManagerName": m}
-            for idx, m in enumerate(members, start=1)
+            {"priority": idx, "callManagerName": m} for idx, m in enumerate(members, start=1)
         ]
         try:
             return self._service.addCallManagerGroup(
@@ -780,13 +761,10 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         member_data = [
-            {"priority": idx, "callManagerName": m}
-            for idx, m in enumerate(members, start=1)
+            {"priority": idx, "callManagerName": m} for idx, m in enumerate(members, start=1)
         ]
         try:
-            return self._service.updateCallManagerGroup(
-                name=name, members={"member": member_data}
-            )
+            return self._service.updateCallManagerGroup(name=name, members={"member": member_data})
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -873,9 +851,7 @@ class AXLClient(BaseClient):
             returned_tags = {"firstName": "", "lastName": "", "userid": ""}
 
         try:
-            result = self._service.listUser(
-                searchCriteria=criteria, returnedTags=returned_tags
-            )
+            result = self._service.listUser(searchCriteria=criteria, returnedTags=returned_tags)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -958,18 +934,28 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         allowed = {
-            "device", "lastKnownIpAddress", "lastKnownUcm",
-            "lastKnownConfigVersion", "locationDetails",
-            "endpointConnection", "portOrSsid", "lastSeen",
+            "device",
+            "lastKnownIpAddress",
+            "lastKnownUcm",
+            "lastKnownConfigVersion",
+            "locationDetails",
+            "endpointConnection",
+            "portOrSsid",
+            "lastSeen",
         }
         criteria = {k: v for k, v in search_criteria.items() if k in allowed}
         if not criteria:
             criteria = {"device": "%"}
 
         returned_tags = {
-            "device": "", "lastKnownIpAddress": "", "lastKnownUcm": "",
-            "lastKnownConfigVersion": "", "locationDetails": "",
-            "endpointConnection": "", "portOrSsid": "", "lastSeen": "",
+            "device": "",
+            "lastKnownIpAddress": "",
+            "lastKnownUcm": "",
+            "lastKnownConfigVersion": "",
+            "locationDetails": "",
+            "endpointConnection": "",
+            "portOrSsid": "",
+            "lastSeen": "",
         }
 
         try:
@@ -1018,9 +1004,7 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.getLine(
-                pattern=pattern, routePartitionName=route_partition_name
-            )
+            return self._service.getLine(pattern=pattern, routePartitionName=route_partition_name)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -1273,8 +1257,12 @@ class AXLClient(BaseClient):
                 print(name, info['description'])
         """
         allowed = {
-            "name", "description", "protocol", "callingSearchSpaceName",
-            "devicePoolName", "securityProfileName",
+            "name",
+            "description",
+            "protocol",
+            "callingSearchSpaceName",
+            "devicePoolName",
+            "securityProfileName",
         }
         criteria = {k: v for k, v in search_criteria.items() if k in allowed}
         if not criteria:
@@ -1284,9 +1272,7 @@ class AXLClient(BaseClient):
             returned_tags = {"name": "", "description": "", "devicePoolName": ""}
 
         try:
-            result = self._service.listPhone(
-                searchCriteria=criteria, returnedTags=returned_tags
-            )
+            result = self._service.listPhone(searchCriteria=criteria, returnedTags=returned_tags)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -1325,9 +1311,7 @@ class AXLClient(BaseClient):
         """
         try:
             if returned_tags is not None:
-                return self._service.getRoutePartition(
-                    name=name, returnedTags=returned_tags
-                )
+                return self._service.getRoutePartition(name=name, returnedTags=returned_tags)
             return self._service.getRoutePartition(name=name)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
@@ -1383,9 +1367,7 @@ class AXLClient(BaseClient):
             if isinstance(partition, str):
                 partition = {"name": partition, "description": ""}
             try:
-                results.append(
-                    self._service.addRoutePartition(routePartition=partition)
-                )
+                results.append(self._service.addRoutePartition(routePartition=partition))
             except Fault as fault:
                 results.append({"fault": _axl_error_from_fault(fault)})
         return results
@@ -1459,8 +1441,7 @@ class AXLClient(BaseClient):
             )
         """
         members = [
-            {"routePartitionName": pt, "index": idx}
-            for idx, pt in enumerate(partitions, start=1)
+            {"routePartitionName": pt, "index": idx} for idx, pt in enumerate(partitions, start=1)
         ]
         try:
             return self._service.addCss(
@@ -1830,7 +1811,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_route_pattern(self, **route_pattern_data: Unpack[UpdateRoutePattern]) -> Dict[str, Any]:
+    def update_route_pattern(
+        self, **route_pattern_data: Unpack[UpdateRoutePattern]
+    ) -> Dict[str, Any]:
         """Update an existing Route Pattern.
 
         Args:
@@ -1943,7 +1926,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_translation_pattern(self, **trans_data: Unpack[UpdateTransPattern]) -> Dict[str, Any]:
+    def update_translation_pattern(
+        self, **trans_data: Unpack[UpdateTransPattern]
+    ) -> Dict[str, Any]:
         """Update an existing Translation Pattern.
 
         Args:
@@ -2050,7 +2035,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_sip_route_pattern(self, **sip_rp_data: Unpack[UpdateSipRoutePattern]) -> Dict[str, Any]:
+    def update_sip_route_pattern(
+        self, **sip_rp_data: Unpack[UpdateSipRoutePattern]
+    ) -> Dict[str, Any]:
         """Update an existing SIP Route Pattern.
 
         Args:
@@ -2134,9 +2121,7 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addConferenceBridge(
-                conferenceBridge=conference_bridge_data
-            )
+            return self._service.addConferenceBridge(conferenceBridge=conference_bridge_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -2192,7 +2177,9 @@ class AXLClient(BaseClient):
         }
         return self.add_conference_bridge(cms_data)
 
-    def update_conference_bridge(self, **cfb_data: Unpack[UpdateConferenceBridge]) -> Dict[str, Any]:
+    def update_conference_bridge(
+        self, **cfb_data: Unpack[UpdateConferenceBridge]
+    ) -> Dict[str, Any]:
         """Update an existing Conference Bridge.
 
         Args:
@@ -2279,15 +2266,11 @@ class AXLClient(BaseClient):
             "multicast": multicast,
         }
         if devices:
-            mrg_data["members"] = {
-                "member": [{"deviceName": d} for d in devices]
-            }
+            mrg_data["members"] = {"member": [{"deviceName": d} for d in devices]}
         else:
             mrg_data["members"] = xsd.SkipValue
         try:
-            return self._service.addMediaResourceGroup(
-                mediaResourceGroup=mrg_data
-            )
+            return self._service.addMediaResourceGroup(mediaResourceGroup=mrg_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -2354,9 +2337,7 @@ class AXLClient(BaseClient):
                 ]
             }
         try:
-            return self._service.addMediaResourceList(
-                mediaResourceList=mrgl_data
-            )
+            return self._service.addMediaResourceList(mediaResourceList=mrgl_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -2509,9 +2490,7 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addLdapFilter(
-                ldapFilter={"name": name, "filter": filter_string}
-            )
+            return self._service.addLdapFilter(ldapFilter={"name": name, "filter": filter_string})
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -2573,9 +2552,7 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addLdapDirectory(
-                ldapDirectory=ldap_directory_data
-            )
+            return self._service.addLdapDirectory(ldapDirectory=ldap_directory_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -2711,8 +2688,7 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         server_data = [
-            {"hostName": s, "ldapPortNumber": port, "sslEnabled": ssl_enabled}
-            for s in servers
+            {"hostName": s, "ldapPortNumber": port, "sslEnabled": ssl_enabled} for s in servers
         ]
         try:
             return self._service.updateLdapAuthentication(
@@ -2807,9 +2783,7 @@ class AXLClient(BaseClient):
             "enableDigestAuthentication": enable_digest_authentication,
         }
         try:
-            return self._service.addPhoneSecurityProfile(
-                phoneSecurityProfile=profile
-            )
+            return self._service.addPhoneSecurityProfile(phoneSecurityProfile=profile)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -2903,9 +2877,7 @@ class AXLClient(BaseClient):
             "allowChargingHeader": allow_charging_header,
         }
         try:
-            return self._service.addSipTrunkSecurityProfile(
-                sipTrunkSecurityProfile=profile
-            )
+            return self._service.addSipTrunkSecurityProfile(sipTrunkSecurityProfile=profile)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -3241,9 +3213,7 @@ class AXLClient(BaseClient):
             versions.
         """
         try:
-            return self._service.addRemoteDestination(
-                remoteDestination=remote_destination_data
-            )
+            return self._service.addRemoteDestination(remoteDestination=remote_destination_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -3445,8 +3415,7 @@ class AXLClient(BaseClient):
         safe_name = _sanitize_sql_value(param_name)
         safe_value = _sanitize_sql_value(param_value)
         query = (
-            f"UPDATE processconfig SET paramvalue = '{safe_value}' "
-            f"WHERE paramname = '{safe_name}'"
+            f"UPDATE processconfig SET paramvalue = '{safe_value}' WHERE paramname = '{safe_name}'"
         )
         result = self.sql_update(query)
         return result["rows_updated"] > 0
@@ -3467,9 +3436,7 @@ class AXLClient(BaseClient):
             AXLSQLError: If the query fails.
         """
         safe_name = _sanitize_sql_value(param_name)
-        result = self.sql_query(
-            f"SELECT * FROM processconfig WHERE paramname = '{safe_name}'"
-        )
+        result = self.sql_query(f"SELECT * FROM processconfig WHERE paramname = '{safe_name}'")
         if result["num_rows"] > 0:
             return result["rows"]
         return None
@@ -4200,14 +4167,10 @@ class AXLClient(BaseClient):
             "withinAudioBandwidth": within_audio_bandwidth,
             "withinVideoBandwidth": within_video_bandwidth,
             "withinImmersiveKbits": within_immersive_kbits,
-            "betweenLocations": {
-                "betweenLocation": list(between_locations)
-            },
+            "betweenLocations": {"betweenLocation": list(between_locations)},
         }
         if related_locations:
-            loc_data["relatedLocations"] = {
-                "relatedLocation": list(related_locations)
-            }
+            loc_data["relatedLocations"] = {"relatedLocation": list(related_locations)}
         try:
             return self._service.addLocation(location=loc_data)
         except Fault as fault:
@@ -4557,13 +4520,13 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addCommonDeviceConfig(
-                commonDeviceConfig=common_device_config_data
-            )
+            return self._service.addCommonDeviceConfig(commonDeviceConfig=common_device_config_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_common_device_config(self, **cdc_data: Unpack[UpdateCommonDeviceConfig]) -> Dict[str, Any]:
+    def update_common_device_config(
+        self, **cdc_data: Unpack[UpdateCommonDeviceConfig]
+    ) -> Dict[str, Any]:
         """Update an existing Common Device Configuration.
 
         Args:
@@ -4640,13 +4603,13 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addCommonPhoneConfig(
-                commonPhoneConfig=common_phone_config_data
-            )
+            return self._service.addCommonPhoneConfig(commonPhoneConfig=common_phone_config_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_common_phone_config(self, **cpc_data: Unpack[UpdateCommonPhoneConfig]) -> Dict[str, Any]:
+    def update_common_phone_config(
+        self, **cpc_data: Unpack[UpdateCommonPhoneConfig]
+    ) -> Dict[str, Any]:
         """Update an existing Common Phone Configuration.
 
         Args:
@@ -4744,9 +4707,7 @@ class AXLClient(BaseClient):
         if line_data is not None:
             cti_route_point_data["lines"] = {"line": line_data}
         try:
-            return self._service.addCtiRoutePoint(
-                ctiRoutePoint=cti_route_point_data
-            )
+            return self._service.addCtiRoutePoint(ctiRoutePoint=cti_route_point_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -5285,9 +5246,7 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addVoiceMailPort(
-                voiceMailPort=voicemail_port_data
-            )
+            return self._service.addVoiceMailPort(voiceMailPort=voicemail_port_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -5370,14 +5329,10 @@ class AXLClient(BaseClient):
             **kwargs,
         }
         if associated_devices:
-            app_user_data["associatedDevices"] = {
-                "device": list(associated_devices)
-            }
+            app_user_data["associatedDevices"] = {"device": list(associated_devices)}
         if associated_groups:
             app_user_data["associatedGroups"] = {
-                "userGroup": [
-                    {"name": g} for g in associated_groups
-                ]
+                "userGroup": [{"name": g} for g in associated_groups]
             }
         try:
             return self._service.addAppUser(appUser=app_user_data)
@@ -5463,9 +5418,7 @@ class AXLClient(BaseClient):
         """
         ug_data: UserGroup = {"name": name}
         if members:
-            ug_data["members"] = {
-                "member": [{"userId": uid} for uid in members]
-            }
+            ug_data["members"] = {"member": [{"userId": uid} for uid in members]}
         try:
             return self._service.addUserGroup(userGroup=ug_data)
         except Fault as fault:
@@ -5567,9 +5520,7 @@ class AXLClient(BaseClient):
         if line_data is not None:
             device_profile_data["lines"] = {"line": line_data}
         try:
-            return self._service.addDeviceProfile(
-                deviceProfile=device_profile_data
-            )
+            return self._service.addDeviceProfile(deviceProfile=device_profile_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -5650,9 +5601,7 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addRouteFilter(
-                routeFilter=route_filter_data
-            )
+            return self._service.addRouteFilter(routeFilter=route_filter_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6028,7 +5977,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_phone_button_template(self, **pbt_data: Unpack[UpdatePhoneButtonTemplate]) -> Dict[str, Any]:
+    def update_phone_button_template(
+        self, **pbt_data: Unpack[UpdatePhoneButtonTemplate]
+    ) -> Dict[str, Any]:
         """Update an existing Phone Button Template.
 
         Args:
@@ -6104,9 +6055,7 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addSoftKeyTemplate(
-                softKeyTemplate=soft_key_template_data
-            )
+            return self._service.addSoftKeyTemplate(softKeyTemplate=soft_key_template_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6167,9 +6116,7 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addServiceProfile(
-                serviceProfile=service_profile_data
-            )
+            return self._service.addServiceProfile(serviceProfile=service_profile_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6325,9 +6272,7 @@ class AXLClient(BaseClient):
             AXLError: On other AXL faults.
         """
         try:
-            return self._service.addAnnouncement(
-                announcement=announcement_data
-            )
+            return self._service.addAnnouncement(announcement=announcement_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6391,13 +6336,13 @@ class AXLClient(BaseClient):
         if line_data is not None:
             rdp_data["lines"] = {"line": line_data}
         try:
-            return self._service.addRemoteDestinationProfile(
-                remoteDestinationProfile=rdp_data
-            )
+            return self._service.addRemoteDestinationProfile(remoteDestinationProfile=rdp_data)
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_remote_destination_profile(self, **rdp_data: Unpack[UpdateRemoteDestinationProfile]) -> Dict[str, Any]:
+    def update_remote_destination_profile(
+        self, **rdp_data: Unpack[UpdateRemoteDestinationProfile]
+    ) -> Dict[str, Any]:
         """Update an existing Remote Destination Profile.
 
         Args:
@@ -6509,9 +6454,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_aar_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_aar_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List AarGroup objects matching search criteria.
 
         Args:
@@ -6529,9 +6477,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listAarGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listAarGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6557,7 +6505,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_advertised_patterns(self, advertised_patterns_data: AdvertisedPatterns) -> Dict[str, Any]:
+    def add_advertised_patterns(
+        self, advertised_patterns_data: AdvertisedPatterns
+    ) -> Dict[str, Any]:
         """Add a new AdvertisedPatterns.
 
         Args:
@@ -6574,7 +6524,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_advertised_patterns(self, **kwargs: Unpack[UpdateAdvertisedPatterns]) -> Dict[str, Any]:
+    def update_advertised_patterns(
+        self, **kwargs: Unpack[UpdateAdvertisedPatterns]
+    ) -> Dict[str, Any]:
         """Update an existing AdvertisedPatterns.
 
         Args:
@@ -6610,9 +6562,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_advertised_patterns(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_advertised_patterns(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List AdvertisedPatterns objects matching search criteria.
 
         Args:
@@ -6630,9 +6585,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listAdvertisedPatterns(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listAdvertisedPatterns(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6658,9 +6613,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_announcement(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_announcement(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Announcement objects matching search criteria.
 
         Args:
@@ -6678,9 +6636,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listAnnouncement(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listAnnouncement(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6763,9 +6721,12 @@ class AXLClient(BaseClient):
     #  AppUser
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_app_user(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_app_user(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List AppUser objects matching search criteria.
 
         Args:
@@ -6783,9 +6744,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listAppUser(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listAppUser(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6811,7 +6772,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_application_dial_rules(self, application_dial_rules_data: ApplicationDialRules) -> Dict[str, Any]:
+    def add_application_dial_rules(
+        self, application_dial_rules_data: ApplicationDialRules
+    ) -> Dict[str, Any]:
         """Add a new ApplicationDialRules.
 
         Args:
@@ -6824,11 +6787,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addApplicationDialRules(applicationDialRules=application_dial_rules_data)
+            return self._service.addApplicationDialRules(
+                applicationDialRules=application_dial_rules_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_application_dial_rules(self, **kwargs: Unpack[UpdateApplicationDialRules]) -> Dict[str, Any]:
+    def update_application_dial_rules(
+        self, **kwargs: Unpack[UpdateApplicationDialRules]
+    ) -> Dict[str, Any]:
         """Update an existing ApplicationDialRules.
 
         Args:
@@ -6864,9 +6831,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_application_dial_rules(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_application_dial_rules(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ApplicationDialRules objects matching search criteria.
 
         Args:
@@ -6884,9 +6854,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listApplicationDialRules(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listApplicationDialRules(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6929,7 +6899,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_application_server(self, **kwargs: Unpack[UpdateApplicationServer]) -> Dict[str, Any]:
+    def update_application_server(
+        self, **kwargs: Unpack[UpdateApplicationServer]
+    ) -> Dict[str, Any]:
         """Update an existing ApplicationServer.
 
         Args:
@@ -6965,9 +6937,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_application_server(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_application_server(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ApplicationServer objects matching search criteria.
 
         Args:
@@ -6985,9 +6960,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listApplicationServer(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listApplicationServer(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -6995,7 +6970,9 @@ class AXLClient(BaseClient):
     #  ApplicationToSoftkeyTemplate
     # ═══════════════════════════════════════════════════════════════════
 
-    def add_application_to_softkey_template(self, application_to_softkey_template_data: ApplicationToSoftKeyTemplate) -> Dict[str, Any]:
+    def add_application_to_softkey_template(
+        self, application_to_softkey_template_data: ApplicationToSoftKeyTemplate
+    ) -> Dict[str, Any]:
         """Add a new ApplicationToSoftkeyTemplate.
 
         Args:
@@ -7008,7 +6985,9 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addApplicationToSoftkeyTemplate(applicationToSoftkeyTemplate=application_to_softkey_template_data)
+            return self._service.addApplicationToSoftkeyTemplate(
+                applicationToSoftkeyTemplate=application_to_softkey_template_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7052,7 +7031,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_application_user_capf_profile(self, application_user_capf_profile_data: ApplicationUserCapfProfile) -> Dict[str, Any]:
+    def add_application_user_capf_profile(
+        self, application_user_capf_profile_data: ApplicationUserCapfProfile
+    ) -> Dict[str, Any]:
         """Add a new ApplicationUserCapfProfile.
 
         Args:
@@ -7065,11 +7046,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addApplicationUserCapfProfile(applicationUserCapfProfile=application_user_capf_profile_data)
+            return self._service.addApplicationUserCapfProfile(
+                applicationUserCapfProfile=application_user_capf_profile_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_application_user_capf_profile(self, **kwargs: Unpack[UpdateApplicationUserCapfProfile]) -> Dict[str, Any]:
+    def update_application_user_capf_profile(
+        self, **kwargs: Unpack[UpdateApplicationUserCapfProfile]
+    ) -> Dict[str, Any]:
         """Update an existing ApplicationUserCapfProfile.
 
         Args:
@@ -7105,9 +7090,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_application_user_capf_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_application_user_capf_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ApplicationUserCapfProfile objects matching search criteria.
 
         Args:
@@ -7125,9 +7113,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listApplicationUserCapfProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listApplicationUserCapfProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7135,9 +7123,12 @@ class AXLClient(BaseClient):
     #  AssignedPresenceServers
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_assigned_presence_servers(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_assigned_presence_servers(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List AssignedPresenceServers objects matching search criteria.
 
         Args:
@@ -7155,9 +7146,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listAssignedPresenceServers(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listAssignedPresenceServers(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7165,9 +7156,12 @@ class AXLClient(BaseClient):
     #  AssignedPresenceUsers
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_assigned_presence_users(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_assigned_presence_users(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List AssignedPresenceUsers objects matching search criteria.
 
         Args:
@@ -7185,9 +7179,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listAssignedPresenceUsers(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listAssignedPresenceUsers(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7213,7 +7207,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_audio_codec_preference_list(self, audio_codec_preference_list_data: AudioCodecPreferenceList) -> Dict[str, Any]:
+    def add_audio_codec_preference_list(
+        self, audio_codec_preference_list_data: AudioCodecPreferenceList
+    ) -> Dict[str, Any]:
         """Add a new AudioCodecPreferenceList.
 
         Args:
@@ -7226,11 +7222,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addAudioCodecPreferenceList(audioCodecPreferenceList=audio_codec_preference_list_data)
+            return self._service.addAudioCodecPreferenceList(
+                audioCodecPreferenceList=audio_codec_preference_list_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_audio_codec_preference_list(self, **kwargs: Unpack[UpdateAudioCodecPreferenceList]) -> Dict[str, Any]:
+    def update_audio_codec_preference_list(
+        self, **kwargs: Unpack[UpdateAudioCodecPreferenceList]
+    ) -> Dict[str, Any]:
         """Update an existing AudioCodecPreferenceList.
 
         Args:
@@ -7266,9 +7266,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_audio_codec_preference_list(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_audio_codec_preference_list(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List AudioCodecPreferenceList objects matching search criteria.
 
         Args:
@@ -7286,9 +7289,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listAudioCodecPreferenceList(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listAudioCodecPreferenceList(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7371,9 +7374,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_billing_server(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_billing_server(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List BillingServer objects matching search criteria.
 
         Args:
@@ -7391,9 +7397,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listBillingServer(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listBillingServer(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7419,7 +7425,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_blocked_learned_patterns(self, blocked_learned_patterns_data: BlockedLearnedPatterns) -> Dict[str, Any]:
+    def add_blocked_learned_patterns(
+        self, blocked_learned_patterns_data: BlockedLearnedPatterns
+    ) -> Dict[str, Any]:
         """Add a new BlockedLearnedPatterns.
 
         Args:
@@ -7432,11 +7440,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addBlockedLearnedPatterns(blockedLearnedPatterns=blocked_learned_patterns_data)
+            return self._service.addBlockedLearnedPatterns(
+                blockedLearnedPatterns=blocked_learned_patterns_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_blocked_learned_patterns(self, **kwargs: Unpack[UpdateBlockedLearnedPatterns]) -> Dict[str, Any]:
+    def update_blocked_learned_patterns(
+        self, **kwargs: Unpack[UpdateBlockedLearnedPatterns]
+    ) -> Dict[str, Any]:
         """Update an existing BlockedLearnedPatterns.
 
         Args:
@@ -7472,9 +7484,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_blocked_learned_patterns(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_blocked_learned_patterns(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List BlockedLearnedPatterns objects matching search criteria.
 
         Args:
@@ -7492,9 +7507,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listBlockedLearnedPatterns(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listBlockedLearnedPatterns(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7579,9 +7594,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_cca_profiles(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_cca_profiles(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CCAProfiles objects matching search criteria.
 
         Args:
@@ -7599,9 +7617,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCCAProfiles(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCCAProfiles(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7632,9 +7650,12 @@ class AXLClient(BaseClient):
     #  CallManagerGroup
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_call_manager_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_call_manager_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CallManagerGroup objects matching search criteria.
 
         Args:
@@ -7652,9 +7673,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCallManagerGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCallManagerGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7714,9 +7735,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_call_park(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_call_park(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CallPark objects matching search criteria.
 
         Args:
@@ -7734,9 +7758,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCallPark(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCallPark(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7744,9 +7768,12 @@ class AXLClient(BaseClient):
     #  CallPickupGroup
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_call_pickup_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_call_pickup_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CallPickupGroup objects matching search criteria.
 
         Args:
@@ -7764,9 +7791,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCallPickupGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCallPickupGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7774,7 +7801,9 @@ class AXLClient(BaseClient):
     #  CalledPartyTracing
     # ═══════════════════════════════════════════════════════════════════
 
-    def add_called_party_tracing(self, called_party_tracing_data: CalledPartyTracing) -> Dict[str, Any]:
+    def add_called_party_tracing(
+        self, called_party_tracing_data: CalledPartyTracing
+    ) -> Dict[str, Any]:
         """Add a new CalledPartyTracing.
 
         Args:
@@ -7809,9 +7838,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_called_party_tracing(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_called_party_tracing(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CalledPartyTracing objects matching search criteria.
 
         Args:
@@ -7829,9 +7861,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCalledPartyTracing(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCalledPartyTracing(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7839,7 +7871,9 @@ class AXLClient(BaseClient):
     #  CalledPartyTransformationPattern
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_called_party_transformation_pattern(self, **kwargs: Unpack[UpdateCalledPartyTransformationPattern]) -> Dict[str, Any]:
+    def update_called_party_transformation_pattern(
+        self, **kwargs: Unpack[UpdateCalledPartyTransformationPattern]
+    ) -> Dict[str, Any]:
         """Update an existing CalledPartyTransformationPattern.
 
         Args:
@@ -7857,9 +7891,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_called_party_transformation_pattern(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_called_party_transformation_pattern(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CalledPartyTransformationPattern objects matching search criteria.
 
         Args:
@@ -7877,9 +7914,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCalledPartyTransformationPattern(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCalledPartyTransformationPattern(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7958,9 +7995,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_caller_filter_list(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_caller_filter_list(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CallerFilterList objects matching search criteria.
 
         Args:
@@ -7978,9 +8018,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCallerFilterList(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCallerFilterList(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -7988,7 +8028,9 @@ class AXLClient(BaseClient):
     #  CallingPartyTransformationPattern
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_calling_party_transformation_pattern(self, **kwargs: Unpack[UpdateCallingPartyTransformationPattern]) -> Dict[str, Any]:
+    def update_calling_party_transformation_pattern(
+        self, **kwargs: Unpack[UpdateCallingPartyTransformationPattern]
+    ) -> Dict[str, Any]:
         """Update an existing CallingPartyTransformationPattern.
 
         Args:
@@ -8006,9 +8048,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_calling_party_transformation_pattern(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_calling_party_transformation_pattern(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CallingPartyTransformationPattern objects matching search criteria.
 
         Args:
@@ -8026,9 +8071,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCallingPartyTransformationPattern(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCallingPartyTransformationPattern(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -8054,7 +8099,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ccd_advertising_service(self, ccd_advertising_service_data: CcdAdvertisingService) -> Dict[str, Any]:
+    def add_ccd_advertising_service(
+        self, ccd_advertising_service_data: CcdAdvertisingService
+    ) -> Dict[str, Any]:
         """Add a new CcdAdvertisingService.
 
         Args:
@@ -8067,11 +8114,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addCcdAdvertisingService(ccdAdvertisingService=ccd_advertising_service_data)
+            return self._service.addCcdAdvertisingService(
+                ccdAdvertisingService=ccd_advertising_service_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ccd_advertising_service(self, **kwargs: Unpack[UpdateCcdAdvertisingService]) -> Dict[str, Any]:
+    def update_ccd_advertising_service(
+        self, **kwargs: Unpack[UpdateCcdAdvertisingService]
+    ) -> Dict[str, Any]:
         """Update an existing CcdAdvertisingService.
 
         Args:
@@ -8107,9 +8158,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ccd_advertising_service(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ccd_advertising_service(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CcdAdvertisingService objects matching search criteria.
 
         Args:
@@ -8127,9 +8181,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCcdAdvertisingService(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCcdAdvertisingService(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -8208,9 +8262,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ccd_hosted_dn(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ccd_hosted_dn(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CcdHostedDN objects matching search criteria.
 
         Args:
@@ -8228,9 +8285,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCcdHostedDN(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCcdHostedDN(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -8273,7 +8330,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ccd_hosted_dn_group(self, **kwargs: Unpack[UpdateCcdHostedDNGroup]) -> Dict[str, Any]:
+    def update_ccd_hosted_dn_group(
+        self, **kwargs: Unpack[UpdateCcdHostedDNGroup]
+    ) -> Dict[str, Any]:
         """Update an existing CcdHostedDNGroup.
 
         Args:
@@ -8309,9 +8368,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ccd_hosted_dn_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ccd_hosted_dn_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CcdHostedDNGroup objects matching search criteria.
 
         Args:
@@ -8329,9 +8391,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCcdHostedDNGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCcdHostedDNGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -8357,7 +8419,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ccd_requesting_service(self, ccd_requesting_service_data: CcdRequestingService) -> Dict[str, Any]:
+    def add_ccd_requesting_service(
+        self, ccd_requesting_service_data: CcdRequestingService
+    ) -> Dict[str, Any]:
         """Add a new CcdRequestingService.
 
         Args:
@@ -8370,11 +8434,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addCcdRequestingService(ccdRequestingService=ccd_requesting_service_data)
+            return self._service.addCcdRequestingService(
+                ccdRequestingService=ccd_requesting_service_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ccd_requesting_service(self, **kwargs: Unpack[UpdateCcdRequestingService]) -> Dict[str, Any]:
+    def update_ccd_requesting_service(
+        self, **kwargs: Unpack[UpdateCcdRequestingService]
+    ) -> Dict[str, Any]:
         """Update an existing CcdRequestingService.
 
         Args:
@@ -8458,7 +8526,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_cisco_catalyst600024_port_fxs_gateway(self, cisco_catalyst600024_port_fxs_gateway_data: CiscoCatalyst600024PortFXSGateway) -> Dict[str, Any]:
+    def add_cisco_catalyst600024_port_fxs_gateway(
+        self, cisco_catalyst600024_port_fxs_gateway_data: CiscoCatalyst600024PortFXSGateway
+    ) -> Dict[str, Any]:
         """Add a new CiscoCatalyst600024PortFXSGateway.
 
         Args:
@@ -8471,11 +8541,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addCiscoCatalyst600024PortFXSGateway(ciscoCatalyst600024PortFXSGateway=cisco_catalyst600024_port_fxs_gateway_data)
+            return self._service.addCiscoCatalyst600024PortFXSGateway(
+                ciscoCatalyst600024PortFXSGateway=cisco_catalyst600024_port_fxs_gateway_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_cisco_catalyst600024_port_fxs_gateway(self, **kwargs: Unpack[UpdateCiscoCatalyst600024PortFXSGateway]) -> Dict[str, Any]:
+    def update_cisco_catalyst600024_port_fxs_gateway(
+        self, **kwargs: Unpack[UpdateCiscoCatalyst600024PortFXSGateway]
+    ) -> Dict[str, Any]:
         """Update an existing CiscoCatalyst600024PortFXSGateway.
 
         Args:
@@ -8511,9 +8585,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_cisco_catalyst600024_port_fxs_gateway(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_cisco_catalyst600024_port_fxs_gateway(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CiscoCatalyst600024PortFXSGateway objects matching search criteria.
 
         Args:
@@ -8531,9 +8608,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCiscoCatalyst600024PortFXSGateway(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCiscoCatalyst600024PortFXSGateway(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -8610,7 +8687,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_cisco_catalyst6000_e1_vo_ip_gateway(self, cisco_catalyst6000_e1_vo_ip_gateway_data: CiscoCatalyst6000E1VoIPGateway) -> Dict[str, Any]:
+    def add_cisco_catalyst6000_e1_vo_ip_gateway(
+        self, cisco_catalyst6000_e1_vo_ip_gateway_data: CiscoCatalyst6000E1VoIPGateway
+    ) -> Dict[str, Any]:
         """Add a new CiscoCatalyst6000E1VoIPGateway.
 
         Args:
@@ -8623,11 +8702,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addCiscoCatalyst6000E1VoIPGateway(ciscoCatalyst6000E1VoIPGateway=cisco_catalyst6000_e1_vo_ip_gateway_data)
+            return self._service.addCiscoCatalyst6000E1VoIPGateway(
+                ciscoCatalyst6000E1VoIPGateway=cisco_catalyst6000_e1_vo_ip_gateway_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_cisco_catalyst6000_e1_vo_ip_gateway(self, **kwargs: Unpack[UpdateCiscoCatalyst6000E1VoIPGateway]) -> Dict[str, Any]:
+    def update_cisco_catalyst6000_e1_vo_ip_gateway(
+        self, **kwargs: Unpack[UpdateCiscoCatalyst6000E1VoIPGateway]
+    ) -> Dict[str, Any]:
         """Update an existing CiscoCatalyst6000E1VoIPGateway.
 
         Args:
@@ -8663,9 +8746,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_cisco_catalyst6000_e1_vo_ip_gateway(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_cisco_catalyst6000_e1_vo_ip_gateway(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CiscoCatalyst6000E1VoIPGateway objects matching search criteria.
 
         Args:
@@ -8683,9 +8769,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCiscoCatalyst6000E1VoIPGateway(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCiscoCatalyst6000E1VoIPGateway(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -8762,7 +8848,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_cisco_catalyst6000_t1_vo_ip_gateway_pri(self, cisco_catalyst6000_t1_vo_ip_gateway_pri_data: CiscoCatalyst6000T1VoIPGatewayPri) -> Dict[str, Any]:
+    def add_cisco_catalyst6000_t1_vo_ip_gateway_pri(
+        self, cisco_catalyst6000_t1_vo_ip_gateway_pri_data: CiscoCatalyst6000T1VoIPGatewayPri
+    ) -> Dict[str, Any]:
         """Add a new CiscoCatalyst6000T1VoIPGatewayPri.
 
         Args:
@@ -8775,11 +8863,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addCiscoCatalyst6000T1VoIPGatewayPri(ciscoCatalyst6000T1VoIPGatewayPri=cisco_catalyst6000_t1_vo_ip_gateway_pri_data)
+            return self._service.addCiscoCatalyst6000T1VoIPGatewayPri(
+                ciscoCatalyst6000T1VoIPGatewayPri=cisco_catalyst6000_t1_vo_ip_gateway_pri_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_cisco_catalyst6000_t1_vo_ip_gateway_pri(self, **kwargs: Unpack[UpdateCiscoCatalyst6000T1VoIPGatewayPri]) -> Dict[str, Any]:
+    def update_cisco_catalyst6000_t1_vo_ip_gateway_pri(
+        self, **kwargs: Unpack[UpdateCiscoCatalyst6000T1VoIPGatewayPri]
+    ) -> Dict[str, Any]:
         """Update an existing CiscoCatalyst6000T1VoIPGatewayPri.
 
         Args:
@@ -8815,9 +8907,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_cisco_catalyst6000_t1_vo_ip_gateway_pri(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_cisco_catalyst6000_t1_vo_ip_gateway_pri(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CiscoCatalyst6000T1VoIPGatewayPri objects matching search criteria.
 
         Args:
@@ -8835,9 +8930,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCiscoCatalyst6000T1VoIPGatewayPri(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCiscoCatalyst6000T1VoIPGatewayPri(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -8914,7 +9009,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_cisco_catalyst6000_t1_vo_ip_gateway_t1(self, cisco_catalyst6000_t1_vo_ip_gateway_t1_data: CiscoCatalyst6000T1VoIPGatewayT1) -> Dict[str, Any]:
+    def add_cisco_catalyst6000_t1_vo_ip_gateway_t1(
+        self, cisco_catalyst6000_t1_vo_ip_gateway_t1_data: CiscoCatalyst6000T1VoIPGatewayT1
+    ) -> Dict[str, Any]:
         """Add a new CiscoCatalyst6000T1VoIPGatewayT1.
 
         Args:
@@ -8927,11 +9024,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addCiscoCatalyst6000T1VoIPGatewayT1(ciscoCatalyst6000T1VoIPGatewayT1=cisco_catalyst6000_t1_vo_ip_gateway_t1_data)
+            return self._service.addCiscoCatalyst6000T1VoIPGatewayT1(
+                ciscoCatalyst6000T1VoIPGatewayT1=cisco_catalyst6000_t1_vo_ip_gateway_t1_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_cisco_catalyst6000_t1_vo_ip_gateway_t1(self, **kwargs: Unpack[UpdateCiscoCatalyst6000T1VoIPGatewayT1]) -> Dict[str, Any]:
+    def update_cisco_catalyst6000_t1_vo_ip_gateway_t1(
+        self, **kwargs: Unpack[UpdateCiscoCatalyst6000T1VoIPGatewayT1]
+    ) -> Dict[str, Any]:
         """Update an existing CiscoCatalyst6000T1VoIPGatewayT1.
 
         Args:
@@ -8967,9 +9068,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_cisco_catalyst6000_t1_vo_ip_gateway_t1(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_cisco_catalyst6000_t1_vo_ip_gateway_t1(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CiscoCatalyst6000T1VoIPGatewayT1 objects matching search criteria.
 
         Args:
@@ -8987,9 +9091,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCiscoCatalyst6000T1VoIPGatewayT1(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCiscoCatalyst6000T1VoIPGatewayT1(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9119,9 +9223,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_cmc_info(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_cmc_info(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CmcInfo objects matching search criteria.
 
         Args:
@@ -9139,9 +9246,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCmcInfo(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCmcInfo(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9149,9 +9256,12 @@ class AXLClient(BaseClient):
     #  CommonDeviceConfig
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_common_device_config(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_common_device_config(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CommonDeviceConfig objects matching search criteria.
 
         Args:
@@ -9169,9 +9279,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCommonDeviceConfig(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCommonDeviceConfig(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9213,9 +9323,12 @@ class AXLClient(BaseClient):
     #  CommonPhoneConfig
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_common_phone_config(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_common_phone_config(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CommonPhoneConfig objects matching search criteria.
 
         Args:
@@ -9233,9 +9346,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCommonPhoneConfig(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCommonPhoneConfig(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9277,9 +9390,12 @@ class AXLClient(BaseClient):
     #  ConferenceBridge
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_conference_bridge(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_conference_bridge(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ConferenceBridge objects matching search criteria.
 
         Args:
@@ -9297,9 +9413,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listConferenceBridge(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listConferenceBridge(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9429,9 +9545,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_conference_now(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_conference_now(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ConferenceNow objects matching search criteria.
 
         Args:
@@ -9449,9 +9568,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listConferenceNow(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listConferenceNow(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9512,9 +9631,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_credential_policy(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_credential_policy(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CredentialPolicy objects matching search criteria.
 
         Args:
@@ -9532,9 +9654,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCredentialPolicy(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCredentialPolicy(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9542,9 +9664,12 @@ class AXLClient(BaseClient):
     #  Css
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_css(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_css(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Css objects matching search criteria.
 
         Args:
@@ -9562,9 +9687,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCss(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCss(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9572,9 +9697,12 @@ class AXLClient(BaseClient):
     #  CtiRoutePoint
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_cti_route_point(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_cti_route_point(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CtiRoutePoint objects matching search criteria.
 
         Args:
@@ -9592,9 +9720,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCtiRoutePoint(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCtiRoutePoint(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9671,7 +9799,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_cuma_server_security_profile(self, cuma_server_security_profile_data: CumaServerSecurityProfile) -> Dict[str, Any]:
+    def add_cuma_server_security_profile(
+        self, cuma_server_security_profile_data: CumaServerSecurityProfile
+    ) -> Dict[str, Any]:
         """Add a new CumaServerSecurityProfile.
 
         Args:
@@ -9684,11 +9814,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addCumaServerSecurityProfile(cumaServerSecurityProfile=cuma_server_security_profile_data)
+            return self._service.addCumaServerSecurityProfile(
+                cumaServerSecurityProfile=cuma_server_security_profile_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_cuma_server_security_profile(self, **kwargs: Unpack[UpdateCumaServerSecurityProfile]) -> Dict[str, Any]:
+    def update_cuma_server_security_profile(
+        self, **kwargs: Unpack[UpdateCumaServerSecurityProfile]
+    ) -> Dict[str, Any]:
         """Update an existing CumaServerSecurityProfile.
 
         Args:
@@ -9724,9 +9858,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_cuma_server_security_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_cuma_server_security_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CumaServerSecurityProfile objects matching search criteria.
 
         Args:
@@ -9744,9 +9881,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCumaServerSecurityProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCumaServerSecurityProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9825,9 +9962,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_custom_user_field(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_custom_user_field(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CustomUserField objects matching search criteria.
 
         Args:
@@ -9845,9 +9985,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCustomUserField(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCustomUserField(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9926,9 +10066,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_customer(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_customer(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Customer objects matching search criteria.
 
         Args:
@@ -9946,9 +10089,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCustomer(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCustomer(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -9956,9 +10099,12 @@ class AXLClient(BaseClient):
     #  DateTimeGroup
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_date_time_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_date_time_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DateTimeGroup objects matching search criteria.
 
         Args:
@@ -9976,9 +10122,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDateTimeGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDateTimeGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10038,9 +10184,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ddi(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ddi(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Ddi objects matching search criteria.
 
         Args:
@@ -10058,9 +10207,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDdi(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDdi(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10086,7 +10235,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_default_device_profile(self, default_device_profile_data: DefaultDeviceProfile) -> Dict[str, Any]:
+    def add_default_device_profile(
+        self, default_device_profile_data: DefaultDeviceProfile
+    ) -> Dict[str, Any]:
         """Add a new DefaultDeviceProfile.
 
         Args:
@@ -10099,11 +10250,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addDefaultDeviceProfile(defaultDeviceProfile=default_device_profile_data)
+            return self._service.addDefaultDeviceProfile(
+                defaultDeviceProfile=default_device_profile_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_default_device_profile(self, **kwargs: Unpack[UpdateDefaultDeviceProfile]) -> Dict[str, Any]:
+    def update_default_device_profile(
+        self, **kwargs: Unpack[UpdateDefaultDeviceProfile]
+    ) -> Dict[str, Any]:
         """Update an existing DefaultDeviceProfile.
 
         Args:
@@ -10139,9 +10294,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_default_device_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_default_device_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DefaultDeviceProfile objects matching search criteria.
 
         Args:
@@ -10159,9 +10317,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDefaultDeviceProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDefaultDeviceProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10248,9 +10406,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_device_mobility(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_device_mobility(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DeviceMobility objects matching search criteria.
 
         Args:
@@ -10268,9 +10429,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDeviceMobility(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDeviceMobility(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10296,7 +10457,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_device_mobility_group(self, device_mobility_group_data: DeviceMobilityGroup) -> Dict[str, Any]:
+    def add_device_mobility_group(
+        self, device_mobility_group_data: DeviceMobilityGroup
+    ) -> Dict[str, Any]:
         """Add a new DeviceMobilityGroup.
 
         Args:
@@ -10309,11 +10472,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addDeviceMobilityGroup(deviceMobilityGroup=device_mobility_group_data)
+            return self._service.addDeviceMobilityGroup(
+                deviceMobilityGroup=device_mobility_group_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_device_mobility_group(self, **kwargs: Unpack[UpdateDeviceMobilityGroup]) -> Dict[str, Any]:
+    def update_device_mobility_group(
+        self, **kwargs: Unpack[UpdateDeviceMobilityGroup]
+    ) -> Dict[str, Any]:
         """Update an existing DeviceMobilityGroup.
 
         Args:
@@ -10349,9 +10516,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_device_mobility_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_device_mobility_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DeviceMobilityGroup objects matching search criteria.
 
         Args:
@@ -10369,9 +10539,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDeviceMobilityGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDeviceMobilityGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10379,9 +10549,12 @@ class AXLClient(BaseClient):
     #  DevicePool
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_device_pool(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_device_pool(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DevicePool objects matching search criteria.
 
         Args:
@@ -10399,9 +10572,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDevicePool(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDevicePool(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10460,9 +10633,12 @@ class AXLClient(BaseClient):
     #  DeviceProfile
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_device_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_device_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DeviceProfile objects matching search criteria.
 
         Args:
@@ -10480,9 +10656,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDeviceProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDeviceProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10583,9 +10759,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_dhcp_server(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_dhcp_server(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DhcpServer objects matching search criteria.
 
         Args:
@@ -10603,9 +10782,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDhcpServer(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDhcpServer(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10692,9 +10871,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_dhcp_subnet(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_dhcp_subnet(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DhcpSubnet objects matching search criteria.
 
         Args:
@@ -10712,9 +10894,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDhcpSubnet(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDhcpSubnet(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10740,9 +10922,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_dial_plan(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_dial_plan(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DialPlan objects matching search criteria.
 
         Args:
@@ -10760,9 +10945,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDialPlan(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDialPlan(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10788,9 +10973,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_dial_plan_tag(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_dial_plan_tag(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DialPlanTag objects matching search criteria.
 
         Args:
@@ -10808,9 +10996,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDialPlanTag(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDialPlanTag(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10836,7 +11024,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_dir_number_alias_lookupand_sync(self, dir_number_alias_lookupand_sync_data: DirNumberAliasLookupandSync) -> Dict[str, Any]:
+    def add_dir_number_alias_lookupand_sync(
+        self, dir_number_alias_lookupand_sync_data: DirNumberAliasLookupandSync
+    ) -> Dict[str, Any]:
         """Add a new DirNumberAliasLookupandSync.
 
         Args:
@@ -10849,11 +11039,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addDirNumberAliasLookupandSync(dirNumberAliasLookupandSync=dir_number_alias_lookupand_sync_data)
+            return self._service.addDirNumberAliasLookupandSync(
+                dirNumberAliasLookupandSync=dir_number_alias_lookupand_sync_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_dir_number_alias_lookupand_sync(self, **kwargs: Unpack[UpdateDirNumberAliasLookupandSync]) -> Dict[str, Any]:
+    def update_dir_number_alias_lookupand_sync(
+        self, **kwargs: Unpack[UpdateDirNumberAliasLookupandSync]
+    ) -> Dict[str, Any]:
         """Update an existing DirNumberAliasLookupandSync.
 
         Args:
@@ -10889,9 +11083,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_dir_number_alias_lookupand_sync(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_dir_number_alias_lookupand_sync(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DirNumberAliasLookupandSync objects matching search criteria.
 
         Args:
@@ -10909,9 +11106,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDirNumberAliasLookupandSync(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDirNumberAliasLookupandSync(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -10920,7 +11117,9 @@ class AXLClient(BaseClient):
     # ═══════════════════════════════════════════════════════════════════
 
     def get_directed_call_park(
-        self, pattern: str, route_partition_name: str = "",
+        self,
+        pattern: str,
+        route_partition_name: str = "",
     ) -> Dict[str, Any]:
         """Retrieve a Directed Call Park by pattern.
 
@@ -10938,7 +11137,8 @@ class AXLClient(BaseClient):
         """
         try:
             return self._service.getDirectedCallPark(
-                pattern=pattern, routePartitionName=route_partition_name,
+                pattern=pattern,
+                routePartitionName=route_partition_name,
             )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
@@ -10979,7 +11179,9 @@ class AXLClient(BaseClient):
             raise _axl_error_from_fault(fault) from fault
 
     def remove_directed_call_park(
-        self, pattern: str, route_partition_name: str = "",
+        self,
+        pattern: str,
+        route_partition_name: str = "",
     ) -> Dict[str, Any]:
         """Remove a Directed Call Park by pattern.
 
@@ -10997,14 +11199,18 @@ class AXLClient(BaseClient):
         """
         try:
             return self._service.removeDirectedCallPark(
-                pattern=pattern, routePartitionName=route_partition_name,
+                pattern=pattern,
+                routePartitionName=route_partition_name,
             )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_directed_call_park(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_directed_call_park(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DirectedCallPark objects matching search criteria.
 
         Args:
@@ -11022,9 +11228,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDirectedCallPark(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDirectedCallPark(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11084,7 +11290,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_directory_lookup_dial_rules(self, directory_lookup_dial_rules_data: DirectoryLookupDialRules) -> Dict[str, Any]:
+    def add_directory_lookup_dial_rules(
+        self, directory_lookup_dial_rules_data: DirectoryLookupDialRules
+    ) -> Dict[str, Any]:
         """Add a new DirectoryLookupDialRules.
 
         Args:
@@ -11097,11 +11305,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addDirectoryLookupDialRules(directoryLookupDialRules=directory_lookup_dial_rules_data)
+            return self._service.addDirectoryLookupDialRules(
+                directoryLookupDialRules=directory_lookup_dial_rules_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_directory_lookup_dial_rules(self, **kwargs: Unpack[UpdateDirectoryLookupDialRules]) -> Dict[str, Any]:
+    def update_directory_lookup_dial_rules(
+        self, **kwargs: Unpack[UpdateDirectoryLookupDialRules]
+    ) -> Dict[str, Any]:
         """Update an existing DirectoryLookupDialRules.
 
         Args:
@@ -11137,9 +11349,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_directory_lookup_dial_rules(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_directory_lookup_dial_rules(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List DirectoryLookupDialRules objects matching search criteria.
 
         Args:
@@ -11157,9 +11372,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listDirectoryLookupDialRules(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listDirectoryLookupDialRules(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11238,9 +11453,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_elin_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_elin_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ElinGroup objects matching search criteria.
 
         Args:
@@ -11258,9 +11476,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listElinGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listElinGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11286,7 +11504,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_end_user_capf_profile(self, end_user_capf_profile_data: EndUserCapfProfile) -> Dict[str, Any]:
+    def add_end_user_capf_profile(
+        self, end_user_capf_profile_data: EndUserCapfProfile
+    ) -> Dict[str, Any]:
         """Add a new EndUserCapfProfile.
 
         Args:
@@ -11299,11 +11519,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addEndUserCapfProfile(endUserCapfProfile=end_user_capf_profile_data)
+            return self._service.addEndUserCapfProfile(
+                endUserCapfProfile=end_user_capf_profile_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_end_user_capf_profile(self, **kwargs: Unpack[UpdateEndUserCapfProfile]) -> Dict[str, Any]:
+    def update_end_user_capf_profile(
+        self, **kwargs: Unpack[UpdateEndUserCapfProfile]
+    ) -> Dict[str, Any]:
         """Update an existing EndUserCapfProfile.
 
         Args:
@@ -11339,9 +11563,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_end_user_capf_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_end_user_capf_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List EndUserCapfProfile objects matching search criteria.
 
         Args:
@@ -11359,9 +11586,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listEndUserCapfProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listEndUserCapfProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11388,7 +11615,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_enterprise_feature_access_configuration(self, enterprise_feature_access_configuration_data: EnterpriseFeatureAccessConfiguration) -> Dict[str, Any]:
+    def add_enterprise_feature_access_configuration(
+        self, enterprise_feature_access_configuration_data: EnterpriseFeatureAccessConfiguration
+    ) -> Dict[str, Any]:
         """Add a new EnterpriseFeatureAccessConfiguration.
 
         Args:
@@ -11401,11 +11630,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addEnterpriseFeatureAccessConfiguration(enterpriseFeatureAccessConfiguration=enterprise_feature_access_configuration_data)
+            return self._service.addEnterpriseFeatureAccessConfiguration(
+                enterpriseFeatureAccessConfiguration=enterprise_feature_access_configuration_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_enterprise_feature_access_configuration(self, **kwargs: Unpack[UpdateEnterpriseFeatureAccessConfiguration]) -> Dict[str, Any]:
+    def update_enterprise_feature_access_configuration(
+        self, **kwargs: Unpack[UpdateEnterpriseFeatureAccessConfiguration]
+    ) -> Dict[str, Any]:
         """Update an existing EnterpriseFeatureAccessConfiguration.
 
         Args:
@@ -11442,9 +11675,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_enterprise_feature_access_configuration(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_enterprise_feature_access_configuration(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List EnterpriseFeatureAccessConfiguration objects matching search criteria.
 
         Args:
@@ -11462,9 +11698,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listEnterpriseFeatureAccessConfiguration(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listEnterpriseFeatureAccessConfiguration(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11494,7 +11730,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_expressway_c_configuration(self, expressway_c_configuration_data: ExpresswayCConfiguration) -> Dict[str, Any]:
+    def add_expressway_c_configuration(
+        self, expressway_c_configuration_data: ExpresswayCConfiguration
+    ) -> Dict[str, Any]:
         """Add a new ExpresswayCConfiguration.
 
         Args:
@@ -11507,11 +11745,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addExpresswayCConfiguration(expresswayCConfiguration=expressway_c_configuration_data)
+            return self._service.addExpresswayCConfiguration(
+                expresswayCConfiguration=expressway_c_configuration_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_expressway_c_configuration(self, **kwargs: Unpack[UpdateExpresswayCConfiguration]) -> Dict[str, Any]:
+    def update_expressway_c_configuration(
+        self, **kwargs: Unpack[UpdateExpresswayCConfiguration]
+    ) -> Dict[str, Any]:
         """Update an existing ExpresswayCConfiguration.
 
         Args:
@@ -11547,9 +11789,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_expressway_c_configuration(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_expressway_c_configuration(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ExpresswayCConfiguration objects matching search criteria.
 
         Args:
@@ -11567,9 +11812,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listExpresswayCConfiguration(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listExpresswayCConfiguration(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11595,7 +11840,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_external_call_control_profile(self, external_call_control_profile_data: ExternalCallControlProfile) -> Dict[str, Any]:
+    def add_external_call_control_profile(
+        self, external_call_control_profile_data: ExternalCallControlProfile
+    ) -> Dict[str, Any]:
         """Add a new ExternalCallControlProfile.
 
         Args:
@@ -11608,11 +11855,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addExternalCallControlProfile(externalCallControlProfile=external_call_control_profile_data)
+            return self._service.addExternalCallControlProfile(
+                externalCallControlProfile=external_call_control_profile_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_external_call_control_profile(self, **kwargs: Unpack[UpdateExternalCallControlProfile]) -> Dict[str, Any]:
+    def update_external_call_control_profile(
+        self, **kwargs: Unpack[UpdateExternalCallControlProfile]
+    ) -> Dict[str, Any]:
         """Update an existing ExternalCallControlProfile.
 
         Args:
@@ -11648,9 +11899,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_external_call_control_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_external_call_control_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ExternalCallControlProfile objects matching search criteria.
 
         Args:
@@ -11668,9 +11922,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listExternalCallControlProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listExternalCallControlProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11749,9 +12003,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_fac_info(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_fac_info(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List FacInfo objects matching search criteria.
 
         Args:
@@ -11769,9 +12026,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listFacInfo(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listFacInfo(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11850,9 +12107,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_fallback_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_fallback_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List FallbackProfile objects matching search criteria.
 
         Args:
@@ -11870,9 +12130,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listFallbackProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listFallbackProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11898,7 +12158,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_feature_control_policy(self, feature_control_policy_data: FeatureControlPolicy) -> Dict[str, Any]:
+    def add_feature_control_policy(
+        self, feature_control_policy_data: FeatureControlPolicy
+    ) -> Dict[str, Any]:
         """Add a new FeatureControlPolicy.
 
         Args:
@@ -11911,11 +12173,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addFeatureControlPolicy(featureControlPolicy=feature_control_policy_data)
+            return self._service.addFeatureControlPolicy(
+                featureControlPolicy=feature_control_policy_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_feature_control_policy(self, **kwargs: Unpack[UpdateFeatureControlPolicy]) -> Dict[str, Any]:
+    def update_feature_control_policy(
+        self, **kwargs: Unpack[UpdateFeatureControlPolicy]
+    ) -> Dict[str, Any]:
         """Update an existing FeatureControlPolicy.
 
         Args:
@@ -11951,9 +12217,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_feature_control_policy(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_feature_control_policy(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List FeatureControlPolicy objects matching search criteria.
 
         Args:
@@ -11971,9 +12240,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listFeatureControlPolicy(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listFeatureControlPolicy(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -11999,7 +12268,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_feature_group_template(self, feature_group_template_data: FeatureGroupTemplate) -> Dict[str, Any]:
+    def add_feature_group_template(
+        self, feature_group_template_data: FeatureGroupTemplate
+    ) -> Dict[str, Any]:
         """Add a new FeatureGroupTemplate.
 
         Args:
@@ -12012,11 +12283,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addFeatureGroupTemplate(featureGroupTemplate=feature_group_template_data)
+            return self._service.addFeatureGroupTemplate(
+                featureGroupTemplate=feature_group_template_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_feature_group_template(self, **kwargs: Unpack[UpdateFeatureGroupTemplate]) -> Dict[str, Any]:
+    def update_feature_group_template(
+        self, **kwargs: Unpack[UpdateFeatureGroupTemplate]
+    ) -> Dict[str, Any]:
         """Update an existing FeatureGroupTemplate.
 
         Args:
@@ -12052,9 +12327,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_feature_group_template(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_feature_group_template(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List FeatureGroupTemplate objects matching search criteria.
 
         Args:
@@ -12072,9 +12350,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listFeatureGroupTemplate(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listFeatureGroupTemplate(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -12153,9 +12431,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_gatekeeper(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_gatekeeper(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Gatekeeper objects matching search criteria.
 
         Args:
@@ -12173,9 +12454,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listGatekeeper(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listGatekeeper(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -12311,9 +12592,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_gateway(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_gateway(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Gateway objects matching search criteria.
 
         Args:
@@ -12331,9 +12615,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listGateway(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listGateway(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -12410,7 +12694,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_gateway_endpoint_analog_access(self, gateway_endpoint_analog_access_data: GatewayEndpointAnalogAccess) -> Dict[str, Any]:
+    def add_gateway_endpoint_analog_access(
+        self, gateway_endpoint_analog_access_data: GatewayEndpointAnalogAccess
+    ) -> Dict[str, Any]:
         """Add a new GatewayEndpointAnalogAccess.
 
         Args:
@@ -12423,11 +12709,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addGatewayEndpointAnalogAccess(gatewayEndpointAnalogAccess=gateway_endpoint_analog_access_data)
+            return self._service.addGatewayEndpointAnalogAccess(
+                gatewayEndpointAnalogAccess=gateway_endpoint_analog_access_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_gateway_endpoint_analog_access(self, **kwargs: Unpack[UpdateGatewayEndpointAnalogAccess]) -> Dict[str, Any]:
+    def update_gateway_endpoint_analog_access(
+        self, **kwargs: Unpack[UpdateGatewayEndpointAnalogAccess]
+    ) -> Dict[str, Any]:
         """Update an existing GatewayEndpointAnalogAccess.
 
         Args:
@@ -12485,7 +12775,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_gateway_endpoint_digital_access_bri(self, gateway_endpoint_digital_access_bri_data: GatewayEndpointDigitalAccessBri) -> Dict[str, Any]:
+    def add_gateway_endpoint_digital_access_bri(
+        self, gateway_endpoint_digital_access_bri_data: GatewayEndpointDigitalAccessBri
+    ) -> Dict[str, Any]:
         """Add a new GatewayEndpointDigitalAccessBri.
 
         Args:
@@ -12498,11 +12790,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addGatewayEndpointDigitalAccessBri(gatewayEndpointDigitalAccessBri=gateway_endpoint_digital_access_bri_data)
+            return self._service.addGatewayEndpointDigitalAccessBri(
+                gatewayEndpointDigitalAccessBri=gateway_endpoint_digital_access_bri_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_gateway_endpoint_digital_access_bri(self, **kwargs: Unpack[UpdateGatewayEndpointDigitalAccessBri]) -> Dict[str, Any]:
+    def update_gateway_endpoint_digital_access_bri(
+        self, **kwargs: Unpack[UpdateGatewayEndpointDigitalAccessBri]
+    ) -> Dict[str, Any]:
         """Update an existing GatewayEndpointDigitalAccessBri.
 
         Args:
@@ -12560,7 +12856,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_gateway_endpoint_digital_access_pri(self, gateway_endpoint_digital_access_pri_data: GatewayEndpointDigitalAccessPri) -> Dict[str, Any]:
+    def add_gateway_endpoint_digital_access_pri(
+        self, gateway_endpoint_digital_access_pri_data: GatewayEndpointDigitalAccessPri
+    ) -> Dict[str, Any]:
         """Add a new GatewayEndpointDigitalAccessPri.
 
         Args:
@@ -12573,11 +12871,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addGatewayEndpointDigitalAccessPri(gatewayEndpointDigitalAccessPri=gateway_endpoint_digital_access_pri_data)
+            return self._service.addGatewayEndpointDigitalAccessPri(
+                gatewayEndpointDigitalAccessPri=gateway_endpoint_digital_access_pri_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_gateway_endpoint_digital_access_pri(self, **kwargs: Unpack[UpdateGatewayEndpointDigitalAccessPri]) -> Dict[str, Any]:
+    def update_gateway_endpoint_digital_access_pri(
+        self, **kwargs: Unpack[UpdateGatewayEndpointDigitalAccessPri]
+    ) -> Dict[str, Any]:
         """Update an existing GatewayEndpointDigitalAccessPri.
 
         Args:
@@ -12635,7 +12937,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_gateway_endpoint_digital_access_t1(self, gateway_endpoint_digital_access_t1_data: GatewayEndpointDigitalAccessT1) -> Dict[str, Any]:
+    def add_gateway_endpoint_digital_access_t1(
+        self, gateway_endpoint_digital_access_t1_data: GatewayEndpointDigitalAccessT1
+    ) -> Dict[str, Any]:
         """Add a new GatewayEndpointDigitalAccessT1.
 
         Args:
@@ -12648,11 +12952,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addGatewayEndpointDigitalAccessT1(gatewayEndpointDigitalAccessT1=gateway_endpoint_digital_access_t1_data)
+            return self._service.addGatewayEndpointDigitalAccessT1(
+                gatewayEndpointDigitalAccessT1=gateway_endpoint_digital_access_t1_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_gateway_endpoint_digital_access_t1(self, **kwargs: Unpack[UpdateGatewayEndpointDigitalAccessT1]) -> Dict[str, Any]:
+    def update_gateway_endpoint_digital_access_t1(
+        self, **kwargs: Unpack[UpdateGatewayEndpointDigitalAccessT1]
+    ) -> Dict[str, Any]:
         """Update an existing GatewayEndpointDigitalAccessT1.
 
         Args:
@@ -12710,7 +13018,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_gateway_sccp_endpoints(self, gateway_sccp_endpoints_data: GatewaySccpEndpoints) -> Dict[str, Any]:
+    def add_gateway_sccp_endpoints(
+        self, gateway_sccp_endpoints_data: GatewaySccpEndpoints
+    ) -> Dict[str, Any]:
         """Add a new GatewaySccpEndpoints.
 
         Args:
@@ -12723,11 +13033,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addGatewaySccpEndpoints(gatewaySccpEndpoints=gateway_sccp_endpoints_data)
+            return self._service.addGatewaySccpEndpoints(
+                gatewaySccpEndpoints=gateway_sccp_endpoints_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_gateway_sccp_endpoints(self, **kwargs: Unpack[UpdateGatewaySccpEndpoints]) -> Dict[str, Any]:
+    def update_gateway_sccp_endpoints(
+        self, **kwargs: Unpack[UpdateGatewaySccpEndpoints]
+    ) -> Dict[str, Any]:
         """Update an existing GatewaySccpEndpoints.
 
         Args:
@@ -12877,9 +13191,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_geo_location(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_geo_location(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List GeoLocation objects matching search criteria.
 
         Args:
@@ -12897,9 +13214,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listGeoLocation(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listGeoLocation(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -12925,7 +13242,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_geo_location_filter(self, geo_location_filter_data: GeoLocationFilter) -> Dict[str, Any]:
+    def add_geo_location_filter(
+        self, geo_location_filter_data: GeoLocationFilter
+    ) -> Dict[str, Any]:
         """Add a new GeoLocationFilter.
 
         Args:
@@ -12942,7 +13261,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_geo_location_filter(self, **kwargs: Unpack[UpdateGeoLocationFilter]) -> Dict[str, Any]:
+    def update_geo_location_filter(
+        self, **kwargs: Unpack[UpdateGeoLocationFilter]
+    ) -> Dict[str, Any]:
         """Update an existing GeoLocationFilter.
 
         Args:
@@ -12978,9 +13299,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_geo_location_filter(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_geo_location_filter(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List GeoLocationFilter objects matching search criteria.
 
         Args:
@@ -12998,9 +13322,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listGeoLocationFilter(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listGeoLocationFilter(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13026,7 +13350,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_geo_location_policy(self, geo_location_policy_data: GeoLocationPolicy) -> Dict[str, Any]:
+    def add_geo_location_policy(
+        self, geo_location_policy_data: GeoLocationPolicy
+    ) -> Dict[str, Any]:
         """Add a new GeoLocationPolicy.
 
         Args:
@@ -13043,7 +13369,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_geo_location_policy(self, **kwargs: Unpack[UpdateGeoLocationPolicy]) -> Dict[str, Any]:
+    def update_geo_location_policy(
+        self, **kwargs: Unpack[UpdateGeoLocationPolicy]
+    ) -> Dict[str, Any]:
         """Update an existing GeoLocationPolicy.
 
         Args:
@@ -13079,9 +13407,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_geo_location_policy(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_geo_location_policy(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List GeoLocationPolicy objects matching search criteria.
 
         Args:
@@ -13099,9 +13430,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listGeoLocationPolicy(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listGeoLocationPolicy(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13109,9 +13440,12 @@ class AXLClient(BaseClient):
     #  H323Gateway
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_h323_gateway(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_h323_gateway(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List H323Gateway objects matching search criteria.
 
         Args:
@@ -13129,9 +13463,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listH323Gateway(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listH323Gateway(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13261,9 +13595,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_h323_phone(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_h323_phone(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List H323Phone objects matching search criteria.
 
         Args:
@@ -13281,9 +13618,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listH323Phone(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listH323Phone(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13342,9 +13679,12 @@ class AXLClient(BaseClient):
     #  H323Trunk
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_h323_trunk(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_h323_trunk(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List H323Trunk objects matching search criteria.
 
         Args:
@@ -13362,9 +13702,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listH323Trunk(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listH323Trunk(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13425,7 +13765,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_handoff_configuration(self, handoff_configuration_data: HandoffConfiguration) -> Dict[str, Any]:
+    def add_handoff_configuration(
+        self, handoff_configuration_data: HandoffConfiguration
+    ) -> Dict[str, Any]:
         """Add a new HandoffConfiguration.
 
         Args:
@@ -13438,11 +13780,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addHandoffConfiguration(handoffConfiguration=handoff_configuration_data)
+            return self._service.addHandoffConfiguration(
+                handoffConfiguration=handoff_configuration_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_handoff_configuration(self, **kwargs: Unpack[UpdateHandoffConfiguration]) -> Dict[str, Any]:
+    def update_handoff_configuration(
+        self, **kwargs: Unpack[UpdateHandoffConfiguration]
+    ) -> Dict[str, Any]:
         """Update an existing HandoffConfiguration.
 
         Args:
@@ -13558,9 +13904,12 @@ class AXLClient(BaseClient):
     #  HuntList
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_hunt_list(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_hunt_list(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List HuntList objects matching search criteria.
 
         Args:
@@ -13578,9 +13927,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listHuntList(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listHuntList(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13622,9 +13971,12 @@ class AXLClient(BaseClient):
     #  HuntPilot
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_hunt_pilot(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_hunt_pilot(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List HuntPilot objects matching search criteria.
 
         Args:
@@ -13642,9 +13994,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listHuntPilot(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listHuntPilot(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13723,9 +14075,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_client(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_client(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeClient objects matching search criteria.
 
         Args:
@@ -13743,9 +14098,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeClient(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeClient(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13771,7 +14126,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ime_e164_transformation(self, ime_e164_transformation_data: ImeE164Transformation) -> Dict[str, Any]:
+    def add_ime_e164_transformation(
+        self, ime_e164_transformation_data: ImeE164Transformation
+    ) -> Dict[str, Any]:
         """Add a new ImeE164Transformation.
 
         Args:
@@ -13784,11 +14141,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addImeE164Transformation(imeE164Transformation=ime_e164_transformation_data)
+            return self._service.addImeE164Transformation(
+                imeE164Transformation=ime_e164_transformation_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ime_e164_transformation(self, **kwargs: Unpack[UpdateImeE164Transformation]) -> Dict[str, Any]:
+    def update_ime_e164_transformation(
+        self, **kwargs: Unpack[UpdateImeE164Transformation]
+    ) -> Dict[str, Any]:
         """Update an existing ImeE164Transformation.
 
         Args:
@@ -13824,9 +14185,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_e164_transformation(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_e164_transformation(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeE164Transformation objects matching search criteria.
 
         Args:
@@ -13844,9 +14208,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeE164Transformation(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeE164Transformation(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13872,7 +14236,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ime_enrolled_pattern(self, ime_enrolled_pattern_data: ImeEnrolledPattern) -> Dict[str, Any]:
+    def add_ime_enrolled_pattern(
+        self, ime_enrolled_pattern_data: ImeEnrolledPattern
+    ) -> Dict[str, Any]:
         """Add a new ImeEnrolledPattern.
 
         Args:
@@ -13889,7 +14255,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ime_enrolled_pattern(self, **kwargs: Unpack[UpdateImeEnrolledPattern]) -> Dict[str, Any]:
+    def update_ime_enrolled_pattern(
+        self, **kwargs: Unpack[UpdateImeEnrolledPattern]
+    ) -> Dict[str, Any]:
         """Update an existing ImeEnrolledPattern.
 
         Args:
@@ -13925,9 +14293,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_enrolled_pattern(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_enrolled_pattern(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeEnrolledPattern objects matching search criteria.
 
         Args:
@@ -13945,9 +14316,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeEnrolledPattern(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeEnrolledPattern(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -13973,7 +14344,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ime_enrolled_pattern_group(self, ime_enrolled_pattern_group_data: ImeEnrolledPatternGroup) -> Dict[str, Any]:
+    def add_ime_enrolled_pattern_group(
+        self, ime_enrolled_pattern_group_data: ImeEnrolledPatternGroup
+    ) -> Dict[str, Any]:
         """Add a new ImeEnrolledPatternGroup.
 
         Args:
@@ -13986,11 +14359,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addImeEnrolledPatternGroup(imeEnrolledPatternGroup=ime_enrolled_pattern_group_data)
+            return self._service.addImeEnrolledPatternGroup(
+                imeEnrolledPatternGroup=ime_enrolled_pattern_group_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ime_enrolled_pattern_group(self, **kwargs: Unpack[UpdateImeEnrolledPatternGroup]) -> Dict[str, Any]:
+    def update_ime_enrolled_pattern_group(
+        self, **kwargs: Unpack[UpdateImeEnrolledPatternGroup]
+    ) -> Dict[str, Any]:
         """Update an existing ImeEnrolledPatternGroup.
 
         Args:
@@ -14026,9 +14403,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_enrolled_pattern_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_enrolled_pattern_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeEnrolledPatternGroup objects matching search criteria.
 
         Args:
@@ -14046,9 +14426,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeEnrolledPatternGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeEnrolledPatternGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14074,7 +14454,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ime_exclusion_number(self, ime_exclusion_number_data: ImeExclusionNumber) -> Dict[str, Any]:
+    def add_ime_exclusion_number(
+        self, ime_exclusion_number_data: ImeExclusionNumber
+    ) -> Dict[str, Any]:
         """Add a new ImeExclusionNumber.
 
         Args:
@@ -14091,7 +14473,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ime_exclusion_number(self, **kwargs: Unpack[UpdateImeExclusionNumber]) -> Dict[str, Any]:
+    def update_ime_exclusion_number(
+        self, **kwargs: Unpack[UpdateImeExclusionNumber]
+    ) -> Dict[str, Any]:
         """Update an existing ImeExclusionNumber.
 
         Args:
@@ -14127,9 +14511,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_exclusion_number(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_exclusion_number(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeExclusionNumber objects matching search criteria.
 
         Args:
@@ -14147,9 +14534,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeExclusionNumber(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeExclusionNumber(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14175,7 +14562,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ime_exclusion_number_group(self, ime_exclusion_number_group_data: ImeExclusionNumberGroup) -> Dict[str, Any]:
+    def add_ime_exclusion_number_group(
+        self, ime_exclusion_number_group_data: ImeExclusionNumberGroup
+    ) -> Dict[str, Any]:
         """Add a new ImeExclusionNumberGroup.
 
         Args:
@@ -14188,11 +14577,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addImeExclusionNumberGroup(imeExclusionNumberGroup=ime_exclusion_number_group_data)
+            return self._service.addImeExclusionNumberGroup(
+                imeExclusionNumberGroup=ime_exclusion_number_group_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ime_exclusion_number_group(self, **kwargs: Unpack[UpdateImeExclusionNumberGroup]) -> Dict[str, Any]:
+    def update_ime_exclusion_number_group(
+        self, **kwargs: Unpack[UpdateImeExclusionNumberGroup]
+    ) -> Dict[str, Any]:
         """Update an existing ImeExclusionNumberGroup.
 
         Args:
@@ -14228,9 +14621,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_exclusion_number_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_exclusion_number_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeExclusionNumberGroup objects matching search criteria.
 
         Args:
@@ -14248,9 +14644,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeExclusionNumberGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeExclusionNumberGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14329,9 +14725,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_firewall(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_firewall(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeFirewall objects matching search criteria.
 
         Args:
@@ -14349,9 +14748,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeFirewall(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeFirewall(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14377,7 +14776,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ime_route_filter_element(self, ime_route_filter_element_data: ImeRouteFilterElement) -> Dict[str, Any]:
+    def add_ime_route_filter_element(
+        self, ime_route_filter_element_data: ImeRouteFilterElement
+    ) -> Dict[str, Any]:
         """Add a new ImeRouteFilterElement.
 
         Args:
@@ -14390,11 +14791,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addImeRouteFilterElement(imeRouteFilterElement=ime_route_filter_element_data)
+            return self._service.addImeRouteFilterElement(
+                imeRouteFilterElement=ime_route_filter_element_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ime_route_filter_element(self, **kwargs: Unpack[UpdateImeRouteFilterElement]) -> Dict[str, Any]:
+    def update_ime_route_filter_element(
+        self, **kwargs: Unpack[UpdateImeRouteFilterElement]
+    ) -> Dict[str, Any]:
         """Update an existing ImeRouteFilterElement.
 
         Args:
@@ -14430,9 +14835,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_route_filter_element(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_route_filter_element(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeRouteFilterElement objects matching search criteria.
 
         Args:
@@ -14450,9 +14858,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeRouteFilterElement(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeRouteFilterElement(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14478,7 +14886,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ime_route_filter_group(self, ime_route_filter_group_data: ImeRouteFilterGroup) -> Dict[str, Any]:
+    def add_ime_route_filter_group(
+        self, ime_route_filter_group_data: ImeRouteFilterGroup
+    ) -> Dict[str, Any]:
         """Add a new ImeRouteFilterGroup.
 
         Args:
@@ -14491,11 +14901,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addImeRouteFilterGroup(imeRouteFilterGroup=ime_route_filter_group_data)
+            return self._service.addImeRouteFilterGroup(
+                imeRouteFilterGroup=ime_route_filter_group_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ime_route_filter_group(self, **kwargs: Unpack[UpdateImeRouteFilterGroup]) -> Dict[str, Any]:
+    def update_ime_route_filter_group(
+        self, **kwargs: Unpack[UpdateImeRouteFilterGroup]
+    ) -> Dict[str, Any]:
         """Update an existing ImeRouteFilterGroup.
 
         Args:
@@ -14531,9 +14945,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_route_filter_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_route_filter_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeRouteFilterGroup objects matching search criteria.
 
         Args:
@@ -14551,9 +14968,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeRouteFilterGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeRouteFilterGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14632,9 +15049,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ime_server(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ime_server(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImeServer objects matching search criteria.
 
         Args:
@@ -14652,9 +15072,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImeServer(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImeServer(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14680,7 +15100,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_imported_directory_uri_catalogs(self, imported_directory_uri_catalogs_data: ImportedDirectoryUriCatalogs) -> Dict[str, Any]:
+    def add_imported_directory_uri_catalogs(
+        self, imported_directory_uri_catalogs_data: ImportedDirectoryUriCatalogs
+    ) -> Dict[str, Any]:
         """Add a new ImportedDirectoryUriCatalogs.
 
         Args:
@@ -14693,11 +15115,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addImportedDirectoryUriCatalogs(importedDirectoryUriCatalogs=imported_directory_uri_catalogs_data)
+            return self._service.addImportedDirectoryUriCatalogs(
+                importedDirectoryUriCatalogs=imported_directory_uri_catalogs_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_imported_directory_uri_catalogs(self, **kwargs: Unpack[UpdateImportedDirectoryUriCatalogs]) -> Dict[str, Any]:
+    def update_imported_directory_uri_catalogs(
+        self, **kwargs: Unpack[UpdateImportedDirectoryUriCatalogs]
+    ) -> Dict[str, Any]:
         """Update an existing ImportedDirectoryUriCatalogs.
 
         Args:
@@ -14733,9 +15159,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_imported_directory_uri_catalogs(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_imported_directory_uri_catalogs(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ImportedDirectoryUriCatalogs objects matching search criteria.
 
         Args:
@@ -14753,9 +15182,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listImportedDirectoryUriCatalogs(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listImportedDirectoryUriCatalogs(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14781,7 +15210,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_infrastructure_device(self, infrastructure_device_data: InfrastructureDevice) -> Dict[str, Any]:
+    def add_infrastructure_device(
+        self, infrastructure_device_data: InfrastructureDevice
+    ) -> Dict[str, Any]:
         """Add a new InfrastructureDevice.
 
         Args:
@@ -14794,11 +15225,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addInfrastructureDevice(infrastructureDevice=infrastructure_device_data)
+            return self._service.addInfrastructureDevice(
+                infrastructureDevice=infrastructure_device_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_infrastructure_device(self, **kwargs: Unpack[UpdateInfrastructureDevice]) -> Dict[str, Any]:
+    def update_infrastructure_device(
+        self, **kwargs: Unpack[UpdateInfrastructureDevice]
+    ) -> Dict[str, Any]:
         """Update an existing InfrastructureDevice.
 
         Args:
@@ -14834,9 +15269,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_infrastructure_device(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_infrastructure_device(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List InfrastructureDevice objects matching search criteria.
 
         Args:
@@ -14854,9 +15292,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listInfrastructureDevice(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listInfrastructureDevice(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -14882,7 +15320,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_interactive_voice_response(self, **kwargs: Unpack[UpdateInteractiveVoiceResponse]) -> Dict[str, Any]:
+    def update_interactive_voice_response(
+        self, **kwargs: Unpack[UpdateInteractiveVoiceResponse]
+    ) -> Dict[str, Any]:
         """Update an existing InteractiveVoiceResponse.
 
         Args:
@@ -14900,9 +15340,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_interactive_voice_response(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_interactive_voice_response(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List InteractiveVoiceResponse objects matching search criteria.
 
         Args:
@@ -14920,9 +15363,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listInteractiveVoiceResponse(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listInteractiveVoiceResponse(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15001,9 +15444,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ip_phone_services(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ip_phone_services(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List IpPhoneServices objects matching search criteria.
 
         Args:
@@ -15021,9 +15467,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listIpPhoneServices(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listIpPhoneServices(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15102,9 +15548,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ivr_user_locale(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ivr_user_locale(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List IvrUserLocale objects matching search criteria.
 
         Args:
@@ -15122,9 +15571,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listIvrUserLocale(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listIvrUserLocale(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15203,9 +15652,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_lbm_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_lbm_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List LbmGroup objects matching search criteria.
 
         Args:
@@ -15223,9 +15675,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLbmGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLbmGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15304,9 +15756,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_lbm_hub_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_lbm_hub_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List LbmHubGroup objects matching search criteria.
 
         Args:
@@ -15324,9 +15779,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLbmHubGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLbmHubGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15352,9 +15807,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ldap_directory(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ldap_directory(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List LdapDirectory objects matching search criteria.
 
         Args:
@@ -15372,9 +15830,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLdapDirectory(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLdapDirectory(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15400,9 +15858,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ldap_filter(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ldap_filter(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List LdapFilter objects matching search criteria.
 
         Args:
@@ -15420,9 +15881,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLdapFilter(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLdapFilter(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15466,9 +15927,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ldap_search(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ldap_search(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List LdapSearch objects matching search criteria.
 
         Args:
@@ -15486,9 +15950,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLdapSearch(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLdapSearch(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15514,7 +15978,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_ldap_sync_custom_field(self, ldap_sync_custom_field_data: LdapSyncCustomField) -> Dict[str, Any]:
+    def add_ldap_sync_custom_field(
+        self, ldap_sync_custom_field_data: LdapSyncCustomField
+    ) -> Dict[str, Any]:
         """Add a new LdapSyncCustomField.
 
         Args:
@@ -15527,11 +15993,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addLdapSyncCustomField(ldapSyncCustomField=ldap_sync_custom_field_data)
+            return self._service.addLdapSyncCustomField(
+                ldapSyncCustomField=ldap_sync_custom_field_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_ldap_sync_custom_field(self, **kwargs: Unpack[UpdateLdapSyncCustomField]) -> Dict[str, Any]:
+    def update_ldap_sync_custom_field(
+        self, **kwargs: Unpack[UpdateLdapSyncCustomField]
+    ) -> Dict[str, Any]:
         """Update an existing LdapSyncCustomField.
 
         Args:
@@ -15567,9 +16037,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_ldap_sync_custom_field(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_ldap_sync_custom_field(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List LdapSyncCustomField objects matching search criteria.
 
         Args:
@@ -15587,9 +16060,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLdapSyncCustomField(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLdapSyncCustomField(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15597,9 +16070,12 @@ class AXLClient(BaseClient):
     #  Line
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_line(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_line(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Line objects matching search criteria.
 
         Args:
@@ -15617,9 +16093,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLine(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLine(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15681,9 +16157,12 @@ class AXLClient(BaseClient):
     #  LineGroup
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_line_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_line_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List LineGroup objects matching search criteria.
 
         Args:
@@ -15701,9 +16180,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLineGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLineGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15782,9 +16261,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_local_route_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_local_route_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List LocalRouteGroup objects matching search criteria.
 
         Args:
@@ -15802,9 +16284,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLocalRouteGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLocalRouteGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15812,9 +16294,12 @@ class AXLClient(BaseClient):
     #  Location
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_location(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_location(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Location objects matching search criteria.
 
         Args:
@@ -15832,9 +16317,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listLocation(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listLocation(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15842,7 +16327,9 @@ class AXLClient(BaseClient):
     #  MediaResourceGroup
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_media_resource_group(self, **kwargs: Unpack[UpdateMediaResourceGroup]) -> Dict[str, Any]:
+    def update_media_resource_group(
+        self, **kwargs: Unpack[UpdateMediaResourceGroup]
+    ) -> Dict[str, Any]:
         """Update an existing MediaResourceGroup.
 
         Args:
@@ -15860,9 +16347,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_media_resource_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_media_resource_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MediaResourceGroup objects matching search criteria.
 
         Args:
@@ -15880,9 +16370,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMediaResourceGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMediaResourceGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -15890,7 +16380,9 @@ class AXLClient(BaseClient):
     #  MediaResourceList
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_media_resource_list(self, **kwargs: Unpack[UpdateMediaResourceList]) -> Dict[str, Any]:
+    def update_media_resource_list(
+        self, **kwargs: Unpack[UpdateMediaResourceList]
+    ) -> Dict[str, Any]:
         """Update an existing MediaResourceList.
 
         Args:
@@ -15908,9 +16400,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_media_resource_list(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_media_resource_list(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MediaResourceList objects matching search criteria.
 
         Args:
@@ -15928,9 +16423,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMediaResourceList(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMediaResourceList(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16011,9 +16506,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_meet_me(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_meet_me(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MeetMe objects matching search criteria.
 
         Args:
@@ -16031,9 +16529,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMeetMe(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMeetMe(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16114,9 +16612,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_message_waiting(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_message_waiting(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MessageWaiting objects matching search criteria.
 
         Args:
@@ -16134,9 +16635,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMessageWaiting(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMessageWaiting(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16215,9 +16716,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_mlpp_domain(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_mlpp_domain(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MlppDomain objects matching search criteria.
 
         Args:
@@ -16235,9 +16739,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMlppDomain(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMlppDomain(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16263,7 +16767,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_mobile_voice_access(self, mobile_voice_access_data: MobileVoiceAccess) -> Dict[str, Any]:
+    def add_mobile_voice_access(
+        self, mobile_voice_access_data: MobileVoiceAccess
+    ) -> Dict[str, Any]:
         """Add a new MobileVoiceAccess.
 
         Args:
@@ -16280,7 +16786,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_mobile_voice_access(self, **kwargs: Unpack[UpdateMobileVoiceAccess]) -> Dict[str, Any]:
+    def update_mobile_voice_access(
+        self, **kwargs: Unpack[UpdateMobileVoiceAccess]
+    ) -> Dict[str, Any]:
         """Update an existing MobileVoiceAccess.
 
         Args:
@@ -16448,9 +16956,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_mobility_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_mobility_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MobilityProfile objects matching search criteria.
 
         Args:
@@ -16468,9 +16979,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMobilityProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMobilityProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16532,9 +17043,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_moh_audio_source(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_moh_audio_source(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MohAudioSource objects matching search criteria.
 
         Args:
@@ -16552,9 +17066,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMohAudioSource(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMohAudioSource(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16598,9 +17112,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_moh_server(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_moh_server(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MohServer objects matching search criteria.
 
         Args:
@@ -16618,9 +17135,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMohServer(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMohServer(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16699,9 +17216,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_mra_service_domain(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_mra_service_domain(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List MraServiceDomain objects matching search criteria.
 
         Args:
@@ -16719,9 +17239,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMraServiceDomain(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMraServiceDomain(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16729,9 +17249,12 @@ class AXLClient(BaseClient):
     #  Mtp
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_mtp(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_mtp(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Mtp objects matching search criteria.
 
         Args:
@@ -16749,9 +17272,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listMtp(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listMtp(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16828,7 +17351,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_network_access_profile(self, network_access_profile_data: NetworkAccessProfile) -> Dict[str, Any]:
+    def add_network_access_profile(
+        self, network_access_profile_data: NetworkAccessProfile
+    ) -> Dict[str, Any]:
         """Add a new NetworkAccessProfile.
 
         Args:
@@ -16841,11 +17366,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addNetworkAccessProfile(networkAccessProfile=network_access_profile_data)
+            return self._service.addNetworkAccessProfile(
+                networkAccessProfile=network_access_profile_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_network_access_profile(self, **kwargs: Unpack[UpdateNetworkAccessProfile]) -> Dict[str, Any]:
+    def update_network_access_profile(
+        self, **kwargs: Unpack[UpdateNetworkAccessProfile]
+    ) -> Dict[str, Any]:
         """Update an existing NetworkAccessProfile.
 
         Args:
@@ -16881,9 +17410,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_network_access_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_network_access_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List NetworkAccessProfile objects matching search criteria.
 
         Args:
@@ -16901,9 +17433,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listNetworkAccessProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listNetworkAccessProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -16966,9 +17498,12 @@ class AXLClient(BaseClient):
     #  PhoneButtonTemplate
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_phone_button_template(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_phone_button_template(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List PhoneButtonTemplate objects matching search criteria.
 
         Args:
@@ -16986,9 +17521,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listPhoneButtonTemplate(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listPhoneButtonTemplate(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17048,9 +17583,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_phone_ntp(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_phone_ntp(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List PhoneNtp objects matching search criteria.
 
         Args:
@@ -17068,9 +17606,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listPhoneNtp(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listPhoneNtp(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17078,7 +17616,9 @@ class AXLClient(BaseClient):
     #  PhoneSecurityProfile
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_phone_security_profile(self, **kwargs: Unpack[UpdatePhoneSecurityProfile]) -> Dict[str, Any]:
+    def update_phone_security_profile(
+        self, **kwargs: Unpack[UpdatePhoneSecurityProfile]
+    ) -> Dict[str, Any]:
         """Update an existing PhoneSecurityProfile.
 
         Args:
@@ -17114,9 +17654,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_phone_security_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_phone_security_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List PhoneSecurityProfile objects matching search criteria.
 
         Args:
@@ -17134,9 +17677,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listPhoneSecurityProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listPhoneSecurityProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17249,9 +17792,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_physical_location(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_physical_location(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List PhysicalLocation objects matching search criteria.
 
         Args:
@@ -17269,9 +17815,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listPhysicalLocation(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listPhysicalLocation(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17297,9 +17843,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_presence_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_presence_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List PresenceGroup objects matching search criteria.
 
         Args:
@@ -17317,9 +17866,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listPresenceGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listPresenceGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17345,7 +17894,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_presence_redundancy_group(self, presence_redundancy_group_data: PresenceRedundancyGroup) -> Dict[str, Any]:
+    def add_presence_redundancy_group(
+        self, presence_redundancy_group_data: PresenceRedundancyGroup
+    ) -> Dict[str, Any]:
         """Add a new PresenceRedundancyGroup.
 
         Args:
@@ -17358,11 +17909,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addPresenceRedundancyGroup(presenceRedundancyGroup=presence_redundancy_group_data)
+            return self._service.addPresenceRedundancyGroup(
+                presenceRedundancyGroup=presence_redundancy_group_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_presence_redundancy_group(self, **kwargs: Unpack[UpdatePresenceRedundancyGroup]) -> Dict[str, Any]:
+    def update_presence_redundancy_group(
+        self, **kwargs: Unpack[UpdatePresenceRedundancyGroup]
+    ) -> Dict[str, Any]:
         """Update an existing PresenceRedundancyGroup.
 
         Args:
@@ -17398,9 +17953,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_presence_redundancy_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_presence_redundancy_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List PresenceRedundancyGroup objects matching search criteria.
 
         Args:
@@ -17418,9 +17976,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listPresenceRedundancyGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listPresenceRedundancyGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17499,9 +18057,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_process_node(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_process_node(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ProcessNode objects matching search criteria.
 
         Args:
@@ -17519,9 +18080,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listProcessNode(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listProcessNode(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17547,7 +18108,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_process_node_service(self, **kwargs: Unpack[UpdateProcessNodeService]) -> Dict[str, Any]:
+    def update_process_node_service(
+        self, **kwargs: Unpack[UpdateProcessNodeService]
+    ) -> Dict[str, Any]:
         """Update an existing ProcessNodeService.
 
         Args:
@@ -17565,9 +18128,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_process_node_service(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_process_node_service(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ProcessNodeService objects matching search criteria.
 
         Args:
@@ -17585,9 +18151,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listProcessNodeService(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listProcessNodeService(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17666,9 +18232,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_recording_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_recording_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RecordingProfile objects matching search criteria.
 
         Args:
@@ -17686,9 +18255,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRecordingProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRecordingProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17696,9 +18265,12 @@ class AXLClient(BaseClient):
     #  Region
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_region(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_region(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Region objects matching search criteria.
 
         Args:
@@ -17716,9 +18288,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRegion(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRegion(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17831,9 +18403,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_remote_cluster(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_remote_cluster(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RemoteCluster objects matching search criteria.
 
         Args:
@@ -17851,9 +18426,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRemoteCluster(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRemoteCluster(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17861,7 +18436,9 @@ class AXLClient(BaseClient):
     #  RemoteDestination
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_remote_destination(self, **kwargs: Unpack[UpdateRemoteDestination]) -> Dict[str, Any]:
+    def update_remote_destination(
+        self, **kwargs: Unpack[UpdateRemoteDestination]
+    ) -> Dict[str, Any]:
         """Update an existing RemoteDestination.
 
         Args:
@@ -17879,9 +18456,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_remote_destination(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_remote_destination(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RemoteDestination objects matching search criteria.
 
         Args:
@@ -17899,9 +18479,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRemoteDestination(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRemoteDestination(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17909,9 +18489,12 @@ class AXLClient(BaseClient):
     #  RemoteDestinationProfile
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_remote_destination_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_remote_destination_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RemoteDestinationProfile objects matching search criteria.
 
         Args:
@@ -17929,9 +18512,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRemoteDestinationProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRemoteDestinationProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -17957,7 +18540,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_resource_priority_namespace(self, resource_priority_namespace_data: ResourcePriorityNamespace) -> Dict[str, Any]:
+    def add_resource_priority_namespace(
+        self, resource_priority_namespace_data: ResourcePriorityNamespace
+    ) -> Dict[str, Any]:
         """Add a new ResourcePriorityNamespace.
 
         Args:
@@ -17970,11 +18555,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addResourcePriorityNamespace(resourcePriorityNamespace=resource_priority_namespace_data)
+            return self._service.addResourcePriorityNamespace(
+                resourcePriorityNamespace=resource_priority_namespace_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_resource_priority_namespace(self, **kwargs: Unpack[UpdateResourcePriorityNamespace]) -> Dict[str, Any]:
+    def update_resource_priority_namespace(
+        self, **kwargs: Unpack[UpdateResourcePriorityNamespace]
+    ) -> Dict[str, Any]:
         """Update an existing ResourcePriorityNamespace.
 
         Args:
@@ -18010,9 +18599,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_resource_priority_namespace(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_resource_priority_namespace(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ResourcePriorityNamespace objects matching search criteria.
 
         Args:
@@ -18030,9 +18622,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listResourcePriorityNamespace(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listResourcePriorityNamespace(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18109,7 +18701,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_resource_priority_namespace_list(self, resource_priority_namespace_list_data: ResourcePriorityNamespaceList) -> Dict[str, Any]:
+    def add_resource_priority_namespace_list(
+        self, resource_priority_namespace_list_data: ResourcePriorityNamespaceList
+    ) -> Dict[str, Any]:
         """Add a new ResourcePriorityNamespaceList.
 
         Args:
@@ -18122,11 +18716,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addResourcePriorityNamespaceList(resourcePriorityNamespaceList=resource_priority_namespace_list_data)
+            return self._service.addResourcePriorityNamespaceList(
+                resourcePriorityNamespaceList=resource_priority_namespace_list_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_resource_priority_namespace_list(self, **kwargs: Unpack[UpdateResourcePriorityNamespaceList]) -> Dict[str, Any]:
+    def update_resource_priority_namespace_list(
+        self, **kwargs: Unpack[UpdateResourcePriorityNamespaceList]
+    ) -> Dict[str, Any]:
         """Update an existing ResourcePriorityNamespaceList.
 
         Args:
@@ -18162,9 +18760,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_resource_priority_namespace_list(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_resource_priority_namespace_list(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ResourcePriorityNamespaceList objects matching search criteria.
 
         Args:
@@ -18182,9 +18783,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listResourcePriorityNamespaceList(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listResourcePriorityNamespaceList(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18243,9 +18844,12 @@ class AXLClient(BaseClient):
     #  RouteFilter
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_route_filter(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_route_filter(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RouteFilter objects matching search criteria.
 
         Args:
@@ -18263,9 +18867,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRouteFilter(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRouteFilter(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18273,9 +18877,12 @@ class AXLClient(BaseClient):
     #  RouteGroup
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_route_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_route_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RouteGroup objects matching search criteria.
 
         Args:
@@ -18293,9 +18900,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRouteGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRouteGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18303,9 +18910,12 @@ class AXLClient(BaseClient):
     #  RouteList
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_route_list(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_route_list(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RouteList objects matching search criteria.
 
         Args:
@@ -18323,9 +18933,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRouteList(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRouteList(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18385,9 +18995,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_route_partition(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_route_partition(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RoutePartition objects matching search criteria.
 
         Args:
@@ -18405,9 +19018,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRoutePartition(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRoutePartition(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18449,9 +19062,12 @@ class AXLClient(BaseClient):
     #  RoutePattern
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_route_pattern(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_route_pattern(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List RoutePattern objects matching search criteria.
 
         Args:
@@ -18469,9 +19085,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listRoutePattern(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listRoutePattern(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18497,7 +19113,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_sip_normalization_script(self, sip_normalization_script_data: SIPNormalizationScript) -> Dict[str, Any]:
+    def add_sip_normalization_script(
+        self, sip_normalization_script_data: SIPNormalizationScript
+    ) -> Dict[str, Any]:
         """Add a new SIPNormalizationScript.
 
         Args:
@@ -18510,11 +19128,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addSIPNormalizationScript(sIPNormalizationScript=sip_normalization_script_data)
+            return self._service.addSIPNormalizationScript(
+                sIPNormalizationScript=sip_normalization_script_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_sip_normalization_script(self, **kwargs: Unpack[UpdateSIPNormalizationScript]) -> Dict[str, Any]:
+    def update_sip_normalization_script(
+        self, **kwargs: Unpack[UpdateSIPNormalizationScript]
+    ) -> Dict[str, Any]:
         """Update an existing SIPNormalizationScript.
 
         Args:
@@ -18550,9 +19172,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_sip_normalization_script(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_sip_normalization_script(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SIPNormalizationScript objects matching search criteria.
 
         Args:
@@ -18570,9 +19195,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSIPNormalizationScript(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSIPNormalizationScript(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18598,7 +19223,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_snmp_community_string(self, snmp_community_string_data: RCommunityString) -> Dict[str, Any]:
+    def add_snmp_community_string(
+        self, snmp_community_string_data: RCommunityString
+    ) -> Dict[str, Any]:
         """Add a new SNMPCommunityString.
 
         Args:
@@ -18615,7 +19242,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_snmp_community_string(self, **kwargs: Unpack[UpdateSNMPCommunityString]) -> Dict[str, Any]:
+    def update_snmp_community_string(
+        self, **kwargs: Unpack[UpdateSNMPCommunityString]
+    ) -> Dict[str, Any]:
         """Update an existing SNMPCommunityString.
 
         Args:
@@ -18749,7 +19378,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_saf_ccd_purge_block_learned_routes(self, saf_ccd_purge_block_learned_routes_data: SafCcdPurgeBlockLearnedRoutes) -> Dict[str, Any]:
+    def add_saf_ccd_purge_block_learned_routes(
+        self, saf_ccd_purge_block_learned_routes_data: SafCcdPurgeBlockLearnedRoutes
+    ) -> Dict[str, Any]:
         """Add a new SafCcdPurgeBlockLearnedRoutes.
 
         Args:
@@ -18762,11 +19393,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addSafCcdPurgeBlockLearnedRoutes(safCcdPurgeBlockLearnedRoutes=saf_ccd_purge_block_learned_routes_data)
+            return self._service.addSafCcdPurgeBlockLearnedRoutes(
+                safCcdPurgeBlockLearnedRoutes=saf_ccd_purge_block_learned_routes_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_saf_ccd_purge_block_learned_routes(self, **kwargs: Unpack[UpdateSafCcdPurgeBlockLearnedRoutes]) -> Dict[str, Any]:
+    def update_saf_ccd_purge_block_learned_routes(
+        self, **kwargs: Unpack[UpdateSafCcdPurgeBlockLearnedRoutes]
+    ) -> Dict[str, Any]:
         """Update an existing SafCcdPurgeBlockLearnedRoutes.
 
         Args:
@@ -18803,9 +19438,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_saf_ccd_purge_block_learned_routes(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_saf_ccd_purge_block_learned_routes(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SafCcdPurgeBlockLearnedRoutes objects matching search criteria.
 
         Args:
@@ -18823,9 +19461,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSafCcdPurgeBlockLearnedRoutes(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSafCcdPurgeBlockLearnedRoutes(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18904,9 +19542,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_saf_forwarder(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_saf_forwarder(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SafForwarder objects matching search criteria.
 
         Args:
@@ -18924,9 +19565,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSafForwarder(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSafForwarder(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -18952,7 +19593,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_saf_security_profile(self, saf_security_profile_data: SafSecurityProfile) -> Dict[str, Any]:
+    def add_saf_security_profile(
+        self, saf_security_profile_data: SafSecurityProfile
+    ) -> Dict[str, Any]:
         """Add a new SafSecurityProfile.
 
         Args:
@@ -18969,7 +19612,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_saf_security_profile(self, **kwargs: Unpack[UpdateSafSecurityProfile]) -> Dict[str, Any]:
+    def update_saf_security_profile(
+        self, **kwargs: Unpack[UpdateSafSecurityProfile]
+    ) -> Dict[str, Any]:
         """Update an existing SafSecurityProfile.
 
         Args:
@@ -19005,9 +19650,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_saf_security_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_saf_security_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SafSecurityProfile objects matching search criteria.
 
         Args:
@@ -19025,9 +19673,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSafSecurityProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSafSecurityProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19053,7 +19701,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_sdp_transparency_profile(self, sdp_transparency_profile_data: SdpTransparencyProfile) -> Dict[str, Any]:
+    def add_sdp_transparency_profile(
+        self, sdp_transparency_profile_data: SdpTransparencyProfile
+    ) -> Dict[str, Any]:
         """Add a new SdpTransparencyProfile.
 
         Args:
@@ -19066,11 +19716,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addSdpTransparencyProfile(sdpTransparencyProfile=sdp_transparency_profile_data)
+            return self._service.addSdpTransparencyProfile(
+                sdpTransparencyProfile=sdp_transparency_profile_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_sdp_transparency_profile(self, **kwargs: Unpack[UpdateSdpTransparencyProfile]) -> Dict[str, Any]:
+    def update_sdp_transparency_profile(
+        self, **kwargs: Unpack[UpdateSdpTransparencyProfile]
+    ) -> Dict[str, Any]:
         """Update an existing SdpTransparencyProfile.
 
         Args:
@@ -19106,9 +19760,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_sdp_transparency_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_sdp_transparency_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SdpTransparencyProfile objects matching search criteria.
 
         Args:
@@ -19126,9 +19783,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSdpTransparencyProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSdpTransparencyProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19136,9 +19793,12 @@ class AXLClient(BaseClient):
     #  ServiceProfile
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_service_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_service_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List ServiceProfile objects matching search criteria.
 
         Args:
@@ -19156,9 +19816,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listServiceProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listServiceProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19237,9 +19897,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_sip_dial_rules(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_sip_dial_rules(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SipDialRules objects matching search criteria.
 
         Args:
@@ -19257,9 +19920,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSipDialRules(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSipDialRules(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19267,9 +19930,12 @@ class AXLClient(BaseClient):
     #  SipProfile
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_sip_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_sip_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SipProfile objects matching search criteria.
 
         Args:
@@ -19287,9 +19953,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSipProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSipProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19402,9 +20068,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_sip_realm(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_sip_realm(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SipRealm objects matching search criteria.
 
         Args:
@@ -19422,9 +20091,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSipRealm(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSipRealm(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19432,9 +20101,12 @@ class AXLClient(BaseClient):
     #  SipRoutePattern
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_sip_route_pattern(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_sip_route_pattern(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SipRoutePattern objects matching search criteria.
 
         Args:
@@ -19452,9 +20124,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSipRoutePattern(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSipRoutePattern(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19462,9 +20134,12 @@ class AXLClient(BaseClient):
     #  SipTrunk
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_sip_trunk(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_sip_trunk(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SipTrunk objects matching search criteria.
 
         Args:
@@ -19482,9 +20157,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSipTrunk(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSipTrunk(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19526,7 +20201,9 @@ class AXLClient(BaseClient):
     #  SipTrunkSecurityProfile
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_sip_trunk_security_profile(self, **kwargs: Unpack[UpdateSipTrunkSecurityProfile]) -> Dict[str, Any]:
+    def update_sip_trunk_security_profile(
+        self, **kwargs: Unpack[UpdateSipTrunkSecurityProfile]
+    ) -> Dict[str, Any]:
         """Update an existing SipTrunkSecurityProfile.
 
         Args:
@@ -19544,9 +20221,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_sip_trunk_security_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_sip_trunk_security_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SipTrunkSecurityProfile objects matching search criteria.
 
         Args:
@@ -19564,9 +20244,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSipTrunkSecurityProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSipTrunkSecurityProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19626,9 +20306,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_soft_key_template(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_soft_key_template(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List SoftKeyTemplate objects matching search criteria.
 
         Args:
@@ -19646,9 +20329,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSoftKeyTemplate(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSoftKeyTemplate(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19690,9 +20373,12 @@ class AXLClient(BaseClient):
     #  Srst
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_srst(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_srst(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Srst objects matching search criteria.
 
         Args:
@@ -19710,9 +20396,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listSrst(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listSrst(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19842,9 +20528,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_time_period(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_time_period(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List TimePeriod objects matching search criteria.
 
         Args:
@@ -19862,9 +20551,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listTimePeriod(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listTimePeriod(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -19943,9 +20632,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_time_schedule(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_time_schedule(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List TimeSchedule objects matching search criteria.
 
         Args:
@@ -19963,9 +20655,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listTimeSchedule(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listTimeSchedule(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20044,9 +20736,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_tod_access(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_tod_access(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List TodAccess objects matching search criteria.
 
         Args:
@@ -20064,9 +20759,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listTodAccess(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listTodAccess(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20074,9 +20769,12 @@ class AXLClient(BaseClient):
     #  TransPattern
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_trans_pattern(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_trans_pattern(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List TransPattern objects matching search criteria.
 
         Args:
@@ -20094,9 +20792,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listTransPattern(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listTransPattern(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20104,9 +20802,12 @@ class AXLClient(BaseClient):
     #  Transcoder
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_transcoder(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_transcoder(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Transcoder objects matching search criteria.
 
         Args:
@@ -20124,9 +20825,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listTranscoder(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listTranscoder(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20186,7 +20887,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_transformation_profile(self, transformation_profile_data: TransformationProfile) -> Dict[str, Any]:
+    def add_transformation_profile(
+        self, transformation_profile_data: TransformationProfile
+    ) -> Dict[str, Any]:
         """Add a new TransformationProfile.
 
         Args:
@@ -20199,11 +20902,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addTransformationProfile(transformationProfile=transformation_profile_data)
+            return self._service.addTransformationProfile(
+                transformationProfile=transformation_profile_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_transformation_profile(self, **kwargs: Unpack[UpdateTransformationProfile]) -> Dict[str, Any]:
+    def update_transformation_profile(
+        self, **kwargs: Unpack[UpdateTransformationProfile]
+    ) -> Dict[str, Any]:
         """Update an existing TransformationProfile.
 
         Args:
@@ -20239,9 +20946,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_transformation_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_transformation_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List TransformationProfile objects matching search criteria.
 
         Args:
@@ -20259,9 +20969,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listTransformationProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listTransformationProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20269,9 +20979,12 @@ class AXLClient(BaseClient):
     #  UcService
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_uc_service(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_uc_service(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List UcService objects matching search criteria.
 
         Args:
@@ -20289,9 +21002,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listUcService(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listUcService(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20407,7 +21120,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_universal_device_template(self, universal_device_template_data: UniversalDeviceTemplate) -> Dict[str, Any]:
+    def add_universal_device_template(
+        self, universal_device_template_data: UniversalDeviceTemplate
+    ) -> Dict[str, Any]:
         """Add a new UniversalDeviceTemplate.
 
         Args:
@@ -20420,11 +21135,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addUniversalDeviceTemplate(universalDeviceTemplate=universal_device_template_data)
+            return self._service.addUniversalDeviceTemplate(
+                universalDeviceTemplate=universal_device_template_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_universal_device_template(self, **kwargs: Unpack[UpdateUniversalDeviceTemplate]) -> Dict[str, Any]:
+    def update_universal_device_template(
+        self, **kwargs: Unpack[UpdateUniversalDeviceTemplate]
+    ) -> Dict[str, Any]:
         """Update an existing UniversalDeviceTemplate.
 
         Args:
@@ -20460,9 +21179,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_universal_device_template(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_universal_device_template(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List UniversalDeviceTemplate objects matching search criteria.
 
         Args:
@@ -20480,9 +21202,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listUniversalDeviceTemplate(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listUniversalDeviceTemplate(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20508,7 +21230,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_universal_line_template(self, universal_line_template_data: UniversalLineTemplate) -> Dict[str, Any]:
+    def add_universal_line_template(
+        self, universal_line_template_data: UniversalLineTemplate
+    ) -> Dict[str, Any]:
         """Add a new UniversalLineTemplate.
 
         Args:
@@ -20521,11 +21245,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addUniversalLineTemplate(universalLineTemplate=universal_line_template_data)
+            return self._service.addUniversalLineTemplate(
+                universalLineTemplate=universal_line_template_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_universal_line_template(self, **kwargs: Unpack[UpdateUniversalLineTemplate]) -> Dict[str, Any]:
+    def update_universal_line_template(
+        self, **kwargs: Unpack[UpdateUniversalLineTemplate]
+    ) -> Dict[str, Any]:
         """Update an existing UniversalLineTemplate.
 
         Args:
@@ -20561,9 +21289,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_universal_line_template(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_universal_line_template(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List UniversalLineTemplate objects matching search criteria.
 
         Args:
@@ -20581,9 +21312,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listUniversalLineTemplate(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listUniversalLineTemplate(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20642,9 +21373,12 @@ class AXLClient(BaseClient):
     #  UserGroup
     # ═══════════════════════════════════════════════════════════════════
 
-    def list_user_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_user_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List UserGroup objects matching search criteria.
 
         Args:
@@ -20662,9 +21396,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listUserGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listUserGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20690,7 +21424,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_user_profile_provision(self, user_profile_provision_data: UserProfileProvision) -> Dict[str, Any]:
+    def add_user_profile_provision(
+        self, user_profile_provision_data: UserProfileProvision
+    ) -> Dict[str, Any]:
         """Add a new UserProfileProvision.
 
         Args:
@@ -20703,11 +21439,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addUserProfileProvision(userProfileProvision=user_profile_provision_data)
+            return self._service.addUserProfileProvision(
+                userProfileProvision=user_profile_provision_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_user_profile_provision(self, **kwargs: Unpack[UpdateUserProfileProvision]) -> Dict[str, Any]:
+    def update_user_profile_provision(
+        self, **kwargs: Unpack[UpdateUserProfileProvision]
+    ) -> Dict[str, Any]:
         """Update an existing UserProfileProvision.
 
         Args:
@@ -20743,9 +21483,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_user_profile_provision(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_user_profile_provision(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List UserProfileProvision objects matching search criteria.
 
         Args:
@@ -20763,9 +21506,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listUserProfileProvision(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listUserProfileProvision(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -20959,9 +21702,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_voh_server(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_voh_server(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List VohServer objects matching search criteria.
 
         Args:
@@ -20979,9 +21725,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listVohServer(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listVohServer(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21007,9 +21753,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_voice_mail_pilot(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_voice_mail_pilot(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List VoiceMailPilot objects matching search criteria.
 
         Args:
@@ -21027,9 +21776,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listVoiceMailPilot(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listVoiceMailPilot(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21055,9 +21804,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_voice_mail_port(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_voice_mail_port(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List VoiceMailPort objects matching search criteria.
 
         Args:
@@ -21075,9 +21827,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listVoiceMailPort(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listVoiceMailPort(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21154,9 +21906,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_voice_mail_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_voice_mail_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List VoiceMailProfile objects matching search criteria.
 
         Args:
@@ -21174,9 +21929,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listVoiceMailProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listVoiceMailProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21306,9 +22061,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_vpn_gateway(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_vpn_gateway(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List VpnGateway objects matching search criteria.
 
         Args:
@@ -21326,9 +22084,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listVpnGateway(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listVpnGateway(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21407,9 +22165,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_vpn_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_vpn_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List VpnGroup objects matching search criteria.
 
         Args:
@@ -21427,9 +22188,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listVpnGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listVpnGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21508,9 +22269,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_vpn_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_vpn_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List VpnProfile objects matching search criteria.
 
         Args:
@@ -21528,9 +22292,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listVpnProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listVpnProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21609,9 +22373,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_wlan_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_wlan_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List WLANProfile objects matching search criteria.
 
         Args:
@@ -21629,9 +22396,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listWLANProfile(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listWLANProfile(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21710,9 +22477,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_wifi_hotspot(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_wifi_hotspot(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List WifiHotspot objects matching search criteria.
 
         Args:
@@ -21730,9 +22500,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listWifiHotspot(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listWifiHotspot(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21758,7 +22528,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def add_wireless_access_point_controllers(self, wireless_access_point_controllers_data: WirelessAccessPointControllers) -> Dict[str, Any]:
+    def add_wireless_access_point_controllers(
+        self, wireless_access_point_controllers_data: WirelessAccessPointControllers
+    ) -> Dict[str, Any]:
         """Add a new WirelessAccessPointControllers.
 
         Args:
@@ -21771,11 +22543,15 @@ class AXLClient(BaseClient):
             AXLError: On AXL faults.
         """
         try:
-            return self._service.addWirelessAccessPointControllers(wirelessAccessPointControllers=wireless_access_point_controllers_data)
+            return self._service.addWirelessAccessPointControllers(
+                wirelessAccessPointControllers=wireless_access_point_controllers_data
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_wireless_access_point_controllers(self, **kwargs: Unpack[UpdateWirelessAccessPointControllers]) -> Dict[str, Any]:
+    def update_wireless_access_point_controllers(
+        self, **kwargs: Unpack[UpdateWirelessAccessPointControllers]
+    ) -> Dict[str, Any]:
         """Update an existing WirelessAccessPointControllers.
 
         Args:
@@ -21811,9 +22587,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_wireless_access_point_controllers(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_wireless_access_point_controllers(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List WirelessAccessPointControllers objects matching search criteria.
 
         Args:
@@ -21831,9 +22610,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listWirelessAccessPointControllers(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listWirelessAccessPointControllers(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -21912,9 +22691,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_wlan_profile_group(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_wlan_profile_group(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List WlanProfileGroup objects matching search criteria.
 
         Args:
@@ -21932,9 +22714,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listWlanProfileGroup(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listWlanProfileGroup(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -22039,9 +22821,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_call_manager(self, search_criteria: Optional[Dict[str, str]] = None,
-                     returned_tags: Optional[Dict[str, str]] = None,
-                     **kwargs) -> Dict[str, Any]:
+    def list_call_manager(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List CallManager objects.
 
         Args:
@@ -22058,9 +22843,9 @@ class AXLClient(BaseClient):
         if search_criteria is None:
             search_criteria = {"name": "%"}
         try:
-            return self._service.listCallManager(searchCriteria=search_criteria,
-                                           returnedTags=returned_tags or {},
-                                           **kwargs)
+            return self._service.listCallManager(
+                searchCriteria=search_criteria, returnedTags=returned_tags or {}, **kwargs
+            )
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
@@ -22158,7 +22943,9 @@ class AXLClient(BaseClient):
     #  CiscoCloudOnboarding (Configuration)
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_cisco_cloud_onboarding(self, **kwargs: Unpack[UpdateCiscoCloudOnboarding]) -> Dict[str, Any]:
+    def update_cisco_cloud_onboarding(
+        self, **kwargs: Unpack[UpdateCiscoCloudOnboarding]
+    ) -> Dict[str, Any]:
         """Update CiscoCloudOnboarding configuration.
 
         Args:
@@ -22234,7 +23021,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_emcc_feature_config(self, **kwargs: Unpack[UpdateEmccFeatureConfig]) -> Dict[str, Any]:
+    def update_emcc_feature_config(
+        self, **kwargs: Unpack[UpdateEmccFeatureConfig]
+    ) -> Dict[str, Any]:
         """Update EmccFeatureConfig configuration.
 
         Args:
@@ -22301,7 +23090,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_enterprise_phone_config(self, **kwargs: Unpack[UpdateEnterprisePhoneConfig]) -> Dict[str, Any]:
+    def update_enterprise_phone_config(
+        self, **kwargs: Unpack[UpdateEnterprisePhoneConfig]
+    ) -> Dict[str, Any]:
         """Update EnterprisePhoneConfig configuration.
 
         Args:
@@ -22336,7 +23127,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_fallback_feature_config(self, **kwargs: Unpack[UpdateFallbackFeatureConfig]) -> Dict[str, Any]:
+    def update_fallback_feature_config(
+        self, **kwargs: Unpack[UpdateFallbackFeatureConfig]
+    ) -> Dict[str, Any]:
         """Update FallbackFeatureConfig configuration.
 
         Args:
@@ -22374,7 +23167,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_fixed_moh_audio_source(self, **kwargs: Unpack[UpdateFixedMohAudioSource]) -> Dict[str, Any]:
+    def update_fixed_moh_audio_source(
+        self, **kwargs: Unpack[UpdateFixedMohAudioSource]
+    ) -> Dict[str, Any]:
         """Update FixedMohAudioSource configuration.
 
         Args:
@@ -22469,7 +23264,9 @@ class AXLClient(BaseClient):
     #  InterClusterDirectoryUri (Configuration)
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_inter_cluster_directory_uri(self, **kwargs: Unpack[UpdateInterClusterDirectoryUri]) -> Dict[str, Any]:
+    def update_inter_cluster_directory_uri(
+        self, **kwargs: Unpack[UpdateInterClusterDirectoryUri]
+    ) -> Dict[str, Any]:
         """Update InterClusterDirectoryUri configuration.
 
         Args:
@@ -22507,7 +23304,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_inter_cluster_service_profile(self, **kwargs: Unpack[UpdateInterClusterServiceProfile]) -> Dict[str, Any]:
+    def update_inter_cluster_service_profile(
+        self, **kwargs: Unpack[UpdateInterClusterServiceProfile]
+    ) -> Dict[str, Any]:
         """Update InterClusterServiceProfile configuration.
 
         Args:
@@ -22546,7 +23345,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_page_layout_preferences(self, **kwargs: Unpack[UpdatePageLayoutPreferences]) -> Dict[str, Any]:
+    def update_page_layout_preferences(
+        self, **kwargs: Unpack[UpdatePageLayoutPreferences]
+    ) -> Dict[str, Any]:
         """Update PageLayoutPreferences configuration.
 
         Args:
@@ -22588,7 +23389,9 @@ class AXLClient(BaseClient):
     #  RoutePartitionsForLearnedPatterns (Configuration)
     # ═══════════════════════════════════════════════════════════════════
 
-    def update_route_partitions_for_learned_patterns(self, **kwargs: Unpack[UpdateRoutePartitionsForLearnedPatterns]) -> Dict[str, Any]:
+    def update_route_partitions_for_learned_patterns(
+        self, **kwargs: Unpack[UpdateRoutePartitionsForLearnedPatterns]
+    ) -> Dict[str, Any]:
         """Update RoutePartitionsForLearnedPatterns configuration.
 
         Args:
@@ -22741,7 +23544,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_syslog_configuration(self, **kwargs: Unpack[UpdateSyslogConfiguration]) -> Dict[str, Any]:
+    def update_syslog_configuration(
+        self, **kwargs: Unpack[UpdateSyslogConfiguration]
+    ) -> Dict[str, Any]:
         """Update SyslogConfiguration configuration.
 
         Args:
@@ -22837,8 +23642,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def get_service_parameter(self, process_node_name: str,
-                               service: str, name: str) -> Dict[str, Any]:
+    def get_service_parameter(
+        self, process_node_name: str, service: str, name: str
+    ) -> Dict[str, Any]:
         """Retrieve a service parameter.
 
         Args:
@@ -22861,9 +23667,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_service_parameter(self, search_criteria: Optional[Dict[str, str]] = None,
-                                returned_tags: Optional[Dict[str, str]] = None,
-                                **kwargs) -> Dict[str, Any]:
+    def list_service_parameter(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List service parameters.
 
         Args:
@@ -22888,9 +23697,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_service_parameter(self, process_node_name: str,
-                                  service: str, name: str,
-                                  value: str) -> Dict[str, Any]:
+    def update_service_parameter(
+        self, process_node_name: str, service: str, name: str, value: str
+    ) -> Dict[str, Any]:
         """Update a service parameter.
 
         Args:
@@ -23095,9 +23904,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_licensed_user(self, search_criteria: Optional[Dict[str, str]] = None,
-                           returned_tags: Optional[Dict[str, str]] = None,
-                           **kwargs) -> Dict[str, Any]:
+    def list_licensed_user(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List licensed users.
 
         Args:
@@ -23139,9 +23951,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_mobile_smart_client_profile(self, search_criteria: Optional[Dict[str, str]] = None,
-                                          returned_tags: Optional[Dict[str, str]] = None,
-                                          **kwargs) -> Dict[str, Any]:
+    def list_mobile_smart_client_profile(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Mobile Smart Client Profiles.
 
         Args:
@@ -23166,9 +23981,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_unassigned_device(self, search_criteria: Optional[Dict[str, str]] = None,
-                                returned_tags: Optional[Dict[str, str]] = None,
-                                **kwargs) -> Dict[str, Any]:
+    def list_unassigned_device(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List unassigned devices.
 
         Args:
@@ -23207,9 +24025,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_unassigned_presence_users(self, search_criteria: Optional[Dict[str, str]] = None,
-                                        returned_tags: Optional[Dict[str, str]] = None,
-                                        **kwargs) -> Dict[str, Any]:
+    def list_unassigned_presence_users(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List unassigned presence users.
 
         Args:
@@ -23234,9 +24055,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_route_plan(self, search_criteria: Optional[Dict[str, str]] = None,
-                        returned_tags: Optional[Dict[str, str]] = None,
-                        **kwargs) -> Dict[str, Any]:
+    def list_route_plan(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List route plan entries.
 
         Args:
@@ -23334,9 +24158,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_phone_activation_code(self, search_criteria: Optional[Dict[str, str]] = None,
-                                    returned_tags: Optional[Dict[str, str]] = None,
-                                    **kwargs) -> Dict[str, Any]:
+    def list_phone_activation_code(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List phone activation codes.
 
         Args:
@@ -23566,7 +24393,9 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def update_credential_policy_default(self, **kwargs: Unpack[UpdateCredentialPolicyDefault]) -> Dict[str, Any]:
+    def update_credential_policy_default(
+        self, **kwargs: Unpack[UpdateCredentialPolicyDefault]
+    ) -> Dict[str, Any]:
         """Update the default credential policy.
 
         Args:
@@ -23617,9 +24446,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_tvs_certificate(self, search_criteria: Optional[Dict[str, str]] = None,
-                              returned_tags: Optional[Dict[str, str]] = None,
-                              **kwargs) -> Dict[str, Any]:
+    def list_tvs_certificate(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List TVS certificates.
 
         Args:
@@ -23780,9 +24612,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_annunciator(self, search_criteria: Optional[Dict[str, str]] = None,
-                         returned_tags: Optional[Dict[str, str]] = None,
-                         **kwargs) -> Dict[str, Any]:
+    def list_annunciator(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Annunciator resources.
 
         Args:
@@ -23807,9 +24642,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_cisco_cloud_onboarding(self, search_criteria: Optional[Dict[str, str]] = None,
-                                     returned_tags: Optional[Dict[str, str]] = None,
-                                     **kwargs) -> Dict[str, Any]:
+    def list_cisco_cloud_onboarding(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List Cisco Cloud Onboarding configurations.
 
         Args:
@@ -23834,9 +24672,12 @@ class AXLClient(BaseClient):
         except Fault as fault:
             raise _axl_error_from_fault(fault) from fault
 
-    def list_device_defaults(self, search_criteria: Optional[Dict[str, str]] = None,
-                              returned_tags: Optional[Dict[str, str]] = None,
-                              **kwargs) -> Dict[str, Any]:
+    def list_device_defaults(
+        self,
+        search_criteria: Optional[Dict[str, str]] = None,
+        returned_tags: Optional[Dict[str, str]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """List device defaults.
 
         Args:

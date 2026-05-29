@@ -8,8 +8,9 @@ These tests verify that AXLClient methods:
 - Handle SQL sanitization correctly
 """
 
+from unittest.mock import MagicMock, patch
+
 import pytest
-from unittest.mock import MagicMock, patch, PropertyMock
 from zeep.exceptions import Fault
 
 from axltoolkit.axl import AXLClient, _axl_error_from_fault, _sanitize_sql_value
@@ -21,7 +22,6 @@ from axltoolkit.exceptions import (
     AXLSQLInjectionError,
     AXLValidationError,
 )
-
 
 # ── Fixtures ──────────────────────────────────────────────────────────
 
@@ -100,17 +100,20 @@ class TestSQLSanitization:
     def test_multiple_quotes(self):
         assert _sanitize_sql_value("a'b'c") == "a''b''c"
 
-    @pytest.mark.parametrize("dangerous", [
-        "'; DROP TABLE device; --",
-        "x'; -- comment",
-        "1; exec sp_help",
-        "1; execute something",
-        "foo /* comment */",
-        "union select * from enduser",
-        "'; insert into device select",
-        "xp_cmdshell",
-        "'; alter table device",
-    ])
+    @pytest.mark.parametrize(
+        "dangerous",
+        [
+            "'; DROP TABLE device; --",
+            "x'; -- comment",
+            "1; exec sp_help",
+            "1; execute something",
+            "foo /* comment */",
+            "union select * from enduser",
+            "'; insert into device select",
+            "xp_cmdshell",
+            "'; alter table device",
+        ],
+    )
     def test_injection_patterns_rejected(self, dangerous):
         with pytest.raises(AXLSQLInjectionError):
             _sanitize_sql_value(dangerous)
@@ -133,7 +136,9 @@ class TestGetOperations:
         assert result["return"]["phone"]["name"] == "SEP001122334455"
 
     def test_get_phone_not_found(self, axl):
-        axl._service.getPhone.side_effect = Fault("Item not valid: The specified Phone was not found")
+        axl._service.getPhone.side_effect = Fault(
+            "Item not valid: The specified Phone was not found"
+        )
         with pytest.raises(AXLNotFoundError):
             axl.get_phone(name="DOESNOTEXIST")
 
@@ -192,7 +197,9 @@ class TestGetNewObjectTypes:
     def test_get_hunt_pilot(self, axl):
         axl._service.getHuntPilot.return_value = {"return": {"huntPilot": {}}}
         result = axl.get_hunt_pilot("5000", "PT_Internal")
-        axl._service.getHuntPilot.assert_called_once_with(pattern="5000", routePartitionName="PT_Internal")
+        axl._service.getHuntPilot.assert_called_once_with(
+            pattern="5000", routePartitionName="PT_Internal"
+        )
 
     def test_get_gateway(self, axl):
         axl._service.getGateway.return_value = {"return": {"gateway": {"domainName": "GW1"}}}
@@ -262,15 +269,11 @@ class TestAddOperations:
             "ownerUserId": "jsmith",
         }
         result = axl.add_remote_destination(data)
-        axl._service.addRemoteDestination.assert_called_once_with(
-            remoteDestination=data
-        )
+        axl._service.addRemoteDestination.assert_called_once_with(remoteDestination=data)
         assert result == {"return": "uuid-rd"}
 
     def test_add_remote_destination_duplicate_raises(self, axl):
-        axl._service.addRemoteDestination.side_effect = Fault(
-            "Error 11617: duplicate value"
-        )
+        axl._service.addRemoteDestination.side_effect = Fault("Error 11617: duplicate value")
         with pytest.raises(AXLDuplicateError):
             axl.add_remote_destination({"name": "RD_Existing"})
 
@@ -289,7 +292,9 @@ class TestUpdateOperations:
     def test_update_sip_trunk(self, axl):
         axl._service.updateSipTrunk.return_value = {"return": "ok"}
         result = axl.update_sip_trunk(name="SIP_CUBE", description="Updated desc")
-        axl._service.updateSipTrunk.assert_called_once_with(name="SIP_CUBE", description="Updated desc")
+        axl._service.updateSipTrunk.assert_called_once_with(
+            name="SIP_CUBE", description="Updated desc"
+        )
 
     def test_update_not_found_raises(self, axl):
         axl._service.updateUser.side_effect = Fault("was not found")
@@ -355,7 +360,12 @@ class TestListOperations:
         axl._service.listUser.return_value = {
             "return": {
                 "user": [
-                    {"userid": "jsmith", "uuid": "uuid-u1", "firstName": "John", "lastName": "Smith"},
+                    {
+                        "userid": "jsmith",
+                        "uuid": "uuid-u1",
+                        "firstName": "John",
+                        "lastName": "Smith",
+                    },
                 ]
             }
         }
@@ -398,9 +408,7 @@ class TestSQLOperations:
         col2.text = "Test Phone"
         mock_row1.__iter__ = lambda self: iter([col1, col2])
 
-        axl._service.executeSQLQuery.return_value = {
-            "return": {"row": [mock_row1]}
-        }
+        axl._service.executeSQLQuery.return_value = {"return": {"row": [mock_row1]}}
 
         result = axl.sql_query("SELECT name, description FROM device")
         assert result["num_rows"] == 1
@@ -419,9 +427,7 @@ class TestSQLOperations:
             axl.sql_query("INVALID SQL")
 
     def test_sql_update(self, axl):
-        axl._service.executeSQLUpdate.return_value = {
-            "return": {"rowsUpdated": 3}
-        }
+        axl._service.executeSQLUpdate.return_value = {"return": {"rowsUpdated": 3}}
         result = axl.sql_update("UPDATE device SET description='X'")
         assert result["rows_updated"] == 3
 
@@ -467,8 +473,9 @@ class TestDeviceOperations:
 
     def test_do_device_login(self, axl):
         axl._service.doDeviceLogin.return_value = {"return": "ok"}
-        result = axl.do_device_login(deviceName="SEP001122334455", userId="jsmith",
-                                      profileName="DP_jsmith")
+        result = axl.do_device_login(
+            deviceName="SEP001122334455", userId="jsmith", profileName="DP_jsmith"
+        )
         axl._service.doDeviceLogin.assert_called_once()
 
     def test_do_device_logout(self, axl):
@@ -557,5 +564,6 @@ class TestConfigOperations:
 class TestVersionValidation:
     def test_supported_versions(self):
         from axltoolkit.axl import SUPPORTED_VERSIONS
+
         assert "10.0" in SUPPORTED_VERSIONS
         assert "15.0" in SUPPORTED_VERSIONS

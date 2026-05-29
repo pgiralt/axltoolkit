@@ -1,8 +1,9 @@
 """Tests for backward-compatible legacy class aliases."""
 
-import pytest
 import warnings
 from unittest.mock import MagicMock, patch
+
+import pytest
 
 
 class TestAxlToolkitCompat:
@@ -139,6 +140,7 @@ class TestUcmPerfMonToolkitCompat:
 
     def test_perfmon_add_counter_failure(self):
         from zeep.exceptions import Fault
+
         obj = self._make_instance()
         obj._service.perfmonAddCounter.side_effect = Fault("error")
         result = obj.perfmonAddCounter("handle-1", ["bad"])

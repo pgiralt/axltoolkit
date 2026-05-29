@@ -47,9 +47,24 @@ classifiers = [
 ]
 dependencies = [
     "zeep>=4.2.1,<5",
-    "requests>=2.32.0,<3",
-    "lxml>=4.9.0,<7",
-    "urllib3>=2.0.0,<3",
+    # requests>=2.33.0 fixes GHSA-gc5v-m9x4-r6x2 (predictable filenames
+    # in ``extract_zipped_paths()`` allowing local file substitution).
+    "requests>=2.33.0,<3",
+    # lxml>=6.1.0 fixes PYSEC-2026-87 (default parser allows local file
+    # read via external entities). axltoolkit configures zeep with
+    # ``forbid_dtd=True`` to defang DTDs regardless, but the patched
+    # parser is the safer default for any direct lxml usage.
+    "lxml>=6.1.0,<7",
+    # urllib3>=2.7.0 fixes a chain of CVEs in <=2.6.x:
+    #   - PYSEC-2026-141 (ProxyManager cross-origin redirect header leak)
+    #   - GHSA-gm62-xv2j-4w53 (unbounded content-encoding chain → DoS)
+    #   - GHSA-2xpw-w6gg-jr37 (decompression-bomb in streaming API)
+    #   - GHSA-38jv-5279-wg99 (redirect responses decoded even with
+    #     ``preload_content=False`` → DoS)
+    "urllib3>=2.7.0,<3",
+    # idna>=3.15 fixes CVE-2026-45409 (DoS via long crafted inputs to
+    # ``idna.encode``; this is a transitive of requests).
+    "idna>=3.15",
     "typing_extensions>=4.1; python_version < '3.12'",
 ]
 
@@ -62,16 +77,24 @@ Changelog = "https://pgiralt.github.io/axltoolkit/changelog/"
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.0",
+    # pytest>=9.0.3 fixes GHSA-6w46-j5rx-g56g (predictable
+    # /tmp/pytest-of-* path → local DoS/privilege issues).
+    "pytest>=9.0.3",
     "pytest-cov",
     "pytest-mock",
     "responses",
     "ruff>=0.4.0",
     "python-dotenv>=1.0,<2",
+    "pip-audit>=2.7",
 ]
 docs = [
-    "mkdocs-material>=9.0",
+    # mkdocs-material>=9.6.20 pulls in pymdown-extensions>=10.21.3,
+    # which fixes GHSA-62q4-447f-wv8h (path-traversal regression in
+    # the snippets preprocessor).
+    "mkdocs-material>=9.6.20",
     "mkdocstrings[python]>=0.24",
+    # Explicit floor so the audit catches any transitive downgrade.
+    "pymdown-extensions>=10.21.3",
 ]
 
 [tool.setuptools.packages.find]
@@ -90,7 +113,23 @@ markers = [
 [tool.ruff]
 target-version = "py39"
 line-length = 100
+# Auto-generated modules are produced by ``scripts/generate_models.py``
+# from the AXL XSD. They legitimately use forward-reference strings to
+# enum classes that live in a sibling generated module (no actual
+# undefined names at runtime), and their style is dictated by the
+# generator, not the developer. Exclude them from lint and format
+# checks so changes to the XSD don't churn the lint baseline.
+extend-exclude = [
+    "axltoolkit/_generated_models.py",
+    "axltoolkit/_generated_enums.py",
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
 ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests legitimately bind smoke-test return values to ``result`` even
+# when they only verify the call dispatch (the mock recorded the call,
+# not the value). F841 against test locals is too noisy.
+"tests/**/*.py" = ["F841"]

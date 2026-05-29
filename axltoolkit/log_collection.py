@@ -21,7 +21,7 @@ Usage::
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional, Sequence, Union
+from typing import Any, Dict, Union
 
 from zeep.exceptions import Fault
 
@@ -48,8 +48,7 @@ class LogCollectionClient(BaseClient):
     """
 
     _WSDL_PATH = (
-        "https://{server}:8443/logcollectionservice2/services/"
-        "LogCollectionPortTypeService?wsdl"
+        "https://{server}:8443/logcollectionservice2/services/LogCollectionPortTypeService?wsdl"
     )
 
     def __init__(
@@ -76,8 +75,7 @@ class LogCollectionClient(BaseClient):
         self._service = self._client.service
         # Override the endpoint — the WSDL may advertise localhost
         endpoint = (
-            f"https://{server_ip}:8443/logcollectionservice2/"
-            "services/LogCollectionPortTypeService"
+            f"https://{server_ip}:8443/logcollectionservice2/services/LogCollectionPortTypeService"
         )
         self._service._binding_options["address"] = endpoint
 
@@ -121,9 +119,7 @@ class LogCollectionClient(BaseClient):
             LogCollectionError: If the query fails.
         """
         try:
-            return self._service.selectLogFiles(
-                FileSelectionCriteria=file_selection_criteria
-            )
+            return self._service.selectLogFiles(FileSelectionCriteria=file_selection_criteria)
         except Fault as fault:
             raise LogCollectionError(
                 f"Failed to select log files: {fault}",
@@ -145,10 +141,7 @@ class DimeGetFileClient(BaseClient):
         max_retries: Retry count for transient failures (default 3).
     """
 
-    _WSDL_PATH = (
-        "https://{server}:8443/logcollectionservice/services/"
-        "DimeGetFileService?wsdl"
-    )
+    _WSDL_PATH = "https://{server}:8443/logcollectionservice/services/DimeGetFileService?wsdl"
 
     def __init__(
         self,

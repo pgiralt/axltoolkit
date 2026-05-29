@@ -1,11 +1,12 @@
 """Tests for RISPortClient with mocked zeep service."""
 
-import pytest
 from unittest.mock import MagicMock, patch
+
+import pytest
 from zeep.exceptions import Fault
 
-from axltoolkit.risport import RISPortClient
 from axltoolkit.exceptions import RISPortError
+from axltoolkit.risport import RISPortClient
 
 
 @pytest.fixture
@@ -102,9 +103,7 @@ class TestSelectCmDeviceExt:
         assert criteria["DeviceClass"] == "Phone"
         assert criteria["Status"] == "Registered"
         assert criteria["MaxReturnedDevices"] == 200
-        assert criteria["SelectItems"] == {
-            "item": [{"Item": "SEP*"}, {"Item": "CSF*"}]
-        }
+        assert criteria["SelectItems"] == {"item": [{"Item": "SEP*"}, {"Item": "CSF*"}]}
 
     def test_fault_raises_risport_error(self, ris):
         ris._service.selectCmDeviceExt.side_effect = Fault("Service unavailable")
@@ -152,18 +151,14 @@ class TestSelectCtiItem:
         ris.select_cti_item(app_items=["CTIApp1", "CTIApp2"])
         call_args = ris._service.selectCtiItem.call_args
         criteria = call_args[1]["CtiSelectionCriteria"]
-        assert criteria["AppItems"] == {
-            "item": [{"AppItem": "CTIApp1"}, {"AppItem": "CTIApp2"}]
-        }
+        assert criteria["AppItems"] == {"item": [{"AppItem": "CTIApp1"}, {"AppItem": "CTIApp2"}]}
 
     def test_with_dir_numbers(self, ris):
         ris._service.selectCtiItem.return_value = {}
         ris.select_cti_item(dir_numbers=["1001", "1002"])
         call_args = ris._service.selectCtiItem.call_args
         criteria = call_args[1]["CtiSelectionCriteria"]
-        assert criteria["DirNumbers"] == {
-            "item": [{"DirNumber": "1001"}, {"DirNumber": "1002"}]
-        }
+        assert criteria["DirNumbers"] == {"item": [{"DirNumber": "1001"}, {"DirNumber": "1002"}]}
 
     def test_fault_raises_risport_error(self, ris):
         ris._service.selectCtiItem.side_effect = Fault("CTI service error")

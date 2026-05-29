@@ -500,9 +500,7 @@ class PAWSClient(BaseClient):
         """
         svc = self._get_paws_service("PrepareRemoteUpgradeService")
         try:
-            return svc.prepareRemoteUpgrade(
-                upgrade_file, session_id, override_session
-            )
+            return svc.prepareRemoteUpgrade(upgrade_file, session_id, override_session)
         except Fault as fault:
             raise PAWSError(
                 f"Failed to prepare remote upgrade: {fault}",
@@ -643,9 +641,7 @@ class PAWSClient(BaseClient):
                 original_exception=fault,
             ) from fault
 
-    def upgrade_filter(
-        self, upgrade_type: str, filenames: List[str]
-    ) -> Dict[str, Any]:
+    def upgrade_filter(self, upgrade_type: str, filenames: List[str]) -> Dict[str, Any]:
         """Return a list of valid upgrade files from the provided list.
 
         Args:

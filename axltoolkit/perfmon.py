@@ -198,9 +198,7 @@ class PerfMonClient(BaseClient):
         if isinstance(counters, str):
             counters = [counters]
 
-        counter_data = [
-            {"Counter": [{"Name": c} for c in counters]}
-        ]
+        counter_data = [{"Counter": [{"Name": c} for c in counters]}]
 
         try:
             self._service.perfmonAddCounter(
@@ -231,9 +229,7 @@ class PerfMonClient(BaseClient):
         if isinstance(counters, str):
             counters = [counters]
 
-        counter_data = [
-            {"Counter": [{"Name": c} for c in counters]}
-        ]
+        counter_data = [{"Counter": [{"Name": c} for c in counters]}]
 
         try:
             self._service.perfmonRemoveCounter(
@@ -276,9 +272,7 @@ class PerfMonClient(BaseClient):
             PerfMonError: If data collection fails.
         """
         try:
-            session_data = self._service.perfmonCollectSessionData(
-                SessionHandle=session_handle
-            )
+            session_data = self._service.perfmonCollectSessionData(SessionHandle=session_handle)
         except Fault as fault:
             raise PerfMonError(
                 f"Failed to collect session data: {fault}",
@@ -305,7 +299,8 @@ class PerfMonClient(BaseClient):
             if status != 0:
                 logger.debug(
                     "Skipping counter with non-zero status %d: %s",
-                    status, data["Name"]["_value_1"],
+                    status,
+                    data["Name"]["_value_1"],
                 )
                 continue
 
@@ -362,10 +357,7 @@ class PerfMonClient(BaseClient):
             obj_name = obj_data["Name"]["_value_1"]
             counter_list[obj_name] = {
                 "multi_instance": obj_data["MultiInstance"],
-                "counters": [
-                    c["Name"]["_value_1"]
-                    for c in obj_data["ArrayOfCounter"]["item"]
-                ],
+                "counters": [c["Name"]["_value_1"] for c in obj_data["ArrayOfCounter"]["item"]],
             }
 
         return counter_list
@@ -391,9 +383,7 @@ class PerfMonClient(BaseClient):
                 print(inst)
         """
         try:
-            instance_data = self._service.perfmonListInstance(
-                Host=host, Object=object_name
-            )
+            instance_data = self._service.perfmonListInstance(Host=host, Object=object_name)
         except Fault as fault:
             raise PerfMonError(
                 f"Failed to list instances for {object_name} on {host}: {fault}",
@@ -438,9 +428,7 @@ class PerfMonClient(BaseClient):
                 print(c["name"], "=", c["value"])
         """
         try:
-            counter_data = self._service.perfmonCollectCounterData(
-                Host=host, Object=object_name
-            )
+            counter_data = self._service.perfmonCollectCounterData(Host=host, Object=object_name)
         except Fault as fault:
             raise PerfMonError(
                 f"Failed to collect counter data for {object_name} on {host}: {fault}",

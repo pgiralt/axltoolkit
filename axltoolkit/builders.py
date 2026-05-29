@@ -211,9 +211,7 @@ class PhoneBuilder:
         required = ["name", "product", "devicePoolName"]
         missing = [k for k in required if k not in self._data]
         if missing:
-            raise ValueError(
-                f"PhoneBuilder missing required fields: {', '.join(missing)}"
-            )
+            raise ValueError(f"PhoneBuilder missing required fields: {', '.join(missing)}")
 
         result = dict(self._data)
         if self._lines:
@@ -353,9 +351,7 @@ class SipTrunkBuilder:
         required = ["name", "devicePoolName", "securityProfileName", "sipProfileName"]
         missing = [k for k in required if k not in self._data]
         if missing:
-            raise ValueError(
-                f"SipTrunkBuilder missing required fields: {', '.join(missing)}"
-            )
+            raise ValueError(f"SipTrunkBuilder missing required fields: {', '.join(missing)}")
 
         result = dict(self._data)
         if self._destinations:
@@ -400,8 +396,7 @@ class CssBuilder:
             A dict with ``name``, ``description``, and ``members`` keys.
         """
         members = [
-            {"routePartitionName": p, "index": i}
-            for i, p in enumerate(self._partitions, start=1)
+            {"routePartitionName": p, "index": i} for i, p in enumerate(self._partitions, start=1)
         ]
         return {
             "name": self._name,

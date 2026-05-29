@@ -1,11 +1,12 @@
 """Tests for WebdialerClient with mocked zeep service."""
 
-import pytest
 from unittest.mock import MagicMock, patch
+
+import pytest
 from zeep.exceptions import Fault
 
-from axltoolkit.webdialer import WebdialerClient
 from axltoolkit.exceptions import WebdialerError
+from axltoolkit.webdialer import WebdialerClient
 
 
 @pytest.fixture
@@ -39,8 +40,11 @@ class TestBuildHelpers:
 
     def test_build_user_profile_custom(self, wd):
         profile = wd._build_user_profile(
-            "jsmith", "SEP001122334455", "1001",
-            support_em=True, locale="German Germany",
+            "jsmith",
+            "SEP001122334455",
+            "1001",
+            support_em=True,
+            locale="German Germany",
         )
         assert profile["supportEM"] is True
         assert profile["locale"] == "German Germany"

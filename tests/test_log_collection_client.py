@@ -1,12 +1,12 @@
 """Tests for LogCollectionClient and DimeGetFileClient with mocked zeep service."""
 
-import pytest
 from unittest.mock import MagicMock, patch
+
+import pytest
 from zeep.exceptions import Fault
 
-from axltoolkit.log_collection import LogCollectionClient, DimeGetFileClient
 from axltoolkit.exceptions import LogCollectionError
-
+from axltoolkit.log_collection import DimeGetFileClient, LogCollectionClient
 
 # ── LogCollectionClient ───────────────────────────────────────────────
 
@@ -48,9 +48,7 @@ class TestSelectLogFiles:
         criteria = {"ServiceName": "Cisco CallManager", "TimeZone": "UTC"}
         log_client._service.selectLogFiles.return_value = {"FileList": []}
         result = log_client.select_log_files(criteria)
-        log_client._service.selectLogFiles.assert_called_once_with(
-            FileSelectionCriteria=criteria
-        )
+        log_client._service.selectLogFiles.assert_called_once_with(FileSelectionCriteria=criteria)
 
     def test_fault_raises_error(self, log_client):
         log_client._service.selectLogFiles.side_effect = Fault("Selection failed")

@@ -1,11 +1,12 @@
 """Tests for PerfMonClient with mocked zeep service."""
 
-import pytest
 from unittest.mock import MagicMock, patch
+
+import pytest
 from zeep.exceptions import Fault
 
-from axltoolkit.perfmon import PerfMonClient
 from axltoolkit.exceptions import PerfMonError
+from axltoolkit.perfmon import PerfMonClient
 
 
 @pytest.fixture
@@ -33,9 +34,7 @@ class TestSessionManagement:
 
     def test_close_session(self, pm):
         pm.close_session("session-handle-123")
-        pm._service.perfmonCloseSession.assert_called_once_with(
-            SessionHandle="session-handle-123"
-        )
+        pm._service.perfmonCloseSession.assert_called_once_with(SessionHandle="session-handle-123")
 
     def test_close_session_fault(self, pm):
         pm._service.perfmonCloseSession.side_effect = Fault("Invalid session")
@@ -196,9 +195,7 @@ class TestOneShot:
         ]
 
         result = pm.list_instances("cm-pub", "Cisco Lines")
-        pm._service.perfmonListInstance.assert_called_once_with(
-            Host="cm-pub", Object="Cisco Lines"
-        )
+        pm._service.perfmonListInstance.assert_called_once_with(Host="cm-pub", Object="Cisco Lines")
         assert result == ["1000", "2000", "3000"]
 
     def test_list_instances_none(self, pm):
@@ -252,9 +249,7 @@ class TestOneShot:
 
 class TestDecodeCounterName:
     def test_single_instance(self):
-        result = PerfMonClient.decode_counter_name(
-            r"\\cm-pub\Cisco CallManager\CallsCompleted"
-        )
+        result = PerfMonClient.decode_counter_name(r"\\cm-pub\Cisco CallManager\CallsCompleted")
         assert result == {
             "host": "cm-pub",
             "object": "Cisco CallManager",

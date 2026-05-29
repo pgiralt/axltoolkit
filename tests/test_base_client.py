@@ -1,8 +1,8 @@
 """Tests for BaseClient shared functionality."""
 
-import pytest
-from unittest.mock import MagicMock, patch, PropertyMock
+from unittest.mock import MagicMock, patch
 
+import pytest
 from lxml import etree
 
 from axltoolkit._base import BaseClient
@@ -12,9 +12,7 @@ from axltoolkit.exceptions import AXLAuthenticationError, AXLConnectionError
 @pytest.fixture
 def base_client():
     """Create a BaseClient with minimal mocking (no actual network)."""
-    with patch("axltoolkit._base.SqliteCache"), \
-         patch("pathlib.Path.mkdir"), \
-         patch("os.chmod"):
+    with patch("axltoolkit._base.SqliteCache"), patch("pathlib.Path.mkdir"), patch("os.chmod"):
         client = BaseClient(
             username="admin",
             password="secret",
@@ -34,9 +32,7 @@ class TestBaseClientInit:
         assert base_client._session.verify is False
 
     def test_tls_verify_true(self):
-        with patch("axltoolkit._base.SqliteCache"), \
-             patch("pathlib.Path.mkdir"), \
-             patch("os.chmod"):
+        with patch("axltoolkit._base.SqliteCache"), patch("pathlib.Path.mkdir"), patch("os.chmod"):
             client = BaseClient(
                 username="admin",
                 password="secret",
@@ -49,9 +45,11 @@ class TestBaseClientInit:
 
     def test_tls_verify_ca_bundle_not_found(self):
         with pytest.raises(FileNotFoundError, match="CA bundle not found"):
-            with patch("axltoolkit._base.SqliteCache"), \
-                 patch("pathlib.Path.mkdir"), \
-                 patch("os.chmod"):
+            with (
+                patch("axltoolkit._base.SqliteCache"),
+                patch("pathlib.Path.mkdir"),
+                patch("os.chmod"),
+            ):
                 BaseClient(
                     username="admin",
                     password="secret",
@@ -66,9 +64,7 @@ class TestBaseClientInit:
         assert base_client._history_enabled is True
 
     def test_history_disabled(self):
-        with patch("axltoolkit._base.SqliteCache"), \
-             patch("pathlib.Path.mkdir"), \
-             patch("os.chmod"):
+        with patch("axltoolkit._base.SqliteCache"), patch("pathlib.Path.mkdir"), patch("os.chmod"):
             client = BaseClient(
                 username="admin",
                 password="secret",
@@ -86,9 +82,11 @@ class TestBaseClientInit:
 
     def test_invalid_server_ip_rejected(self):
         with pytest.raises(ValueError, match="Invalid server_ip"):
-            with patch("axltoolkit._base.SqliteCache"), \
-                 patch("pathlib.Path.mkdir"), \
-                 patch("os.chmod"):
+            with (
+                patch("axltoolkit._base.SqliteCache"),
+                patch("pathlib.Path.mkdir"),
+                patch("os.chmod"),
+            ):
                 BaseClient(
                     username="admin",
                     password="secret",
@@ -99,9 +97,7 @@ class TestBaseClientInit:
                 )
 
     def test_valid_fqdn_accepted(self):
-        with patch("axltoolkit._base.SqliteCache"), \
-             patch("pathlib.Path.mkdir"), \
-             patch("os.chmod"):
+        with patch("axltoolkit._base.SqliteCache"), patch("pathlib.Path.mkdir"), patch("os.chmod"):
             client = BaseClient(
                 username="admin",
                 password="secret",
@@ -121,9 +117,7 @@ class TestLastRequestDebug:
         assert result is None
 
     def test_returns_none_with_history_disabled(self):
-        with patch("axltoolkit._base.SqliteCache"), \
-             patch("pathlib.Path.mkdir"), \
-             patch("os.chmod"):
+        with patch("axltoolkit._base.SqliteCache"), patch("pathlib.Path.mkdir"), patch("os.chmod"):
             client = BaseClient(
                 username="admin",
                 password="secret",
@@ -144,10 +138,7 @@ class TestRedactEnvelope:
 
     def test_password_element_is_redacted(self):
         env = etree.fromstring(
-            b"<root>"
-            b"  <userid>admin</userid>"
-            b"  <password>SuperSecret123!</password>"
-            b"</root>"
+            b"<root>  <userid>admin</userid>  <password>SuperSecret123!</password></root>"
         )
         out = BaseClient._redact_envelope(env).decode()
         assert "SuperSecret123!" not in out
@@ -195,28 +186,21 @@ class TestRedactEnvelope:
         assert out.count("[REDACTED]") == 5
 
     def test_does_not_mutate_original(self):
-        env = etree.fromstring(
-            b"<root><password>SuperSecret123!</password></root>"
-        )
+        env = etree.fromstring(b"<root><password>SuperSecret123!</password></root>")
         _ = BaseClient._redact_envelope(env)
         # Original tree must still have the real text — zeep needs to
         # be able to re-serialize the live history accurately.
         assert env.find("password").text == "SuperSecret123!"
 
     def test_empty_text_is_left_alone(self):
-        env = etree.fromstring(
-            b"<root><password/><password></password></root>"
-        )
+        env = etree.fromstring(b"<root><password/><password></password></root>")
         out = BaseClient._redact_envelope(env).decode()
         # Empty/none text shouldn't get replaced with "[REDACTED]"
         assert "[REDACTED]" not in out
 
     def test_non_sensitive_elements_pass_through(self):
         env = etree.fromstring(
-            b"<root>"
-            b"  <name>SEP001122334455</name>"
-            b"  <description>desk phone</description>"
-            b"</root>"
+            b"<root>  <name>SEP001122334455</name>  <description>desk phone</description></root>"
         )
         out = BaseClient._redact_envelope(env).decode()
         assert "SEP001122334455" in out
@@ -228,11 +212,7 @@ class TestRedactEnvelope:
 
     def test_comments_and_pis_are_ignored(self):
         env = etree.fromstring(
-            b"<root>"
-            b"<!-- a comment -->"
-            b"<password>secret</password>"
-            b"<?pi target?>"
-            b"</root>"
+            b"<root><!-- a comment --><password>secret</password><?pi target?></root>"
         )
         out = BaseClient._redact_envelope(env).decode()
         assert "secret" not in out
@@ -266,6 +246,7 @@ class TestCheckConnectivity:
 
     def test_connection_error(self, base_client):
         import requests
+
         with patch.object(base_client._session, "get") as mock_get:
             mock_get.side_effect = requests.ConnectionError("Connection refused")
             with pytest.raises(AXLConnectionError, match="Cannot reach"):
