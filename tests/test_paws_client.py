@@ -140,6 +140,63 @@ class TestGetClusterNodes:
             paws.get_cluster_nodes()
 
 
+class TestClusterReadiness:
+    def test_cluster_status_preserves_native_response(self, paws):
+        service = paws._services["ClusterNodesService"]
+        response = {
+            "result": "internal.request.complete",
+            "clusterNodes": [{"hostname": "cm-pub"}, {"hostname": "cm-sub1"}],
+        }
+        service.getClusterStatus.return_value = response
+        assert paws.get_cluster_status() is response
+        service.getClusterStatus.assert_called_once_with()
+        service.getClusterNodes.assert_not_called()
+
+    @pytest.mark.parametrize("healthy", [True, False])
+    @pytest.mark.parametrize(
+        "method,opcode,field",
+        [
+            ("is_cluster_replication_ok", "isClusterReplicationOK", "clusterReplicationStatusOK"),
+            ("is_node_replication_ok", "isNodeReplicationOK", "nodeReplicationStatusOK"),
+        ],
+    )
+    def test_replication_preserves_true_and_false(self, paws, healthy, method, opcode, field):
+        operation = getattr(paws._services["ClusterNodesService"], opcode)
+        response = {"result": "internal.request.complete", field: healthy}
+        operation.return_value = response
+        arguments = ("cm-sub1.example.test",) if method == "is_node_replication_ok" else ()
+        observed = getattr(paws, method)(*arguments)
+        assert observed is response and observed[field] is healthy
+        operation.assert_called_once_with(*arguments)
+
+    @pytest.mark.parametrize(
+        "method,opcode,message",
+        [
+            ("get_cluster_status", "getClusterStatus", "Failed to get cluster status"),
+            (
+                "is_cluster_replication_ok",
+                "isClusterReplicationOK",
+                "Failed to get cluster replication status",
+            ),
+            (
+                "is_node_replication_ok",
+                "isNodeReplicationOK",
+                "Failed to get node replication status",
+            ),
+        ],
+    )
+    def test_fault_preserves_original(self, paws, method, opcode, message):
+        operation = getattr(paws._services["ClusterNodesService"], opcode)
+        fault = Fault("Cluster readiness query failed")
+        operation.side_effect = fault
+        arguments = ("cm-sub1.example.test",) if method == "is_node_replication_ok" else ()
+        with pytest.raises(PAWSError, match=message) as error:
+            getattr(paws, method)(*arguments)
+        assert error.value.original_exception is fault
+        assert error.value.__cause__ is fault
+        operation.assert_called_once_with(*arguments)
+
+
 class TestGetInactiveOptions:
     def test_success(self, paws):
         paws._services["OptionsService"].getInactiveOptions.return_value = {"options": ["Security"]}
