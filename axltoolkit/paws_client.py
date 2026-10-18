@@ -18,7 +18,7 @@ Usage::
 
     version = client.get_active_version()
     hw_info = client.get_hardware_information()
-    nodes = client.get_cluster_nodes()
+    nodes = client.get_cluster_status()
     model = client.get_hardware_model()
     mode = client.get_deployment_mode()
 """
@@ -372,6 +372,70 @@ class PAWSClient(BaseClient):
         except Fault as fault:
             raise PAWSError(
                 f"Failed to get cluster nodes: {fault}",
+                original_exception=fault,
+            ) from fault
+
+    def get_cluster_status(self) -> Dict[str, Any]:
+        """Retrieve current status information for the cluster nodes.
+
+        Returns:
+            The native cluster status response, including cluster node details.
+
+        Raises:
+            PAWSError: If the query fails.
+
+        Example::
+
+            status = client.get_cluster_status()
+            print(status)
+        """
+        svc = self._get_paws_service("ClusterNodesService")
+        try:
+            return svc.getClusterStatus()
+        except Fault as fault:
+            raise PAWSError(
+                f"Failed to get cluster status: {fault}",
+                original_exception=fault,
+            ) from fault
+
+    def is_cluster_replication_ok(self) -> Dict[str, Any]:
+        """Retrieve the cluster replication health response.
+
+        Returns:
+            The native response containing ``clusterReplicationStatusOK``.
+            The boolean field can be either ``True`` or ``False``.
+
+        Raises:
+            PAWSError: If the query fails.
+        """
+        svc = self._get_paws_service("ClusterNodesService")
+        try:
+            return svc.isClusterReplicationOK()
+        except Fault as fault:
+            raise PAWSError(
+                f"Failed to get cluster replication status: {fault}",
+                original_exception=fault,
+            ) from fault
+
+    def is_node_replication_ok(self, node_name: str) -> Dict[str, Any]:
+        """Retrieve replication health for the specified cluster node.
+
+        Args:
+            node_name: Cluster node hostname passed as the native ``args0`` input.
+
+        Returns:
+            The native response containing ``nodeReplicationStatusOK``.
+            The boolean field can be either ``True`` or ``False``.
+
+        Raises:
+            PAWSError: If the query fails.
+        """
+        svc = self._get_paws_service("ClusterNodesService")
+        try:
+            return svc.isNodeReplicationOK(node_name)
+        except Fault as fault:
+            raise PAWSError(
+                f"Failed to get node replication status: {fault}",
                 original_exception=fault,
             ) from fault
 

@@ -26,7 +26,9 @@ paws = PAWSClient(
 
 # Platform information
 version = paws.get_active_version()
-nodes = paws.get_cluster_nodes()
+nodes = paws.get_cluster_status()
+cluster_replication = paws.is_cluster_replication_ok()
+node_replication = paws.is_node_replication_ok("ucm-pub.example.com")
 hw = paws.get_hardware_information()
 model = paws.get_hardware_model()
 mode = paws.get_deployment_mode()
@@ -35,6 +37,18 @@ mode = paws.get_deployment_mode()
 stage = paws.get_upgrade_stage()
 valid = paws.is_upgrade_valid("UCSInstall_UCOS_14.0.1.zip")
 ```
+
+Use `get_cluster_status()` for current cluster node status. The existing
+`get_cluster_nodes()` and `get_my_cluster_node()` methods remain available.
+All five cluster methods use the same lazily initialized `ClusterNodesService`
+proxy. `is_node_replication_ok(node_name)` forwards the selected cluster node
+hostname as the native `args0` string required by the installed WSDL. The other
+four cluster methods call their native operations without arguments.
+
+The replication methods return the native response, including
+`clusterReplicationStatusOK` or `nodeReplicationStatusOK`. Inspect that boolean
+field explicitly: a response containing `False` still represents a successful
+query. SOAP faults raise `PAWSError` with the original exception preserved.
 
 ## Class Reference
 
